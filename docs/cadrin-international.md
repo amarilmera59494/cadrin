@@ -73,3 +73,19 @@ Les tests anglais couvrent aussi les liens internes et ancres, la restauration d
 - Lighthouse mobile local (trois passages, avant l’ajout final du guide mouvement) : médiane accueil 99/100, guide première montre 100/100 ; accessibilité 100/100, CLS 0. Ces mesures de laboratoire ne sont pas des données d’utilisateurs réels.
 
 Captures dans `evidence/international/french/` et `evidence/international/browser/`, aux largeurs explicites de 390 et 1440 px. Les contrôles de débordement couvrent aussi 320, 360, 768 et 1920 px selon la suite. Les captures d’accueil, de guide, d’index, de sélecteur et de zoom ont été ouvertes et inspectées.
+
+
+## Vérification de la version en ligne
+
+Code déployé : `8464119247781c948470204b2861752d76017ae9`. Build Cloudflare `1ce9ff18-598f-428e-94c7-7b3b0401d8cc` terminé avec succès ; version Worker `9407427c-fb43-4931-936a-f1e3624be9b6`.
+
+Sur `https://cadrin.fr`, le 13 novembre 2026 :
+
+- 67 contrôles HTTP réussis, dont redirections canoniques, HSTS, vraie 404, cache et noindex.
+- 136 combinaisons page/largeur (74 FR, 62 EN), 294 contrôles de liens et ancres (145 FR, 149 EN), 50 pages sans JavaScript. Aucune erreur navigateur ni échec dans les rapports ; aucun débordement horizontal ni violation axe détecté sur les pages auditées. Ces contrôles automatisés ne constituent pas une certification d'accessibilité.
+- Sélecteurs FR et EN : filtres, tri, comparaison, restauration de l'URL, navigation marchand et partage de secours vérifiés. Les six destinations Tempus sont documentées séparément ; aucun achat ni suivi affilié n'a été testé.
+- Captures finales ouvertes et inspectées : accueil FR 1440 × 1000, accueil EN 390 × 900, guide mouvements FR 390 × 844. Les captures complètes et autres pages sont dans `evidence/international/online-fr/` et `evidence/international/online-en/`.
+- Lighthouse 13.6.0 mobile sur le site en ligne : trois passages par page. Accueil et guide première montre obtiennent chacun 100/100 en performance et accessibilité à chaque passage. Médianes LCP : 1,73 s et 0,93 s ; CLS médian 0 et TBT médian 0 ms. Ce sont des mesures de laboratoire sur deux routes, pas une promesse de résultat sur tous les appareils ni des Core Web Vitals terrain.
+- DNSSEC actif, réponses publiques DS et A authentifiées par le résolveur Google. Réception réelle de contact@cadrin.fr confirmée dans Gmail par le propriétaire.
+
+Rapports locaux : `evidence/deployment/result.json`, `evidence/international/online-fr/browser-report.json`, `evidence/international/online-en/report.json`, `evidence/international/lighthouse-online/summary.json`. Les preuves restent hors du dépôt public. La documentation de cette vérification peut avoir un commit ultérieur au code déployé ; les chemins `docs/**` ne déclenchent pas de nouveau build.
