@@ -16,11 +16,11 @@ const photo = approved ? clearedPhoto(src, reference) : undefined;
 {photo ? (
   <figure class="product-photo">
     <div class="photo-frame">
-      <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height}
+      <img src={photo.src} alt={en ? photo.altEn || photo.alt : photo.alt} width={photo.width} height={photo.height}
         class:list={[{worn: photo.kind === 'worn'}]} style={{objectPosition: photo.focus || 'center'}}
         loading={detail ? 'eager' : 'lazy'} decoding="async" />
     </div>
-    <figcaption>{photo.credit}</figcaption>
+    <figcaption>{en ? photo.creditEn || photo.credit : photo.credit}</figcaption>
   </figure>
 ) : !production && (
   <div class="photo-missing">
@@ -29,7 +29,7 @@ const photo = approved ? clearedPhoto(src, reference) : undefined;
   </div>
 )}
 <style>
-  .photo-frame { aspect-ratio: 3 / 2; background: var(--sand); overflow: hidden }
+  .photo-frame { aspect-ratio: 1; background: #fff; overflow: hidden }
   .photo-frame img { display: block; height: 100%; width: 100%; object-fit: contain }
   .photo-frame img.worn { object-fit: cover }
   figcaption, .photo-missing small { font-size: .79rem; color: var(--muted) }

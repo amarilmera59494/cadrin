@@ -1,5 +1,6 @@
 # Sélection du 13 novembre 2026
 
+> État actualisé au 13 novembre 2026 : voir [catalogue, affiliation et photos Tempus](cadrin-tempus-affiliation.md). Les constats de blocage ci-dessous décrivent les étapes antérieures.
 Contrôle des pages produit et des sources primaires avant changement de sélection. Les trois destinations retenues désignent des fiches consultables. Leur présence ne confirme ni stock, ni prix, ni conditions de livraison. Aucun identifiant d’affiliation fourni.
 
 | Référence | Sources et correspondance | Décision et point à éclaircir |

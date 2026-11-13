@@ -3,7 +3,7 @@ import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 const source = z.object({label:z.string(), url:z.url({protocol:/^https$/})});
 const editorial = z.object({
-  title:z.string(), description:z.string(), status:z.enum(['draft','published']),
+  title:z.string(), description:z.string(), status:z.enum(['draft','published','archived']),
   sources:z.array(source), verifiedAt:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
   author:z.string().nullable(), reviewer:z.string().nullable(), rights:z.enum(['approved','pending']),
 });

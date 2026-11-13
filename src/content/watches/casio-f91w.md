@@ -1,11 +1,11 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
-rights: "pending"
-image: null
-price: 19.9
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
+rights: "approved"
+image: "/images/products/casio-f91w.webp"
+price: 21.6
 priceCheckedAt: "2026-11-13"
 stock: null
 id: "casio-f91w"

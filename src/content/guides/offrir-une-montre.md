@@ -1,8 +1,8 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 rights: "approved"
 image: null
 title: "Quelle montre offrir, à elle ou à lui ?"

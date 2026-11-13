@@ -1,0 +1,8 @@
+---
+import {affiliateUrl,isTempusProduct} from '../data/affiliation';
+import {localeOf} from '../lib/i18n';
+const {url}=Astro.props as {url:string};
+const affiliate=isTempusProduct(url),en=localeOf(Astro.url.pathname)==='en';
+---
+<a href={affiliate?affiliateUrl(url):url} rel={affiliate?'sponsored':undefined}><slot/>{affiliate&&<span class="source-affiliation"> · {en?'affiliate link':'lien affilié'}</span>}</a>
+<style>.source-affiliation{font-size:.8em;font-weight:400}</style>

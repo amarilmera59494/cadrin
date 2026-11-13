@@ -1,8 +1,8 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 rights: "approved"
 image: null
 title: "Acheter une montre en ligne : les vérifications utiles"
@@ -27,7 +27,7 @@ Avant de comparer deux offres, regardez le total pour votre adresse. Hors de Fra
 
 Tempus indique livrer dans le monde entier dans ses conditions de vente. Sa FAQ précise que l’annonce de livraison Colissimo en 48 heures concerne la France métropolitaine. Ce délai ne doit donc pas être repris comme une promesse internationale.
 
-Une interface en anglais n’apporte pas de garantie supplémentaire sur votre destination. Lors de notre vérification, les six URL produits anglaises ont redirigé vers les fiches françaises. Confirmez l’adresse desservie, le transporteur, le coût et le délai directement auprès du marchand.
+Une interface en anglais n’apporte pas de garantie supplémentaire sur votre destination. Les pages du marchand peuvent changer de langue selon leur redirection et vos préférences. Confirmez l’adresse desservie, le transporteur, le coût et le délai directement auprès du marchand.
 
 ## Posez la question du bracelet avant l’ajustement
 
@@ -39,6 +39,6 @@ L’objectif est simple : savoir à quel moment la montre peut encore être éch
 
 Conservez la référence choisie, le récapitulatif de commande et les réponses du vendeur aux points incertains. À réception, comparez la référence et l’aspect de la montre à ce qui a été commandé avant de retirer des protections ou de faire modifier le bracelet. Si quelque chose ne correspond pas, contactez le vendeur pour connaître la marche à suivre.
 
-Cadrin ne vend pas les montres et ne gère ni paiement, ni livraison, ni retour. Notre rôle est de vous aider à poser les bonnes questions et à rejoindre la fiche exacte. Aucun lien affilié n’est actif dans cette version.
+Cadrin ne vend pas les montres et ne gère ni paiement, ni livraison, ni retour. Notre rôle est de vous aider à poser les bonnes questions et à rejoindre la fiche exacte. Nos liens vers Tempus sont affiliés : un achat peut nous rapporter une commission.
 
 [Relire les points à confirmer pour chaque montre](/trouver-ma-montre/)

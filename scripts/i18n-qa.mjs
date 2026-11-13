@@ -1,3 +1,6 @@
+import {destinations} from '../src/data/destinations.ts';
+const production=process.env.SITE_STAGE==='production';
+const expectedRobots=production?'index, follow':'noindex, nofollow';
 import {chromium} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
@@ -6,7 +9,7 @@ import path from 'node:path';
 process.env.TEMP=process.env.TMP=path.resolve('.tmp');
 const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4323';
 const dir=process.env.QA_OUTPUT||'evidence/international/browser';await mkdir(dir,{recursive:true});
-const routes=JSON.parse(await readFile('evidence/cadrin/preview-routes.json','utf8')).filter(r=>r.startsWith('/en/'));
+const routes=JSON.parse(await readFile(`evidence/cadrin/${production?'production':'preview'}-routes.json`,'utf8')).filter(r=>r.startsWith('/en/')&&!/\/catalogue\/\d+\//.test(r));
 const core=['/en/','/en/watch-finder/','/en/guides/choosing-your-first-watch/','/en/watches/casio-f91w/','/en/guides/automatic-quartz-or-solar/','/en/guides/'];
 const report={origin,testedAt:new Date().toISOString(),viewports:[],links:[],interactions:[],noJS:[],errors:[],failures:[]};
 const browser=await chromium.launch({channel:'chrome',headless:true});
@@ -24,19 +27,19 @@ try{
    state.links.filter(l=>l.startsWith(origin)).forEach(l=>links.add(l));delete state.links;
    const axe=width===390||width===1440?(await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze()).violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})):[];
    report.viewports.push({route,width,status:response.status(),...state,axe});
-   if(response.status()!==200||state.lang!=='en'||state.overflow||state.h1!==1||state.robots!=='noindex, nofollow'||state.broken.length||state.french.length||axe.length)report.failures.push(`viewport:${route}:${width}`);
+   if(response.status()!==200||state.lang!=='en'||state.overflow||state.h1!==1||state.robots!==expectedRobots||state.broken.length||state.french.length||axe.length)report.failures.push(`viewport:${route}:${width}`);
    if(core.includes(route)&&(width===390||width===1440)){const name=route==='/en/'?'home':route.split('/').filter(Boolean).slice(1).join('-');await page.screenshot({path:`${dir}/${name}-${width}.png`,fullPage:true});await page.screenshot({path:`${dir}/${name}-${width}-top.png`});}
   }
  }
  await page.setViewportSize({width:390,height:844});await page.goto(origin+'/en/');
  await page.keyboard.press('Tab');check('skip-first',await page.locator('.skip').evaluate(e=>e===document.activeElement));await page.keyboard.press('Enter');check('skip-main',await page.locator('#main').evaluate(e=>e===document.activeElement));
  const menu=page.locator('.menu-toggle');await menu.focus();await page.keyboard.press('Enter');check('menu-opens',await menu.getAttribute('aria-expanded')==='true');await page.keyboard.press('Escape');check('menu-escape',await menu.getAttribute('aria-expanded')==='false'&&await menu.evaluate(e=>e===document.activeElement));
- await page.goto(origin+'/en/watch-finder/?budget=300&mouvement=Automatique&comparer=citizen-tsuyosa-nj0150-81e,seiko-srpe55k1');
- check('english-filter-count',await page.locator('#models .model:visible').count()===2);
- check('english-count-copy',(await page.locator('#matches').textContent())==='2 watches');
+ await page.goto(origin+'/en/watch-finder/?budget=350&mouvement=Automatique&comparer=citizen-tsuyosa-nj0150-81e,seiko-srpe55k1');
+ check('english-filter-count',await page.locator('#models .model:visible').count()===3);
+ check('english-count-copy',(await page.locator('#matches').textContent())==='3 watches');
  check('comparison-restored',await page.locator('.pick input:checked').count()===2);
  await page.locator('.language-switch [data-language=fr]').click();await page.waitForLoadState('load');
- check('switch-keeps-filters',new URL(page.url()).pathname==='/trouver-ma-montre/'&&new URL(page.url()).searchParams.get('budget')==='300'&&await page.locator('#models .model:visible').count()===2);
+ check('switch-keeps-filters',new URL(page.url()).pathname==='/trouver-ma-montre/'&&new URL(page.url()).searchParams.get('budget')==='350'&&await page.locator('#models .model:visible').count()===3);
  await page.locator('.language-switch [data-language=en]').click();await page.waitForLoadState('load');check('switch-back-keeps-comparison',await page.locator('.pick input:checked').count()===2);
  await page.locator('#filter-toggle').click();await page.locator('[name=recherche]').fill('no-such-reference');check('empty-state',await page.locator('#no-matches').isVisible());await page.getByRole('button',{name:'Show all watches'}).click();await page.waitForFunction(()=>document.querySelector('#matches').textContent==='6 watches');
  check('empty-reset',await page.locator('#models .model:visible').count()===6);
@@ -46,7 +49,7 @@ try{
  await page.goto(origin+'/en/watch-finder/?comparer=casio-f91w,citizen-tsuyosa-nj0150-81e,seiko-srpe55k1');check('three-max',await page.locator('.pick input:disabled').count()===3);
  await page.locator('[data-remove=casio-f91w]').click();check('remove-reenables',await page.locator('.pick input:disabled').count()===0);
  await page.goto(origin+'/en/selections/');await page.getByRole('link',{name:'Explore the three watches'}).click();await page.waitForLoadState('load');await page.getByRole('link',{name:'View watch details for Casio'}).click();await page.waitForLoadState('load');
- const merchant=page.getByRole('link',{name:'View at Tempus Shop'});const href=await merchant.getAttribute('href');check('exact-english-merchant',href==='https://tempusshop.com/en/products/casio-vintage-f-91w-1yeg');
+ const merchant=page.getByRole('link',{name:'View at Tempus Shop'});const href=await merchant.getAttribute('href');check('exact-english-merchant',href===destinations['casio-f91w'].englishUrl);
  let outgoing;await page.route('https://tempusshop.com/**',r=>{if(r.request().isNavigationRequest())outgoing=r.request().url();return r.fulfill({status:200,contentType:'text/html',body:'<!doctype html><title>Navigation test</title><link rel="icon" href="data:,"><p>Verified navigation interception</p>'})});await merchant.click();check('merchant-navigation',outgoing===href);await page.goto(origin+'/en/');await page.unroute('https://tempusshop.com/**');
  for(const url of links){const u=new URL(url),r=await context.request.get(u.origin+u.pathname),html=await r.text();const anchor=!u.hash||html.includes(`id="${decodeURIComponent(u.hash.slice(1))}"`);report.links.push({path:u.pathname,hash:u.hash,status:r.status(),anchor});if(r.status()!==200||!anchor)report.failures.push('link:'+u.pathname+u.hash);}
  const noJS=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const staticPage=await noJS.newPage();

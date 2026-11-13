@@ -1,11 +1,11 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
-image: null
-rights: "pending"
-price: 299.0
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
+image: "/images/products/citizen-tsuyosa-nj0150-81e.webp"
+rights: "approved"
+price: 324.42
 priceCheckedAt: "2026-11-13"
 stock: null
 movement: "Automatique"

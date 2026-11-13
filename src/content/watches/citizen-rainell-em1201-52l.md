@@ -1,12 +1,12 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
-rights: "pending"
-image: null
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
+rights: "approved"
+image: "/images/products/citizen-rainell-em1201-52l.webp"
 stock: null
-price: 349.0
+price: 378.67
 priceCheckedAt: "2026-11-13"
 brand: "Citizen"
 name: "L Rainell"

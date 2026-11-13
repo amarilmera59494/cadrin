@@ -1,8 +1,8 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 rights: "approved"
 title: "Choisir sa première montre"
 description: "Budget, proportions, mouvement : les repères utiles pour choisir une première montre que vous aurez plaisir à porter."

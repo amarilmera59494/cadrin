@@ -9,6 +9,7 @@ dist-production/
 .astro-before-cadrin/
 .playwright-mcp/
 .codex-remote-attachments/
+.codex-attachments/
 archives/concepts/.astro/
 
 # Local browser evidence and operational backups stay outside the public repository.

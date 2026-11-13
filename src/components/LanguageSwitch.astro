@@ -19,13 +19,17 @@ const en=paired?localPath(Astro.url.pathname,'en'):'/en/';
  const key='cadrin-language';
  let saved:string|null=null;
  try{saved=localStorage.getItem(key)}catch{/* Language links work without storage. */}
- links.forEach(link=>{
+ const refreshLanguageLinks=()=>links.forEach(link=>{
    const target=new URL(link.href);
+   if(/^\/(?:en\/)?catalogue\//.test(location.pathname))target.pathname=location.pathname.replace(/^\/(?:en\/)?catalogue\//,link.dataset.language==='en'?'/en/catalogue/':'/catalogue/');
    target.search=location.search;
-   if(['#comparaison','#affiliation','#budget','#taille','#mouvement','#usage'].includes(location.hash))target.hash=location.hash;
+   target.hash=['#catalogue-comparison','#comparaison','#affiliation','#budget','#taille','#mouvement','#usage'].includes(location.hash)?location.hash:'';
    link.href=target.href;
-   link.addEventListener('click',()=>{try{localStorage.setItem(key,link.dataset.language!)}catch{}});
  });
+ refreshLanguageLinks();
+ document.addEventListener('cadrin:urlchange',refreshLanguageLinks);
+ window.addEventListener('popstate',refreshLanguageLinks);
+ links.forEach(link=>link.addEventListener('click',()=>{refreshLanguageLinks();try{localStorage.setItem(key,link.dataset.language!)}catch{}}));
  const suggestion=document.querySelector<HTMLElement>('.language-suggestion')!;
  const preferred=(navigator.languages?.[0] || navigator.language || 'fr').split('-')[0];
  // Offer English without overriding an explicit URL, moving focus or changing the cache by visitor.

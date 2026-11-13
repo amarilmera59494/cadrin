@@ -1,3 +1,4 @@
+import {destinations} from '../src/data/destinations.ts';
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import {mkdir, writeFile} from 'node:fs/promises';
@@ -24,9 +25,9 @@ try {
   report.push('Affichage sans débordement à '+width);
  }
  await page.goto(root+'/guides/montres-par-budget/');
- await page.getByRole('link',{name:'Comparer les automatiques jusqu’à 300 €'}).click();
+ await page.getByRole('link',{name:'Comparer les automatiques jusqu’à 350 €'}).click();
  await page.waitForLoadState('load');
- assert.equal(await visible.count(),2);
+ assert.equal(await visible.count(),3);
  for(const name of ['NJ0150-81E','SRPE55K1']) assert.ok((await visible.allTextContents()).join(' ').includes(name));
  await page.getByLabel('Marque ou référence').fill('NJ015081E');assert.equal(await visible.count(),1);
  await page.locator('.pick:visible input').check();
@@ -43,7 +44,7 @@ try {
  await page.getByRole('link',{name:/classées femme/}).click();await page.waitForLoadState('load');assert.equal(await visible.count(),1);
  assert.ok((await visible.innerText()).includes('EM1201-52L'));
  await visible.getByRole('link',{name:'Consulter la fiche'}).click();
- assert.equal(await page.getByRole('link',{name:'Voir chez Tempus Shop'}).getAttribute('href'),'https://tempusshop.com/products/citizen-l-rainell-bleu-em1201-52l');
+ assert.equal(await page.getByRole('link',{name:'Voir chez Tempus Shop'}).getAttribute('href'),destinations['citizen-rainell-em1201-52l'].url);
  await page.goBack();assert.equal(await visible.count(),1);
  await page.goto(base+'?largeur=30');assert.equal(await visible.count(),1);
  await page.goto(shared);

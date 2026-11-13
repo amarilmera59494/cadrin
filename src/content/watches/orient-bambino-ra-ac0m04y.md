@@ -1,11 +1,11 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
-image: null
-rights: "pending"
-price: 310.0
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
+image: "/images/products/orient-bambino-ra-ac0m04y.webp"
+rights: "approved"
+price: 336.35
 priceCheckedAt: "2026-11-13"
 stock: null
 movement: "Automatique"

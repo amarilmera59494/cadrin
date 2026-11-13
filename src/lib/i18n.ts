@@ -1,7 +1,9 @@
+import {cataloguePages} from '../data/catalogue-meta.ts';
 export type Locale = 'fr' | 'en';
 export const localeOf = (path:string):Locale => path === '/en' || path.startsWith('/en/') ? 'en' : 'fr';
 export const routePairs:Record<string,string> = {
-  '/':'/en/', '/trouver-ma-montre/':'/en/watch-finder/',
+  '/':'/en/',
+  ...Object.fromEntries(Array.from({length:cataloguePages},(_,i)=>{const path='/catalogue/'+(i?`${i+1}/`:'');return [path,'/en'+path]})), '/trouver-ma-montre/':'/en/watch-finder/',
   '/contact/':'/en/contact/', '/mentions-legales/':'/en/legal-notice/', '/confidentialite/':'/en/privacy/',
   '/selections/':'/en/selections/', '/guides/':'/en/guides/', '/notre-methode/':'/en/our-method/',
   '/selections/trois-montres-au-quotidien/':'/en/selections/three-everyday-watches/',
@@ -22,7 +24,7 @@ export function localPath(path:string, locale:Locale):string {
 }
 export const textFor=(locale:Locale)=>(fr:string,en:string)=>locale==='en'?en:fr;
 const terms:Record<string,string>={
-  Automatique:'Automatic',Solaire:'Solar',Quartz:'Quartz',Acier:'Steel',Cuir:'Leather','Résine':'Resin',Aiguilles:'Analogue','Numérique':'Digital',Femme:'Women',Homme:'Men',
+  Manuel:'Hand-wound',Automatique:'Automatic',Solaire:'Solar',Quartz:'Quartz',Acier:'Steel',Cuir:'Leather','Résine':'Resin',Aiguilles:'Analogue','Numérique':'Digital',Femme:'Women',Homme:'Men',
   'À confirmer':'To be confirmed',Diamètre:'Diameter',Largeur:'Width',Épaisseur:'Thickness',Mouvement:'Movement',Calibre:'Calibre',Calendrier:'Calendar',Boîtier:'Case',Bracelet:'Strap / bracelet',Verre:'Crystal',Cadran:'Dial',
   'Corne à corne':'Lug to lug','Longueur du boîtier':'Case length','Réserve annoncée':'Stated power reserve','Boîtier / verre':'Case / crystal','Boîtier / bracelet':'Case / bracelet','Poids annoncé':'Stated weight','Référence marchand':'Retailer reference',Affichage:'Display',Dimensions:'Dimensions',
   'Quartz à pile':'Battery-powered quartz','Numérique LCD':'Digital LCD','À confirmer auprès du marchand':'Confirm with the retailer','Quartz solaire Eco-Drive':'Eco-Drive solar quartz','Eco-Drive solaire':'Solar Eco-Drive','Eco-Drive · quartz solaire':'Eco-Drive · solar quartz','Jour et date':'Day and date','Acier inoxydable':'Stainless steel',Saphir:'Sapphire',

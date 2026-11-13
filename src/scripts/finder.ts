@@ -57,7 +57,7 @@ function render(writeUrl = true) {
   }
   if (selected.size) url.searchParams.set('comparer',[...selected].join(','));
   else url.searchParams.delete('comparer');
-  if (writeUrl && url.href!==location.href) history.replaceState(null,'',url);
+  if (writeUrl && url.href!==location.href) {history.replaceState(null,'',url);document.dispatchEvent(new Event('cadrin:urlchange'));}
   const active=inputs.filter(input=>input.value).length;
   filterToggle.textContent=active ? (en?'Edit filters (':'Modifier les critères (')+active+')' : (en?'Filter watches':'Filtrer les montres');
   let matches=0;

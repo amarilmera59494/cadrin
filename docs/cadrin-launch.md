@@ -1,5 +1,6 @@
 > État historique de préparation. La mise en ligne a ensuite été autorisée : voir [cadrin-hosting.md](cadrin-hosting.md) pour la configuration actuelle.
 
+> État actualisé au 13 novembre 2026 : voir [catalogue, affiliation et photos Tempus](cadrin-tempus-affiliation.md). Les constats de blocage ci-dessous décrivent les étapes antérieures.
 # Lancer et préparer la publication
 
 Livraison locale du 13 novembre 2026 dans `D:/Affi_montres`. Aucun déploiement, push, changement DNS, rattachement de domaine ou service distant activé. Le domaine acheté est cadrin.fr, origine future `https://cadrin.fr`. La possession est déclarée par le propriétaire ; aucune configuration DNS n’est présumée.

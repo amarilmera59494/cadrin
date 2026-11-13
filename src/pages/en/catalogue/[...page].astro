@@ -1,0 +1,7 @@
+---
+import TempusCatalogue from '../../../components/TempusCatalogue.astro';
+import data from '../../../data/tempus-catalogue.json';
+export function getStaticPaths(){return Array.from({length:Math.ceil(data.products.length/data.pageSize)},(_,i)=>({params:{page:i?String(i+1):undefined},props:{page:i+1}}));}
+const {page}=Astro.props;
+---
+<TempusCatalogue page={page}/>

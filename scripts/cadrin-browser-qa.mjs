@@ -1,3 +1,6 @@
+import {destinations} from '../src/data/destinations.ts';
+const production=process.env.SITE_STAGE==='production';
+const expectedRobots=production?'index, follow':'noindex, nofollow';
 import {chromium} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
@@ -6,7 +9,7 @@ const temp=path.resolve('.tmp');await mkdir(temp,{recursive:true});process.env.T
 const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4323';
 const dir=process.env.QA_OUTPUT || 'evidence/cadrin/final';await mkdir(dir,{recursive:true});
 const core=['/','/selections/trois-montres-au-quotidien/','/guides/choisir-premiere-montre/','/montres/casio-f91w/','/guides/automatique-quartz-solaire/','/guides/'];
-const routes=[...new Set([...JSON.parse(await readFile('evidence/cadrin/preview-routes.json','utf8')).filter(r=>!r.startsWith('/en/')),...core,'/trouver-ma-montre/','/guides/offrir-une-montre/','/guides/montres-par-budget/','/guides/bambino-tsuyosa-seiko-5/','/guides/citizen-eco-drive-ou-tsuyosa/','/montres/citizen-rainell-em1201-52l/','/montres/citizen-tsuyosa-nj0150-81e/','/montres/orient-bambino-ra-ac0m04y/','/selections/','/guides/','/montres/seiko-srpe55k1/','/montres/citizen-aw0102-13ae/','/montres/seiko-srpe55/','/montres/citizen-aw1231/','/notre-methode/'])];
+const routes=[...new Set([...JSON.parse(await readFile(`evidence/cadrin/${production?'production':'preview'}-routes.json`,'utf8')).filter(r=>!r.startsWith('/en/')&&!/\/catalogue\/\d+\//.test(r)),...core,'/trouver-ma-montre/','/guides/offrir-une-montre/','/guides/montres-par-budget/','/guides/bambino-tsuyosa-seiko-5/','/guides/citizen-eco-drive-ou-tsuyosa/','/montres/citizen-rainell-em1201-52l/','/montres/citizen-tsuyosa-nj0150-81e/','/montres/orient-bambino-ra-ac0m04y/','/selections/','/guides/','/montres/seiko-srpe55k1/','/montres/citizen-aw0102-13ae/',...(!production?['/montres/seiko-srpe55/','/montres/citizen-aw1231/']:[]),'/notre-methode/'])];
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const report={browser:browser.version(),testedAt:new Date().toISOString(),origin,viewports:[],interactions:[],noJavaScript:[],links:[],errors:[],failures:[]};
 const context=await browser.newContext({deviceScaleFactor:1});const page=await context.newPage();const allLinks=new Set();
@@ -27,7 +30,7 @@ try{
     result.axeViolations=audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}));
     if(core.includes(route)){const slug=route==='/'?'accueil':route.split('/').filter(Boolean).join('-');await page.screenshot({path:`${dir}/${slug}-${width}.png`,fullPage:true});await page.screenshot({path:`${dir}/${slug}-${width}-top.png`});}
    }
-   report.viewports.push(result);if(result.status!==200||state.overflow||state.brokenImages.length||state.h1!==1||state.noindex!=='noindex, nofollow'||result.axeViolations?.length)report.failures.push(`viewport:${width}:${route}`);
+   report.viewports.push(result);if(result.status!==200||state.overflow||state.brokenImages.length||state.h1!==1||state.noindex!==expectedRobots||result.axeViolations?.length)report.failures.push(`viewport:${width}:${route}`);
    console.log(`${width} ${route}: ${result.status}, overflow=${state.overflow}, axe=${result.axeViolations?.length??'—'}`);
   }
  }
@@ -40,16 +43,16 @@ try{
  await page.goto(origin+core[1]+'?movement=Quartz#choisir');check('filter-deep-link',await page.locator('[data-product-row]:visible').count()===1);await page.locator('[data-product-row]:visible').getByRole('link',{name:'Découvrir la fiche'}).click();check('journey-watch',new URL(page.url()).pathname==='/montres/casio-f91w/');
  await page.goBack();check('back-to-filtered-selection',new URL(page.url()).searchParams.get('movement')==='Quartz'&&await page.locator('[data-product-row]:visible').count()===1);
  await page.locator('[data-product-row]:visible').getByRole('link',{name:'Découvrir la fiche'}).click();
- const merchant=page.getByRole('link',{name:'Voir chez Tempus Shop'});check('merchant-exact-url',await merchant.getAttribute('href')==='https://tempusshop.com/products/casio-vintage-f-91w-1yeg');check('ordinary-link-no-sponsored',!(await merchant.getAttribute('rel')||'').includes('sponsored'));
+ const merchant=page.getByRole('link',{name:'Voir chez Tempus Shop'});check('merchant-exact-url',await merchant.getAttribute('href')===destinations['casio-f91w'].url);check('affiliate-link-sponsored',(await merchant.getAttribute('rel')||'').includes('sponsored'));
  // Observe an ordinary click up to the actual navigation request, without submitting anything externally.
- let destination=null;await page.route('https://tempusshop.com/**',route=>{destination=route.request().url();return route.fulfill({status:200,contentType:'text/html',body:'<h1>Destination interceptée par le test local</h1>'})});await merchant.click();check('journey-merchant-click',destination==='https://tempusshop.com/products/casio-vintage-f-91w-1yeg');await page.unroute('https://tempusshop.com/**');
+ let destination=null;await page.route('https://tempusshop.com/**',route=>{destination=route.request().url();return route.fulfill({status:200,contentType:'text/html',body:'<h1>Destination interceptée par le test local</h1>'})});await merchant.click();check('journey-merchant-click',destination===destinations['casio-f91w'].url);await page.unroute('https://tempusshop.com/**');
  await page.goto(origin+core[2]);await page.locator('.toc a[href="#taille"]').click();check('guide-anchor',new URL(page.url()).hash==='#taille');await page.locator('.table-scroll').focus();await page.keyboard.press('ArrowRight');await page.waitForFunction(()=>document.querySelector('.table-scroll').scrollLeft>0);check('table-keyboard-scroll',await page.locator('.table-scroll').evaluate(e=>e.scrollLeft>0));
  await page.getByRole('link',{name:'Explorer la sélection',exact:true}).click();check('guide-return-selection',new URL(page.url()).pathname===core[1]);
  await page.emulateMedia({reducedMotion:'reduce'});check('reduced-motion',await page.evaluate(()=>[...document.querySelectorAll('*')].every(e=>{const s=getComputedStyle(e);return s.animationName==='none'&&s.transitionDuration.split(',').every(t=>parseFloat(t)===0)})));await page.emulateMedia({reducedMotion:'no-preference'});
  for(const route of core){await page.setViewportSize({width:1280,height:1000});await page.goto(origin+route);await page.evaluate(()=>{document.documentElement.style.zoom='2'});check('zoom-200:'+route,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.evaluate(()=>{document.documentElement.style.zoom=''})}
  for(const href of allLinks){const u=new URL(href);const response=await context.request.get(u.origin+u.pathname);const html=await response.text();const anchor=!u.hash||html.includes(`id="${decodeURIComponent(u.hash.slice(1))}"`);report.links.push({url:u.pathname+u.hash,status:response.status(),anchor});if(response.status()!==200||!anchor)report.failures.push('link:'+u.pathname+u.hash)}
  const response404=await context.request.get(origin+'/inexistante-cadrin/');check('hosting-404',response404.status()===404);check('404-branded',(await response404.text()).includes('Reprenons le fil'));
- check('preview-header',(await context.request.get(origin+'/')).headers()['x-robots-tag']==='noindex, nofollow');
+ check('stage-header',production?!(await context.request.get(origin+'/')).headers()['x-robots-tag']:(await context.request.get(origin+'/')).headers()['x-robots-tag']==='noindex, nofollow');
  const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const np=await nojs.newPage();
  for(const route of routes){await np.goto(origin+route);const state={route,h1:await np.locator('h1').isVisible(),navigation:await np.locator('#primary-navigation a').first().isVisible(),overflow:await np.evaluate(()=>document.documentElement.scrollWidth>innerWidth)};if(route===core[1]){state.products=await np.locator('[data-product-row]:visible').count();state.filtersHidden=await np.locator('#filters').isHidden()}report.noJavaScript.push(state);if(!state.h1||!state.navigation||state.overflow||state.products!==undefined&&state.products!==3)report.failures.push('nojs:'+route)}
  await nojs.close();

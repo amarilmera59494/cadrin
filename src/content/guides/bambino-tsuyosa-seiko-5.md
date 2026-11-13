@@ -1,8 +1,8 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 image: null
 rights: "approved"
 title: "Bambino, Tsuyosa ou Seiko 5 Sports ?"

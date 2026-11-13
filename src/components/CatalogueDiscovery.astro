@@ -1,0 +1,16 @@
+---
+import {localeOf,localPath,textFor} from '../lib/i18n';
+import data from '../data/tempus-catalogue.json';
+const locale=localeOf(Astro.url.pathname),t=textFor(locale);
+const {compact=false}=Astro.props as {compact?:boolean};
+const root=localPath('/catalogue/',locale);
+---
+<aside class:list={['catalogue-discovery',{compact}]} aria-label={t('Poursuivre votre recherche','Continue your search')}>
+ <span class="eyebrow">{t('Pour élargir le choix','Keep exploring')}</span><h2>{t('Votre budget. Vos repères.','Your budget. Your bearings.')}</h2>
+ <p>{t(`Notre explorateur rassemble ${data.products.length.toLocaleString('fr-FR')} fiches de montres chez Tempus. Cherchez une référence ou rapprochez trois modèles avant de consulter le vendeur.`,`Our explorer brings together ${data.products.length.toLocaleString('en-GB')} watch listings at Tempus. Search for a reference or compare three watches before visiting the retailer.`)}</p>
+ <div><a href={root+'?budget=150'}>{t('Jusqu’à 150 €','Up to €150')} →</a><a href={root+'?budget=500&movement=Automatique'}>{t('Automatiques jusqu’à 500 €','Automatics up to €500')} →</a><a href={root+'?brand=Seiko'}>Seiko →</a><a href={root+'?brand=Citizen'}>Citizen →</a><a href={root+'?brand=Orient'}>Orient →</a><a href={root}>{t('Tout le catalogue','Full catalogue')} →</a></div>
+ <small>{t('Données et photos Tempus, relevées et datées. Le catalogue élargi ne constitue pas une analyse de chaque modèle.','Dated retailer data and photographs. The wider catalogue is not an analysis of every model.')}</small>
+</aside>
+<style>
+.catalogue-discovery{padding:32px;background:var(--sand);color:var(--wine)}.catalogue-discovery h2{font:500 42px/1.1 var(--display);margin:12px 0!important}.catalogue-discovery p{font-size:16px;line-height:1.8;max-width:70ch;margin:14px 0}.catalogue-discovery>div{display:flex;flex-wrap:wrap;gap:8px 24px;margin:12px 0}.catalogue-discovery a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:600}.catalogue-discovery small{display:block;font-size:12px;max-width:85ch;line-height:1.7}.compact{margin:32px 0}.compact h2{font-size:32px}.compact p{font-size:15px}@media(max-width:700px){.catalogue-discovery{padding:24px}.catalogue-discovery h2{font-size:34px}.catalogue-discovery p{font-size:14px}.catalogue-discovery a{font-size:13px}.compact h2{font-size:28px}}
+</style>

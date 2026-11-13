@@ -1,5 +1,5 @@
 ---
-status: "draft"
+status: "archived"
 verifiedAt: "2026-11-13"
 author: null
 reviewer: null

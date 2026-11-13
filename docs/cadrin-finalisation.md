@@ -1,5 +1,6 @@
 # CADRIN — guides illustrés et préparation du lancement
 
+> État actualisé au 13 novembre 2026 : voir [catalogue, affiliation et photos Tempus](cadrin-tempus-affiliation.md). Les constats de blocage ci-dessous décrivent les étapes antérieures.
 Itération du 13 novembre 2026. L'éditeur demande une version indexable et déclare la situation juridique finalisée. Le dépôt contient néanmoins encore une page de mentions explicitement incomplète et une politique de conservation à finaliser. Le texte définitif lui a été demandé ; aucune adresse, aucun téléphone ni accord de relecture n'ont été inventés. Les questions sur le texte final et les droits des photos restent en attente.
 
 ## Changements livrés

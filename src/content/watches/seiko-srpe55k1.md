@@ -1,11 +1,11 @@
 ---
-status: "draft"
+status: "published"
 verifiedAt: "2026-11-13"
 author: null
-reviewer: null
-rights: "pending"
-image: null
-price: 295.0
+reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
+rights: "approved"
+image: "/images/products/seiko-srpe55k1.webp"
+price: 320.08
 priceCheckedAt: "2026-11-13"
 stock: null
 id: "seiko-srpe55k1"
@@ -33,3 +33,5 @@ Seiko annonce environ 41 heures de réserve de marche. Si vous posez cette montr
 ## Le point à éclaircir
 
 Seiko donne 40 mm de diamètre et 44,6 mm de corne à corne. Le tableau de Tempus reprend 40 mm mais le texte de la même page annonce 42,5 mm. Tempus décrit également un disque des jours en anglais ou en kanji. Faites confirmer ces deux points pour l’exemplaire proposé.
+
+Le visuel associé par Tempus à cette fiche porte le nom de fichier SBSA045. Nous le reproduisons comme visuel marchand de la fiche SRPE55K1, sans certifier l’équivalence des variantes. Demandez une confirmation de la référence livrée et du disque des jours.

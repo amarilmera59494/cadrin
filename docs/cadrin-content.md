@@ -1,5 +1,6 @@
 # Contenus, sources et destinations
 
+> État actualisé au 13 novembre 2026 : voir [catalogue, affiliation et photos Tempus](cadrin-tempus-affiliation.md). Les constats de blocage ci-dessous décrivent les étapes antérieures.
 Les collections Astro typées sont dans `src/content.config.ts`. Le corpus volontairement court comprend six références dans le sélecteur, deux anciennes fiches documentaires, une sélection de trois modèles et cinq guides. Les quatre chapitres d’origine ont été conservés et ajustés dans `src/content/guide/` ; aucun essai physique n’est revendiqué.
 
 Chaque fiche Markdown conserve titre, description, statut, sources avec URL HTTPS, date de vérification, auteur et relecteur connus ou `null`, droits, photo, prix et stock. Une date ne change pas au build. Les valeurs inconnues restent nulles. Le frontmatter actuel utilise des valeurs JSON valides en YAML, également lisibles par le contrôle indépendant `content:check` : conserver ce format, y compris pour les listes de sources et de faits.
