@@ -1,4 +1,6 @@
 ---
+import {localeOf} from '../lib/i18n';
+const en=localeOf(Astro.url.pathname)==='en';
 import { clearedPhoto } from '../data/product-photos';
 import { production } from '../lib/editorial';
 
@@ -23,7 +25,7 @@ const photo = approved ? clearedPhoto(src, reference) : undefined;
 ) : !production && (
   <div class="photo-missing">
     {!detail && <span class="photo-ref">{reference}</span>}
-    <small>Photographie non disponible</small>
+    <small>{en?'Photograph unavailable':'Photographie non disponible'}</small>
   </div>
 )}
 <style>

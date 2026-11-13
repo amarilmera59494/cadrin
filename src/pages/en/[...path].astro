@@ -1,0 +1,22 @@
+---
+import {catalogue,production} from '../../lib/editorial';
+import {launch} from '../../data/launch';
+import {localPath} from '../../lib/i18n';
+import EnglishHome from '../../components/EnglishHome.astro';
+import EnglishPage from '../../components/EnglishPage.astro';
+import WatchFinder from '../../components/WatchFinder.astro';
+import InformationPage from '../../components/InformationPage.astro';
+export async function getStaticPaths(){
+ const {watches,guides,selections,finder}=await catalogue();
+ const routes=[{path:'/',kind:'home',id:''},{path:'/guides/',kind:'guides',id:''},{path:'/selections/',kind:'selections',id:''},{path:'/notre-methode/',kind:'method',id:''},{path:'/contact/',kind:'information',id:'contact'},
+ ...(!production||launch.legalPagesApproved?[{path:'/mentions-legales/',kind:'information',id:'legal'},{path:'/confidentialite/',kind:'information',id:'privacy'}]:[]),
+ ...watches.map(w=>({path:`/montres/${w.id}/`,kind:'watch',id:w.id})),
+ ...guides.map(g=>({path:`/guides/${g.id}/`,kind:'guide',id:g.id})),
+ ...selections.map(s=>({path:`/selections/${s.id}/`,kind:'selection',id:s.id})),
+ ...(finder.length?[{path:'/trouver-ma-montre/',kind:'finder',id:''}]:[])];
+ return routes.map(r=>({params:{path:localPath(r.path,'en').slice(4).replace(/\/$/,'')||undefined},props:{kind:r.kind,id:r.id}}));
+}
+const {kind,id}=Astro.props;
+const {finder}=await catalogue();
+---
+{kind==='home'?<EnglishHome/>:kind==='finder'?<WatchFinder models={finder}/>:kind==='information'?<InformationPage page={id as 'legal'|'privacy'|'contact'}/>:<EnglishPage kind={kind} id={id}/>}

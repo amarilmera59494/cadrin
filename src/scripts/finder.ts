@@ -1,3 +1,4 @@
+const en=document.documentElement.lang==='en';
 const form = document.querySelector<HTMLFormElement>('#criteria')!;
 const models = [...document.querySelectorAll<HTMLElement>('#models .model')];
 const inputs = [...form.querySelectorAll<HTMLInputElement|HTMLSelectElement>('[name]')];
@@ -8,6 +9,15 @@ const info = document.querySelector<HTMLElement>('#compare-info')!;
 const jump = document.querySelector<HTMLAnchorElement>('#to-compare')!;
 const empty = document.querySelector<HTMLElement>('#no-matches')!;
 const known = new Set(models.map(model=>model.dataset.id));
+const sortOrder=document.querySelector<HTMLSelectElement>('#sort-order')!;
+const shareStatus=document.querySelector<HTMLElement>('#share-status')!;
+const fallback=document.querySelector<HTMLElement>('#share-fallback')!;
+document.querySelector<HTMLElement>('.finder-tools')!.hidden=false;
+sortOrder.addEventListener('change',()=>render());
+document.querySelector('#share-finder')!.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(location.href);shareStatus.textContent=en?'Link copied, including filters and comparison.':'Lien copié, avec les filtres et la comparaison.';fallback.hidden=true}
+  catch{fallback.hidden=false;const input=fallback.querySelector('input')!;input.value=location.href;input.focus();input.select();shareStatus.textContent=en?'Copy the selected link.':'Copiez le lien sélectionné.'}
+});
 const normalize = (v: string) => v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 
 const filterToggle=document.querySelector<HTMLButtonElement>('#filter-toggle')!;
@@ -26,6 +36,7 @@ filterLayout();
 
 function readLocation() {
   const params = new URLSearchParams(location.search);
+  sortOrder.value=['prix','largeur'].includes(params.get('tri')||'')?params.get('tri')!:'';
   for (const input of inputs) {
     const value = params.get(input.name) || '';
     input.value = input instanceof HTMLSelectElement && !Array.from(input.options).some(o=>o.value===value) ? '' : value.slice(0,80);
@@ -38,6 +49,8 @@ function readLocation() {
 
 function render(writeUrl = true) {
   const url = new URL(location.href);
+  if(sortOrder.value)url.searchParams.set('tri',sortOrder.value);else url.searchParams.delete('tri');
+  shareStatus.textContent='';fallback.hidden=true;
   for (const input of inputs) {
     if (input.value) url.searchParams.set(input.name,input.value);
     else url.searchParams.delete(input.name);
@@ -46,7 +59,7 @@ function render(writeUrl = true) {
   else url.searchParams.delete('comparer');
   if (writeUrl && url.href!==location.href) history.replaceState(null,'',url);
   const active=inputs.filter(input=>input.value).length;
-  filterToggle.textContent=active ? 'Modifier les critères ('+active+')' : 'Filtrer les montres';
+  filterToggle.textContent=active ? (en?'Edit filters (':'Modifier les critères (')+active+')' : (en?'Filter watches':'Filtrer les montres');
   let matches=0;
   for (const model of models) {
     model.hidden = !inputs.every(({name,value})=>{
@@ -57,17 +70,20 @@ function render(writeUrl = true) {
     });
     if (!model.hidden) matches++;
   }
-  document.querySelector('#matches')!.textContent = matches+' référence'+(matches>1?'s':'');
+  document.querySelector('#matches')!.textContent = en ? matches+' watch'+(matches===1?'':'es') : matches+' référence'+(matches>1?'s':'');
   empty.hidden=matches!==0;
+  const key=sortOrder.value==='prix'?'budget':sortOrder.value==='largeur'?'largeur':null;
+  const ordered=[...models].sort((a,b)=>key?(Number(a.dataset[key]||Infinity)-Number(b.dataset[key]||Infinity))||models.indexOf(a)-models.indexOf(b):models.indexOf(a)-models.indexOf(b));
+  ordered.forEach(model=>model.parentElement!.append(model));
   for (const choice of choices) {
     choice.checked=selected.has(choice.value);
     choice.disabled=!choice.checked && selected.size===3;
   }
   comparison.querySelectorAll<HTMLElement>('[data-col]').forEach(cell=>{cell.hidden=!selected.has(cell.dataset.col!)});
   comparison.querySelector<HTMLElement>('.table-scroll')!.hidden=selected.size===0;
-  info.textContent = selected.size ? selected.size+' montre'+(selected.size>1?'s':'')+' sur 3. '+(selected.size===3?'Retirez un modèle pour en ajouter un autre.':'Cochez un autre modèle pour le rapprocher de votre choix.') : 'Cochez « Comparer » sur les modèles que vous souhaitez rapprocher.';
+  info.textContent = en ? (selected.size ? selected.size+' of 3 watches. '+(selected.size===3?'Remove one to add another.':'Select another watch to compare.') : 'Select Compare on the watches you want to see side by side.') : selected.size ? selected.size+' montre'+(selected.size>1?'s':'')+' sur 3. '+(selected.size===3?'Retirez un modèle pour en ajouter un autre.':'Cochez un autre modèle pour le rapprocher de votre choix.') : 'Cochez « Comparer » sur les modèles que vous souhaitez rapprocher.';
   jump.hidden=!selected.size;
-  jump.textContent='Voir ma comparaison ('+selected.size+'/3) ↓';
+  jump.textContent=(en?'View my comparison (':'Voir ma comparaison (')+selected.size+'/3) ↓';
 }
 
 form.hidden=false;

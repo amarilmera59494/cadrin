@@ -35,7 +35,7 @@ La règle entrante `contact@cadrin.fr` pointe vers l'adresse Gmail confirmée pa
 
 Les trois MX Cloudflare et la clé DKIM fournie par le service sont enregistrés. SPF reste unique et autorise Cloudflare ainsi qu'OVH pour préserver une éventuelle émission existante. DMARC commence à `p=none` ; ce mode n'impose pas le rejet. Aucune boîte OVH n'a été supprimée. Les anciennes entrées de parking web ont été retirées de la zone Cloudflare après sauvegarde.
 
-Pour les futurs tests, utiliser une adresse d'expédition différente du Gmail destinataire. DNSSEC est préparé côté Cloudflare ; la chaîne complète demande l'enregistrement DS chez OVH et sa vérification publique. Les paramètres publics ont été remis au propriétaire.
+Pour les futurs tests, utiliser une adresse d'expédition différente du Gmail destinataire. DNSSEC est actif côté Cloudflare. Le propriétaire a ajouté le DS chez OVH ; le 13 novembre 2026, le résolveur public Google a retourné le DS attendu et des réponses A authentifiées (AD=true). Preuve locale : `evidence/deployment/dnssec-public.json`.
 
 ## Lancement commercial
 

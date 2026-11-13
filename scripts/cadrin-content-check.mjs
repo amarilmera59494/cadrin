@@ -4,6 +4,9 @@ import {destinations,validDestination} from '../src/data/destinations.ts';
 import {imageRegistry} from '../src/data/image-registry.ts';
 import {clearedPhoto} from '../src/data/product-photos.ts';
 import {launch} from '../src/data/launch.ts';
+import {englishGuides} from '../src/data/english-guides.ts';
+import {englishWatches} from '../src/data/english-watches.ts';
+import {routePairs} from '../src/lib/i18n.ts';
 const items=[];const errors=[];
 for(const collection of ['watches','guides','selections'])for(const name of await readdir(`src/content/${collection}`)){
  const text=await readFile(`src/content/${collection}/${name}`,'utf8');const front=text.split('---')[1];const data=Object.fromEntries(front.trim().split('\n').map(line=>{const i=line.indexOf(':');return[line.slice(0,i),JSON.parse(line.slice(i+1).trim())]}));
@@ -13,12 +16,15 @@ for(const collection of ['watches','guides','selections'])for(const name of awai
  items.push({collection,id:name.replace('.md',''),publishable:publishable(data),blockers,data});
 }
 for(const item of items.filter(i=>i.collection==='selections'))for(const id of item.data.watches){const w=items.find(i=>i.collection==='watches'&&i.id===id);if(!w)errors.push(`${item.id}: référence orpheline ${id}`);else if(!w.publishable)item.blockers.push(`montre non publiable: ${id}`)}
+for(const item of items){if(item.collection==='watches'&&!englishWatches[item.id])errors.push(`${item.id}: traduction anglaise de fiche absente`);if(item.collection==='guides'&&!englishGuides[item.id])errors.push(`${item.id}: traduction anglaise de guide absente`);}
+for(const item of items){const prefix=item.collection==='watches'?'montres':item.collection;if(!routePairs[`/${prefix}/${item.id}/`])errors.push(`${item.id}: route anglaise correspondante absente`);}
 for(const [id,d]of Object.entries(destinations)){if(!validDestination(d))errors.push(`${id}: URL marchand invalide`);const watch=items.find(i=>i.id===id);if(!watch||watch.data.reference!==d.reference)errors.push(`${id}: référence marchande différente`)}
 for(const image of Object.values(imageRegistry))for(const path of image.files){try{await access('public'+path)}catch{errors.push(`Asset absent: ${path}`)}}
 const launchBlockers=[];
 if(!launch.legalIdentity||!launch.legalPagesApproved)launchBlockers.push('Identité juridique, mentions légales et confidentialité à compléter');
 if(!launch.contactVerified)launchBlockers.push('Réception du contact à vérifier');
 if(!launch.editorialApproved)launchBlockers.push('Validation éditoriale globale manquante');
+if(!launch.englishEditorialApproved)launchBlockers.push('Relecture éditoriale anglaise à valider');
 const ready=!errors.length&&!launchBlockers.length&&items.every(i=>!i.blockers.length);
 const report={checkedAt:new Date().toISOString(),items:items.map(({data,...r})=>r),errors,launchBlockers,affiliationPending:'Admission Tempus et véritables liens affiliés non fournis ; liens actuels ordinaires',ready};
 await mkdir('evidence/cadrin',{recursive:true});await writeFile('evidence/cadrin/content-report.json',JSON.stringify(report,null,2));

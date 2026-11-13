@@ -1,10 +1,13 @@
 ---
+import {localeOf} from '../lib/i18n';
+const en=localeOf(Astro.url.pathname)==='en';
+const englishAlt={leather:'Chronograph on a brown leather strap against a light grey background',mirror:'Mechanical watch on brown leather reflected in a mirror',wrist:'Steel watch worn with a grey sweater',sleeve:'Watch on brown leather worn with a herringbone jacket and pink sweater'};
 import { images } from '../data/images';
 interface Props { name: keyof typeof images; eager?: boolean; class?: string; caption?: boolean; sizes?: string }
 const {name, eager=false, class:className='', caption=true, sizes='(max-width: 700px) 100vw, 65vw'} = Astro.props;
 const data=images[name];
 ---
 <figure class:list={['photo',className]}>
- <picture><source type="image/avif" srcset={[480,900,1600].map(w=>`/images/${name}-${w}.avif ${w}w`).join(', ')} sizes={sizes}/><img src={`/images/${name}-900.webp`} srcset={[480,900,1600].map(w=>`/images/${name}-${w}.webp ${w}w`).join(', ')} sizes={sizes} width={data.width} height={data.height} alt={data.alt} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'auto'} decoding="async" /></picture>
- {caption && <figcaption>Photographie d’ambiance · <a href={data.page}>{data.author}</a> / Unsplash. Hors sélection.</figcaption>}
+ <picture><source type="image/avif" srcset={[480,900,1600].map(w=>`/images/${name}-${w}.avif ${w}w`).join(', ')} sizes={sizes}/><img src={`/images/${name}-900.webp`} srcset={[480,900,1600].map(w=>`/images/${name}-${w}.webp ${w}w`).join(', ')} sizes={sizes} width={data.width} height={data.height} alt={en?englishAlt[name]:data.alt} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'auto'} decoding="async" /></picture>
+ {caption && <figcaption>{en?'Mood photograph · ':'Photographie d’ambiance · '}<a href={data.page}>{data.author}</a> / Unsplash. {en?'Not a selected model.':'Hors sélection.'}</figcaption>}
 </figure>

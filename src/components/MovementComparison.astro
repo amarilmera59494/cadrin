@@ -1,0 +1,11 @@
+---
+import {localeOf,textFor} from '../lib/i18n';
+const t=textFor(localeOf(Astro.url.pathname));
+const headings=[t('Mouvement','Movement'),t('Au quotidien','Daily routine'),t('À anticiper','Plan for'),t('Pour quel rythme ?','Might suit you if…')];
+const rows=[
+ [t('Quartz à pile','Battery quartz'),t('Alimentation par pile','Powered by a battery'),t('Remplacement de la pile et entretien selon la notice','Battery replacement and care according to the manual'),t('Vous aimez reprendre votre montre simplement','You like to put your watch on and go')],
+ [t('Quartz solaire','Solar quartz'),t('Recharge par la lumière','Charges from light'),t('Exposition suffisante ; accumulateur et entretien','Sufficient light; rechargeable cell and maintenance'),t('Vous portez régulièrement votre montre à la lumière','Your watch regularly receives light')],
+ [t('Automatique','Automatic'),t('Remontage par les mouvements du poignet','Winds with wrist movement'),t('Remise à l’heure après arrêt ; entretien mécanique','Resetting after it stops; mechanical servicing'),t('Vous appréciez le rituel et le mécanisme','You enjoy the routine and mechanism')],
+];
+---
+<div class="table-scroll" tabindex="0" role="region" aria-label={t('Comparatif des mouvements, défilement horizontal si nécessaire','Movement comparison; scroll horizontally if needed')}><table><caption>{t('Trois mouvements, trois façons de vivre avec sa montre','Three movements, three daily routines')}</caption><thead><tr>{headings.map(h=><th scope="col">{h}</th>)}</tr></thead><tbody>{rows.map(r=><tr><th scope="row">{r[0]}</th>{r.slice(1).map(c=><td>{c}</td>)}</tr>)}</tbody></table></div>

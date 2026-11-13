@@ -1,4 +1,6 @@
 ---
+import {localeOf,localPath} from '../lib/i18n';
+const locale=localeOf(Astro.url.pathname);
 const {footer=false}=Astro.props;
 ---
-<a href="/" class:list={['wordmark',{'wordmark-large':footer}]} aria-label="Cadrin, accueil">C<span class="letter-a">A</span>DRIN<span class="wordmark-rule" aria-hidden="true"></span></a>
+<a href={localPath('/',locale)} class:list={['wordmark',{'wordmark-large':footer}]} aria-label={locale==='en'?'Cadrin, home':'Cadrin, accueil'}>C<span class="letter-a">A</span>DRIN<span class="wordmark-rule" aria-hidden="true"></span></a>

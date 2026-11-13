@@ -1,12 +1,12 @@
 import {chromium} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import path from 'node:path';
 const temp=path.resolve('.tmp');await mkdir(temp,{recursive:true});process.env.TEMP=temp;process.env.TMP=temp;
 const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4323';
 const dir=process.env.QA_OUTPUT || 'evidence/cadrin/final';await mkdir(dir,{recursive:true});
-const core=['/','/selections/trois-montres-au-quotidien/','/guides/choisir-premiere-montre/','/montres/casio-f91w/'];
-const routes=[...core,'/trouver-ma-montre/','/guides/offrir-une-montre/','/guides/montres-par-budget/','/guides/bambino-tsuyosa-seiko-5/','/guides/citizen-eco-drive-ou-tsuyosa/','/montres/citizen-rainell-em1201-52l/','/montres/citizen-tsuyosa-nj0150-81e/','/montres/orient-bambino-ra-ac0m04y/','/selections/','/guides/','/montres/seiko-srpe55k1/','/montres/citizen-aw0102-13ae/','/montres/seiko-srpe55/','/montres/citizen-aw1231/','/notre-methode/'];
+const core=['/','/selections/trois-montres-au-quotidien/','/guides/choisir-premiere-montre/','/montres/casio-f91w/','/guides/automatique-quartz-solaire/','/guides/'];
+const routes=[...new Set([...JSON.parse(await readFile('evidence/cadrin/preview-routes.json','utf8')).filter(r=>!r.startsWith('/en/')),...core,'/trouver-ma-montre/','/guides/offrir-une-montre/','/guides/montres-par-budget/','/guides/bambino-tsuyosa-seiko-5/','/guides/citizen-eco-drive-ou-tsuyosa/','/montres/citizen-rainell-em1201-52l/','/montres/citizen-tsuyosa-nj0150-81e/','/montres/orient-bambino-ra-ac0m04y/','/selections/','/guides/','/montres/seiko-srpe55k1/','/montres/citizen-aw0102-13ae/','/montres/seiko-srpe55/','/montres/citizen-aw1231/','/notre-methode/'])];
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const report={browser:browser.version(),testedAt:new Date().toISOString(),origin,viewports:[],interactions:[],noJavaScript:[],links:[],errors:[],failures:[]};
 const context=await browser.newContext({deviceScaleFactor:1});const page=await context.newPage();const allLinks=new Set();
