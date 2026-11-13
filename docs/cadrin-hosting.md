@@ -4,7 +4,7 @@ La mise en ligne a été autorisée le 13 novembre 2026. Cette décision remplac
 
 ## Version en ligne
 
-Le Worker `cadrin` sert exclusivement les fichiers statiques Astro. L'adresse de secours est https://cadrin.pierre-narguet.workers.dev. Les domaines `cadrin.fr` et `www.cadrin.fr` sont rattachés au même Worker. Leur disponibilité dépend de la délégation OVH et de la validation des certificats.
+Le Worker `cadrin` sert exclusivement les fichiers statiques Astro. L'adresse de secours est https://cadrin.pierre-narguet.workers.dev. Les domaines `cadrin.fr` et `www.cadrin.fr` sont rattachés au même Worker. La zone DNS est active et le certificat Universal SSL a été vérifié actif. HTTPS et les redirections HTTP/www ont été testés sur le domaine principal.
 
 Le déploiement utilise `SITE_STAGE=preview` : tous les parcours sont consultables, les pages et les réponses HTTP restent en noindex, sans sitemap. Ce site distant est accessible au public ; noindex n'est pas un contrôle d'accès. Les brouillons éditoriaux et limites photographiques restent identifiés. Les contrôles stricts du futur lancement indexable sont conservés.
 
@@ -21,7 +21,7 @@ Aucun secret ne doit entrer dans Git. Le build utilise un jeton Workers déjà e
 - Pas d'Apache ni de `.htaccess`. Astro génère une véritable page 404 ; Workers Static Assets utilise `404-page`, sans repli SPA.
 - Les routes de pages ont un slash final. Une URL inexistante garde le statut 404.
 - Une règle de zone redirige HTTP et www vers `https://cadrin.fr`, en conservant chemin et paramètres.
-- TLS minimum 1.2, TLS 1.3 actif, mode Full strict. Aucun serveur d'origine tiers.
+- TLS minimum 1.2, TLS 1.3 actif, mode Full strict. Aucun serveur d'origine tiers. HSTS initial de 24 h, sans preload ni extension aux sous-domaines.
 - CSP avec empreintes des scripts intégrés, blocage des frames et objets, en-têtes nosniff et politique de référent. Les scripts et polices viennent du site.
 - HTML revalidé ; assets Astro à nom haché conservés un an en cache immuable.
 - Les règles de cache des assets ciblent les fichiers réellement générés, retirent la valeur générale avant remplacement et laissent les 404 revalidables. Le test HTTP vérifie la valeur complète, pas seulement la présence d'« immutable ».
@@ -31,11 +31,11 @@ Contrôler l'hébergement : `QA_ORIGIN=https://cadrin.fr node scripts/hosting-ch
 
 ## Courriel
 
-La règle entrante `contact@cadrin.fr` pointe vers l'adresse Gmail confirmée par le propriétaire dans Cloudflare Email Routing. La réception dépend des MX Cloudflare et de l'activation de la zone. La destination est déjà vérifiée dans Cloudflare. Cette redirection n'est pas une boîte SMTP/IMAP et ne configure pas l'envoi depuis Gmail sous l'identité contact@cadrin.fr.
+La règle entrante `contact@cadrin.fr` pointe vers l'adresse Gmail confirmée par le propriétaire dans Cloudflare Email Routing. La zone et Email Routing sont actifs. La destination est vérifiée dans Cloudflare et le propriétaire a confirmé la réception d'un message d'essai dans Gmail le 13 novembre 2026. Cette redirection n'est pas une boîte SMTP/IMAP et ne configure pas l'envoi depuis Gmail sous l'identité contact@cadrin.fr.
 
 Les trois MX Cloudflare et la clé DKIM fournie par le service sont enregistrés. SPF reste unique et autorise Cloudflare ainsi qu'OVH pour préserver une éventuelle émission existante. DMARC commence à `p=none` ; ce mode n'impose pas le rejet. Aucune boîte OVH n'a été supprimée. Les anciennes entrées de parking web ont été retirées de la zone Cloudflare après sauvegarde.
 
-Après activation DNS, activer Email Routing et envoyer un message d'essai depuis une adresse différente du Gmail destinataire, puis vérifier sa réception. Un statut API activé ne prouve pas à lui seul une livraison dans la boîte Gmail. DNSSEC n'est pas activé tant que les paramètres DS correspondants n'ont pas été transmis au registrar.
+Pour les futurs tests, utiliser une adresse d'expédition différente du Gmail destinataire. DNSSEC est préparé côté Cloudflare ; la chaîne complète demande l'enregistrement DS chez OVH et sa vérification publique. Les paramètres publics ont été remis au propriétaire.
 
 ## Lancement commercial
 

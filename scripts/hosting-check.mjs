@@ -26,6 +26,14 @@ const asset=html.match(/href="(\/_astro\/[^"?]+\.css)"/)[1];
 const css=await fetch(origin+asset);assert.equal(css.status,200);assert.equal(css.headers.get('cache-control'),'public, max-age=31536000, immutable');
 const head=await fetch(origin+'/',{method:'HEAD'});assert.equal(head.status,200);assert.equal(await head.text(),'');
 const post=await fetch(origin+'/',{method:'POST'});assert.equal(post.status,405);
+let canonicalChecks=0;
+if(origin==='https://cadrin.fr'){
+ assert.match(home.headers.get('strict-transport-security')||'',/max-age=86400/);canonicalChecks++;
+ for(const host of ['http://cadrin.fr','http://www.cadrin.fr','https://www.cadrin.fr']){
+  const response=await fetch(host+'/guides/?origine=verification',{redirect:'manual'});
+  assert.equal(response.status,301);assert.equal(response.headers.get('location'),'https://cadrin.fr/guides/?origine=verification');canonicalChecks++;
+ }
+}
 await mkdir('evidence/deployment',{recursive:true});
-await writeFile(`evidence/deployment/hosting-${new URL(origin).hostname}.json`,JSON.stringify({checkedAt:new Date().toISOString(),origin,results,immutableAssets:true,head:true,post405:true},null,2));
-console.log(JSON.stringify({origin,checks:results.length+3,passed:true}));
+await writeFile(`evidence/deployment/hosting-${new URL(origin).hostname}.json`,JSON.stringify({checkedAt:new Date().toISOString(),origin,results,immutableAssets:true,head:true,post405:true,canonicalChecks},null,2));
+console.log(JSON.stringify({origin,checks:results.length+3+canonicalChecks,passed:true}));

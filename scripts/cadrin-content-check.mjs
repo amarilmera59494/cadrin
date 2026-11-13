@@ -16,9 +16,10 @@ for(const item of items.filter(i=>i.collection==='selections'))for(const id of i
 for(const [id,d]of Object.entries(destinations)){if(!validDestination(d))errors.push(`${id}: URL marchand invalide`);const watch=items.find(i=>i.id===id);if(!watch||watch.data.reference!==d.reference)errors.push(`${id}: référence marchande différente`)}
 for(const image of Object.values(imageRegistry))for(const path of image.files){try{await access('public'+path)}catch{errors.push(`Asset absent: ${path}`)}}
 const launchBlockers=[];
-if(!launch.legalIdentity||!launch.legalPagesApproved||!launch.contactVerified)launchBlockers.push('Identité juridique, mentions légales, contact et confidentialité à compléter');
+if(!launch.legalIdentity||!launch.legalPagesApproved)launchBlockers.push('Identité juridique, mentions légales et confidentialité à compléter');
+if(!launch.contactVerified)launchBlockers.push('Réception du contact à vérifier');
 if(!launch.editorialApproved)launchBlockers.push('Validation éditoriale globale manquante');
 const ready=!errors.length&&!launchBlockers.length&&items.every(i=>!i.blockers.length);
-const report={checkedAt:'2026-11-13',items:items.map(({data,...r})=>r),errors,launchBlockers,affiliationPending:'Admission Tempus et véritables liens affiliés non fournis ; liens actuels ordinaires',ready};
+const report={checkedAt:new Date().toISOString(),items:items.map(({data,...r})=>r),errors,launchBlockers,affiliationPending:'Admission Tempus et véritables liens affiliés non fournis ; liens actuels ordinaires',ready};
 await mkdir('evidence/cadrin',{recursive:true});await writeFile('evidence/cadrin/content-report.json',JSON.stringify(report,null,2));
 console.log(JSON.stringify(report,null,2));if(errors.length||(process.argv.includes('--strict')&&!ready))process.exitCode=1;
