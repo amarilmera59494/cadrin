@@ -13,17 +13,17 @@ async function check(route,status){
   assert.equal(response.headers.get('x-frame-options'),'DENY');
   assert.match(response.headers.get('content-security-policy')||'',/frame-ancestors 'none'/);
  }
- if(status===404){assert.match(html,/Reprenons le fil/);assert.match(html,/noindex, nofollow/);}
+ if(status===404){assert.equal(response.headers.get('cache-control'),'public, max-age=0, must-revalidate');assert.match(html,/Reprenons le fil/);assert.match(html,/noindex, nofollow/);}
  return {response,html};
 }
 for(const route of JSON.parse(await readFile('evidence/cadrin/preview-routes.json','utf8')))await check(route,200);
-for(const route of ['/page-absente-test/','/guides/page-absente/','/images/introuvable.jpg','/.env','/.git/config','/docs/cadrin-launch.md','/concepts/','/sitemap.xml'])await check(route,404);
+for(const route of ['/page-absente-test/','/guides/page-absente/','/images/introuvable.jpg','/_astro/introuvable.js','/.env','/.git/config','/docs/cadrin-launch.md','/concepts/','/sitemap.xml'])await check(route,404);
 const slash=await check('/guides?origine=test',307);
 assert.equal(new URL(slash.response.headers.get('location'),origin).pathname,'/guides/');
 assert.equal(new URL(slash.response.headers.get('location'),origin).search,'?origine=test');
 const home=await fetch(origin+'/');const html=await home.text();
 const asset=html.match(/href="(\/_astro\/[^"?]+\.css)"/)[1];
-const css=await fetch(origin+asset);assert.equal(css.status,200);assert.match(css.headers.get('cache-control'),/immutable/);
+const css=await fetch(origin+asset);assert.equal(css.status,200);assert.equal(css.headers.get('cache-control'),'public, max-age=31536000, immutable');
 const head=await fetch(origin+'/',{method:'HEAD'});assert.equal(head.status,200);assert.equal(await head.text(),'');
 const post=await fetch(origin+'/',{method:'POST'});assert.equal(post.status,405);
 await mkdir('evidence/deployment',{recursive:true});

@@ -2,7 +2,7 @@ import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import {mkdir, writeFile} from 'node:fs/promises';
 const root=process.env.QA_ORIGIN || 'http://127.0.0.1:4323';
-const dir='evidence/iteration-04';
+const dir=process.env.QA_OUTPUT || 'evidence/iteration-04';
 await mkdir(dir,{recursive:true});
 const browser=await chromium.launch({channel:'chrome'});
 const report=[];
@@ -25,6 +25,7 @@ try {
  }
  await page.goto(root+'/guides/montres-par-budget/');
  await page.getByRole('link',{name:'Comparer les automatiques jusqu’à 300 €'}).click();
+ await page.waitForLoadState('load');
  assert.equal(await visible.count(),2);
  for(const name of ['NJ0150-81E','SRPE55K1']) assert.ok((await visible.allTextContents()).join(' ').includes(name));
  await page.getByLabel('Marque ou référence').fill('NJ015081E');assert.equal(await visible.count(),1);
@@ -39,7 +40,7 @@ try {
  await page.locator('#comparaison').screenshot({path:dir+'/comparaison.png'});
  await page.locator('[data-remove="casio-f91w"]').click();assert.equal(await page.locator('.pick input:checked').count(),2);
  await page.goto(root+'/guides/offrir-une-montre/');
- await page.getByRole('link',{name:/classées femme/}).click();assert.equal(await visible.count(),1);
+ await page.getByRole('link',{name:/classées femme/}).click();await page.waitForLoadState('load');assert.equal(await visible.count(),1);
  assert.ok((await visible.innerText()).includes('EM1201-52L'));
  await visible.getByRole('link',{name:'Consulter la fiche'}).click();
  assert.equal(await page.getByRole('link',{name:'Voir chez Tempus Shop'}).getAttribute('href'),'https://tempusshop.com/products/citizen-l-rainell-bleu-em1201-52l');
