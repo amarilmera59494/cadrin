@@ -45,3 +45,10 @@ Les contrôles de sitemap et d'exclusion ne supposent plus éternellement dix pa
 
 
 Lighthouse 13.6.0 mobile local, trois passages : accueil 99/99/99 ; guide première montre 99/98/99. Médiane 99/100 en performance, 100/100 en accessibilité sur les deux routes ; CLS médian 0. Ces mesures de laboratoire portent sur le guide avec sa nouvelle photo, pas sur tous les appareils. La dernière correction ne change que le contour de focus de l'encart Tempus : il reste visible sans chevaucher le texte suivant.
+
+
+## Mise en ligne vérifiée
+
+Code `754cd5eb0f23b3ea326b5d2ceef47bb029b560c1`, Worker `df5417b8-29c0-41ca-bcec-82eae4f43229`. Cloudflare Builds a terminé la tentative `0be8413b-b056-4a4d-a287-33267592094b` sur une erreur interne à l'initialisation, avant toute compilation. La seconde tentative a été annulée puis le build local validé a été publié avec `npm run deploy`, sans désactiver les gardes. Aucun build automatique de ce push n'avait été observé avant la tentative manuelle ; ne pas présenter cette livraison comme une preuve du déclenchement automatique.
+
+Sur https://cadrin.fr : 67 contrôles HTTP réussis, encarts FR/EN utilisables au clavier avec et sans JS, destinations produit exactes conservées. Le HTML du guide de première montre est identique au build local. Captures publiques dans `evidence/launch-final/online-guides/` et `online/`, desktop 1440 × 1000, mobile 390 × 844. Le noindex reste actif et les photos produit exactes restent en attente ; cette livraison ne les déclare pas résolus.
