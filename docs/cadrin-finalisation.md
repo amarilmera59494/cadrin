@@ -52,3 +52,18 @@ Lighthouse 13.6.0 mobile local, trois passages : accueil 99/99/99 ; guide premi�
 Code `754cd5eb0f23b3ea326b5d2ceef47bb029b560c1`, Worker `df5417b8-29c0-41ca-bcec-82eae4f43229`. Cloudflare Builds a terminé la tentative `0be8413b-b056-4a4d-a287-33267592094b` sur une erreur interne à l'initialisation, avant toute compilation. La seconde tentative a été annulée puis le build local validé a été publié avec `npm run deploy`, sans désactiver les gardes. Aucun build automatique de ce push n'avait été observé avant la tentative manuelle ; ne pas présenter cette livraison comme une preuve du déclenchement automatique.
 
 Sur https://cadrin.fr : 67 contrôles HTTP réussis, encarts FR/EN utilisables au clavier avec et sans JS, destinations produit exactes conservées. Le HTML du guide de première montre est identique au build local. Captures publiques dans `evidence/launch-final/online-guides/` et `online/`, desktop 1440 × 1000, mobile 390 × 844. Le noindex reste actif et les photos produit exactes restent en attente ; cette livraison ne les déclare pas résolus.
+
+
+## Décision ultérieure de l'éditeur — mentions et photographies
+
+Le 13 novembre 2026, l'éditeur demande explicitement de conserver les mentions actuelles. `legalPagesApproved` enregistre désormais cette acceptation du texte existant, sans certification de conformité et sans modification de l'adresse ou du téléphone. La question sur le texte définitif est donc close. Cette décision n'accorde pas de droits sur les photographies des marques.
+
+L'éditeur demande des photographies des modèles exacts et autorise éventuellement des ambiances générées, sans mention d'IA sur le site. Aucun faux packshot ni faux essai, auteur ou relecteur humain ne doit être créé. Aucune image générée n'a été ajoutée à cette itération.
+
+Vérification des conditions officielles :
+
+- Seiko : https://www.seikowatches.com/us-en/content-requirement — réutilisation des contenus soumise à permission ; aucune autorisation pour CADRIN trouvée.
+- Citizen : https://www.citizen.co.jp/global/policy/terms.html — réutilisation soumise à accord préalable.
+- Orient : https://www.orientwatch.co.uk/or/en_GB/terms-of-use — reproduction et publication soumises à accord écrit préalable du titulaire.
+
+Ces pages établissent les conditions, pas une licence. Le statut officiel d'une photo et son crédit ne remplacent pas l'autorisation requise par le brief initial. Les contrôles des droits restent actifs.

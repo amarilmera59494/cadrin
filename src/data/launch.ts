@@ -1,2 +1,3 @@
-// Only replace these unknowns with verified editorial/legal information.
-export const launch={legalIdentity:'Pierre Narguet — MicroDev — EI — SIREN 932132566',legalPagesApproved:false,contactVerified:true,editorialApproved:false,englishEditorialApproved:false};
+// The owner explicitly accepted the current legal pages on 2026-11-13.
+// This records a publication decision, not an independent compliance certification.
+export const launch={legalIdentity:'Pierre Narguet — MicroDev — EI — SIREN 932132566',legalPagesApproved:true,legalApprovalBasis:'owner-accepted-current-text',contactVerified:true,editorialApproved:false,englishEditorialApproved:false};
