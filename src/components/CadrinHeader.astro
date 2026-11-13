@@ -6,9 +6,10 @@ const {finder}=await catalogue();
 const links=[...(finder.length ? [['/trouver-ma-montre/','Trouver ma montre']] : []),['/selections/','Sélections'],['/guides/','Guides'],['/notre-methode/','Notre méthode']];
 ---
 <header class="c-header"><div class="container header-inner"><Wordmark/><span class="brand-tagline">Le sens du porté.</span><button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button><nav id="primary-navigation" aria-label="Navigation principale">{links.map(([url,label])=><a href={url} aria-current={path.startsWith(url)?'page':undefined}>{label}</a>)}</nav></div></header>
-<script>
-const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');
-const nav=document.querySelector<HTMLElement>('#primary-navigation');
+<!-- Initialize before main is parsed: a delayed module would move the page when the menu collapses. -->
+<script is:inline>
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('#primary-navigation');
 if(toggle&&nav){
   document.documentElement.classList.add('menu-ready');toggle.hidden=false;
   const close=()=>{toggle.setAttribute('aria-expanded','false');nav.classList.remove('is-open')};

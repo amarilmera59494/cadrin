@@ -8,7 +8,7 @@ const scriptHashes=new Set();
 for(const file of files.filter(f=>f.endsWith('.html'))){
  const html=await readFile(file,'utf8');
  for(const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){
-  if(!/\bsrc=|application\/ld\+json/.test(match[1])&&match[2].trim())scriptHashes.add(`'sha256-${createHash('sha256').update(match[2]).digest('base64')}'`);
+  if(!/\bsrc=|application\/ld\+json/.test(match[1])&&match[2].trim())scriptHashes.add(`'sha256-${createHash('sha256').update(match[2].replace(/\r\n?/g,'\n')).digest('base64')}'`);
  }
 }
 const csp=`default-src 'self'; script-src 'self' ${[...scriptHashes].join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`;
