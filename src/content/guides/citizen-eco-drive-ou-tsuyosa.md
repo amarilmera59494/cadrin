@@ -21,6 +21,8 @@ La Tsuyosa NJ0150-81E utilise le calibre mécanique 8210. Les mouvements du poig
 
 L’Eco-Drive associe un cadran clair, une boîte dorée et un bracelet en cuir. La Tsuyosa joue sur le contraste entre le cadran noir et l’acier. Un bracelet cuir se règle sur les trous existants. Pour l’acier, demandez la mise à longueur et conservez les maillons retirés. Cela compte particulièrement pour un cadeau : renseignez-vous sur les échanges avant tout ajustement.
 
+::montres[straps]
+
 ## La question à vous poser
 
 Imaginez un lundi matin après une semaine sans montre. Préférez-vous enfiler un bracelet cuir, lire le jour et partir, ou prendre un moment pour régler une mécanique et fermer un bracelet acier ? Ces deux références ont le même diamètre annoncé. Ce sont leurs différences de mouvement, de calendrier et de bracelet qui changent le plus ce geste.

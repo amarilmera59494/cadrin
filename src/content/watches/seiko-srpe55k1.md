@@ -16,22 +16,24 @@ size: 40
 sizeLabel: "Ø 40 mm"
 movement: "Automatique"
 use: "quotidien"
-finder: {"bracelet": "Acier", "display": "Aiguilles", "category":"Homme"}
-material: "Acier · verre Hardlex"
+finder: {"bracelet": "Acier", "display": "Aiguilles", "category": "Homme"}
+material: "Acier · verre minéral"
 note: "Le cadran indique le jour et la date. Le mouvement se remonte au poignet ou à la couronne."
-limit: "Seiko indique 40 mm. Le descriptif Tempus mentionne aussi 42,5 mm. Faire préciser le diamètre et la langue des jours."
+limit: "Un cadran noir sur acier, avec calendrier jour-date. Choisissez la langue du disque des jours avec Tempus."
 title: "Seiko 5 Sports SRPE55K1"
 description: "Le cadran indique le jour et la date. Le mouvement se remonte au poignet ou à la couronne."
-sources: [{"label": "Seiko Boutique — caractéristiques de la SRPE55K1", "url": "https://www.seikoboutique.co.uk/product/seiko-5-sports-27/"}, {"label": "Tempus Shop — SRPE55K1, jour anglais ou kanji", "url": "https://tempusshop.com/products/seiko-5-srpe55k1-date-kanji"}]
-facts: [{"label": "Diamètre", "value": "40 mm"}, {"label": "Corne à corne", "value": "44,6 mm"}, {"label": "Épaisseur", "value": "11,5 mm"}, {"label": "Calibre", "value": "4R36 · automatique à remontage manuel"}, {"label": "Réserve annoncée", "value": "Environ 41 heures"}, {"label": "Boîtier / verre", "value": "Acier inoxydable / Hardlex"}]
+sources: [{"label": "Tempus Shop — SRPE55K1, jour anglais ou kanji", "url": "https://tempusshop.com/products/seiko-5-srpe55k1-date-kanji"}, {"label": "Seiko Boutique — caractéristiques de la SRPE55K1", "url": "https://www.seikoboutique.co.uk/product/seiko-5-sports-27/"}]
+facts: [{"label": "Mouvement", "value": "Automatique"}, {"label": "Fonctions", "value": "Jour et date kanji"}, {"label": "Calibre", "value": "4R36"}, {"label": "Cadran", "value": "Noir"}, {"label": "Diamètre", "value": "40mm"}, {"label": "Épaisseur", "value": "10 mm"}, {"label": "Boîtier", "value": "Acier inoxydable"}, {"label": "Fermoir", "value": "Boucle déployante avec bouton poussoir"}, {"label": "Verre", "value": "Minéral"}, {"label": "Fond du boîtier", "value": "Transparent"}, {"label": "Bracelet", "value": "Acier"}, {"label": "Résistance à l'eau", "value": "10 ATM"}]
 ---
 
-## Si vous alternez entre deux montres
+## Une automatique à porter au quotidien
 
-Seiko annonce environ 41 heures de réserve de marche. Si vous posez cette montre le vendredi soir et la reprenez le lundi, prévoyez de régler l’heure et le calendrier. Le calibre 4R36 accepte aussi le remontage à la couronne.
+Le cadran noir, les index et le bracelet acier donnent à cette Seiko 5 Sports une présence facile à associer. Son calendrier affiche le jour et la date : deux informations que l’on peut consulter sans changer d’écran. Tempus indique un boîtier de 40 mm, un mouvement 4R36 et un fond transparent.
 
-## Le point à éclaircir
+## Le plaisir d’une mécanique
 
-Seiko donne 40 mm de diamètre et 44,6 mm de corne à corne. Le tableau de Tempus reprend 40 mm mais le texte de la même page annonce 42,5 mm. Tempus décrit également un disque des jours en anglais ou en kanji. Faites confirmer ces deux points pour l’exemplaire proposé.
+Le mouvement se remonte lorsque vous portez la montre et accepte aussi le remontage à la couronne. Si vous alternez entre plusieurs montres, une remise à l’heure après l’arrêt fait partie de cette routine. Regardez également la boucle et le réglage du bracelet : ce sont les éléments que vous utiliserez chaque jour.
 
-Le visuel associé par Tempus à cette fiche porte le nom de fichier SBSA045. Nous le reproduisons comme visuel marchand de la fiche SRPE55K1, sans certifier l’équivalence des variantes. Demandez une confirmation de la référence livrée et du disque des jours.
+## Le détail à choisir : le calendrier
+
+Tempus présente cette référence avec des jours en anglais ou en kanji. Faites préciser la version qui vous sera livrée si la langue du calendrier compte pour vous. Le visuel est celui associé par Tempus à cette fiche ; la référence commandée reste SRPE55K1.

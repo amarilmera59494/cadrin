@@ -44,7 +44,7 @@ try{
  await page.locator('#filter-toggle').click();await page.locator('[name=recherche]').fill('no-such-reference');check('empty-state',await page.locator('#no-matches').isVisible());await page.getByRole('button',{name:'Show all watches'}).click();await page.waitForFunction(()=>document.querySelector('#matches').textContent==='6 watches');
  check('empty-reset',await page.locator('#models .model:visible').count()===6);
  await page.locator('#sort-order').selectOption('prix');check('price-sort',await page.locator('#models .model').first().getAttribute('data-id')==='casio-f91w');
- await page.locator('#sort-order').selectOption('largeur');check('unknown-width-last',await page.locator('#models .model').last().getAttribute('data-id')==='casio-f91w');check('sort-in-url',new URL(page.url()).searchParams.get('tri')==='largeur');
+ await page.locator('#sort-order').selectOption('largeur');check('tempus-width-sort',await page.locator('#models .model').nth(1).getAttribute('data-id')==='casio-f91w');check('sort-in-url',new URL(page.url()).searchParams.get('tri')==='largeur');
  await page.evaluate(()=>{Object.defineProperty(navigator,'clipboard',{value:{writeText:async()=>{throw new Error('Denied')}}})});await page.locator('#share-finder').click();check('share-fallback',await page.locator('#share-fallback').isVisible()&&await page.locator('#share-fallback input').inputValue()===page.url());
  await page.goto(origin+'/en/watch-finder/?comparer=casio-f91w,citizen-tsuyosa-nj0150-81e,seiko-srpe55k1');check('three-max',await page.locator('.pick input:disabled').count()===3);
  await page.locator('[data-remove=casio-f91w]').click();check('remove-reenables',await page.locator('.pick input:disabled').count()===0);

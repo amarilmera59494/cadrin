@@ -9,6 +9,7 @@ import {englishWatches} from '../src/data/english-watches.ts';
 import {routePairs} from '../src/lib/i18n.ts';
 const items=[];const errors=[];
 const {spawnSync}=await import('node:child_process');
+const selectionCheck=spawnSync(process.execPath,['scripts/selection-data-check.mjs'],{encoding:'utf8'});if(selectionCheck.status!==0)errors.push('Sélection et exemples: '+selectionCheck.stderr);
 const catalogueCheck=spawnSync(process.execPath,['scripts/check-tempus-catalogue.mjs'],{encoding:'utf8'});if(catalogueCheck.status!==0)errors.push('Catalogue Tempus: '+catalogueCheck.stderr);
 for(const collection of ['watches','guides','selections'])for(const name of await readdir(`src/content/${collection}`)){
  const text=await readFile(`src/content/${collection}/${name}`,'utf8');const front=text.split('---')[1];const data=Object.fromEntries(front.trim().split('\n').map(line=>{const i=line.indexOf(':');return[line.slice(0,i),JSON.parse(line.slice(i+1).trim())]}));

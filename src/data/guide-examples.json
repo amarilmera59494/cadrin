@@ -1,0 +1,147 @@
+{
+  "budget-50": [
+    [
+      "F-91W-1YEG",
+      "Pour un style numérique en résine, simple et décontracté.",
+      "For a straightforward resin digital with a casual look."
+    ],
+    [
+      "A158WEA-1EF",
+      "Pour retrouver les chiffres, avec un bracelet métallique et une allure rétro.",
+      "For digits with a metal bracelet and a retro look."
+    ]
+  ],
+  "budget-150": [
+    [
+      "AW0102-13AE",
+      "Pour les aiguilles, le cuir et la recharge solaire.",
+      "For hands, leather and charging through light."
+    ],
+    [
+      "GA-2100-1A1ER",
+      "Pour une silhouette noire octogonale et un esprit G-Shock.",
+      "For an all-black octagonal shape and G-Shock character."
+    ]
+  ],
+  "budget-350": [
+    [
+      "NJ0150-81E",
+      "Un cadran noir, une date sous loupe et une ligne continue sur acier.",
+      "A black dial, magnified date and continuous steel silhouette."
+    ],
+    [
+      "RA-AC0M04Y",
+      "Un cadran beige et du cuir pour une approche plus habillée.",
+      "A beige dial and leather for a dressier direction."
+    ],
+    [
+      "SRPE55K1",
+      "Un calendrier jour-date pour ceux qui consultent les deux au quotidien.",
+      "A day-date calendar for those who use both every day."
+    ]
+  ],
+  "budget-400": [
+    [
+      "EM1201-52L",
+      "Une petite boîte en goutte et un cadran bleu : la piste montre-bijou.",
+      "A small teardrop case and blue dial: the jewellery-watch direction."
+    ],
+    [
+      "NJ0200-50L",
+      "Une Tsuyosa bleue en 37 mm pour explorer un format différent.",
+      "A blue 37 mm Tsuyosa to explore a different size."
+    ]
+  ],
+  "colours": [
+    [
+      "NJ0150-81E",
+      "Noir : commencez par le contraste entre les aiguilles et le cadran.",
+      "Black: start with the contrast between hands and dial."
+    ],
+    [
+      "NJ0150-81L",
+      "Bleu : la même famille, avec une présence plus colorée.",
+      "Blue: the same family, with more colour on the wrist."
+    ],
+    [
+      "NJ0150-81X",
+      "Vert : une couleur affirmée sans changer de silhouette.",
+      "Green: a stronger colour without changing the silhouette."
+    ]
+  ],
+  "straps": [
+    [
+      "AW0102-13AE",
+      "Cuir et boîte dorée pour accompagner une tenue habillée.",
+      "Leather and a gold-tone case for a dressier outfit."
+    ],
+    [
+      "NJ0150-81E",
+      "Acier : regardez le raccord entre les premiers maillons et la boîte.",
+      "Steel: look at how the first links meet the case."
+    ],
+    [
+      "F-91W-1YEG",
+      "Résine : une autre présence visuelle, sans brillance métallique.",
+      "Resin: a different visual presence without a metallic shine."
+    ]
+  ],
+  "gshock": [
+    [
+      "GA-2100-1A1ER",
+      "Le noir intégral pour une silhouette discrète dans les vêtements, affirmée au poignet.",
+      "All black for a strong wrist presence that blends with your clothes."
+    ],
+    [
+      "GBD-200-2ER",
+      "Un affichage numérique et des fonctions liées au téléphone.",
+      "A digital display and phone-linked functions."
+    ],
+    [
+      "F-91W-1YEG",
+      "L’alternative rétro pour qui préfère un dessin plus fin à l’esthétique G-Shock.",
+      "The retro alternative for someone who prefers a slimmer design to the G-Shock look."
+    ]
+  ],
+  "upgrade": [
+    [
+      "T137.410.11.051.00",
+      "PRX quartz : commencez par le dessin du bracelet, sans imposer une mécanique.",
+      "PRX quartz: start with the bracelet design without insisting on a mechanical movement."
+    ],
+    [
+      "H70455533",
+      "Khaki Field : une autre direction, sur cuir, avec une lecture de montre de terrain.",
+      "Khaki Field: another direction, on leather, with a field-watch layout."
+    ],
+    [
+      "NJ0150-81E",
+      "Gardez une Tsuyosa comme point de comparaison avant d’augmenter le budget.",
+      "Keep a Tsuyosa as a reference before increasing your budget."
+    ]
+  ],
+  "mechanism": [
+    [
+      "RA-AG0002S",
+      "Une ouverture sur le mécanisme : un cœur ouvert, pas un tourbillon.",
+      "An opening onto the mechanism: open-heart, not a tourbillon."
+    ],
+    [
+      "110-A",
+      "Le plaisir d’un cadran squelette, sans le confondre avec une complication tourbillon.",
+      "The visual appeal of a skeleton dial, without confusing it with a tourbillon."
+    ]
+  ],
+  "connected": [
+    [
+      "025115",
+      "GPS intégré annoncé par Tempus ; choisissez ensuite selon les fonctions de l’application.",
+      "Built-in GPS listed by Tempus; then choose according to the app’s functions."
+    ],
+    [
+      "GBD-200-2ER",
+      "Bluetooth et mesures d’activité ; le GPS du téléphone sert à calibrer la distance.",
+      "Bluetooth and activity measurements; phone GPS is used to calibrate distance."
+    ]
+  ]
+}

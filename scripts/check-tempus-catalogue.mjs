@@ -15,7 +15,7 @@ for(let i=0;i<data.products.length;i++){
  assert.equal(new URL(imageSource).hostname,'cdn.shopify.com');assert.equal(p.image,`/images/catalogue/${p.id}.webp`);
  images.add(p.image);bytes+=(await stat('public'+p.image)).size;
  const url=new URL(affiliateUrl(p.source));assert.equal(url.searchParams.get('bg_ref'),tempusAffiliate.code);assert.equal(decodeURIComponent(url.pathname),`/products/${p.handle}`);
- assert.ok(['','Automatique','Quartz','Solaire','Manuel'].includes(p.movement));assert.ok(['','Femme','Homme','Enfant'].includes(p.category));assert.ok(['preorder','order','check'].includes(p.order));
+ assert.ok(['','Automatique','Quartz','Solaire','Manuel','Connectée'].includes(p.movement));assert.ok(['','Femme','Homme','Enfant'].includes(p.category));assert.ok(['preorder','order','check'].includes(p.order));
 }
 const base={q:'',brand:'',budget:'',movement:'',category:'',order:'',sort:''};
 const fixture=(id,extra={})=>({id,title:'Montre École',brand:'Test',reference:'ABC-'+id,price:100,movement:'',category:'',order:'check',orderable:true,...extra});

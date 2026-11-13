@@ -1,0 +1,12 @@
+import data from '../src/data/tempus-catalogue.json' with {type:'json'};
+import groups from '../src/data/guide-examples.json' with {type:'json'};
+import {term} from '../src/lib/i18n.ts';
+import {orderLabel} from '../src/lib/tempus-catalogue.ts';
+import {affiliateUrl} from '../src/data/affiliation.ts';
+const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function guideExamples(key,en=false){
+ const picks=groups[key];if(!picks)throw Error('Unknown guide example group '+key);
+ const money=n=>new Intl.NumberFormat(en?'en-GB':'fr-FR',{style:'currency',currency:'EUR'}).format(n);
+ return `<div class="guide-examples" aria-label="${en?'Watches to compare':'Des montres à comparer'}">${picks.map(([ref,fr,english])=>{const p=data.products.find(p=>p.reference===ref);if(!p)throw Error('Missing guide product '+ref);const specs=[p.movement,p.caseSize,p.strapFamily?p.strap:''].filter(Boolean).map(v=>escape(term(v,en?'en':'fr'))).join(' · ');return `<article class="guide-example"><a href="${escape(affiliateUrl(p.source))}" rel="sponsored" aria-label="${escape(p.title)} — ${en?'view at Tempus, affiliate link':'voir chez Tempus, lien affilié'}"><img src="${p.image}" width="${p.width}" height="${p.height}" loading="lazy" decoding="async" alt="${escape(p.title)} — ${en?'Tempus photo':'photo Tempus'}"/></a><div><h3>${escape(p.title)}</h3><p class="example-ref">${escape(p.reference)}</p><p>${escape(en?english:fr)}</p>${specs?`<p class="example-specs">${specs}</p>`:''}<p class="example-price">${money(p.price)} <small>${en?'recorded on':'relevés le'} ${data.checkedAt.split('-').reverse().join('/')}, ${en?'excluding delivery':'hors livraison'}</small></p><small class="example-status">${escape(orderLabel(p,en))}</small><a class="text-link" href="${escape(affiliateUrl(p.source))}" rel="sponsored">${en?'View at Tempus':'Voir chez Tempus'} ↗</a><small class="example-credit">${en?'Affiliate link · Photo: Tempus':'Lien affilié · Photo Tempus'}</small></div></article>`;}).join('')}</div>`;
+}
+export default {name:'cadrin-guide-examples',paragraph(node){if(node.children?.length!==1||node.children[0].type!=='text')return;const match=node.children[0].value.match(/^::montres\[([a-z0-9-]+)\]$/);if(match)return {type:'html',value:guideExamples(match[1])};}};

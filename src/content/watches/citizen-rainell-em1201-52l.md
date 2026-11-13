@@ -18,11 +18,11 @@ sizeLabel: "Largeur 26,2 mm"
 movement: "Solaire"
 use: "quotidien"
 material: "Acier · bracelet acier"
-finder: {"bracelet":"Acier","display":"Aiguilles","category":"Femme"}
+finder: {"bracelet": "Acier", "display": "Aiguilles", "category": "Femme"}
 note: "Un cadran bleu dans une boîte en goutte, prolongée par un bracelet acier. Une piste pour qui porte déjà des montres fines ou des bracelets bijoux."
 limit: "La boîte a une forme asymétrique. Comparez sa largeur et la taille du cadran à une montre connue de la personne."
-sources: [{"label":"Citizen — L Rainell EM1201-52L","url":"https://de.citizenwatch.eu/de/p/em1201-52l/"},{"label":"Tempus Shop — Rainell bleue EM1201-52L","url":"https://tempusshop.com/products/citizen-l-rainell-bleu-em1201-52l"}]
-facts: [{"label":"Largeur","value":"26,2 mm"},{"label":"Mouvement","value":"Eco-Drive solaire"},{"label":"Bracelet","value":"Acier inoxydable"},{"label":"Verre","value":"Saphir"}]
+sources: [{"label": "Tempus Shop — Rainell bleue EM1201-52L", "url": "https://tempusshop.com/products/citizen-l-rainell-bleu-em1201-52l"}, {"label": "Citizen — L Rainell EM1201-52L", "url": "https://de.citizenwatch.eu/de/p/em1201-52l/"}]
+facts: [{"label": "Mouvement", "value": "Eco-Drive"}, {"label": "Fonctions", "value": "3 aiguilles"}, {"label": "Calibre", "value": "E035"}, {"label": "Cadran", "value": "Bleu"}, {"label": "Diamètre", "value": "26,2 mm"}, {"label": "Épaisseur", "value": "8,3 mm"}, {"label": "Boîtier", "value": "Acier inoxydable"}, {"label": "Fermoir", "value": "Boucle déployante à poussoirs"}, {"label": "Verre", "value": "Saphir"}, {"label": "Bracelet", "value": "Acier inoxydable"}, {"label": "Résistance à l'eau", "value": "5 ATM (50 mètres)"}, {"label": "Poids", "value": "64g"}]
 ---
 ## Un petit cadran à essayer
 

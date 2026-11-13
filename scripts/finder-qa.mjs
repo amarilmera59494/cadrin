@@ -27,7 +27,7 @@ try {
  await page.goto(root+'/guides/montres-par-budget/');
  await page.getByRole('link',{name:'Comparer les automatiques jusqu’à 350 €'}).click();
  await page.waitForLoadState('load');
- assert.equal(await visible.count(),3);
+ assert.equal(new URL(page.url()).pathname,'/catalogue/');assert.equal(new URL(page.url()).searchParams.get('budget'),'350');await page.goto(base+'?budget=350&mouvement=Automatique');assert.equal(await visible.count(),3);
  for(const name of ['NJ0150-81E','SRPE55K1']) assert.ok((await visible.allTextContents()).join(' ').includes(name));
  await page.getByLabel('Marque ou référence').fill('NJ015081E');assert.equal(await visible.count(),1);
  await page.locator('.pick:visible input').check();
@@ -48,7 +48,7 @@ try {
  await page.goBack();assert.equal(await visible.count(),1);
  await page.goto(base+'?largeur=30');assert.equal(await visible.count(),1);
  await page.goto(shared);
- report.push('Budget et catégorie depuis les guides, recherche de référence, vide/reset, trois favoris maximum, URL restaurée, retrait, largeur inconnue exclue, aller-retour marchand');
+ report.push('Budget et catégorie depuis les guides, recherche de référence, vide/reset, trois favoris maximum, URL restaurée, retrait, filtre de largeur, aller-retour marchand');
  const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
  const np=await nojs.newPage();await np.goto(base);
  assert.ok(await np.locator('#criteria').isHidden());

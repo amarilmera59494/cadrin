@@ -1,0 +1,5 @@
+---
+import {guideExamples} from '../../scripts/remark-guide-examples.mjs';
+const {id,en=false}=Astro.props as {id:string;en?:boolean};
+---
+<Fragment set:html={guideExamples(id,en)}/>

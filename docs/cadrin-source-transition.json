@@ -1,0 +1,168 @@
+[
+  {
+    "reference": "F-91W-1YEG",
+    "oldFacts": [
+      {
+        "label": "Référence marchand",
+        "value": "F-91W-1YEG"
+      },
+      {
+        "label": "Mouvement",
+        "value": "Quartz à pile"
+      },
+      {
+        "label": "Affichage",
+        "value": "Numérique LCD"
+      },
+      {
+        "label": "Boîtier",
+        "value": "Résine"
+      },
+      {
+        "label": "Dimensions",
+        "value": "À confirmer auprès du marchand"
+      }
+    ],
+    "oldLimit": "Largeur à confirmer : Tempus indique 33,2 mm pour F-91W-1YEG ; Casio indique 35,2 mm pour la variante F-91W-1Y. Nous ne tranchons pas cette divergence.",
+    "source": "https://tempusshop.com/products/casio-vintage-f-91w-1yeg"
+  },
+  {
+    "reference": "AW0102-13AE",
+    "oldFacts": [
+      {
+        "label": "Diamètre",
+        "value": "40 mm"
+      },
+      {
+        "label": "Mouvement",
+        "value": "Quartz solaire Eco-Drive"
+      },
+      {
+        "label": "Calibre",
+        "value": "J800"
+      },
+      {
+        "label": "Calendrier",
+        "value": "Jour et date"
+      },
+      {
+        "label": "Boîtier",
+        "value": "Acier inoxydable"
+      }
+    ],
+    "oldLimit": "Le bracelet cuir se règle par crans. Vérifiez sa longueur et la langue du calendrier auprès du vendeur.",
+    "source": "https://tempusshop.com/products/citizen-aw0102-13ae"
+  },
+  {
+    "reference": "EM1201-52L",
+    "oldFacts": [
+      {
+        "label": "Largeur",
+        "value": "26,2 mm"
+      },
+      {
+        "label": "Mouvement",
+        "value": "Eco-Drive solaire"
+      },
+      {
+        "label": "Bracelet",
+        "value": "Acier inoxydable"
+      },
+      {
+        "label": "Verre",
+        "value": "Saphir"
+      }
+    ],
+    "oldLimit": "La boîte a une forme asymétrique. Comparez sa largeur et la taille du cadran à une montre connue de la personne.",
+    "source": "https://tempusshop.com/products/citizen-l-rainell-bleu-em1201-52l"
+  },
+  {
+    "reference": "NJ0150-81E",
+    "oldFacts": [
+      {
+        "label": "Diamètre",
+        "value": "40 mm"
+      },
+      {
+        "label": "Calibre",
+        "value": "8210 · automatique"
+      },
+      {
+        "label": "Verre",
+        "value": "Saphir"
+      },
+      {
+        "label": "Bracelet",
+        "value": "Acier inoxydable"
+      },
+      {
+        "label": "Poids annoncé",
+        "value": "138 g"
+      }
+    ],
+    "oldLimit": "Citizen annonce 138 g. Vérifiez le réglage des maillons et la façon dont le premier maillon épouse votre poignet.",
+    "source": "https://tempusshop.com/products/citizen-tsuyosa-noir-nj0150-81e"
+  },
+  {
+    "reference": "RA-AC0M04Y",
+    "oldFacts": [
+      {
+        "label": "Diamètre",
+        "value": "38,4 mm"
+      },
+      {
+        "label": "Longueur du boîtier",
+        "value": "44 mm"
+      },
+      {
+        "label": "Épaisseur",
+        "value": "12,5 mm"
+      },
+      {
+        "label": "Calibre",
+        "value": "F6724 · automatique, remontage manuel"
+      },
+      {
+        "label": "Cadran",
+        "value": "Beige"
+      },
+      {
+        "label": "Bracelet",
+        "value": "Cuir"
+      }
+    ],
+    "oldLimit": "Le boîtier mesure 12,5 mm d’épaisseur. Essayez-le avec la chemise que vous portez le plus souvent.",
+    "source": "https://tempusshop.com/products/orient-classic-ra-ac0m04y"
+  },
+  {
+    "reference": "SRPE55K1",
+    "oldFacts": [
+      {
+        "label": "Diamètre",
+        "value": "40 mm"
+      },
+      {
+        "label": "Corne à corne",
+        "value": "44,6 mm"
+      },
+      {
+        "label": "Épaisseur",
+        "value": "11,5 mm"
+      },
+      {
+        "label": "Calibre",
+        "value": "4R36 · automatique à remontage manuel"
+      },
+      {
+        "label": "Réserve annoncée",
+        "value": "Environ 41 heures"
+      },
+      {
+        "label": "Boîtier / verre",
+        "value": "Acier inoxydable / Hardlex"
+      }
+    ],
+    "oldLimit": "Seiko indique 40 mm. Le descriptif Tempus mentionne aussi 42,5 mm. Faire préciser le diamètre et la langue des jours.",
+    "source": "https://tempusshop.com/products/seiko-5-srpe55k1-date-kanji"
+  }
+]

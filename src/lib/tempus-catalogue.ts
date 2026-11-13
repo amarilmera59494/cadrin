@@ -2,24 +2,33 @@ export interface CatalogueProduct {
  id:string; handle:string; title:string; brand:string; reference:string; price:number;
  movement:string; category:string; order:string; orderable:boolean; image:string;
  width:number; height:number; source:string;
+ dial?:string;dialColors?:string[];strap?:string;strapFamily?:string;caseSize?:string;thickness?:string;
+ caseMaterial?:string;glass?:string;water?:string;calibre?:string;functions?:string;bestseller?:boolean;specCheckedAt?:string;
 }
-export type CatalogueFilters={q:string;brand:string;budget:string;movement:string;category:string;order:string;sort:string};
-export const filterKeys=['q','brand','budget','movement','category','order','sort'] as const;
-const normalise=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+export type CatalogueFilters={q:string;brand:string;budget:string;movement:string;category:string;order:string;sort:string;dial?:string;strap?:string;size?:string;collection?:string;feature?:string};
+export const filterKeys=['q','brand','budget','dial','strap','movement','category','size','collection','feature','order','sort'] as const;
+export const dialColours=['Noir','Bleu','Vert','Blanc','Argenté','Gris','Beige','Rose','Rouge','Marron','Jaune','Doré','Orange','Violet'];
+export const normalise=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+export function sizeNumber(s=''){const m=s.trim().match(/^(\d+(?:[.,]\d+)?)\s*mm$/i);return m?Number(m[1].replace(',','.')):null;}
+export const emptyFilters:CatalogueFilters={q:'',brand:'',budget:'',movement:'',category:'',order:'',sort:'',dial:'',strap:'',size:'',collection:'',feature:''};
 export function filterCatalogue(products:CatalogueProduct[],f:CatalogueFilters){
  const terms=normalise(f.q.slice(0,100)).split(/\s+/).filter(Boolean);
  const rows=products.filter(p=>{
-  const haystack=normalise(`${p.brand} ${p.title} ${p.reference}`);
-  return terms.every(t=>haystack.includes(t))&&(!f.brand||p.brand===f.brand)&&
-   (!f.budget||(Number(f.budget)>0&&p.price<=Number(f.budget)))&&
+  const haystack=normalise(`${p.brand} ${p.title} ${p.reference}`),compact=haystack.replace(/[^a-z0-9]/g,'');
+  const size=sizeNumber(p.caseSize);
+  return terms.every(t=>haystack.includes(t)||compact.includes(t.replace(/[^a-z0-9]/g,'')))&&(!f.brand||p.brand===f.brand)&&
+   (!f.budget||(Number(f.budget)>0&&p.price<=Number(f.budget)))&&(!f.dial||p.dialColors?.includes(f.dial))&&
+   (!f.strap||p.strapFamily===f.strap)&&(!f.size||(size!==null&&size<=Number(f.size)))&&
+   (!f.collection||(f.collection==='best'&&p.bestseller===true))&&(!f.feature||normalise(p.functions||'').includes(normalise(f.feature)))&&
    (!f.movement||p.movement===f.movement)&&(!f.category||p.category===f.category)&&
-   (!f.order||(f.order==='unflagged'?p.order==='check'&&p.orderable:p.order===f.order));
+   (!f.order||(f.order==='unflagged'?p.order==='check'&&p.orderable:f.order==='open'?p.orderable:p.order===f.order));
  });
- return rows.sort((a,b)=>(f.sort==='price'?a.price-b.price:f.sort==='price-desc'?b.price-a.price:0)||a.brand.localeCompare(b.brand,'fr')||a.title.localeCompare(b.title,'fr')||a.id.localeCompare(b.id));
+ return rows.sort((a,b)=>(f.sort==='price'?a.price-b.price:f.sort==='price-desc'?b.price-a.price:f.sort==='size'?(sizeNumber(a.caseSize)??Infinity)-(sizeNumber(b.caseSize)??Infinity):f.sort==='brand'?0:Number(!!b.bestseller)-Number(!!a.bestseller)||Number(b.orderable)-Number(a.orderable))||a.brand.localeCompare(b.brand,'fr')||a.title.localeCompare(b.title,'fr')||a.id.localeCompare(b.id));
 }
+export function detailRows(p:CatalogueProduct,en=false):[string,string][]{return [[en?'Dial':'Cadran',p.dial],[en?'Case size':'Dimension du boîtier',p.caseSize],[en?'Thickness':'Épaisseur',p.thickness],[en?'Case material':'Boîtier',p.caseMaterial],[en?'Strap / bracelet':'Bracelet',p.strap],[en?'Crystal':'Verre',p.glass],[en?'Calibre':'Calibre',p.calibre],[en?'Functions':'Fonctions',p.functions],[en?'Water resistance':'Étanchéité',p.water]].filter((r):r is [string,string]=>!!r[1]);}
 export function orderLabel(p:CatalogueProduct,en=false){
  if(!p.orderable)return en?'Ordering unavailable at the last check':'Commande indisponible au relevé';
- if(p.order==='preorder')return en?'Listed as a preorder':'Signalée en précommande';
- if(p.order==='order')return en?'Listed as made available to order':'Signalée sur commande';
+ if(p.order==='preorder')return en?'Listed as a preorder':'En précommande chez Tempus';
+ if(p.order==='order')return en?'Listed as available to order':'Sur commande chez Tempus';
  return en?'Stock and lead time: check with Tempus':'Stock et délai à confirmer chez Tempus';
 }

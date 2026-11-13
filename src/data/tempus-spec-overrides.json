@@ -1,0 +1,23 @@
+{
+  "10146670379342": {
+    "reference": "NJ0200-50Z",
+    "source": "https://tempusshop.com/products/citizen-tsuyosa-rose-37mm-nj0200-50z",
+    "checkedAt": "2026-11-13",
+    "reason": "Le titre Tempus identifie la version Rose et les photos de cette fiche concordent. Son tableau indique Bleu, vraisemblablement repris de la variante bleue. Couleur retenue depuis le titre exact, sans changer les autres données.",
+    "values": {
+      "dial": "Rose",
+      "dialColors": [
+        "Rose"
+      ]
+    }
+  },
+  "7498216833195": {
+    "reference": "F-91W-1YEG",
+    "source": "https://tempusshop.com/products/casio-vintage-f-91w-1yeg",
+    "checkedAt": "2026-11-13",
+    "reason": "La description Tempus indique explicitement une montre à quartz, alors que les tags du flux ne donnent pas de mouvement.",
+    "values": {
+      "movement": "Quartz"
+    }
+  }
+}

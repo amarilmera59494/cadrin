@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {filterCatalogue,emptyFilters,sizeNumber} from '../src/lib/tempus-catalogue.ts';import {parseSpecs,colourFamily,matchesReference} from './import-tempus-specifications.mjs';
+const d=JSON.parse(await readFile('src/data/tempus-catalogue.json','utf8')),best=JSON.parse(await readFile('src/data/tempus-bestsellers.json','utf8')),groups=JSON.parse(await readFile('src/data/guide-examples.json','utf8'));
+for(const [key,group]of Object.entries(groups))for(const [ref]of group){const p=d.products.find(p=>p.reference===ref);assert.ok(p,key+': '+ref);if(key.startsWith('budget-'))assert.ok(p.price<=Number(key.split('-')[1]),key+': '+ref+' over budget');}
+for(const p of d.products){assert.equal(p.bestseller,best.ids.includes(p.id));assert.ok(Array.isArray(p.dialColors));}
+for(const colour of ['Bleu','Vert','Noir']){const matches=filterCatalogue(d.products,{...emptyFilters,dial:colour});assert.ok(matches.length>0);assert.ok(matches.every(p=>p.dialColors.includes(colour)));}
+assert.ok(filterCatalogue(d.products,{...emptyFilters,collection:'best'}).every(p=>p.bestseller));assert.equal(filterCatalogue(d.products,{...emptyFilters,q:'F91W1YEG'})[0].reference,'F-91W-1YEG');
+assert.equal(sizeNumber('38,20 mm x 33,20 mm x 8,50 mm'),null);assert.equal(sizeNumber('38,5 mm'),38.5);
+const rows=parseSpecs('<div class="table"><h3>Cadran</h3><div class="ligne"><span class="description">Couleur</span><span class="contenu">Bleu nuit</span></div></div><div class="table"><h3>Autres détails</h3><div class="ligne"><span class="description">Résistance à l&#39;eau</span><a class="contenu" href="/terms">5 ATM</a></div></div>');assert.equal(rows[0].value,'Bleu nuit');assert.equal(rows[1].value,'5 ATM');assert.deepEqual(colourFamily('Bleu nuit'),['Bleu']);assert.deepEqual(colourFamily('Non renseigné'),[]);
+const unknown={...d.products[0],id:'fixture',dialColors:[],strapFamily:'',caseSize:'',functions:'',bestseller:false};for(const f of [{dial:'Bleu'},{strap:'Acier'},{size:'40'},{feature:'GPS'},{collection:'best'}])assert.equal(filterCatalogue([unknown],{...emptyFilters,...f}).length,0);
+const gps=filterCatalogue(d.products,{...emptyFilters,feature:'GPS'});assert.ok(gps.some(p=>p.reference==='025115'));assert.ok(!gps.some(p=>p.reference==='GBD-200-2ER'));
+console.log(JSON.stringify({products:d.products.length,groups:Object.keys(groups).length,coloursAndMissingData:true,caseSize:true,bestsellerSource:true,gpsDistinction:true}));
+
+const specs=JSON.parse(await readFile('src/data/tempus-specifications.json','utf8'));for(const [id,r]of Object.entries(specs.records)){const p=d.products.find(p=>p.id===id);assert.ok(p&&matchesReference(p,r),'Technical table reference mismatch: '+id);}assert.equal(matchesReference({id:'test',source:'https://example.org',reference:'BLUE-1'},{source:'https://example.org',rows:[{label:'Référence',value:'GREEN-1'}]}),false);
+
+assert.deepEqual(d.products.find(p=>p.reference==='NJ0200-50Z').dialColors,['Rose']);

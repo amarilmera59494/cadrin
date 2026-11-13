@@ -16,13 +16,13 @@ reference: "NJ0150-81E"
 title: "Citizen Tsuyosa noire NJ0150-81E"
 size: 40
 sizeLabel: "Ø 40 mm"
-finder: {"bracelet": "Acier", "display": "Aiguilles", "category":"Homme"}
+finder: {"bracelet": "Acier", "display": "Aiguilles", "category": "Homme"}
 material: "Acier · bracelet acier"
 use: "quotidien"
 note: "Le bracelet en acier prolonge les lignes de la boîte. Une loupe agrandit la date sur le cadran noir."
 limit: "Citizen annonce 138 g. Vérifiez le réglage des maillons et la façon dont le premier maillon épouse votre poignet."
-sources: [{"label":"Citizen France — Tsuyosa NJ0150-81E","url":"https://fr.citizenwatch.eu/fr/p/nj0150-81e/"},{"label":"Tempus Shop — Tsuyosa NJ0150-81E","url":"https://tempusshop.com/products/citizen-tsuyosa-noir-nj0150-81e"}]
-facts: [{"label":"Diamètre","value":"40 mm"},{"label":"Calibre","value":"8210 · automatique"},{"label":"Verre","value":"Saphir"},{"label":"Bracelet","value":"Acier inoxydable"},{"label":"Poids annoncé","value":"138 g"}]
+sources: [{"label": "Tempus Shop — Tsuyosa NJ0150-81E", "url": "https://tempusshop.com/products/citizen-tsuyosa-noir-nj0150-81e"}, {"label": "Citizen France — Tsuyosa NJ0150-81E", "url": "https://fr.citizenwatch.eu/fr/p/nj0150-81e/"}]
+facts: [{"label": "Mouvement", "value": "Automatique"}, {"label": "Fonctions", "value": "Date"}, {"label": "Calibre", "value": "8210"}, {"label": "Cadran", "value": "Noir"}, {"label": "Diamètre", "value": "40mm"}, {"label": "Épaisseur", "value": "11.6mm"}, {"label": "Boîtier", "value": "Acier inoxydable"}, {"label": "Fermoir", "value": "Boucle déployante"}, {"label": "Verre", "value": "Saphir"}, {"label": "Fond du boîtier", "value": "Transparent"}, {"label": "Résistance à l'eau", "value": "5 ATM"}]
 description: "Le bracelet en acier prolonge les lignes de la boîte. Une loupe agrandit la date sur le cadran noir."
 ---
 

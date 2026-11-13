@@ -23,6 +23,8 @@ Un prix relevé n’est ni une réservation ni une promesse de disponibilité. L
 
 Avant de comparer deux offres, regardez le total pour votre adresse. Hors de France, vérifiez aussi la devise de paiement et les éventuels frais d’importation. Nous ne convertissons pas automatiquement un prix français en coût livré dans un autre pays.
 
+::montres[budget-150]
+
 ## Ne confondez pas traduction et livraison
 
 Tempus indique livrer dans le monde entier dans ses conditions de vente. Sa FAQ précise que l’annonce de livraison Colissimo en 48 heures concerne la France métropolitaine. Ce délai ne doit donc pas être repris comme une promesse internationale.

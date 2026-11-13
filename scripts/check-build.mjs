@@ -21,6 +21,20 @@ for(const file of files.filter(f=>f.endsWith('.html'))){const html=await readFil
  let jsBytes=0;for(const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){if(match[1].includes('application/ld+json'))continue;const src=match[1].match(/src="([^"]+)"/);jsBytes+=gzipSync(src?await readFile(dir+src[1]):Buffer.from(match[2])).length;}if(jsBytes>60000)errors.push(`${route}: budget JS dépassé`);
  results.push({route,jsGzipBytes:jsBytes,noindex,htmlBytes:Buffer.byteLength(html)});
 }
+// Detect stale Markdown caches after product prices, references or illustrations change.
+const {guideExamples}=await import('./remark-guide-examples.mjs');
+for(const file of await readdir('src/content/guides')){
+ const markdown=await readFile('src/content/guides/'+file,'utf8');
+ const groups=[...markdown.matchAll(/::montres\[([a-z0-9-]+)\]/g)];if(!groups.length)continue;
+ const html=await readFile(`${dir}/guides/${file.replace(/\.md$/,'')}/index.html`,'utf8');
+ for(const [,key]of groups){
+  // Astro can normalise whitespace and attribute syntax; compare visible snapshot values.
+  const expected=guideExamples(key);
+  for(const value of expected.matchAll(/class="(?:example-ref|example-price|example-specs)">([^<]+)/g)){
+   if(!html.includes(value[1]))errors.push(`${file}: stale guide example ${key}: ${value[1]}`);
+  }
+ }
+}
 if(files.some(f=>f.includes('/concepts/')))errors.push('Concepts dans le build');
 const hasSitemap=files.includes(`${dir}/sitemap.xml`);if(hasSitemap!==production)errors.push('Sitemap incorrect');
 if(production){

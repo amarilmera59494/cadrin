@@ -25,6 +25,8 @@ L’affichage est une autre question. Une montre à quartz peut montrer des aigu
 
 [Voir les références à quartz à pile](/trouver-ma-montre/?mouvement=Quartz)
 
+::montres[budget-50]
+
 ## L’automatique : aimer aussi le geste
 
 Une automatique est une montre mécanique : un ressort fournit l’énergie et les mouvements du poignet contribuent à le remonter. Certains calibres acceptent également un remontage à la couronne, comme le 4R36 de la Seiko documentée ici. Suivez la notice du calibre pour les manipulations et le réglage du calendrier.
@@ -32,6 +34,8 @@ Une automatique est une montre mécanique : un ressort fournit l’énergie et l
 La réserve de marche est limitée. Seiko annonce environ 41 heures sur cette référence : après un week-end sans la porter, vous pouvez devoir la remettre à l’heure. Ce n’est pas un défaut à dissimuler, mais une habitude à accepter. Pour quelqu’un qui aime prendre le temps de régler sa montre, elle peut faire partie du plaisir.
 
 [Comparer les automatiques documentées](/trouver-ma-montre/?mouvement=Automatique)
+
+::montres[budget-350]
 
 ## Le solaire : du quartz qui prend la lumière
 
@@ -42,6 +46,8 @@ La lumière naturelle n’est pas la seule utilisable, mais une faible lumière 
 Le solaire évite les remplacements réguliers d’une pile ordinaire. Il ne faut pas en déduire que l’accumulateur, les joints et les autres pièces n’auront jamais besoin d’entretien.
 
 [Voir les montres solaires](/trouver-ma-montre/?mouvement=Solaire)
+
+::montres[budget-150]
 
 ## Précision et entretien : lisez la bonne fiche
 

@@ -12,24 +12,30 @@ id: "casio-f91w"
 brand: "Casio"
 name: "Vintage"
 reference: "F-91W-1YEG"
-size: null
-sizeLabel: "À confirmer"
+size: 33.2
+sizeLabel: "Largeur 33,2 mm"
 movement: "Quartz"
 use: "quotidien"
 finder: {"bracelet": "Résine", "display": "Numérique"}
 material: "Boîtier et bracelet résine"
 note: "Le jour et l’heure se lisent en chiffres. Le chronomètre évite de sortir le téléphone pour mesurer un intervalle."
-limit: "Largeur à confirmer : Tempus indique 33,2 mm pour F-91W-1YEG ; Casio indique 35,2 mm pour la variante F-91W-1Y. Nous ne tranchons pas cette divergence."
+limit: "Un format de 38,2 × 33,2 × 8,5 mm annoncé par Tempus : une piste compacte pour les amateurs de numérique."
 title: "Casio Vintage F-91W-1YEG"
 description: "Un affichage numérique et un boîtier léger : une autre définition de l’essentiel."
-sources: [{"label": "Tempus Shop — référence F-91W-1YEG", "url": "https://tempusshop.com/products/casio-vintage-f-91w-1yeg"}, {"label": "Casio — variante F-91W-1Y (dimensions non transposées)", "url": "https://www.casio.com/fr/watches/casio/product.F-91W-1Y/"}]
-facts: [{"label": "Référence marchand", "value": "F-91W-1YEG"}, {"label": "Mouvement", "value": "Quartz à pile"}, {"label": "Affichage", "value": "Numérique LCD"}, {"label": "Boîtier", "value": "Résine"}, {"label": "Dimensions", "value": "À confirmer auprès du marchand"}]
+sources: [{"label": "Tempus Shop — référence F-91W-1YEG", "url": "https://tempusshop.com/products/casio-vintage-f-91w-1yeg"}, {"label": "Casio — histoire de la famille F-91W", "url": "https://www.casio.com/us/watches/casio/about/f-91w/"}]
+facts: [{"label": "Dimensions (L × l × H)", "value": "38,2 × 33,2 × 8,5 mm"}, {"label": "Mouvement", "value": "Quartz à pile · calibre 593"}, {"label": "Affichage", "value": "Numérique"}, {"label": "Boîtier", "value": "Résine"}, {"label": "Verre", "value": "Acrylique"}, {"label": "Poids", "value": "21 g"}]
 ---
 
-## Notre lecture
+## Une silhouette qui traverse les années
 
-Un affichage numérique, un boîtier en résine, un dessin immédiatement reconnaissable : cette Casio a sa place si vous aimez voir l’heure sans lire des aiguilles. Son style décontracté est un choix à part entière, pas une solution de second rang.
+Casio situe la naissance de la F-91W en 1989. Le dessin rectangulaire, les petits boutons et la lecture numérique font partie de son identité. La F-91W-1YEG proposée par Tempus garde cet esprit : une montre à porter avec un jean, un sweat ou une tenue que vous ne voulez pas compliquer.
 
-## Avant de choisir
+## Compacte, avec les fonctions utiles à portée de main
 
-Largeur à confirmer : Tempus indique 33,2 mm pour F-91W-1YEG ; Casio indique 35,2 mm pour la variante F-91W-1Y. Nous ne tranchons pas cette divergence. Demandez au vendeur les dimensions de la référence livrée si ce point est décisif pour vous.
+Tempus indique 38,2 mm de longueur, 33,2 mm de largeur et 8,5 mm d’épaisseur, pour 21 g. L’affichage réunit l’heure et les indications du calendrier ; le chronomètre permet de mesurer un intervalle sans sortir le téléphone. L’intérêt est dans ce geste simple, pas dans l’accumulation de fonctions connectées.
+
+## Pour qui la choisir ?
+
+Pour quelqu’un qui préfère les chiffres aux aiguilles, aime les objets au dessin rétro ou cherche une montre discrète dans son budget. Si vous préférez une finition métallique, comparez-la à la Casio A158WEA-1EF. Si vous voulez une silhouette plus affirmée, regardez plutôt les G-Shock.
+
+::montres[budget-50]

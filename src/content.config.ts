@@ -1,6 +1,18 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const guideLoader=glob({pattern:'*.md',base:'./src/content/guides'});
+// The rendered Markdown contains live snapshot data. Invalidate it when an example,
+// product, affiliate destination or renderer changes, even if its prose is unchanged.
+const illustratedGuides: ReturnType<typeof glob>={...guideLoader,async load(context){
+ const dependencies=['src/data/tempus-catalogue.json','src/data/guide-examples.json','src/data/affiliation.ts','src/lib/i18n.ts','src/lib/tempus-catalogue.ts','scripts/remark-guide-examples.mjs'];
+ const contents=await Promise.all(dependencies.map(file=>readFile(new URL(file,context.config.root))));
+ const fingerprint=createHash('sha256');for(const content of contents)fingerprint.update(content);
+ const digest=fingerprint.digest('hex');
+ return guideLoader.load({...context,generateDigest:data=>context.generateDigest({data,illustrations:digest})});
+}};
 const source = z.object({label:z.string(), url:z.url({protocol:/^https$/})});
 const editorial = z.object({
   title:z.string(), description:z.string(), status:z.enum(['draft','published','archived']),
@@ -8,7 +20,7 @@ const editorial = z.object({
   author:z.string().nullable(), reviewer:z.string().nullable(), rights:z.enum(['approved','pending']),
 });
 const guide = defineCollection({ loader: glob({pattern:'*.md',base:'./src/content/guide'}), schema:z.object({title:z.string(),short:z.string(),order:z.number()}) });
-const guides = defineCollection({loader:glob({pattern:'*.md',base:'./src/content/guides'}),schema:editorial.extend({image:z.enum(['sleeve','wrist','leather']).nullable(),related:z.array(z.string()).default([])})});
+const guides = defineCollection({loader:illustratedGuides,schema:editorial.extend({image:z.enum(['sleeve','wrist','leather']).nullable(),related:z.array(z.string()).default([])})});
 const selections = defineCollection({loader:glob({pattern:'*.md',base:'./src/content/selections'}),schema:editorial.extend({watches:z.array(z.string()).min(3).max(6)})});
 const watches = defineCollection({loader:glob({pattern:'*.md',base:'./src/content/watches'}),schema:editorial.extend({
   brand:z.string(), name:z.string(), reference:z.string(), size:z.number().positive().nullable(), sizeLabel:z.string(),

@@ -21,11 +21,15 @@ Pour quelqu’un qui porte une chaîne fine ou un petit cadran, la Citizen L Rai
 
 [Parcourir les références classées femme](/trouver-ma-montre/?categorie=Femme)
 
+::montres[budget-400]
+
 ## Montres pour homme : regarder la manche et le bracelet
 
 Si son poignet de chemise est souvent fermé, une mesure d’épaisseur a plus d’intérêt qu’un grand boîtier choisi par habitude. Pour quelqu’un qui alterne plusieurs montres, la Citizen Eco-Drive sur cuir se recharge à la lumière. Pour un amateur de mécanique, la Tsuyosa offre le geste de la mise à l’heure et un bracelet acier à faire ajuster. Une Casio numérique reste une piste si c’est ainsi qu’il aime lire l’heure.
 
 [Parcourir les références classées homme](/trouver-ma-montre/?categorie=Homme)
+
+::montres[straps]
 
 ## Garder la surprise et la possibilité d’un échange
 

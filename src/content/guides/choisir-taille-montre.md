@@ -23,9 +23,11 @@ Le diamètre décrit la largeur d’un boîtier rond. La longueur de corne à co
 
 Un exemple montre pourquoi il faut regarder les deux axes : Seiko annonce 40 mm de diamètre et 44,6 mm de corne à corne pour la SRPE55. La SRPG35 est plus étroite, à 39,4 mm, mais plus longue, à 48,1 mm. La plus petite valeur de diamètre ne désigne donc pas automatiquement la montre la moins présente sur le poignet. Ces cotes sont celles du fabricant ; nous ne les avons pas mesurées.
 
+::montres[budget-400]
+
 ## La manche mérite son propre essai
 
-La Bambino RA-AC0M04Y mesure 38,4 mm de large selon Orient, mais aussi 12,5 mm d’épaisseur. Regardez-la de profil, puis fermez votre manche. Posez la main à plat et pliez le poignet comme au clavier. Ce geste renseigne davantage sur votre usage qu’une photo prise de face.
+La Bambino RA-AC0M04Y mesure 38,5 mm de large selon Orient, mais aussi 12,5 mm d’épaisseur. Regardez-la de profil, puis fermez votre manche. Posez la main à plat et pliez le poignet comme au clavier. Ce geste renseigne davantage sur votre usage qu’une photo prise de face.
 
 Le bracelet joue aussi : ses premiers maillons peuvent prolonger la présence de la boîte, tandis qu’un cuir plus souple ne se place pas de la même façon. Ne déduisez pas sa compatibilité d’une simple ressemblance. Avant un remplacement, vérifiez l’attache et l’entrecorne de la référence exacte.
 
