@@ -14,7 +14,8 @@
     "content:check": "node scripts/cadrin-content-check.mjs",
     "launch:check": "node scripts/cadrin-content-check.mjs --strict",
     "dev:archives": "astro dev --root archives/concepts --host 127.0.0.1 --port 4322",
-    "cloudflare:dev": "node scripts/serve-cloudflare.mjs"
+    "cloudflare:dev": "node scripts/serve-cloudflare.mjs",
+    "hosting:check": "node scripts/hosting-ci.mjs"
   },
   "dependencies": {
     "@fontsource-variable/bodoni-moda": "5.3.0",

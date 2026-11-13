@@ -10,7 +10,7 @@ Le déploiement utilise `SITE_STAGE=preview` : tous les parcours sont consultabl
 
 ## Déploiement reproductible
 
-Node est fixé par `.node-version`, les dépendances par `package-lock.json`. Installer avec `npm ci`, puis `npm run check && npm run build && npm run deploy`. La commande deploy vérifie le corpus et le build avant tout téléversement. Avec `SITE_STAGE=production`, elle exige en plus la validation éditoriale et administrative stricte. Ne pas changer les statuts pour faire passer ce contrôle.
+Node est fixé par `.node-version`, les dépendances par `package-lock.json`. Installer avec `npm ci`, puis `npm run check && npm run build && npm run hosting:check && npm run deploy`. `hosting:check` démarre automatiquement un serveur éphémère Miniflare, vérifie HTTP et le cache, puis l'arrête. La commande deploy vérifie le corpus et le build avant tout téléversement. Avec `SITE_STAGE=production`, elle exige en plus la validation éditoriale et administrative stricte. Ne pas changer les statuts pour faire passer ce contrôle.
 
 La branche `main` du dépôt `amarilmera59494/cadrin` est connectée à Workers Builds. `SITE_STAGE=preview` et `NODE_VERSION=24.22.1` sont définis explicitement. Les changements de code et de contenu déclenchent une compilation ; les archives et la documentation seules en sont exclues. Le premier build distant a terminé avec succès le 13 novembre 2026.
 
