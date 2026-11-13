@@ -237,5 +237,41 @@
       "Un cadran beige et du cuir pour une approche plus habillée.",
       "A beige dial and leather for a dressier direction."
     ]
+  ],
+  "gift-tsuyosa": [
+    [
+      "NJ0200-50Z",
+      "37 mm et rose pastel : pour quelqu’un qui aime déjà cette couleur.",
+      "37 mm and pastel pink: for someone who already loves this colour."
+    ],
+    [
+      "NJ0200-50L",
+      "Le même diamètre en bleu, si le rose n’est pas sa couleur.",
+      "The same diameter in blue, if pink is not their colour."
+    ],
+    [
+      "NJ0150-81E",
+      "40 mm et cadran noir : une présence différente, à comparer au poignet.",
+      "40 mm and a black dial: a different presence to compare on the wrist."
+    ]
+  ],
+  "gift-jewellery": [
+    [
+      "EM1201-52L",
+      "Une petite boîte en goutte et un cadran bleu : la piste montre-bijou.",
+      "A small teardrop case and blue dial: the jewellery-watch direction."
+    ]
+  ],
+  "gift-everyday": [
+    [
+      "AW0102-13AE",
+      "Cuir et boîte dorée pour accompagner une tenue habillée.",
+      "Leather and a gold-tone case for a dressier outfit."
+    ],
+    [
+      "F-91W-1YEG",
+      "Résine : une autre présence visuelle, sans brillance métallique.",
+      "Resin: a different visual presence without a metallic shine."
+    ]
   ]
 }

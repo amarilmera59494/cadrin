@@ -31,10 +31,10 @@ const rows = [
   [t('À vérifier','Check before buying'),(w:typeof models[number])=>locale==='en'?englishWatches[w.id].limit:w.data.limit],
 ] as const;
 ---
-<Cadrin title={t('Trouver ma montre','Find my watch')} description={t('Filtrez les montres documentées par budget, mouvement ou bracelet et comparez vos favorites côte à côte.','Filter documented watches by budget, movement or bracelet, then compare your favourites side by side.')} crumbs={[{name:t('Trouver ma montre','Watch finder'),url:localPath('/trouver-ma-montre/',locale)}]}>
+<Cadrin title={t('Nos analyses de montres','Our watch analyses')} description={t('Filtrez les montres documentées par budget, mouvement ou bracelet et comparez vos favorites côte à côte.','Filter documented watches by budget, movement or bracelet, then compare your favourites side by side.')} crumbs={[{name:t('Nos analyses de montres','Watch finder'),url:localPath('/analyses/',locale)}]}>
   <div class="container finder">
     <div class="breadcrumb"><a href={localPath('/',locale)}>{t('Accueil','Home')}</a>{t(' / Sélecteur',' / Watch finder')}</div>
-    <header class="intro"><div><span class="eyebrow">{t('Le sélecteur Cadrin','The Cadrin watch finder')}</span><h1>{t('Trouver ma montre.','Find my watch.')}</h1></div>
+    <header class="intro"><div><span class="eyebrow">{t('Six regards détaillés','Six detailed perspectives')}</span><h1>{t('Nos analyses.','Our analyses.')}</h1></div>
       <p>{t('Partez d’un budget ou d’un bracelet que vous aimez. Gardez jusqu’à trois montres côte à côte pour voir ce qui les distingue.','Start with a budget or a strap you like. Keep up to three watches side by side to see what sets them apart.')}</p>
     </header>
     <InternationalNotice/>

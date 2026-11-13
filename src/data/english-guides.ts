@@ -63,8 +63,8 @@ if(englishGuides['automatique-quartz-solaire'].sections[1])englishGuides['automa
 if(englishGuides['automatique-quartz-solaire'].sections[2])englishGuides['automatique-quartz-solaire'].sections[2].examples='budget-350';
 if(englishGuides['automatique-quartz-solaire'].sections[3])englishGuides['automatique-quartz-solaire'].sections[3].examples='budget-150';
 if(englishGuides['choisir-taille-montre'].sections[1])englishGuides['choisir-taille-montre'].sections[1].examples='budget-400';
-if(englishGuides['offrir-une-montre'].sections[1])englishGuides['offrir-une-montre'].sections[1].examples='budget-400';
-if(englishGuides['offrir-une-montre'].sections[2])englishGuides['offrir-une-montre'].sections[2].examples='straps';
+if(englishGuides['offrir-une-montre'].sections[1])englishGuides['offrir-une-montre'].sections[1].examples='gift-jewellery';
+if(englishGuides['offrir-une-montre'].sections[2])englishGuides['offrir-une-montre'].sections[2].examples='gift-everyday';
 if(englishGuides['bambino-tsuyosa-seiko-5'].sections[0])englishGuides['bambino-tsuyosa-seiko-5'].sections[0].examples='budget-350';
 if(englishGuides['citizen-eco-drive-ou-tsuyosa'].sections[1])englishGuides['citizen-eco-drive-ou-tsuyosa'].sections[1].examples='straps';
 if(englishGuides['acheter-montre-en-ligne'].sections[1])englishGuides['acheter-montre-en-ligne'].sections[1].examples='budget-150';

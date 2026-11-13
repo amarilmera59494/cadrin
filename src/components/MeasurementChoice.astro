@@ -1,0 +1,8 @@
+---
+import {localeOf,textFor,localPath} from '../lib/i18n';
+import {production} from '../lib/editorial';
+const locale=localeOf(Astro.url.pathname),t=textFor(locale);
+---
+<details id="mesure" class="measure-panel" data-measurement data-enabled={production} hidden><summary>{t('Mes préférences de statistiques','My analytics preferences')}</summary><p>{t('Avec votre accord, nous comptons les pages consultées, l’usage du sélecteur et les clics vers Tempus. Aucun identifiant lecteur, recherche saisie ou suivi entre sites. Vous pouvez refuser et continuer normalement.','With your permission, we count page views, finder use and clicks to Tempus. No reader ID, typed searches or cross-site tracking. You can decline and browse normally.')}</p><div><button type="button" data-measure-accept>{t('Autoriser les statistiques','Allow analytics')}</button><button type="button" data-measure-decline>{t('Refuser les statistiques','Decline analytics')}</button></div><p data-measure-status role="status"></p><a href={localPath('/confidentialite/',locale)}>{t('Comprendre la mesure','How measurement works')}</a></details>
+<style>.measure-panel{border-top:1px solid currentColor;margin-top:1.5rem;padding:1rem 0;max-width:760px;font-size:.9rem}.measure-panel p{line-height:1.6}.measure-panel summary{cursor:pointer}.measure-panel button{min-height:44px;padding:.7rem;margin:.4rem .6rem .4rem 0;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;font:inherit}.measure-panel a{color:inherit}</style>
+<script>import '../scripts/measurement';</script>

@@ -1,4 +1,5 @@
 ---
+import SocialEntry from '../components/SocialEntry.astro';
 import TempusOffer from '../components/TempusOffer.astro';
 import CatalogueDiscovery from '../components/CatalogueDiscovery.astro';
 import {hasAffiliation} from '../data/destinations';
@@ -14,6 +15,7 @@ const guide=guides.find(g=>g.id==='choisir-premiere-montre');const selection=sel
 ---
 <Cadrin title="Une montre. Votre allure." description="Des sélections et des guides pour choisir une montre selon votre budget, votre style et votre poignet.">
  <section class="home-hero"><div class="hero-copy"><span class="eyebrow">Le sens du porté</span><h1>Une montre.<br/><span>Votre allure.</span></h1><p>Des sélections et des guides pour choisir une montre selon votre budget, votre style et votre poignet.</p><div class="hero-actions"><a class="button" href="#choisir">Trouver ma montre <span aria-hidden="true">↗</span></a>{guide&&<a class="hero-secondary" href={`/guides/${guide.id}/`}>Choisir ma première montre <span aria-hidden="true">→</span></a>}</div></div><Photo name="sleeve" eager sizes="(max-width: 700px) 100vw, 54vw"/></section>
+ <SocialEntry/>
  <HomeShopping/>
  {guide&&<nav class="intent-nav container" aria-label="Choisir selon votre besoin"><span class="eyebrow">Par où commencer ?</span><a href={`/guides/${guide.id}/`}>Ma première montre <span>↗</span></a><a href={budget?`/guides/${budget.id}/`:`/guides/${guide.id}/#taille`}>{budget?"Par budget":"Les proportions"} <span>↗</span></a>{selection&&<a href={`/selections/${selection.id}/`}>Au quotidien <span>↗</span></a>}<a href={gift?`/guides/${gift.id}/`:`/guides/${guide.id}/#usage`}>Offrir une montre <span>↗</span></a></nav>}
  <div class="container"><TempusOffer/></div>

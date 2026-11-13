@@ -10,7 +10,7 @@
     "qa": "node scripts/cadrin-browser-qa.mjs",
     "deploy": "node scripts/publication-guard.mjs",
     "audit:mobile": "node scripts/cadrin-lighthouse.mjs",
-    "cloudflare:check": "cf deploy dist --dry-run --provision=false",
+    "cloudflare:check": "node scripts/prepare-worker.mjs && cf deploy --prebuilt --dry-run --provision=false",
     "content:check": "node scripts/cadrin-content-check.mjs",
     "launch:check": "node scripts/cadrin-content-check.mjs --strict",
     "dev:archives": "astro dev --root archives/concepts --host 127.0.0.1 --port 4322",

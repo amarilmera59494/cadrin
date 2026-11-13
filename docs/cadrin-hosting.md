@@ -12,7 +12,7 @@ Le déploiement utilise `SITE_STAGE=preview` : tous les parcours sont consultabl
 
 Node est fixé par `.node-version`, les dépendances par `package-lock.json`. Installer avec `npm ci`, puis `npm run check && npm run build && npm run hosting:check && npm run deploy`. `hosting:check` démarre automatiquement un serveur éphémère Miniflare, vérifie HTTP et le cache, puis l'arrête. La commande deploy vérifie le corpus et le build avant tout téléversement. Avec `SITE_STAGE=production`, elle exige en plus la validation éditoriale et administrative stricte. Ne pas changer les statuts pour faire passer ce contrôle.
 
-La branche `main` du dépôt `amarilmera59494/cadrin` est connectée à Workers Builds. `SITE_STAGE=preview` et `NODE_VERSION=24.22.1` sont définis explicitement. Les changements de code et de contenu déclenchent une compilation ; les archives et la documentation seules en sont exclues. Le premier build distant a terminé avec succès le 13 novembre 2026.
+La branche `main` du dépôt `amarilmera59494/cadrin` est connectée à Workers Builds. Depuis le lancement public autorisé, `SITE_STAGE=production` et `NODE_VERSION=24.22.1` sont définis explicitement (revérifiés par API le 13 novembre 2026). En local, l’absence de `SITE_STAGE` conserve la prévisualisation en noindex. Les changements de code et de contenu déclenchent une compilation ; les archives et la documentation seules en sont exclues. Le premier build distant a terminé avec succès le 13 novembre 2026. La préparation des assets et le collecteur de mesure sont détaillés dans `cadrin-growth.md` et `cadrin-measurement.md`.
 
 Aucun secret ne doit entrer dans Git. Le build utilise un jeton Workers déjà enregistré dans le compte Cloudflare, sans copie de sa valeur. La création d'un jeton dédié CADRIN reste souhaitable pour isoler sa rotation et sa révocation ; la connexion OAuth disponible ne permet pas de créer de nouveaux jetons API. Les captures et sauvegardes opérationnelles locales sont ignorées. Les anciens concepts restent dans les archives du dépôt, sans route dans le site déployé.
 
@@ -39,7 +39,7 @@ Pour les futurs tests, utiliser une adresse d'expédition différente du Gmail d
 
 ## Lancement commercial
 
-Les droits des photos exactes, la relecture éditoriale, l'identité juridique et les pages administratives restent à compléter. Les destinations Tempus sont des liens ordinaires : aucun suivi affilié ni revenu n'est activé par la mise en ligne technique.
+Le lancement public et l’utilisation des photos Tempus ont depuis été autorisés par Pierre. Les liens produit portent le paramètre affilié confirmé `bg_ref=bDlTL8AyKb`. Les contrôles stricts de publication restent actifs. Cette configuration ne constitue pas une preuve de commande ou de commission ; les résultats commerciaux relèvent du tableau de bord Tempus. Voir `cadrin-tempus-affiliation.md` et le compte rendu d’itération `cadrin-growth.md`.
 
 ## Revenir à une version précédente
 

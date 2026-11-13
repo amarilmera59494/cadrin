@@ -4,7 +4,7 @@ import {launch} from '../../data/launch';
 import {localPath} from '../../lib/i18n';
 import EnglishHome from '../../components/EnglishHome.astro';
 import EnglishPage from '../../components/EnglishPage.astro';
-import WatchFinder from '../../components/WatchFinder.astro';
+import TempusCatalogue from '../../components/TempusCatalogue.astro';
 import InformationPage from '../../components/InformationPage.astro';
 export async function getStaticPaths(){
  const {watches,guides,selections,finder}=await catalogue();
@@ -17,6 +17,5 @@ export async function getStaticPaths(){
  return routes.map(r=>({params:{path:localPath(r.path,'en').slice(4).replace(/\/$/,'')||undefined},props:{kind:r.kind,id:r.id}}));
 }
 const {kind,id}=Astro.props;
-const {finder}=await catalogue();
 ---
-{kind==='home'?<EnglishHome/>:kind==='finder'?<WatchFinder models={finder}/>:kind==='information'?<InformationPage page={id as 'legal'|'privacy'|'contact'}/>:<EnglishPage kind={kind} id={id}/>}
+{kind==='home'?<EnglishHome/>:kind==='finder'?<TempusCatalogue finder/>:kind==='information'?<InformationPage page={id as 'legal'|'privacy'|'contact'}/>:<EnglishPage kind={kind} id={id}/>}

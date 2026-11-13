@@ -9,7 +9,7 @@ const browser=await chromium.launch({channel:'chrome'});
 const report=[];
 try {
  const page=await browser.newPage();
- const base=root+'/trouver-ma-montre/';
+ const base=root+'/analyses/';
  const visible=page.locator('.model:visible');
  for(const width of [1440,390,320,768]){
   await page.setViewportSize({width,height:width>740?1000:844});

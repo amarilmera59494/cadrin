@@ -8,7 +8,7 @@ image: null
 title: "Quelle montre offrir, à elle ou à lui ?"
 description: "Une montre déjà portée donne trois indices précieux : sa taille, son bracelet et la manière de lire l’heure."
 related: ["citizen-rainell-em1201-52l","citizen-tsuyosa-nj0150-81e","citizen-aw0102-13ae","casio-f91w"]
-sources: [{"label":"Tempus · collection femme","url":"https://tempusshop.com/collections/montre-femme"},{"label":"Citizen · dimensions de la Tsuyosa","url":"https://fr.citizenwatch.eu/fr/p/nj0150-81e/"},{"label":"Citizen · dimensions de la Rainell","url":"https://de.citizenwatch.eu/de/p/em1201-52l/"}]
+sources: [{"label":"Tempus · collection femme","url":"https://tempusshop.com/collections/montre-femme"},{"label":"Citizen · dimensions de la Tsuyosa","url":"https://fr.citizenwatch.eu/fr/p/nj0150-81e/"},{"label":"Citizen · dimensions de la Rainell","url":"https://de.citizenwatch.eu/de/p/em1201-52l/"},{"label":"Citizen Tsuyosa 37 mm rose chez Tempus","url":"https://tempusshop.com/products/citizen-tsuyosa-rose-37mm-nj0200-50z"},{"label":"Citizen Tsuyosa 37 mm bleue chez Tempus","url":"https://tempusshop.com/products/citizen-tsuyosa-bleu-37mm-nj0200-50l"}]
 ---
 
 ## Regardez ce que la personne porte déjà
@@ -21,7 +21,7 @@ Pour quelqu’un qui porte une chaîne fine ou un petit cadran, la Citizen L Rai
 
 [Parcourir les références classées femme](/trouver-ma-montre/?categorie=Femme)
 
-::montres[budget-400]
+::montres[gift-jewellery]
 
 ## Montres pour homme : regarder la manche et le bracelet
 
@@ -29,7 +29,7 @@ Si son poignet de chemise est souvent fermé, une mesure d’épaisseur a plus d
 
 [Parcourir les références classées homme](/trouver-ma-montre/?categorie=Homme)
 
-::montres[straps]
+::montres[gift-everyday]
 
 ## Garder la surprise et la possibilité d’un échange
 

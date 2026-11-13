@@ -1,0 +1,6 @@
+---
+import WatchFinder from '../../components/WatchFinder.astro';
+import {catalogue} from '../../lib/editorial';
+const {finder}=await catalogue();
+---
+<WatchFinder models={finder}/>

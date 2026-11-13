@@ -1,2 +1,2 @@
 import {defineConfig} from 'cf/config';
-export default defineConfig({worker:{name:'cadrin',compatibilityDate:'2026-11-12',workersDev:true,assets:{htmlHandling:'force-trailing-slash',notFoundHandling:'404-page'},observability:{enabled:false}}});
+export default defineConfig({worker:{name:'cadrin',compatibilityDate:'2026-11-12',workersDev:true,env:{ASSETS:{type:'assets'}},assets:{htmlHandling:'force-trailing-slash',notFoundHandling:'404-page',runWorkerFirst:['/api/measure']},observability:{enabled:true,headSamplingRate:1,redactQueryString:true,logs:{enabled:true,headSamplingRate:1,invocationLogs:false},traces:{enabled:false}}}});

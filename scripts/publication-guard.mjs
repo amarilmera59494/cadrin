@@ -13,4 +13,5 @@ function run(file,args=[]){
 run('scripts/cadrin-content-check.mjs',stage==='production'?['--strict']:[]);
 run('scripts/check-build.mjs');
 const cf=path.join(path.dirname(require.resolve('cf/package.json')),'bin/cf');
-run(cf,['deploy',stage==='production'?'dist-production':'dist','--provision=false',...process.argv.slice(2)]);
+run('scripts/prepare-worker.mjs');
+run(cf,['deploy','--prebuilt','--provision=false',...process.argv.slice(2)]);

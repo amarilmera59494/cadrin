@@ -1,4 +1,5 @@
 ---
+import SocialEntry from './SocialEntry.astro';
 import TempusOffer from './TempusOffer.astro';
 import CatalogueDiscovery from './CatalogueDiscovery.astro';
 import {localPath} from '../lib/i18n';
@@ -15,6 +16,7 @@ const guide=guides.find(g=>g.id==='choisir-premiere-montre');const selection=sel
 ---
 <Cadrin title="A watch. Your way." description="Thoughtful selections and practical guides to choosing a watch for your budget, your style and your wrist.">
  <section class="home-hero"><div class="hero-copy"><span class="eyebrow">Made for your wrist</span><h1>A watch.<br/><span>Your way.</span></h1><p>Thoughtful selections and practical guides to choosing a watch for your budget, your style and your wrist.</p><div class="hero-actions"><a class="button" href="#choisir">Find my watch <span aria-hidden="true">↗</span></a>{guide&&<a class="hero-secondary" href={localPath(`/guides/${guide.id}/`,'en')}>Choose my first watch <span aria-hidden="true">→</span></a>}</div></div><Photo name="sleeve" eager sizes="(max-width: 700px) 100vw, 54vw"/></section>
+ <SocialEntry/>
  <HomeShopping/>
  {guide&&<nav class="intent-nav container" aria-label="Choose by what you need"><span class="eyebrow">Where to begin?</span><a href={localPath(`/guides/${guide.id}/`,'en')}>My first watch <span>↗</span></a><a href={localPath(budget?`/guides/${budget.id}/`:`/guides/${guide.id}/#taille`,'en')}>{budget?"By budget":"Proportions"} <span>↗</span></a>{selection&&<a href={localPath(`/selections/${selection.id}/`,'en')}>Everyday watches <span>↗</span></a>}<a href={localPath(gift?`/guides/${gift.id}/`:`/guides/${guide.id}/#usage`,'en')}>A watch to give <span>↗</span></a></nav>}
  <div class="container"><TempusOffer/></div>

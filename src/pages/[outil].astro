@@ -1,5 +1,5 @@
 ---
-import WatchFinder from '../components/WatchFinder.astro';
+import TempusCatalogue from '../components/TempusCatalogue.astro';
 import InformationPage from '../components/InformationPage.astro';
 import {catalogue,production} from '../lib/editorial';
 import {launch} from '../data/launch';
@@ -8,6 +8,6 @@ export async function getStaticPaths(){const {finder}=await catalogue();return [
  {params:{outil:'contact'},props:{models:[],page:'contact' as const}},
  ...(!production||launch.legalPagesApproved?[{params:{outil:'mentions-legales'},props:{models:[],page:'legal' as const}},{params:{outil:'confidentialite'},props:{models:[],page:'privacy' as const}}]:[])
 ];}
-const {models,page}=Astro.props;
+const {page}=Astro.props;
 ---
-{page?<InformationPage page={page}/>:<WatchFinder models={models}/>}
+{page?<InformationPage page={page}/>:<TempusCatalogue finder/>}

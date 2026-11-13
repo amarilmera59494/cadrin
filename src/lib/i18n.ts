@@ -3,6 +3,8 @@ export type Locale = 'fr' | 'en';
 export const localeOf = (path:string):Locale => path === '/en' || path.startsWith('/en/') ? 'en' : 'fr';
 export const routePairs:Record<string,string> = {
   '/':'/en/',
+  '/vues-sur-nos-reseaux/':'/en/seen-on-social/',
+  '/analyses/':'/en/analysed-watches/',
   '/guides/choisir-couleur-cadran/':'/en/guides/choosing-a-dial-colour/',
   '/guides/g-shock-montre-jeune/':'/en/guides/g-shock-and-first-watches/',
   '/guides/premiere-montre-haut-de-gamme/':'/en/guides/buying-a-higher-end-watch/',
