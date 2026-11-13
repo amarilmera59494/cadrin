@@ -1,4 +1,8 @@
 ---
+import TempusBenefits from './TempusBenefits.astro';
+import WatchFitComparison from './WatchFitComparison.astro';
+import GuideOpening from './GuideOpening.astro';
+import GuideTakeaways from './GuideTakeaways.astro';
 import MovementComparison from './MovementComparison.astro';
 import { render, type CollectionEntry } from 'astro:content';
 import Cadrin from '../layouts/Cadrin.astro';
@@ -13,14 +17,14 @@ const compare = models.filter(w => finder.some(f => f.id===w.id)).slice(0,3).map
 <Cadrin title={entry.data.title} description={entry.data.description} article verifiedAt={entry.data.verifiedAt} crumbs={[{name:'Guides',url:'/guides/'},{name:entry.data.title,url:Astro.url.pathname}]}>
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> / <a href="/guides/">Guides</a></nav>
-    <header class="reading-heading"><h1>{entry.data.title}</h1><p>{entry.data.description}</p>
+    <GuideOpening id={entry.id}><header class="reading-heading"><h1>{entry.data.title}</h1><p>{entry.data.description}</p>
       <div class="reading-meta">Guide documentaire · Sans essai au poignet · {dateLabel(entry.data.verifiedAt!)}</div>
-    </header>
+    </header></GuideOpening>
     <div class="guide-layout">
-      <nav class="toc" aria-label="Sommaire du guide"><span class="eyebrow">Dans ce guide</span>{headings.filter(h=>h.depth===2).map(h=><a href={'#'+h.slug}>{h.text}</a>)}{models.length>0 && <a href="#references">Les références</a>}</nav>
-      <article class="reading">{entry.id==='automatique-quartz-solaire'&&<section><MovementComparison/></section>}<section class="guide-prose"><Content/></section>
+      <nav class="toc" aria-label="Sommaire du guide"><span class="eyebrow">Dans ce guide</span>{headings.filter(h=>h.depth===2).map(h=><a href={'#'+h.slug}>{h.text}</a>)}{models.length>0 && <a href="#references">Les références</a>}<a href="#sources">Sources et limites</a></nav>
+      <article class="reading"><GuideTakeaways id={entry.id}/>{entry.id==='choisir-taille-montre'&&<WatchFitComparison/>}{entry.id==='automatique-quartz-solaire'&&<section><MovementComparison/></section>}<section class="guide-prose"><Content/></section>
         {models.length>0 && <section id="references"><h2>Les montres du guide</h2><ul class="source-list">{models.map(w=><li><a href={'/montres/'+w.id+'/'}>{w.data.brand} {w.data.name} · {w.data.reference}</a></li>)}</ul>{compare && <a class="button" href={'/trouver-ma-montre/?comparer='+compare+'#comparaison'}>{models.length>3?"Comparer les trois premiers modèles":"Comparer les modèles"} →</a>}</section>}
-        <section><h2>Sources</h2><ul class="source-list">{entry.data.sources.map(s=><li><a href={s.url}>{s.label} ↗</a></li>)}</ul><a href="/notre-methode/">Notre méthode de sélection</a></section>
+        {entry.id==='acheter-montre-en-ligne'&&<TempusBenefits/>}<section id="sources"><h2>Sources</h2><ul class="source-list">{entry.data.sources.map(s=><li><a href={s.url}>{s.label} ↗</a></li>)}</ul><a href="/notre-methode/">Notre méthode de sélection</a></section>
       </article>
     </div>
   </div>

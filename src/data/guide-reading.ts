@@ -1,0 +1,30 @@
+import type { Locale } from '../lib/i18n';
+type Copy = { title:string; points:string[]; caption:string };
+type Reading = { image:'sleeve'|'wrist'|'leather'; fr:Copy; en:Copy };
+export const guideReading:Record<string,Reading> = {
+ 'choisir-premiere-montre':{image:'sleeve',
+  fr:{title:'Commencez par votre quotidien',points:['Un budget total, livraison et ajustement compris.','Un format qui vous plaît au poignet.','Un mouvement dont les habitudes vous conviennent.'],caption:'Une montre se choisit aussi avec les vêtements que vous portez vraiment.'},
+  en:{title:'Start with your everyday life',points:['A total budget, including delivery and sizing.','A shape you enjoy wearing.','A movement whose routine suits you.'],caption:'Think about the clothes you actually wear when choosing a watch.'}},
+ 'automatique-quartz-solaire':{image:'leather',
+  fr:{title:'Le choix en trois questions',points:['Vous voulez la reprendre et partir ? Regardez le quartz.','Vous aimez régler et remonter une montre ? Explorez la mécanique.','Vous préférez la recharge par la lumière ? Pensez au solaire et à son rangement.'],caption:'Des aiguilles ou des chiffres décrivent l’affichage. Ils ne suffisent pas à identifier le mouvement.'},
+  en:{title:'Three questions to start with',points:['Want to pick it up and go? Start with quartz.','Enjoy setting and winding a watch? Explore mechanical movements.','Prefer charging through light? Consider solar and where you will store it.'],caption:'Hands or digits describe the display. They do not identify the movement on their own.'}},
+ 'choisir-taille-montre':{image:'wrist',
+  fr:{title:'Trois repères, pas une taille idéale',points:['La largeur de la boîte, sans la couronne.','La longueur de corne à corne et le départ du bracelet.','L’épaisseur, à essayer sous votre manche.'],caption:'Regardez la place prise sur le dessus du poignet, puis la façon dont le bracelet retombe.'},
+  en:{title:'Three measurements, no magic size',points:['Case width, excluding the crown.','Lug-to-lug length and how the bracelet begins.','Thickness, tried under your own cuff.'],caption:'Look at the space the case takes across your wrist, then how the bracelet falls away.'}},
+ 'montres-par-budget':{image:'leather',
+  fr:{title:'Avant de monter en budget',points:['Fixez votre plafond avec les frais de livraison.','Identifiez ce que la dépense ajoute pour vous : mouvement, dessin ou bracelet.','Comparez le prix actuel avec le relevé daté, sans supposer qu’il est inchangé.'],caption:'Le cadran, le bracelet et les proportions comptent aussi. Un prix ne résume pas le plaisir de porter une montre.'},
+  en:{title:'Before spending more',points:['Set your ceiling including delivery.','Decide what the extra spending adds for you: movement, design or bracelet.','Compare today’s price with the dated observation; do not assume it is unchanged.'],caption:'The dial, strap and proportions matter too. Price alone does not explain how much you will enjoy a watch.'}},
+ 'offrir-une-montre':{image:'sleeve',
+  fr:{title:'Observez avant de choisir',points:['Les montres et bijoux que la personne porte déjà.','Sa préférence pour les aiguilles ou les chiffres.','Les conditions d’échange avant tout ajustement ou gravure.'],caption:'Pour un cadeau, les habitudes de la personne sont un meilleur point de départ que vos propres goûts.'},
+  en:{title:'Notice what they already enjoy',points:['The watches and jewellery they already wear.','Whether they prefer hands or digits.','Exchange conditions before sizing or engraving.'],caption:'For a gift, start with the recipient’s habits rather than your own taste.'}},
+ 'bambino-tsuyosa-seiko-5':{image:'wrist',
+  fr:{title:'Départagez-les par le porté',points:['Bambino : regardez aussi le profil, pas seulement les 38,4 mm.','Tsuyosa : essayez l’articulation des premiers maillons.','Seiko : faites confirmer la variante et la langue des jours.'],caption:'Un bracelet et ses premiers maillons changent la sensation au poignet. La photo ne remplace pas l’essayage.'},
+  en:{title:'Compare how they fit',points:['Bambino: look at its profile, not just the 38.4 mm width.','Tsuyosa: try the way its first links articulate.','Seiko: confirm the variant and day-wheel language.'],caption:'A bracelet and its first links affect the fit. A photograph cannot replace trying the watch on.'}},
+ 'citizen-eco-drive-ou-tsuyosa':{image:'leather',
+  fr:{title:'Deux habitudes différentes',points:['Eco-Drive : prévoir une exposition suffisante à la lumière.','Tsuyosa : accepter une remise à l’heure après l’arrêt.','Comparer ensuite la boîte et le bracelet des références exactes.'],caption:'Une silhouette habillée peut abriter différents mouvements. Lisez la référence et sa notice.'},
+  en:{title:'Two different routines',points:['Eco-Drive: allow enough exposure to light.','Tsuyosa: expect to reset it after it stops.','Then compare the case and bracelet of the exact references.'],caption:'Similar-looking watches may use different movements. Check the reference and its manual.'}},
+ 'acheter-montre-en-ligne':{image:'leather',
+  fr:{title:'Avant de payer',points:['Vérifiez la référence complète, y compris son suffixe.','Relisez le total, la livraison et les conditions de retour.','Conservez la confirmation de commande et les conditions applicables.'],caption:'Une belle photo ne suffit pas à confirmer une variante. Le cadran, le bracelet et la référence doivent correspondre.'},
+  en:{title:'Before you pay',points:['Check the full reference, including its suffix.','Read the total, delivery and return terms.','Keep the order confirmation and applicable terms.'],caption:'A good photograph does not confirm a variant. The dial, bracelet and reference must agree.'}},
+};
+export function readingFor(id:string,locale:Locale){const entry=guideReading[id];return entry?{image:entry.image,...entry[locale]}:undefined;}

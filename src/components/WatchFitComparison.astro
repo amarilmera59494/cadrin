@@ -1,0 +1,21 @@
+---
+import {localeOf,textFor} from '../lib/i18n';
+const t=textFor(localeOf(Astro.url.pathname));
+const watches=[
+ {reference:'SRPE55',width:40,length:44.6,source:'https://www.seikowatches.com/uk-en/products/5sports/srpe55'},
+ {reference:'SRPG35',width:39.4,length:48.1,source:'https://www.seikowatches.com/uk-en/products/5sports/srpg35'},
+];
+const number=(value:number)=>new Intl.NumberFormat(localeOf(Astro.url.pathname),{maximumFractionDigits:1}).format(value);
+---
+<section class="fit-comparison" aria-labelledby="fit-heading">
+ <span class="eyebrow">{t('Comprendre les proportions','Understanding proportions')}</span>
+ <h2 id="fit-heading">{t('Plus étroite, mais plus longue.','Narrower, yet longer.')}</h2>
+ <p>{t('Deux Seiko permettent de voir la différence. Comparez les barres : elles partent de zéro et utilisent toutes la même échelle.','These two Seiko watches illustrate the difference. Every bar starts at zero and uses the same scale.')}</p>
+ <div class="measurements">{watches.map(w=><div class="measurement"><h3>Seiko {w.reference}</h3><dl>{[['width',t('Diamètre','Diameter')],['length',t('Corne à corne','Lug to lug')]].map(([key,label])=><div><dt>{label}</dt><dd><span class:list={['bar',{length:key==='length'}]} style={{width:`${w[key as 'width'|'length']/50*100}%`}} aria-hidden="true"></span><strong>{number(w[key as 'width'|'length'])} mm</strong></dd></div>)}</dl></div>)}</div>
+ <p class="fit-note">{t('La SRPG35 est moins large de 0,6 mm, mais plus longue de 3,5 mm. Cela ne permet pas, à lui seul, de prédire votre confort. Cotes annoncées par Seiko, sans mesure Cadrin.','The SRPG35 is 0.6 mm narrower but 3.5 mm longer. That alone cannot predict comfort. Dimensions are published by Seiko, not measured by Cadrin.')}</p>
+ <p class="fit-sources">{t('Fiches fabricant : ','Manufacturer specifications: ')}{watches.map((w,i)=><>{i>0?' · ':''}<a href={w.source}>Seiko {w.reference} ↗</a></>)}</p>
+</section>
+<style>
+ .measurements{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:24px 0}.measurement h3{font-size:17px;margin:0 0 18px}.measurement dt{font-size:13px}.measurement dd{position:relative;display:flex;align-items:center;height:36px;background:var(--sand);margin:6px 0 18px}.bar{height:100%;background:var(--wine);position:absolute;inset:0 auto 0 0}.bar.length{background:var(--accent)}.measurement strong{position:relative;padding-left:12px;font-size:14px;font-weight:500;color:var(--paper)}.fit-note{font-size:15px}.fit-sources{font-size:12px}
+ @media(max-width:500px){.measurements{grid-template-columns:1fr;gap:10px}}
+</style>

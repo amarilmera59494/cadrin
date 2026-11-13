@@ -1,0 +1,18 @@
+---
+import Photo from './Photo.astro';
+import {readingFor} from '../data/guide-reading';
+import {localeOf} from '../lib/i18n';
+const {id}=Astro.props as {id:string};
+const copy=readingFor(id,localeOf(Astro.url.pathname));
+---
+<div class="guide-opening">
+ <div class="guide-heading"><slot/></div>
+ {copy&&<aside class="guide-image"><Photo name={copy.image} eager sizes="(max-width: 800px) calc(100vw - 40px), 40vw"/><p>{copy.caption}</p></aside>}
+</div>
+<style>
+ .guide-opening{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:clamp(32px,5vw,80px);align-items:center;margin-bottom:48px}
+ .guide-heading{min-width:0}.guide-heading :global(.reading-heading){padding-bottom:0}.guide-heading :global(h1){text-wrap:balance}
+ .guide-image{min-width:0}.guide-image :global(picture){aspect-ratio:4/3}.guide-image :global(img){display:block;object-position:50% 57%}
+ .guide-image p{font-size:14px;line-height:1.65;margin:14px 0 0;max-width:48ch}.guide-image :global(figcaption){font-size:11px}
+ @media(max-width:800px){.guide-opening{grid-template-columns:1fr;gap:24px;margin-bottom:32px}.guide-image :global(picture){aspect-ratio:16/9}.guide-image p{font-size:13px;max-width:65ch}}
+</style>

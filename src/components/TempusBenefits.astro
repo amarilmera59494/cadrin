@@ -1,0 +1,25 @@
+---
+import {localeOf,textFor} from '../lib/i18n';
+const t=textFor(localeOf(Astro.url.pathname));
+const {compact=false}=Astro.props as {compact?:boolean};
+---
+<details class:list={['tempus-benefits',{compact}]} open={!compact}>
+ <summary>{t('Ce que propose Tempus Shop','What Tempus Shop offers')}</summary>
+ <div class="benefits-content">
+  <p class="benefits-date">{t('Informations consultées le 13 novembre 2026. Conditions à vérifier pour votre commande.','Information checked on 13 November 2026. Check the terms for your order.')}</p>
+  <dl>
+   <div><dt>{t('Première commande : code WELCOME10','First order: WELCOME10')}</dt><dd>{t('Tempus annonce −10 %. Les articles déjà remisés et les nouveautés sont exclus ; les codes ne se cumulent pas. Vérifiez la réduction affichée avant de payer. Ce code public n’est pas une offre exclusive Cadrin et n’a pas été testé au paiement.','Tempus advertises 10% off. Discounted items and new arrivals are excluded; codes cannot be combined. Check the discount before paying. This public code is not exclusive to Cadrin and has not been tested at checkout.')} <a href="https://tempusshop.com/pages/code-promo">{t('Conditions du code','Code terms')} ↗</a></dd></div>
+   <div><dt>{t('Montres neuves et papiers d’origine','New watches and original paperwork')}</dt><dd>{t('Tempus se présente comme distributeur officiel et annonce boîte, papiers et carte de garantie datée et tamponnée. Il s’agit de sa déclaration ; Cadrin n’a pas confirmé un agrément auprès de chaque marque.','Tempus describes itself as an official distributor and states that watches include a box, original papers and a dated, stamped warranty card. This is the retailer’s statement; Cadrin has not confirmed authorisation with each brand.')} <a href="https://tempusshop.com/pages/pourquoi-tempus-shop">{t('Engagements annoncés','Retailer’s commitments')} ↗</a></dd></div>
+   <div><dt>{t('Livraison et accompagnement','Delivery and support')}</dt><dd>{t('Tempus propose une livraison offerte sous conditions en France et un contact par email ou WhatsApp. Les seuils relevés diffèrent selon les pages : vérifiez le montant et le mode retenus au panier. Le temps de préparation s’ajoute au transport.','Tempus offers conditional free delivery in France and email or WhatsApp support. Observed thresholds differ between pages: check the amount and delivery method in your basket. Order processing comes before transit.')} <a href="https://tempusshop.com/pages/faq">{t('Livraison et contact','Delivery and contact')} ↗</a></dd></div>
+   <div><dt>{t('Retours : lire les conditions avant l’ajustement','Returns: check before sizing')}</dt><dd>{t('Le marchand indique 14 jours après réception pour se rétracter. Les frais de retour sont normalement à votre charge, sauf défaut ou non-conformité. Faites confirmer les conditions avant gravure ou ajustement du bracelet. Ce droit n’est pas un avantage exclusif à Tempus.','The retailer states a 14-day withdrawal period after receipt. Return postage is normally yours to pay, except for defects or non-conformity. Confirm the terms before engraving or bracelet adjustment. This right is not exclusive to Tempus.')} <a href="https://tempusshop.com/policies/refund-policy">{t('Politique de retour','Return policy')} ↗</a></dd></div>
+  </dl>
+  <p class="benefits-date">{t('À l’international, confirmez la destination, les taxes et les frais. Les garanties légales et la garantie commerciale du fabricant sont distinctes.','For international orders, confirm the destination, taxes and fees. Statutory rights and a manufacturer’s commercial warranty are separate.')} <a href="https://tempusshop.com/pages/service-apres-vente-et-garantie">{t('SAV et garantie','After-sales service and warranty')} ↗</a></p>
+ </div>
+</details>
+<style>
+ .tempus-benefits{border-block:1px solid var(--line);margin:28px 0;background:var(--paper)}
+ summary{cursor:pointer;min-height:48px;padding:18px 16px;font-size:18px;font-weight:500;color:var(--wine);line-height:1.4}
+ summary::marker{color:var(--accent)}summary:focus-visible{outline-offset:-4px}.benefits-content{padding:0 20px 20px}.benefits-date{font-size:12px;line-height:1.7;color:var(--muted)}
+ dl{margin:16px 0}dl>div{padding:18px 0;border-top:1px solid var(--line)}dt{font-size:16px;font-weight:600;line-height:1.5;margin-bottom:10px}dd{font-size:14px;line-height:1.8}dd a{white-space:normal}
+ .compact summary{font-size:15px}.compact dt{font-size:14px}.compact dd{font-size:13px}
+</style>
