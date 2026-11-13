@@ -54,7 +54,7 @@ Les captures sont locales, hors build public :
 Contrôles exécutés :
 
 - Astro : zéro erreur, avertissement ou hint au dernier contrôle.
-- Production : 179 pages dont 178 routes publiques et une 404 ; budget JavaScript maximal compressé 5 555 octets. Liens internes, affiliation, sitemap et robots contrôlés au build.
+- Production : 179 pages dont 178 routes publiques et une 404 ; budget JavaScript maximal compressé 5 591 octets après ajout des boutons. Liens internes, affiliation, sitemap et robots contrôlés au build.
 - Garde de publication stricte : réussie ; contrôle de correspondance des références et des exemples intégré.
 - Hébergement local Cloudflare : 191 contrôles réussis.
 - Parcours FR : 82 combinaisons page/largeur, 221 liens, aucune erreur/échec.
@@ -67,7 +67,7 @@ Rapports machine : `evidence/selection-audit/after/report.json`, `site/browser-r
 
 ## Mesures de chargement
 
-Lighthouse 13.6.0, émulation mobile locale, trois passages par page : médianes performance accueil 99, guide première montre 100, catalogue 100 ; accessibilité automatisée 100 sur ces trois pages. CLS 0. LCP médian : 2 260 ms, 761 ms et 913 ms ; TBT catalogue 54,5 ms. Rapports : `evidence/selection-audit/lighthouse/summary.json` et rapports HTML voisins. Ces mesures de laboratoire ne sont pas des Core Web Vitals collectées auprès des visiteurs. Elles ont précédé la dernière harmonisation de deux paragraphes sur les prix.
+Lighthouse 13.6.0, émulation mobile locale, trois passages par page : médianes performance accueil 99, guide première montre 100, catalogue 100 ; accessibilité automatisée 100 sur ces trois pages. CLS 0. LCP médian : 2 260 ms, 761 ms et 913 ms ; TBT catalogue 54,5 ms. Rapports : `evidence/selection-audit/lighthouse/summary.json` et rapports HTML voisins. Ces mesures de laboratoire ne sont pas des Core Web Vitals collectées auprès des visiteurs. Elles ont précédé la dernière harmonisation de deux paragraphes sur les prix et le remplacement des liens d’achat par des boutons.
 
 Le build de prévisualisation a aussi été contrôlé : 183 pages, noindex par défaut, aucun échec ; ses routes de revue supplémentaires ne sont pas publiques en production.
 
@@ -90,3 +90,12 @@ La prévisualisation reste noindex par défaut. Pour contrôler la production : 
 Pour rafraîchir les données : `node scripts/import-tempus-catalogue.mjs --refresh`, puis `node scripts/enrich-tempus-catalogue.mjs`. Les tableaux détaillés sont une opération séparée : `node scripts/import-tempus-specifications.mjs --refresh --limit=700`, puis relancer l’enrichissement. Les requêtes sont séquentielles, espacées et s’arrêtent en cas de HTTP 429. Les données absentes ou rejetées ne sont pas inventées. La liste best-sellers est une photographie versionnée ; elle doit faire l’objet d’un nouveau relevé paginé explicite pour changer sa date. Aucun réseau marchand n’est requis durant le build.
 
 Relancer ensuite les contrôles, examiner les différences de prix/photographies et les plafonds des exemples de guides. Les tests bloquent une alternative devenue plus chère que son budget éditorial.
+
+
+## Publication et complément : boutons d’achat
+
+La version de contenu `1c19978` a été publiée par Cloudflare (build `6293adcf-ee54-446f-a441-1c19cb6d4d60`, succès). Vérification sur le domaine public : 178 routes en 200, index/follow, canonical et sitemap cohérents ; 195 contrôles d’hébergement réussis ; les 76 assertions de sélection et les 26 guides FR/EN passent aussi en ligne. Preuves : `evidence/selection-audit/online-publication.json`, `online/report.json`, `online-hosting.txt`.
+
+À la demande du propriétaire, les liens d’achat sont remplacés par des boutons bordeaux « Acheter chez Tempus » / « Buy at Tempus » sur les fiches, les cartes du catalogue, le comparateur et les alternatives des guides. La destination exacte et le suivi affilié restent identiques. Le bouton conserve la sémantique d’un lien de navigation, avec focus clavier, indication de sortie et zone tactile minimale de 52 px. Les états de commande et les mentions d’affiliation restent visibles. Le HTML sans JavaScript reçoit le même bouton que les cartes interactives.
+
+Contrôles du complément : Astro sans erreur/avertissement/hint, garde de publication, build et 191 contrôles locaux d’hébergement réussis ; 92 assertions de sélection, 26 guides FR/EN, 8 contextes catalogue et deux parcours sans JavaScript ; suite anglaise complète de 70 contextes, 218 liens et 29 routes sans JavaScript. Captures à 390 × 900 et 1440 × 900 ouvertes et inspectées dans `evidence/selection-audit/buttons/`, notamment `montres-par-budget-390-cards.png`, `catalogue-cards-390.png` et `g-shock-montre-jeune-1440-cards.png`. Aucun débordement ni violation Axe signalé sur les vues ciblées.

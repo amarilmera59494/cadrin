@@ -34,3 +34,8 @@
  .menu-ready .header-inner nav.is-open{display:flex;flex-direction:column;gap:0}
  .menu-ready .header-inner nav a{min-height:48px;border-bottom:1px solid var(--line)}
 }
+
+/* Primary outbound purchase action; the destination stays explicit. */
+.button.merchant-button{display:flex;justify-content:center;gap:12px;width:100%;min-height:52px;padding:13px 16px;text-align:center;line-height:1.35;font-weight:650;text-decoration:none;background:var(--wine);color:var(--paper);border:1px solid var(--wine)}
+.button.merchant-button:hover{background:var(--accent);border-color:var(--accent);color:#fff}.merchant-button>span:first-child{min-width:0;text-wrap:balance}.merchant-button>span[aria-hidden]{flex-shrink:0}
+.catalogue-card .merchant-button{font-size:13px;padding:12px 8px;gap:8px}.guide-example .merchant-button{font-size:13px;margin-top:14px;padding:12px 10px;gap:8px}.guide-example .example-credit{margin-top:9px}
