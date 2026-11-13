@@ -57,9 +57,9 @@ Pas de stock en temps réel ni de tâche récurrente activée. Une vraie command
 
 ## Référencement : observations dans les comptes
 
-Google Search Console : sitemap en succès, 178 URL découvertes au dernier passage affiché. L'inspection actuelle de `https://cadrin.fr/` indique **« Cette URL est sur Google »**, **« La page est indexée »**, HTTPS. Le rapport général des pages est encore en traitement. Cela ne prouve pas l'indexation de toutes les pages, notamment des nouveaux dossiers.
+Google Search Console : le sitemap actualisé a été renvoyé après déploiement, avec succès et **202 URL découvertes** au 14 novembre. L'inspection actuelle de `https://cadrin.fr/` indique **« Cette URL est sur Google »**, **« La page est indexée »**, HTTPS. Le rapport général des pages est encore en traitement. Cela ne prouve pas l'indexation de toutes les pages, notamment des nouveaux dossiers.
 
-Bing : sitemap en succès, 178 URL découvertes, sans erreur ni avertissement. L'accueil est **discovered but not crawled**. Une demande d'indexation a été envoyée et le statut **Indexing requested** observé. L'indexation Bing n'est pas annoncée comme acquise.
+Bing : sitemap initialement en succès, 178 URL découvertes, sans erreur ni avertissement. Après déploiement, le sitemap a été resoumis et le statut **Processing** observé ; le nouveau traitement reste à terminer. L'accueil est **discovered but not crawled**. Une demande d'indexation a été envoyée et le statut **Indexing requested** observé. L'indexation Bing n'est pas annoncée comme acquise.
 
 Preuves : `evidence/retention/google-home-indexed.png`, `google-indexation.png`, `bing-sitemap.png`, `bing-home-inspection.png`, `bing-requested.png`.
 
@@ -75,10 +75,10 @@ Preuves : `evidence/retention/google-home-indexed.png`, `google-indexation.png`,
 - Nouvelle suite : favoris au clavier, persistance, suppression et restitution du focus, partage/import, comparaison, langue, lien malformé, synchronisation entre onglets, stockage/presse-papiers bloqués. 25 vues à 360/390/768/1440/1920 px, trois gabarits mobiles contrôlés avec axe, 18 routes sans JavaScript.
 - Régression des parcours précédents : filtres, menu mobile et Échap, liens affiliés, comparateur, consentement de mesure, absence de requête de mesure avant consentement et fonctionnement sans JavaScript.
 
-Captures avant : `evidence/retention/before-guides-{390,1440}.png`. Après : `evidence/retention/after/` (marques, Longines, Tsuyosa, favoris, guides). Les captures ont été ouvertes : suggestion de langue déplacée pour ne plus couvrir le contenu, pied de page réparti en deux colonnes, marges des cartes resserrées et espace supérieur des favoris corrigé.
+Captures avant : `evidence/retention/before-guides-{390,1440}.png` (largeurs PNG vérifiées : 375 et 1 425 px, la capture Chrome excluant les 15 px de barre de défilement). Après : `evidence/retention/after/` (marques, Longines, Tsuyosa, favoris, guides), largeurs PNG 390 et 1 440 px ; les captures publiques de `live/` ont les mêmes largeurs vérifiées. Les captures ont été ouvertes : suggestion de langue déplacée pour ne plus couvrir le contenu, pied de page réparti en deux colonnes, marges des cartes resserrées et espace supérieur des favoris corrigé.
 
 Lancement local : `npm run dev` (preview noindex). Simulation production : `$env:SITE_STAGE='production'`, `npm run build`, puis `$env:PORT='4340'` et `node scripts/serve-cloudflare.mjs dist-production`. Redémarrer ce serveur après un nouveau build.
 
 ## Publication
 
-Le déploiement GitHub → Cloudflare et les contrôles publics sont consignés ci-dessous après leur observation. Aucun DNS, forfait ou compte externe n'est modifié pour cette itération.
+Commit de production `43dfbe6a23f0fbea3cde33b617a1bbd5f59d9d93`, build Cloudflare `476c92d1-772d-4ebf-9f02-bc7c8469026d` terminé avec succès, version Worker `e3750cfd-e8e5-415a-977c-0ee55ca1918c`. Les 202 routes publiques ont été vérifiées après déploiement (HTTP 200, indexation autorisée et canonical), ainsi que la vraie 404. Six captures publiques desktop/mobile, photos décodées, enregistrement/import/partage/comparaison de favoris : aucune erreur signalée. Rapport et captures dans `evidence/retention/live/`. Le sitemap Google resoumis a immédiatement indiqué 202 URL découvertes ; cela reste distinct de leur indexation. Aucun DNS ni forfait n'est modifié pour cette itération.
