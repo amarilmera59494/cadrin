@@ -1,6 +1,6 @@
 # CADRIN
 
-Média horloger en français et en anglais construit à partir d’ALLURE. Astro 7.4.11, TypeScript, HTML statique, bordeaux et ivoire. Version de production indexable préparée pour Cloudflare ; les builds locaux restent en prévisualisation noindex par défaut. Voir [la configuration d’hébergement](docs/cadrin-hosting.md).
+Média horloger en français et en anglais construit à partir d’ALLURE. Astro 7.4.11, TypeScript, HTML statique, bordeaux et ivoire. Version de production indexable en ligne sur Cloudflare ; les builds locaux restent en prévisualisation noindex par défaut. Voir [la configuration d’hébergement](docs/cadrin-hosting.md).
 
 ```powershell
 cd D:\Affi_montres

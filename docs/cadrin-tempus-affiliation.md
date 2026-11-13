@@ -83,3 +83,19 @@ Les preuves locales sont dans `evidence/tempus-catalogue/` : import, destination
 Captures principales : `evidence/tempus-catalogue/after/accueil-1440.png`, `catalogue-1440.png`, `catalogue-390.png`, `guide-390.png`, `fiche-1440.png` et `selecteur-390-cards.png`. Les dimensions des fenêtres sont 1440 × 900 et 390 × 900 ; les images de page entière dépassent naturellement la hauteur de la fenêtre.
 
 Lighthouse 13.6.0, mobile local, trois passages par page après les dernières modifications : médianes performance accueil 99, guide 100, catalogue 100 ; accessibilité 100 sur ces trois pages ; CLS 0. LCP médian respectivement 2 113 ms, 1 662 ms et 915 ms. Ce sont les mesures du poste de test, pas une promesse de vitesse identique sur tous les appareils et réseaux. Rapport complet : `evidence/tempus-catalogue/lighthouse/summary.json`.
+
+## Publication et vérification du site public
+
+Publié le 13 novembre 2026 sur https://cadrin.fr depuis le commit `cb9c23a28f81df647931586115caa4f7cfc961ae`. Build Cloudflare GitHub `3bacf9ea-0d79-4c80-af9b-935ebe47722b` terminé avec succès ; déclencheur renommé « CADRIN main production », environnement SITE_STAGE=production. Les commandes conservent les contrôles de contenu, build et hébergement.
+
+Vérifications après déploiement :
+
+- 168 routes publiques répondent en HTTP 200, avec index/follow, canonical exact et sans en-tête noindex. Sitemap vérifié contre la liste des routes.
+- 11 648 occurrences de liens produits Tempus dans les pages HTML portent exactement le code `bDlTL8AyKb` et rel=sponsored (occurrences répétées entre pages et langues, pas autant de produits distincts).
+- 185 contrôles d'hébergement réussis sur le domaine public : HTTPS, redirections www/HTTP, HSTS, en-têtes, chemins sensibles, 404 et cache des assets.
+- Catalogue public : 10 contextes de largeur/langue, 33 assertions d'interaction et deux parcours sans JavaScript ; aucune erreur rapportée. Les photos chargent dans les contextes inspectés.
+- Captures du site public ouvertes et inspectées à 1440 × 900 et 390 × 900 : `evidence/tempus-catalogue/online/public-gac-1440.png` et `public-gac-390.png`. Le navigateur anglophone présente la suggestion de langue prévue, refermable.
+
+Preuves : `evidence/tempus-catalogue/online-publication.json`, `evidence/tempus-catalogue/online/report.json` et `evidence/deployment/hosting-cadrin.fr.json`. La suppression de noindex autorise l'indexation ; elle ne démontre pas encore l'indexation effective par Google.
+
+Aucune commande marchande n'a été passée. La remontée d'une commission réelle et l'application effective de WELCOME10 au paiement ne sont pas vérifiées. Le relevé catalogue reste daté ; les limites de références, de variantes et de disponibilité sont conservées dans les pages. Les réseaux sociaux n'ont pas encore été configurés ni alimentés.
