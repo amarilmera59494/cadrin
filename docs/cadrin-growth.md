@@ -14,7 +14,7 @@ Livraison du 13 novembre 2026. Ce document décrit l’itération de croissance 
 
 Sept épingles Pinterest programmées et revérifiées dans la liste « Scheduled Pins » : du 14 au 20 novembre 2026, chaque jour à 12 h, Europe/Paris. Les destinations sont les guides CADRIN pertinents, avec paramètres de campagne autorisés par la mesure. La programmation n’est pas une preuve de publication future.
 
-Une quatrième vidéo, « Tsuyosa : 37 ou 40 mm ? », a été préparée avec la voix Marion et les vraies photos Tempus : 16,6 secondes, 1080 × 1920, H.264/AAC, sous-titres SRT/VTT. Le manifeste local de livraison indique son statut de publication. Les trois vidéos antérieures ne sont pas republiées.
+Une quatrième vidéo, « Tsuyosa : 37 ou 40 mm ? », a été préparée avec la voix Marion et les vraies photos Tempus : 16,6 secondes, 1080 × 1920, H.264/AAC, sous-titres SRT/VTT. Elle est programmée pour le 14 novembre à 18 h (GMT+1 Paris), statut revérifié dans TikTok Studio. Déclarations commerciale et de voix synthétique activées dans la plateforme. Les trois vidéos antérieures ne sont pas republiées.
 
 Fichiers locaux : `marketing/growth-week-01/`. Les visuels gardent une mention commerciale lisible ; l’accroche reste centrée sur la montre et le choix du lecteur. Aucun compte à rebours, faux avis ou chiffre de vente inventé.
 
@@ -40,6 +40,8 @@ Captures locales avant/après : `evidence/growth/before/`, `evidence/growth/afte
 Astro demeure statique. Le petit Worker traite seulement `/api/measure` ; les autres requêtes passent aux assets Cloudflare. Les mentions légales n’ont pas été modifiées. La page de confidentialité décrit la nouvelle mesure.
 
 La préparation Cloudflare efface uniquement son propre dossier généré `.cloudflare/output`, après contrôle du chemin réel, puis vérifie chaque asset par SHA-256. Cela empêche les anciens fichiers de preview de survivre à un build de production : `writeAssets` seul conservait des fichiers déjà présents.
+
+Code poussé sur `main` au commit `7ae861b190991aac8e58c6a829d4349cd2f419c9`. Build GitHub → Cloudflare `a2170138-c4fe-4875-bbd7-16ed87121b29` terminé avec succès ; version Worker `c589a742-6f8b-40e5-b81b-ff58d0c88b6c` active à 100 %. Les 182 routes et huit vues navigateur ont de nouveau été vérifiées après ce déploiement. Aucune modification DNS ni changement de forfait.
 
 PowerShell :
 
