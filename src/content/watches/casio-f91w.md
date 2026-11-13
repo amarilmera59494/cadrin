@@ -5,7 +5,7 @@ author: null
 reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 rights: "approved"
 image: "/images/products/casio-f91w.webp"
-price: 21.6
+price: 19.9
 priceCheckedAt: "2026-11-13"
 stock: null
 id: "casio-f91w"
@@ -37,5 +37,3 @@ Tempus indique 38,2 mm de longueur, 33,2 mm de largeur et 8,5 mm d’épaisseur,
 ## Pour qui la choisir ?
 
 Pour quelqu’un qui préfère les chiffres aux aiguilles, aime les objets au dessin rétro ou cherche une montre discrète dans son budget. Si vous préférez une finition métallique, comparez-la à la Casio A158WEA-1EF. Si vous voulez une silhouette plus affirmée, regardez plutôt les G-Shock.
-
-::montres[budget-50]

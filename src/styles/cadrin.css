@@ -39,3 +39,9 @@
 .button.merchant-button{display:flex;justify-content:center;gap:12px;width:100%;min-height:52px;padding:13px 16px;text-align:center;line-height:1.35;font-weight:650;text-decoration:none;background:var(--wine);color:var(--paper);border:1px solid var(--wine)}
 .button.merchant-button:hover{background:var(--accent);border-color:var(--accent);color:#fff}.merchant-button>span:first-child{min-width:0;text-wrap:balance}.merchant-button>span[aria-hidden]{flex-shrink:0}
 .catalogue-card .merchant-button{font-size:13px;padding:12px 8px;gap:8px}.guide-example .merchant-button{font-size:13px;margin-top:14px;padding:12px 10px;gap:8px}.guide-example .example-credit{margin-top:9px}
+
+/* Keep the product, price and buying action together before the long-form analysis. */
+.watch-heading.purchase-heading{grid-template-columns:1fr 1fr;gap:24px 48px;align-items:start}.purchase-heading>div{grid-column:1;grid-row:1}.purchase-heading>.product-photo{grid-column:2;grid-row:1/3}.purchase-heading>.purchase-panel{grid-column:1;grid-row:2}.watch-detail-layout.purchase-at-top{display:block;max-width:1000px;margin-inline:auto}.purchase-at-top>.reading{max-width:none}
+@media(max-width:700px){.watch-heading.purchase-heading{grid-template-columns:1fr;gap:18px;padding-bottom:24px}.purchase-heading>div,.purchase-heading>.product-photo,.purchase-heading>.purchase-panel{grid-column:auto;grid-row:auto}.purchase-heading h1{font-size:52px!important;margin-block:8px}.purchase-heading .lead{font-size:15px!important;margin-block:12px!important}.purchase-heading .reading-meta{margin-top:12px}.purchase-heading .photo-frame{height:220px;aspect-ratio:auto}.purchase-heading .product-photo{margin:0}.purchase-heading .reference{margin-block:8px}}
+
+.purchase-heading>.product-photo{width:100%;max-width:none}.purchase-heading .photo-frame{width:100%}

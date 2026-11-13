@@ -5,7 +5,7 @@ author: null
 reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 rights: "approved"
 image: "/images/products/seiko-srpe55k1.webp"
-price: 320.08
+price: 295
 priceCheckedAt: "2026-11-13"
 stock: null
 id: "seiko-srpe55k1"

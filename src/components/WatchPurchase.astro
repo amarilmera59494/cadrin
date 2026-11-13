@@ -1,0 +1,19 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import {localeOf,textFor} from '../lib/i18n';
+import {dateLabel} from '../lib/editorial';
+import CadrinMerchantLink from './CadrinMerchantLink.astro';
+import {englishWatches} from '../data/english-watches';
+const {watch}=Astro.props as {watch:CollectionEntry<'watches'>};
+const p=watch.data,locale=localeOf(Astro.url.pathname),en=locale==='en',t=textFor(locale);
+---
+<aside class="merchant-panel purchase-panel" aria-label={t('Acheter cette montre','Buy this watch')}>
+ <span class="eyebrow">{t('Ce modèle chez notre partenaire','This watch at our partner')}</span>
+ {p.price!=null&&p.priceCheckedAt&&<p class="purchase-price"><strong>{new Intl.NumberFormat(en?'en-GB':'fr-FR',{style:'currency',currency:'EUR'}).format(p.price)}</strong><small>{t('Prix France relevé le','France price recorded on')} {dateLabel(p.priceCheckedAt,locale)}, {t('hors livraison. Prix actuel chez Tempus.','excluding delivery. Current price at Tempus.')}</small></p>}
+ {watch.id==='seiko-srpe55k1'&&<p class="purchase-variant">{en?englishWatches[watch.id].limit:p.limit}</p>}
+ <CadrinMerchantLink id={watch.id}/>
+</aside>
+<style>
+.purchase-panel{margin:0;padding:24px!important;position:static!important;align-self:start}.purchase-price{display:flex;align-items:baseline;gap:16px;margin:12px 0 18px!important}.purchase-price strong{font:500 42px/1.1 var(--display);white-space:nowrap}.purchase-price small{font-size:11px;line-height:1.6;max-width:34ch}.purchase-variant{font-size:12px;line-height:1.6;margin:12px 0}
+@media(max-width:700px){.purchase-panel{padding:18px!important}.purchase-price{margin:10px 0 14px!important;gap:14px}.purchase-price strong{font-size:36px}}
+</style>

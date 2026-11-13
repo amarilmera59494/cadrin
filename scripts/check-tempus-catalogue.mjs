@@ -3,6 +3,7 @@ import {readFile,access,stat,writeFile,mkdir} from 'node:fs/promises';
 import {filterCatalogue,orderLabel} from '../src/lib/tempus-catalogue.ts';
 import {affiliateUrl,tempusAffiliate} from '../src/data/affiliation.ts';
 const data=JSON.parse(await readFile('src/data/tempus-catalogue.json','utf8'));
+if(data.market?.country!=='FR'||data.market?.currency!=='EUR')throw Error('Catalogue prices require an explicit FR/EUR market');
 const client=JSON.parse(await readFile('public/catalogue.json','utf8'));
 assert.match(data.checkedAt,/^\d{4}-\d{2}-\d{2}$/);assert.ok(data.products.length>0);assert.equal(data.currency,'EUR');
 await access(data.permissionFile);assert.equal(data.products.length,client.products.length);

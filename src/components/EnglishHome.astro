@@ -5,19 +5,20 @@ import {localPath} from '../lib/i18n';
 import {hasAffiliation} from '../data/destinations';
 import Cadrin from '../layouts/Cadrin.astro';
 import Photo from './Photo.astro';
-import WatchCard from './WatchCard.astro';
+import HomeShopping from './HomeShopping.astro';
 import {catalogue} from '../lib/editorial';
-const {watches,guides,selections,finder}=await catalogue();
+const {guides,selections,finder}=await catalogue();
 const gift=guides.find(g=>g.id==='offrir-une-montre');
 const budget=guides.find(g=>g.id==='montres-par-budget');
 const guide=guides.find(g=>g.id==='choisir-premiere-montre');const selection=selections[0];
-const featured=selection?selection.data.watches.map(id=>watches.find(w=>w.id===id)!):[];
+
 ---
 <Cadrin title="A watch. Your way." description="Thoughtful selections and practical guides to choosing a watch for your budget, your style and your wrist.">
- <section class="home-hero"><div class="hero-copy"><span class="eyebrow">Made for your wrist</span><h1>A watch.<br/><span>Your way.</span></h1><p>Thoughtful selections and practical guides to choosing a watch for your budget, your style and your wrist.</p><div class="hero-actions"><a class="button" href={localPath('/selections/','en')}>Explore the selections <span aria-hidden="true">↗</span></a>{guide&&<a class="hero-secondary" href={localPath(`/guides/${guide.id}/`,'en')}>Choose my first watch <span aria-hidden="true">→</span></a>}</div></div><Photo name="sleeve" eager sizes="(max-width: 700px) 100vw, 54vw"/></section>
+ <section class="home-hero"><div class="hero-copy"><span class="eyebrow">Made for your wrist</span><h1>A watch.<br/><span>Your way.</span></h1><p>Thoughtful selections and practical guides to choosing a watch for your budget, your style and your wrist.</p><div class="hero-actions"><a class="button" href="#choisir">Find my watch <span aria-hidden="true">↗</span></a>{guide&&<a class="hero-secondary" href={localPath(`/guides/${guide.id}/`,'en')}>Choose my first watch <span aria-hidden="true">→</span></a>}</div></div><Photo name="sleeve" eager sizes="(max-width: 700px) 100vw, 54vw"/></section>
+ <HomeShopping/>
  {guide&&<nav class="intent-nav container" aria-label="Choose by what you need"><span class="eyebrow">Where to begin?</span><a href={localPath(`/guides/${guide.id}/`,'en')}>My first watch <span>↗</span></a><a href={localPath(budget?`/guides/${budget.id}/`:`/guides/${guide.id}/#taille`,'en')}>{budget?"By budget":"Proportions"} <span>↗</span></a>{selection&&<a href={localPath(`/selections/${selection.id}/`,'en')}>Everyday watches <span>↗</span></a>}<a href={localPath(gift?`/guides/${gift.id}/`:`/guides/${guide.id}/#usage`,'en')}>A watch to give <span>↗</span></a></nav>}
  <div class="container"><TempusOffer/></div>
- {selection&&<section class="container section" id="selection"><div class="section-heading"><div><span class="eyebrow">Selection / 01</span><h2>Three ways to<br/>wear the day.</h2></div><div><p>Mechanical, solar, digital.<br/>Three everyday directions, without a ranking.</p><a class="text-link" href={localPath(`/selections/${selection.id}/`,'en')}>See the full selection <span aria-hidden="true">↗</span></a></div></div><div class="watch-grid">{featured.map(watch=><WatchCard watch={watch}/>)}</div></section>}
+
  {selection&&<section class="choice-band"><div class="container choice-inner"><div><h2>Find my watch</h2><p>Choose a movement or a bracelet, then compare the watches that catch your eye.</p>{finder.length>0 && <a class="text-link" href={localPath('/trouver-ma-montre/','en')}>Open the watch finder →</a>}</div><div class="choice-links"><a href={'/en/watch-finder/?mouvement=Quartz'}>The simplicity of quartz <span>↗</span></a><a href={'/en/watch-finder/?mouvement=Solaire'}>Powered by light <span>↗</span></a><a href={'/en/watch-finder/?mouvement=Automatique'}>The mechanical ritual <span>↗</span></a></div></div></section>}
  {guide&&<section class="container section guide-feature"><Photo name="wrist" sizes="(max-width:700px) 100vw, 44vw"/><div><span class="eyebrow">A place to start</span><span class="feature-number" aria-hidden="true">01</span><h2>Your first.<br/>Above all, yours.</h2><p>A comfortable budget. Proportions you enjoy. A movement that fits your routine. A good choice starts with a few simple questions.</p><a class="text-link" href={localPath(`/guides/${guide.id}/`,'en')}>Choose my first watch <span aria-hidden="true">↗</span></a></div></section>}
  <section class="container section"><CatalogueDiscovery/></section>

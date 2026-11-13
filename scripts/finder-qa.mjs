@@ -44,7 +44,7 @@ try {
  await page.getByRole('link',{name:/classées femme/}).click();await page.waitForLoadState('load');assert.equal(await visible.count(),1);
  assert.ok((await visible.innerText()).includes('EM1201-52L'));
  await visible.getByRole('link',{name:'Consulter la fiche'}).click();
- assert.equal(await page.getByRole('link',{name:'Acheter chez Tempus'}).getAttribute('href'),destinations['citizen-rainell-em1201-52l'].url);
+ assert.equal(await page.locator('.purchase-panel').getByRole('link',{name:'Acheter chez Tempus'}).getAttribute('href'),destinations['citizen-rainell-em1201-52l'].url);
  await page.goBack();assert.equal(await visible.count(),1);
  await page.goto(base+'?largeur=30');assert.equal(await visible.count(),1);
  await page.goto(shared);

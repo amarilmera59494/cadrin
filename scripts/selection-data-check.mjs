@@ -13,3 +13,6 @@ console.log(JSON.stringify({products:d.products.length,groups:Object.keys(groups
 const specs=JSON.parse(await readFile('src/data/tempus-specifications.json','utf8'));for(const [id,r]of Object.entries(specs.records)){const p=d.products.find(p=>p.id===id);assert.ok(p&&matchesReference(p,r),'Technical table reference mismatch: '+id);}assert.equal(matchesReference({id:'test',source:'https://example.org',reference:'BLUE-1'},{source:'https://example.org',rows:[{label:'Référence',value:'GREEN-1'}]}),false);
 
 assert.deepEqual(d.products.find(p=>p.reference==='NJ0200-50Z').dialColors,['Rose']);
+
+for(const [ref]of groups.home){assert.equal(d.products.find(p=>p.reference===ref)?.orderable,true,'Home selection needs an orderable listing: '+ref);}
+assert.equal(d.market.country,'FR');assert.equal(d.market.currency,'EUR');

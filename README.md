@@ -10,6 +10,7 @@ npm run dev -- --port 4321
 
 Preview : http://127.0.0.1:4321/ — noindex par défaut.
 
+- [Parcours d’achat, choix guidé et prix France](docs/cadrin-conversion.md)
 - [Audit de sélection, nouveaux guides et captures](docs/cadrin-selection-audit.md)
 - [Catalogue Tempus, affiliation, photos et vérifications actuelles](docs/cadrin-tempus-affiliation.md)
 - [Version bilingue, nouveaux guides et limites de publication](docs/cadrin-international.md)
@@ -25,7 +26,7 @@ La version anglaise démarre sur `/en/`, son sélecteur sur `/en/watch-finder/`.
 
 Routes principales : `/`, `/catalogue/`, `/en/catalogue/`, `/selections/`, `/selections/trois-montres-au-quotidien/`, `/montres/seiko-srpe55k1/`, `/montres/citizen-aw0102-13ae/`, `/montres/casio-f91w/`, `/guides/`, `/guides/choisir-premiere-montre/`, `/notre-methode/`, et la 404.
 
-Le sélecteur `/trouver-ma-montre/` compare six références analysées. L’explorateur `/catalogue/` rassemble 2 902 fiches marchandes de 23 marques avec photos Tempus, filtres et comparaison de trois modèles. Les treize guides FR/EN sont publiables, illustrés et reliés aux outils. Deux anciennes fiches sans destination exacte restent archivées et exclues de production.
+Le sélecteur `/trouver-ma-montre/` compare six références analysées. L’explorateur `/catalogue/` rassemble 2 902 fiches marchandes de 24 marques avec photos Tempus, filtres et comparaison de trois modèles. Les treize guides FR/EN sont publiables, illustrés et reliés aux outils. Deux anciennes fiches sans destination exacte restent archivées et exclues de production.
 
 Les liens produits Tempus portent tous `bg_ref=bDlTL8AyKb` et `rel="sponsored"`, y compris les citations marchandes. La construction est centralisée et contrôlée au build. L’autorisation photographique déclarée par le propriétaire est consignée dans `licenses/tempus-media.md`. Les prix sont des relevés datés, hors livraison ; précommande, sur commande et stock physique ne sont pas confondus. WELCOME10 est présenté avec ses exclusions, sans remise appliquée artificiellement aux prix.
 

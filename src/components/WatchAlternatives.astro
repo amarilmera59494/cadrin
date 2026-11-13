@@ -1,0 +1,7 @@
+---
+import GuideExamples from './GuideExamples.astro';
+import {localeOf,textFor,localPath} from '../lib/i18n';
+import groups from '../data/guide-examples.json';
+const {id}=Astro.props as {id:string};const locale=localeOf(Astro.url.pathname),t=textFor(locale);const key='watch-'+id;
+---
+{key in groups&&<section class="watch-alternatives"><span class="eyebrow">{t('Avant de vous décider','Before you decide')}</span><h2>{t('Deux autres pistes à comparer.','Two other directions to compare.')}</h2><p>{t('Un autre mouvement, une autre silhouette : regardez ce que vous gagneriez à changer de modèle.','A different movement or silhouette: consider what another model would bring to your everyday wear.')}</p><GuideExamples id={key} en={locale==='en'}/><a class="text-link" href={localPath('/catalogue/',locale)}>{t('Continuer dans le catalogue','Keep exploring the catalogue')} →</a></section>}

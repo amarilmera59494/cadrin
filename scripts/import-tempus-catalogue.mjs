@@ -2,10 +2,10 @@ import {readFile,writeFile,mkdir,access}from'node:fs/promises';import sharp from
 // Explicit maintenance command. Never runs during a normal build or deployment.
 if(!process.argv.includes('--refresh'))throw Error('Use --refresh to retrieve the public Tempus catalogue.');
 await mkdir('evidence/tempus-catalogue',{recursive:true});let products=[];const pages=[];const checkedAt=new Date().toISOString();
-for(let page=1;page<=100;page++){const r=await fetch(`https://tempusshop.com/products.json?limit=250&page=${page}`,{signal:AbortSignal.timeout(30000)});if(!r.ok)throw Error('HTTP '+r.status);const batch=(await r.json()).products;pages.push({page,count:batch.length});products.push(...batch);if(batch.length<250)break;if(page===100)throw Error('Pagination limit reached; snapshot not complete');}
+for(let page=1;page<=100;page++){const r=await fetch(`https://tempusshop.com/products.json?limit=250&page=${page}&country=FR&currency=EUR`,{signal:AbortSignal.timeout(30000)});if(!r.ok)throw Error('HTTP '+r.status);const batch=(await r.json()).products;pages.push({page,count:batch.length});products.push(...batch);if(batch.length<250)break;if(page===100)throw Error('Pagination limit reached; snapshot not complete');}
 if(new Set(products.map(p=>p.id)).size!==products.length)throw Error('Duplicate IDs: catalogue changed during pagination; retry.');
-const currency=await (await fetch('https://tempusshop.com/cart.js')).json();if(currency.currency!=='EUR')throw Error('Expected EUR');
-await writeFile('evidence/tempus-catalogue/raw.json',JSON.stringify({checkedAt,pages,products},null,2));
+const currency=await (await fetch('https://tempusshop.com/cart.js?country=FR&currency=EUR')).json();if(currency.currency!=='EUR')throw Error('Expected EUR');
+await writeFile('evidence/tempus-catalogue/raw.json',JSON.stringify({checkedAt,market:{country:"FR",currency:"EUR"},pages,products},null,2));
 const referenceOverrides=JSON.parse(await readFile('src/data/tempus-reference-overrides.json','utf8'));
 let previous=[];try{previous=JSON.parse(await readFile('src/data/tempus-catalogue.json','utf8')).products}catch{}
 const oldSources=new Map(previous.map(p=>[p.id,p.imageSource]));
@@ -23,7 +23,7 @@ async function worker(){while(index<items.length){const p=items[index++];try{con
 await Promise.all(Array.from({length:6},worker));
 if(errors.length){await writeFile('evidence/tempus-catalogue/import-errors.json',JSON.stringify(errors,null,2));throw Error('Asset download failed; existing catalogue preserved.');}
 const valid=items.filter(p=>!errors.some(e=>e.id===p.id)).sort((a,b)=>a.brand.localeCompare(b.brand,'fr')||a.title.localeCompare(b.title,'fr'));
-const out={checkedAt:checkedAt.slice(0,10),currency:'EUR',pageSize:48,sourceCount:products.length,permissionFile:'licenses/tempus-media.md',products:valid};
+const out={checkedAt:checkedAt.slice(0,10),currency:'EUR',market:{country:'FR',currency:'EUR'},pageSize:48,sourceCount:products.length,permissionFile:'licenses/tempus-media.md',products:valid};
 await writeFile('src/data/catalogue-meta.ts',`export const cataloguePages = ${Math.ceil(valid.length/out.pageSize)};\n`);
 await writeFile('src/data/tempus-catalogue.json',JSON.stringify(out));
 await writeFile('public/catalogue.json',JSON.stringify({...out,products:valid.map(({imageSource,...p})=>p)}));

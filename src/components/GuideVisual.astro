@@ -7,5 +7,5 @@ const ref=(visuals as Record<string,string>)[id];
 const p=data.products.find(p=>p.reference===ref);
 const locale=localeOf(Astro.url.pathname);
 ---
-{p&&<figure class="guide-visual"><a href={localPath('/catalogue/?q='+encodeURIComponent(p.reference),locale)}><img src={p.image} width={p.width} height={p.height} alt={p.title} loading="lazy" decoding="async"/></a><figcaption>Photo Tempus · {p.title} · {p.reference}</figcaption></figure>}
+{p&&<figure class="guide-visual"><a href={localPath('/catalogue/?q='+encodeURIComponent(p.reference)+'#catalogue-count',locale)}><img src={p.image} width={p.width} height={p.height} alt={p.title} loading="lazy" decoding="async"/></a><figcaption>Photo Tempus · {p.title} · {p.reference}</figcaption></figure>}
 <style>.guide-visual{margin:0}.guide-visual a{display:block;background:white}.guide-visual img{display:block;width:100%;height:320px;object-fit:contain}.guide-visual figcaption{font-size:11px;line-height:1.6;margin-top:8px;color:var(--muted);overflow-wrap:anywhere}@media(max-width:700px){.guide-visual img{height:230px}}</style>

@@ -27,7 +27,7 @@ async function initialise(host:HTMLElement){
  function queryFor(n:number){const q=new URLSearchParams();for(const key of filterKeys){const value=field(key).value.trim();if(value)q.set(key,value)}if(n>1)q.set('page',String(n));if(selected.length)q.set('compare',selected.join(','));return root+(q.size?'?'+q:'');}
  function el<K extends keyof HTMLElementTagNameMap>(tag:K,text?:string,cls?:string){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;}
  function link(text:string,url:string,cls?:string){const a=el('a',text,cls);a.href=url;return a;}
- function retailer(p:CatalogueProduct,cls='button merchant-button'){const a=link('',affiliateUrl(p.source),cls);a.rel='sponsored';const arrow=el('span','↗');arrow.setAttribute('aria-hidden','true');a.append(el('span',t('Acheter chez Tempus','Buy at Tempus')),arrow);return a;}
+ function retailer(p:CatalogueProduct,cls='button merchant-button'){const a=link('',affiliateUrl(p.source),cls);a.rel='sponsored';a.dataset.reference=p.reference;a.dataset.placement=cls.includes('catalogue-cta')?'catalogue':'comparison';const arrow=el('span','↗');arrow.setAttribute('aria-hidden','true');a.append(el('span',t('Acheter chez Tempus','Buy at Tempus')),arrow);return a;}
  function syncPicks(){cards.querySelectorAll<HTMLInputElement>('.catalogue-pick input').forEach(input=>{input.checked=selected.includes(input.value);input.disabled=selected.length>=3&&!input.checked;});}
  function drawComparison(){comparison.hidden=jump.hidden=!selected.length;table.replaceChildren();if(!selected.length)return;
   const watches=selected.map(id=>byId.get(id)!);const caption=el('caption',t('Comparaison des données Tempus','Comparison of Tempus data'));table.append(caption);

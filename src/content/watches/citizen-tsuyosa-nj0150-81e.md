@@ -5,7 +5,7 @@ author: null
 reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 image: "/images/products/citizen-tsuyosa-nj0150-81e.webp"
 rights: "approved"
-price: 324.42
+price: 299
 priceCheckedAt: "2026-11-13"
 stock: null
 movement: "Automatique"

@@ -143,5 +143,99 @@
       "Bluetooth et mesures d’activité ; le GPS du téléphone sert à calibrer la distance.",
       "Bluetooth and activity measurements; phone GPS is used to calibrate distance."
     ]
+  ],
+  "home": [
+    [
+      "F-91W-1YEG",
+      "Pour commencer simplement : une petite numérique rétro, avec l’heure, une alarme et un chronomètre.",
+      "Start simply: a small retro digital watch with the time, an alarm and a stopwatch."
+    ],
+    [
+      "GA-2100-1A1ER",
+      "Pour une silhouette sportive : boîte octogonale, noir intégral et lecture à aiguilles complétée par un écran.",
+      "For a sporty silhouette: an octagonal case, all-black design and hands with a digital display."
+    ],
+    [
+      "NJ0150-81E",
+      "Pour le quotidien sur acier : une automatique à cadran noir, avec un bracelet qui prolonge les lignes de la boîte.",
+      "For everyday wear on steel: an automatic with a black dial and a bracelet that continues the case lines."
+    ],
+    [
+      "RA-AC0M04Y",
+      "Pour une allure plus habillée : cadran clair, bracelet cuir et mouvement automatique.",
+      "For a dressier look: a light dial, leather strap and an automatic movement."
+    ]
+  ],
+  "watch-casio-f91w": [
+    [
+      "A158WEA-1EF",
+      "Pour retrouver les chiffres, avec un bracelet métallique et une allure rétro.",
+      "For digits with a metal bracelet and a retro look."
+    ],
+    [
+      "GA-2100-1A1ER",
+      "Pour une silhouette noire octogonale et un esprit G-Shock.",
+      "For an all-black octagonal shape and G-Shock character."
+    ]
+  ],
+  "watch-citizen-aw0102-13ae": [
+    [
+      "F-91W-1YEG",
+      "Pour un style numérique en résine, simple et décontracté.",
+      "For a straightforward resin digital with a casual look."
+    ],
+    [
+      "NJ0150-81E",
+      "Un cadran noir, une date sous loupe et une ligne continue sur acier.",
+      "A black dial, magnified date and continuous steel silhouette."
+    ]
+  ],
+  "watch-citizen-rainell-em1201-52l": [
+    [
+      "NJ0200-50L",
+      "Une Tsuyosa bleue en 37 mm pour explorer un format différent.",
+      "A blue 37 mm Tsuyosa to explore a different size."
+    ],
+    [
+      "AW0102-13AE",
+      "Pour les aiguilles, le cuir et la recharge solaire.",
+      "For hands, leather and charging through light."
+    ]
+  ],
+  "watch-citizen-tsuyosa-nj0150-81e": [
+    [
+      "RA-AC0M04Y",
+      "Un cadran beige et du cuir pour une approche plus habillée.",
+      "A beige dial and leather for a dressier direction."
+    ],
+    [
+      "SRPE55K1",
+      "Un calendrier jour-date pour ceux qui consultent les deux au quotidien.",
+      "A day-date calendar for those who use both every day."
+    ]
+  ],
+  "watch-orient-bambino-ra-ac0m04y": [
+    [
+      "NJ0150-81E",
+      "Un cadran noir, une date sous loupe et une ligne continue sur acier.",
+      "A black dial, magnified date and continuous steel silhouette."
+    ],
+    [
+      "SRPE55K1",
+      "Un calendrier jour-date pour ceux qui consultent les deux au quotidien.",
+      "A day-date calendar for those who use both every day."
+    ]
+  ],
+  "watch-seiko-srpe55k1": [
+    [
+      "NJ0150-81E",
+      "Un cadran noir, une date sous loupe et une ligne continue sur acier.",
+      "A black dial, magnified date and continuous steel silhouette."
+    ],
+    [
+      "RA-AC0M04Y",
+      "Un cadran beige et du cuir pour une approche plus habillée.",
+      "A beige dial and leather for a dressier direction."
+    ]
   ]
 }
