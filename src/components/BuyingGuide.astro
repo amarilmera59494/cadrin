@@ -1,0 +1,27 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Cadrin from '../layouts/Cadrin.astro';
+import { catalogue, dateLabel } from '../lib/editorial';
+interface Props {entry: CollectionEntry<'guides'>}
+const {entry} = Astro.props;
+const {Content, headings} = await render(entry);
+const {watches,finder} = await catalogue();
+const models = entry.data.related.flatMap(id => watches.filter(w => w.id === id));
+const compare = models.filter(w => finder.some(f => f.id===w.id)).slice(0,3).map(w=>w.id).join(',');
+---
+<Cadrin title={entry.data.title} description={entry.data.description} article verifiedAt={entry.data.verifiedAt} crumbs={[{name:'Guides',url:'/guides/'},{name:entry.data.title,url:Astro.url.pathname}]}>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> / <a href="/guides/">Guides</a></nav>
+    <header class="reading-heading"><h1>{entry.data.title}</h1><p>{entry.data.description}</p>
+      <div class="reading-meta">Guide documentaire · Sans essai au poignet · {dateLabel(entry.data.verifiedAt!)}</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="toc" aria-label="Sommaire du guide"><span class="eyebrow">Dans ce guide</span>{headings.filter(h=>h.depth===2).map(h=><a href={'#'+h.slug}>{h.text}</a>)}{models.length>0 && <a href="#references">Les références</a>}</nav>
+      <article class="reading"><section class="guide-prose"><Content/></section>
+        {models.length>0 && <section id="references"><h2>Les montres du guide</h2><ul class="source-list">{models.map(w=><li><a href={'/montres/'+w.id+'/'}>{w.data.brand} {w.data.name} · {w.data.reference}</a></li>)}</ul>{compare && <a class="button" href={'/trouver-ma-montre/?comparer='+compare+'#comparaison'}>{models.length>3?"Comparer les trois premiers modèles":"Comparer les modèles"} →</a>}</section>}
+        <section><h2>Sources</h2><ul class="source-list">{entry.data.sources.map(s=><li><a href={s.url}>{s.label} ↗</a></li>)}</ul><a href="/notre-methode/">Notre méthode de sélection</a></section>
+      </article>
+    </div>
+  </div>
+</Cadrin>
+<style>.guide-prose :global(h2:not(:first-child)){margin-top:2.2em}.button{margin-top:1em}</style>

@@ -1,0 +1,1 @@
+{"extends":"astro/tsconfigs/strict","exclude":["archives","dist","dist-production","node_modules",".astro-before-cadrin"]}

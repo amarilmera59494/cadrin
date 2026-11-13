@@ -1,0 +1,10 @@
+---
+import type { Product } from '../data/products';
+import MerchantLink from './MerchantLink.astro';
+const {product:p,index=0,placement='selection'}=Astro.props as {product:Product;index?:number;placement?:string};
+---
+<article class="product" data-product-row data-movement={p.movement} data-size={p.size} data-use={p.use} id={p.id}>
+ <div class="product-top"><span class="eyebrow">{String(index+1).padStart(2,'0')} / {p.brand}</span><span class="product-use">{p.use}</span></div>
+ <h3>{p.name}</h3><p class="reference">{p.reference}</p><div class="product-spec"><span>{p.sizeLabel}</span><span>{p.movement}</span></div><p class="product-note">{p.note}</p>
+ <details class="product-details"><summary>Repères & source <span aria-hidden="true">+</span></summary><div><p>{p.material}. {p.limit}</p><p>Caractéristiques constructeur consultées le 12/11/2026. Lecture éditoriale, sans essai. Prix et stock non vérifiés ; photo produit autorisée non fournie.</p><a href={p.source}>Consulter la fiche constructeur ↗</a><MerchantLink productId={p.id} placement={placement}/></div></details>
+</article>

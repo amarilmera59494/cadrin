@@ -1,0 +1,12 @@
+---
+import { catalogue } from '../../lib/editorial';
+import FirstWatchGuide from '../../components/FirstWatchGuide.astro';
+import BuyingGuide from '../../components/BuyingGuide.astro';
+export async function getStaticPaths() {
+  const {guides} = await catalogue();
+  return guides.map(entry => ({params: {slug:entry.id}, props: {entry}}));
+}
+const {entry} = Astro.props;
+const Guide = entry.id === 'choisir-premiere-montre' ? FirstWatchGuide : BuyingGuide;
+---
+<Guide entry={entry}/>

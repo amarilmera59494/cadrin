@@ -1,0 +1,7 @@
+---
+import { site, type Direction } from '../data/site';
+const {direction, guide=false}=Astro.props as {direction:Direction;guide?:boolean};
+const root=`/concepts/${direction}/`;
+---
+<header class="site-header wrap"><a class="wordmark" href={root} aria-label={`${site.name}, accueil`}>{site.name}<span class="brand-dot" aria-hidden="true">.</span></a><span class="header-signature">{site.signature}</span><nav class="desktop-nav" aria-label="Navigation principale"><a href={`${root}#selection`}>Les montres</a><a href={`${root}guide/`} aria-current={guide?'page':undefined}>Le guide</a><a href={`${root}#approche`}>Notre regard</a></nav><details class="mobile-nav"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Navigation mobile"><a href={`${root}#selection`}>Les montres</a><a href={`${root}guide/`}>Le guide</a><a href={`${root}#approche`}>Notre regard</a><a href="/concepts/">Les trois directions</a></nav></details></header>
+<script>document.querySelectorAll<HTMLDetailsElement>('.mobile-nav').forEach(menu=>{menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.open=false));menu.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.open=false;menu.querySelector('summary')?.focus()}})});</script>

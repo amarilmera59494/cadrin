@@ -1,0 +1,19 @@
+import {readFile,readdir,writeFile} from 'node:fs/promises';
+import {gzipSync} from 'node:zlib';
+const production=process.env.SITE_STAGE==='production';const dir=production?'dist-production':'dist';
+async function walk(path){return(await Promise.all((await readdir(path,{withFileTypes:true})).map(f=>f.isDirectory()?walk(`${path}/${f.name}`):`${path}/${f.name}`))).flat()}
+const files=await walk(dir), results=[];const errors=[];
+for(const file of files.filter(f=>f.endsWith('.html'))){const html=await readFile(file,'utf8');const route=file.slice(dir.length);const is404=route==='/404.html';
+ if(/AU PORTÉ|Étude de design|\/concepts\/|cadrin\.com/.test(html))errors.push(`${route}: marque ou concept archivé`);
+ const noindex=html.includes('content="noindex, nofollow"');if(noindex!==(!production||is404))errors.push(`${route}: robots incorrects`);
+ if(production&&!is404&&!html.includes('rel="canonical" href="https://cadrin.fr/'))errors.push(`${route}: canonical absent`);
+ if(!production&&html.includes('rel="canonical"'))errors.push(`${route}: canonical en preview`);
+ for(const match of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)){const json=JSON.parse(match[1]);if(/"(?:Offer|Review|AggregateRating|Product)"/.test(JSON.stringify(json)))errors.push(`${route}: schema non autorisé`)}
+ let jsBytes=0;for(const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){if(match[1].includes('application/ld+json'))continue;const src=match[1].match(/src="([^"]+)"/);jsBytes+=gzipSync(src?await readFile(dir+src[1]):Buffer.from(match[2])).length;}if(jsBytes>60000)errors.push(`${route}: budget JS dépassé`);
+ results.push({route,jsGzipBytes:jsBytes,noindex,htmlBytes:Buffer.byteLength(html)});
+}
+if(files.some(f=>f.includes('/concepts/')))errors.push('Concepts dans le build');
+const hasSitemap=files.includes(`${dir}/sitemap.xml`);if(hasSitemap!==production)errors.push('Sitemap incorrect');
+if(production){const sitemap=await readFile(`${dir}/sitemap.xml`,'utf8');if(/404|\/montres\/|choisir-premiere-montre|trois-montres-au-quotidien/.test(sitemap))errors.push('Brouillon dans sitemap');}
+await writeFile(`evidence/cadrin/${production?'production':'preview'}-build-report.json`,JSON.stringify({results,errors},null,2));
+console.log(JSON.stringify({routes:results.length,maxJsGzip:Math.max(...results.map(r=>r.jsGzipBytes)),errors}));if(errors.length)process.exitCode=1;

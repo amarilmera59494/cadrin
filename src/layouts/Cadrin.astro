@@ -1,0 +1,19 @@
+---
+import '../styles/cadrin.css';
+import bodyFont from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
+import displayFont from '@fontsource/barlow-condensed/files/barlow-condensed-latin-500-normal.woff2?url';
+import logoFont from '@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff2?url';
+import CadrinHeader from '../components/CadrinHeader.astro';
+import CadrinFooter from '../components/CadrinFooter.astro';
+import {site} from '../data/site';
+import {production} from '../lib/editorial';
+interface Props {title:string;description:string;article?:boolean;notFound?:boolean;crumbs?:{name:string;url:string}[];verifiedAt?:string|null}
+const {title,description,article=false,notFound=false,crumbs=[],verifiedAt}=Astro.props;
+const canonical=new URL(Astro.url.pathname,site.publicOrigin).href;
+const schema={'@context':'https://schema.org','@graph':[
+  {'@type':'WebSite',name:'Cadrin',url:site.publicOrigin,inLanguage:'fr'},
+  ...(crumbs.length?[{'@type':'BreadcrumbList',itemListElement:[{name:'Accueil',url:'/'},...crumbs].map((c,i)=>({'@type':'ListItem',position:i+1,name:c.name,item:new URL(c.url,site.publicOrigin).href}))}]:[]),
+  ...(article?[{'@type':'Article',headline:title,description,inLanguage:'fr',...(verifiedAt?{dateModified:verifiedAt}:{})}]:[])
+]};
+---
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title} — Cadrin</title><meta name="description" content={description}/><meta name="robots" content={!production||notFound?'noindex, nofollow':'index, follow'}/><link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin/><link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin/><link rel="preload" href={logoFont} as="font" type="font/woff2" crossorigin/><meta name="theme-color" content="#4a1725"/>{production&&!notFound&&<link rel="canonical" href={canonical}/>}<meta property="og:title" content={`${title} — Cadrin`}/><meta property="og:description" content={description}/><meta property="og:type" content={article?'article':'website'}/><meta property="og:locale" content="fr_FR"/><meta property="og:image" content={production?'https://cadrin.fr/images/og.jpg':'/images/og.jpg'}/>{production&&!notFound&&<meta property="og:url" content={canonical}/>}<link rel="icon" href="/favicon.svg" type="image/svg+xml"/><script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\u003c')}/></head><body><a class="skip" href="#main">Aller au contenu</a><CadrinHeader/><main id="main" tabindex="-1"><slot/></main><CadrinFooter/></body></html>

@@ -1,0 +1,37 @@
+---
+import { clearedPhoto } from '../data/product-photos';
+import { production } from '../lib/editorial';
+
+interface Props {
+  src: string | null;
+  reference: string;
+  approved: boolean;
+  detail?: boolean;
+}
+const {src, reference, approved, detail = false} = Astro.props;
+const photo = approved ? clearedPhoto(src, reference) : undefined;
+---
+{photo ? (
+  <figure class="product-photo">
+    <div class="photo-frame">
+      <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height}
+        class:list={[{worn: photo.kind === 'worn'}]} style={{objectPosition: photo.focus || 'center'}}
+        loading={detail ? 'eager' : 'lazy'} decoding="async" />
+    </div>
+    <figcaption>{photo.credit}</figcaption>
+  </figure>
+) : !production && (
+  <div class="photo-missing">
+    {!detail && <span class="photo-ref">{reference}</span>}
+    <small>Photographie non disponible</small>
+  </div>
+)}
+<style>
+  .photo-frame { aspect-ratio: 3 / 2; background: var(--sand); overflow: hidden }
+  .photo-frame img { display: block; height: 100%; width: 100%; object-fit: contain }
+  .photo-frame img.worn { object-fit: cover }
+  figcaption, .photo-missing small { font-size: .79rem; color: var(--muted) }
+  .photo-missing { padding: 20px 22px; background: var(--sand); display: flex; flex-direction: column; justify-content: center; gap: 4px }
+  .photo-ref { font: 500 clamp(26px, 2.4vw, 38px)/1.15 var(--display); color: var(--wine); overflow-wrap: anywhere }
+  @media (max-width: 700px) { .photo-missing { padding: 14px 18px } }
+</style>

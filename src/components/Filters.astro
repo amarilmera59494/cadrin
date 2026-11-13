@@ -1,0 +1,16 @@
+<form class="filter-form" id="filters" hidden><label>Mouvement<select name="movement"><option value="">Tous les mouvements</option><option>Automatique</option><option>Quartz</option><option>Solaire</option></select></label><label>Dimensions renseignées<select name="size"><option value="">Toutes les références</option><option value="medium">Boîtier rond de 40 mm</option><option value="unknown">Dimensions à confirmer</option></select></label><label>Usage envisagé<select name="use"><option value="">Tous les usages</option><option value="quotidien">Quotidien</option><option value="bureau">Bureau</option></select></label><button type="reset">Tout réinitialiser</button></form>
+<noscript><p class="disclosure">Toutes les références sont affichées ci-dessous. Les filtres nécessitent JavaScript ; les fiches et leurs liens restent accessibles.</p></noscript>
+<script>
+const form=document.querySelector<HTMLFormElement>('#filters');
+if(form){
+ const rows=[...document.querySelectorAll<HTMLElement>('[data-product-row]')];
+ const count=document.querySelector<HTMLOutputElement>('#result-count')!;
+ const empty=document.querySelector<HTMLElement>('#empty')!;
+ form.hidden=false;
+ const params=new URLSearchParams(location.search);
+ for(const select of form.querySelectorAll('select')){const value=params.get(select.name);if(value&&[...select.options].some(o=>o.value===value))select.value=value}
+ function update(){const data=new FormData(form!);let total=0;rows.forEach(row=>{const known=!!row.dataset.size,size=Number(row.dataset.size),bucket=data.get('size');const fits=!bucket||(bucket==='unknown'?!known:known&&size===40);const visible=(!data.get('movement')||data.get('movement')===row.dataset.movement)&&(!data.get('use')||data.get('use')===row.dataset.use)&&fits;row.hidden=!visible;if(visible)total++});count.textContent=`${total} référence${total>1?'s':''} à explorer`;empty.hidden=total>0;const url=new URL(location.href);for(const key of ['movement','size','use']){const value=data.get(key);if(value)url.searchParams.set(key,String(value));else url.searchParams.delete(key)}history.replaceState(null,'',url)}
+ form.addEventListener('submit',e=>e.preventDefault());form.addEventListener('change',update);form.addEventListener('reset',()=>requestAnimationFrame(update));
+ document.querySelector('#empty-reset')?.addEventListener('click',()=>{form.reset();form.querySelector('select')?.focus()});update();
+}
+</script>

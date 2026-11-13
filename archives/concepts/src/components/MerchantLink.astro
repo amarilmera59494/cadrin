@@ -1,0 +1,7 @@
+---
+import { affiliateLinks, merchants } from '../data/merchants';
+const {productId,placement}=Astro.props as {productId:string;placement:string};
+const link=affiliateLinks[productId];
+const merchant=link && merchants.find(m=>m.id===link.merchantId);
+---
+{link?.validated && merchant?.approved ? <a href={link.url} rel="sponsored noopener noreferrer" target="_blank" data-affiliate data-product={productId} data-placement={placement}>Voir chez {merchant.name} ↗</a> : <span class="merchant-pending">Lien marchand en attente de validation</span>}

@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import WatchPhoto from './WatchPhoto.astro';
+interface Props { watch: CollectionEntry<'watches'> }
+const {watch} = Astro.props;
+const p = watch.data;
+---
+<article class="watch-card" data-product-row data-movement={p.movement} data-size={p.size} data-use={p.use}>
+  <p class="eyebrow">{p.brand}</p>
+  <h3><a href={`/montres/${watch.id}/`}>{p.name}</a></h3>
+  <WatchPhoto src={p.image} reference={p.reference} approved={p.rights==='approved'}/>
+  {p.image && <p class="reference">{p.reference}</p>}
+  <p class="watch-note">{p.note}</p>
+  <dl class="watch-specs">
+    <div><dt>Boîtier</dt><dd>{p.sizeLabel}</dd></div>
+    <div><dt>Mouvement</dt><dd>{p.movement}</dd></div>
+  </dl>
+  <a class="text-link" href={`/montres/${watch.id}/`} aria-label={`Découvrir la fiche ${p.brand} ${p.reference}`}>
+    Découvrir la fiche <span aria-hidden="true">→</span>
+  </a>
+</article>
+<style>
+  .watch-card h3 { margin: 6px 0 16px; line-height: 1.12 }
+  .watch-note { font-size: 1rem; line-height: 1.6 }
+</style>

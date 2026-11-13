@@ -1,0 +1,7 @@
+---
+import {dateLabel} from "../lib/editorial";
+import {destinations,validDestination} from '../data/destinations';
+const {id,placement='fiche'}=Astro.props as {id:string;placement?:string};const destination=destinations[id];
+---
+{validDestination(destination)?<><a class="button" href={destination.url} rel={destination.affiliate?'sponsored':undefined} data-affiliate={destination.affiliate?'true':undefined} data-content={id} data-reference={destination.reference} data-merchant={destination.merchant} data-placement={placement}>Voir chez {destination.merchant} <span aria-hidden="true">↗</span></a><p class="small-note">{destination.affiliate?'Lien affilié : Cadrin peut percevoir une commission.':'Lien ordinaire, sans commission.'} Destination vérifiée le {dateLabel(destination.verifiedAt)}.</p></>:<p class="merchant-pending">Aucune destination marchande validée pour cette référence. La fiche fabricant reste disponible dans les sources.</p>}
+<script>document.querySelectorAll<HTMLAnchorElement>('[data-affiliate="true"]').forEach(link=>link.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('affiliate_click',{detail:{contentId:link.dataset.content,reference:link.dataset.reference,merchant:link.dataset.merchant,placement:link.dataset.placement}}))));</script>

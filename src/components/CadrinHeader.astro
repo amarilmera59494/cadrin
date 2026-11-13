@@ -1,0 +1,21 @@
+---
+import Wordmark from './Wordmark.astro';
+const path=Astro.url.pathname;
+import {catalogue} from '../lib/editorial';
+const {finder}=await catalogue();
+const links=[...(finder.length ? [['/trouver-ma-montre/','Trouver ma montre']] : []),['/selections/','Sélections'],['/guides/','Guides'],['/notre-methode/','Notre méthode']];
+---
+<header class="c-header"><div class="container header-inner"><Wordmark/><span class="brand-tagline">Le sens du porté.</span><button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button><nav id="primary-navigation" aria-label="Navigation principale">{links.map(([url,label])=><a href={url} aria-current={path.startsWith(url)?'page':undefined}>{label}</a>)}</nav></div></header>
+<script>
+const toggle=document.querySelector<HTMLButtonElement>('.menu-toggle');
+const nav=document.querySelector<HTMLElement>('#primary-navigation');
+if(toggle&&nav){
+  document.documentElement.classList.add('menu-ready');toggle.hidden=false;
+  const close=()=>{toggle.setAttribute('aria-expanded','false');nav.classList.remove('is-open')};
+  toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));nav.classList.toggle('is-open',open)});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true'){close();toggle.focus()}});
+  document.addEventListener('click',event=>{if(event.target instanceof Node&&!nav.contains(event.target)&&!toggle.contains(event.target))close()});
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+  nav.addEventListener('focusout',()=>{requestAnimationFrame(()=>{if(!nav.contains(document.activeElement)&&document.activeElement!==toggle)close()})});
+}
+</script>

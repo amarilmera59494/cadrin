@@ -1,0 +1,10 @@
+---
+import { images } from '../data/images';
+interface Props { name: keyof typeof images; eager?: boolean; class?: string; caption?: boolean; sizes?: string }
+const {name, eager=false, class:className='', caption=true, sizes='(max-width: 700px) 100vw, 65vw'} = Astro.props;
+const data=images[name];
+---
+<figure class:list={['photo',className]}>
+ <picture><source type="image/avif" srcset={[480,900,1600].map(w=>`/images/${name}-${w}.avif ${w}w`).join(', ')} sizes={sizes}/><img src={`/images/${name}-900.webp`} srcset={[480,900,1600].map(w=>`/images/${name}-${w}.webp ${w}w`).join(', ')} sizes={sizes} width={data.width} height={data.height} alt={data.alt} loading={eager?'eager':'lazy'} fetchpriority={eager?'high':'auto'} decoding="async" /></picture>
+ {caption && <figcaption>Photographie d’ambiance · <a href={data.page}>{data.author}</a> / Unsplash. Hors sélection.</figcaption>}
+</figure>

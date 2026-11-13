@@ -1,0 +1,5 @@
+---
+import Wordmark from './Wordmark.astro';
+import { production } from '../lib/editorial';
+---
+<footer class="c-footer"><div class="container"><div class="footer-main"><div><Wordmark footer/></div><nav aria-label="Navigation de pied de page"><a href="/selections/">Explorer les sélections</a><a href="/guides/">Les guides</a><a href="/notre-methode/">Notre méthode</a><a href="/notre-methode/#affiliation">Affiliation & transparence</a></nav><p class="footer-statement">Média horloger francophone.</p></div><div class="footer-bottom"><span>CADRIN · Le sens du porté.</span><span>{!production && 'Prévisualisation'}</span></div></div></footer>
