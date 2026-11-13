@@ -1,10 +1,15 @@
+import {featureRoutes} from '../data/feature-routes.ts';
 import {cataloguePages} from '../data/catalogue-meta.ts';
 export type Locale = 'fr' | 'en';
 export const localeOf = (path:string):Locale => path === '/en' || path.startsWith('/en/') ? 'en' : 'fr';
 export const routePairs:Record<string,string> = {
   '/':'/en/',
+  ...featureRoutes,
   '/vues-sur-nos-reseaux/':'/en/seen-on-social/',
   '/analyses/':'/en/analysed-watches/',
+  '/mes-favoris/':'/en/saved-watches/',
+  '/marques/':'/en/brands/',
+  '/comparatifs/':'/en/comparisons/',
   '/guides/choisir-couleur-cadran/':'/en/guides/choosing-a-dial-colour/',
   '/guides/g-shock-montre-jeune/':'/en/guides/g-shock-and-first-watches/',
   '/guides/premiere-montre-haut-de-gamme/':'/en/guides/buying-a-higher-end-watch/',
@@ -31,6 +36,7 @@ export function localPath(path:string, locale:Locale):string {
 }
 export const textFor=(locale:Locale)=>(fr:string,en:string)=>locale==='en'?en:fr;
 const terms:Record<string,string>={
+ 'Acier Inoxydable':'Stainless steel','Boitier en résine':'Resin case','Verre en résine':'Resin crystal','Verre acrylique':'Acrylic crystal','Bracelet avec finition plaquée par ionisation':'Ion-plated strap / bracelet finish','Résine renforcé en fibre de carbone':'Carbon-fibre-reinforced resin','Verre saphir résistant aux rayures, traitement antireflet multicouche':'Scratch-resistant sapphire crystal, multilayer antireflective treatment','Acier inoxydable et lunette en céramique':'Stainless steel and ceramic bezel','cuir':'Leather','Minéral trempé':'Hardened mineral crystal','5 ATM (50 mètres)':'5 ATM (50 metres)','10 ATM (100 mètres)':'10 ATM (100 metres)',
   'Dimensions (L × l × H)':'Dimensions (L × W × H)',Poids:'Weight',Fonctions:'Functions',Fonction:'Function',Fermoir:'Clasp','Fond du boîtier':'Case back',"Résistance à l'eau":'Water resistance','Quartz à pile · calibre 593':'Battery quartz · calibre 593','Acrylique':'Acrylic','Acier inoxydable doré':'Gold-tone stainless steel','Verre minéral':'Mineral glass','Minéral':'Mineral','Minéral bombé':'Domed mineral','Cuir de bovin':'Cowhide leather','Boucle ardillon':'Pin buckle','Boucle déployante':'Folding clasp','Boucle déployante à poussoirs':'Push-button folding clasp','Boucle déployante avec bouton poussoir':'Push-button folding clasp','Date & Jour':'Day and date','Jour et date kanji':'Day and date (kanji)','3 aiguilles':'Three hands',
   Noir:'Black',Bleu:'Blue',Vert:'Green',Blanc:'White','Argenté':'Silver',Gris:'Grey',Rose:'Pink',Rouge:'Red',Marron:'Brown',Jaune:'Yellow','Doré':'Gold',Orange:'Orange',Violet:'Purple',Titane:'Titanium','Résine / caoutchouc':'Resin / rubber',Textile:'Textile','Connectée':'Connected',Chronographe:'Chronograph',Alarme:'Alarm',
   Manuel:'Hand-wound',Automatique:'Automatic',Solaire:'Solar',Quartz:'Quartz',Acier:'Steel',Cuir:'Leather','Résine':'Resin',Aiguilles:'Analogue','Numérique':'Digital',Femme:'Women',Homme:'Men',

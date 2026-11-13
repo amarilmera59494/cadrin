@@ -6,9 +6,9 @@ const locale=localeOf(Astro.url.pathname),t=textFor(locale);
 const path=localPath(Astro.url.pathname,'fr');
 import {catalogue} from '../lib/editorial';
 const {finder}=await catalogue();
-const links=[...(finder.length ? [['/trouver-ma-montre/','Trouver ma montre']] : []),['/catalogue/','Catalogue'],['/selections/','Sélections'],['/vues-sur-nos-reseaux/','Vues en vidéo'],['/guides/','Guides'],['/notre-methode/','Notre méthode']];
+const links=[...(finder.length ? [['/trouver-ma-montre/','Trouver ma montre']] : []),['/catalogue/','Catalogue'],['/selections/','Sélections'],['/vues-sur-nos-reseaux/','Vues en vidéo'],['/guides/','Guides'],['/marques/','Marques']];
 ---
-<header class="c-header"><div class="container header-inner"><Wordmark/><span class="brand-tagline">{t('Le sens du porté.','Made for your wrist.')}</span><button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button><nav id="primary-navigation" aria-label={t("Navigation principale","Main navigation")}>{links.map(([url,label])=><a href={localPath(url,locale)} aria-current={path.startsWith(url)?'page':undefined}>{t(label,({'Catalogue':'Catalogue','Sélections':'Selections','Trouver ma montre':'Watch finder','Vues en vidéo':'Seen in videos','Guides':'Guides','Notre méthode':'Our method'} as Record<string,string>)[label])}</a>)}</nav><LanguageSwitch/></div></header>
+<header class="c-header"><div class="container header-inner"><Wordmark/><span class="brand-tagline">{t('Le sens du porté.','Made for your wrist.')}</span><button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button><nav id="primary-navigation" aria-label={t("Navigation principale","Main navigation")}>{links.map(([url,label])=><a href={localPath(url,locale)} aria-current={path.startsWith(url)?'page':undefined}>{t(label,({'Catalogue':'Catalogue','Sélections':'Selections','Trouver ma montre':'Watch finder','Vues en vidéo':'Seen in videos','Guides':'Guides','Marques':'Brands'} as Record<string,string>)[label])}</a>)}</nav><LanguageSwitch/></div></header>
 <!-- Initialize before main is parsed: a delayed module would move the page when the menu collapses. -->
 <script is:inline>
 const toggle=document.querySelector('.menu-toggle');

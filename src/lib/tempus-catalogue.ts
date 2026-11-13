@@ -26,7 +26,11 @@ export function filterCatalogue(products:CatalogueProduct[],f:CatalogueFilters){
  return rows.sort((a,b)=>(f.sort==='price'?a.price-b.price:f.sort==='price-desc'?b.price-a.price:f.sort==='size'?(sizeNumber(a.caseSize)??Infinity)-(sizeNumber(b.caseSize)??Infinity):f.sort==='brand'?0:Number(!!b.bestseller)-Number(!!a.bestseller)||Number(b.orderable)-Number(a.orderable))||a.brand.localeCompare(b.brand,'fr')||a.title.localeCompare(b.title,'fr')||a.id.localeCompare(b.id));
 }
 export function detailRows(p:CatalogueProduct,en=false):[string,string][]{return [[en?'Dial':'Cadran',p.dial],[en?'Case size':'Dimension du boîtier',p.caseSize],[en?'Thickness':'Épaisseur',p.thickness],[en?'Case material':'Boîtier',p.caseMaterial],[en?'Strap / bracelet':'Bracelet',p.strap],[en?'Crystal':'Verre',p.glass],[en?'Calibre':'Calibre',p.calibre],[en?'Functions':'Fonctions',p.functions],[en?'Water resistance':'Étanchéité',p.water]].filter((r):r is [string,string]=>!!r[1]);}
+// Nine tested Longines destinations redirect to the shop homepage (14 November 2026).
+// Pause this brand's purchase links pending a verified repair; catalogue data is retained.
+export const merchantLinkAvailable=(p:Pick<CatalogueProduct,'brand'>)=>p.brand!=='Longines';
 export function orderLabel(p:CatalogueProduct,en=false){
+ if(!merchantLinkAvailable(p))return en?'Longines purchase links temporarily unavailable':'Liens d’achat Longines temporairement indisponibles';
  if(!p.orderable)return en?'Ordering unavailable at the last check':'Commande indisponible au relevé';
  if(p.order==='preorder')return en?'Listed as a preorder':'En précommande chez Tempus';
  if(p.order==='order')return en?'Listed as available to order':'Sur commande chez Tempus';

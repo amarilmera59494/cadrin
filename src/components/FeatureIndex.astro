@@ -1,0 +1,12 @@
+---
+import Cadrin from '../layouts/Cadrin.astro';
+import {features,featurePath} from '../data/features';
+import data from '../data/tempus-catalogue.json';
+import {localeOf,localPath,textFor} from '../lib/i18n';
+import '../styles/features.css';
+const {kind}=Astro.props as {kind:'brand'|'comparison'};
+const locale=localeOf(Astro.url.pathname),en=locale==='en',t=textFor(locale);
+const title=kind==='brand'?t('Les marques, au-delà du nom.','Brands, beyond the name.'):t('Deux envies. Un choix plus clair.','Two possibilities. A clearer choice.');
+const description=kind==='brand'?t('Leur histoire, leurs grandes familles et les références à regarder chez Tempus : entrez par la marque, choisissez selon votre usage.','Their history, main collections and exact references at Tempus: start with a brand, choose for your use.'):t('Des comparatifs entre références précises, avec les photos, les différences utiles et les prix relevés chez Tempus.','Comparisons of exact references, with photos, useful differences and recorded Tempus prices.');
+---
+<Cadrin title={title} description={description}><div class="container feature-page"><header class="feature-heading"><p class="eyebrow">{kind==='brand'?t('Les dossiers de marque','Brand guides'):t('Les comparatifs CADRIN','CADRIN comparisons')}</p><h1>{title}</h1><p class="feature-intro">{description}</p></header><div class="feature-index-grid">{features.filter(f=>f.kind===kind).map(f=>{const p=data.products.find(p=>p.reference===f.choices[0].reference)!;return <article><a class="feature-index-image" href={featurePath(f,en)} tabindex="-1" aria-hidden="true"><img src={p.image} width={p.width} height={p.height} loading="lazy" alt=""/></a><div><h2><a href={featurePath(f,en)}>{f.title[en?1:0]}</a></h2><p>{f.intro[en?1:0]}</p><a class="text-link" href={featurePath(f,en)}>{t('Lire le dossier','Read the guide')} →</a></div></article>})}</div><aside class="feature-catalogue-callout"><h2>{kind==='brand'?t('Vous hésitez entre deux montres ?','Between two watches?'):t('Envie de comprendre une marque ?','Want to understand a brand?')}</h2><a class="text-link" href={localPath(kind==='brand'?'/comparatifs/':'/marques/',locale)}>{kind==='brand'?t('Tous nos comparatifs','All comparisons'):t('Tous les dossiers de marque','All brand guides')} →</a></aside></div></Cadrin>

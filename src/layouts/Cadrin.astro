@@ -1,5 +1,6 @@
 ---
 import '../styles/guide-examples.css';
+import '../styles/saved.css';
 import '../styles/cadrin.css';
 import bodyFont from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
 import displayFont from '@fontsource/barlow-condensed/files/barlow-condensed-latin-500-normal.woff2?url';
@@ -23,6 +24,7 @@ const schema={'@context':'https://schema.org','@graph':[
 <!doctype html><html lang={locale}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title} — Cadrin</title><meta name="description" content={description}/><meta name="robots" content={!production||notFound?'noindex, nofollow':'index, follow'}/><link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin/><link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin/><link rel="preload" href={logoFont} as="font" type="font/woff2" crossorigin/><meta name="theme-color" content="#4a1725"/>{production&&!notFound&&<link rel="canonical" href={canonical}/>}{production&&!notFound&&hasAlternate&&<>{(['fr','en'] as const).map(lang=><link rel="alternate" hreflang={lang} href={new URL(localPath(Astro.url.pathname,lang),site.publicOrigin).href}/>)}<link rel="alternate" hreflang="x-default" href={new URL(localPath(Astro.url.pathname,'fr'),site.publicOrigin).href}/></>}<meta property="og:title" content={`${title} — Cadrin`}/><meta property="og:description" content={description}/><meta property="og:type" content={article?'article':'website'}/><meta property="og:locale" content={locale==='en'?'en_GB':'fr_FR'}/><meta property="og:image" content={production?'https://cadrin.fr/images/og.jpg':'/images/og.jpg'}/>{production&&!notFound&&<meta property="og:url" content={canonical}/>}<link rel="icon" href="/favicon.svg" type="image/svg+xml"/><script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\u003c')}/></head><body><a class="skip" href="#main">{t('Aller au contenu','Skip to content')}</a><CadrinHeader/><main id="main" tabindex="-1"><slot/></main><CadrinFooter/></body></html>
 
 <script>
+import '../scripts/saved-watches';
 // One local event per deliberate purchase click. No cookies, storage or network collector.
 document.addEventListener('click',event=>{
  const link=event.target instanceof Element?event.target.closest<HTMLAnchorElement>('a.merchant-button'):null;

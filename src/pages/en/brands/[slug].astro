@@ -1,0 +1,7 @@
+---
+import FeaturePage from '../../../components/FeaturePage.astro';
+import {features} from '../../../data/features';
+export function getStaticPaths(){return features.filter(f=>f.kind==='brand').map(feature=>({params:{slug:feature.enSlug},props:{feature}}));}
+const {feature}=Astro.props;
+---
+<FeaturePage feature={feature}/>
