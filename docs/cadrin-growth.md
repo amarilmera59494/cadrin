@@ -51,7 +51,7 @@ npm run dev
 
 $env:SITE_STAGE='production'
 npm run build
-npm run cloudflare:dev
+npm run cloudflare:dev -- dist-production
 # Pour publier une version autorisée : npm run deploy
 ```
 
