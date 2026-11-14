@@ -41,7 +41,9 @@ try {
  await page.locator('#comparaison').screenshot({path:dir+'/comparaison.png'});
  await page.locator('[data-remove="casio-f91w"]').click();assert.equal(await page.locator('.pick input:checked').count(),2);
  await page.goto(root+'/guides/offrir-une-montre/');
- await page.getByRole('link',{name:/classées femme/}).click();await page.waitForLoadState('load');assert.equal(await visible.count(),1);
+ // Le guide renvoie vers le catalogue filtré sur la catégorie Femme (et non plus vers le sélecteur).
+ await page.getByRole('link',{name:/classées femme/}).click();await page.waitForLoadState('load');assert.match(page.url(),/\/catalogue\/\?category=Femme/);await page.waitForSelector('.catalogue-card');assert(await page.locator('.catalogue-card').count()>0);
+ await page.goto(base+'?categorie=Femme');await page.waitForLoadState('load');assert.equal(await visible.count(),1);
  assert.ok((await visible.innerText()).includes('EM1201-52L'));
  await visible.getByRole('link',{name:'Consulter la fiche'}).click();
  assert.equal(await page.locator('.purchase-panel').getByRole('link',{name:'Acheter chez Tempus'}).getAttribute('href'),destinations['citizen-rainell-em1201-52l'].url);
