@@ -1,0 +1,215 @@
+{
+ "checkedAt": "2026-11-14",
+ "blackFriday": "2026-11-27",
+ "cyberMonday": "2026-11-30",
+ "items": [
+  {
+   "handle": "lip-rallye-chronographe-39-mm-671808",
+   "group": "chrono",
+   "price": 149.5,
+   "was": 299,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 149.5
+    }
+   ]
+  },
+  {
+   "handle": "seiko-petite-seconde-acier-srk047p1",
+   "group": "habillee",
+   "price": 199,
+   "was": 289,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 199
+    }
+   ]
+  },
+  {
+   "handle": "casio-g-shock-ga-100-1a1",
+   "group": "sport",
+   "price": 89,
+   "was": 119,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 89
+    }
+   ]
+  },
+  {
+   "handle": "seiko-arabic-dial",
+   "group": "auto",
+   "price": 219,
+   "was": 279,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 219
+    }
+   ]
+  },
+  {
+   "handle": "seiko-arabic-dial-34mm",
+   "group": "auto",
+   "price": 180,
+   "was": 240,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 180
+    }
+   ]
+  },
+  {
+   "handle": "citizen-em1070-83a",
+   "group": "elle",
+   "price": 201.75,
+   "was": 269,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 201.75
+    }
+   ]
+  },
+  {
+   "handle": "citizen-openheart-nh9131-14e",
+   "group": "auto",
+   "price": 151.2,
+   "was": 189,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 151.2
+    }
+   ]
+  },
+  {
+   "handle": "casio-edifice-automatique-efk-200d-2a",
+   "group": "auto",
+   "price": 239,
+   "was": 299,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 239
+    }
+   ]
+  },
+  {
+   "handle": "seiko-5-snkl23j1",
+   "group": "auto",
+   "price": 183.2,
+   "was": 229,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 183.2
+    }
+   ]
+  },
+  {
+   "handle": "citizen-aw0102-13ae",
+   "group": "solaire",
+   "price": 119.2,
+   "was": 149,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 119.2
+    }
+   ]
+  },
+  {
+   "handle": "timex-q-chronograph-40mm-tw2y36100",
+   "group": "chrono",
+   "price": 183.2,
+   "was": 229,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 183.2
+    }
+   ]
+  },
+  {
+   "handle": "orient-bambino-v4-ra-ac0p01e",
+   "group": "auto",
+   "price": 259,
+   "was": 299,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 259
+    }
+   ]
+  },
+  {
+   "handle": "seiko-arabic-dial-green",
+   "group": "auto",
+   "price": 520,
+   "was": 720,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 520
+    }
+   ]
+  },
+  {
+   "handle": "lip-churchill-c18-671942",
+   "group": "elle",
+   "price": 99.5,
+   "was": 199,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 99.5
+    }
+   ]
+  },
+  {
+   "handle": "seiko-chronographe-ssb477p1",
+   "group": "chrono",
+   "price": 367,
+   "was": 480,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 367
+    }
+   ]
+  },
+  {
+   "handle": "casio-vintage-a158wea-1ef",
+   "group": "petit",
+   "price": 27.93,
+   "was": 39.9,
+   "available": true,
+   "history": [
+    {
+     "date": "2026-11-14",
+     "price": 27.93
+    }
+   ]
+  }
+ ]
+}

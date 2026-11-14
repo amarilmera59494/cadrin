@@ -1,7 +1,7 @@
 // Only aggregate-event fields are logged. Never log request objects, headers or raw payloads.
 const events=new Set(['page_view','selector_complete','filter_change','compare','affiliate_click']);
 const sources=new Set(['direct','tiktok','pinterest','facebook','instagram','google','bing','other']);
-const placements=new Set(['page','guided','catalogue','comparison','social','guide','product','recommendation','cheaper-alternative','other']);
+const placements=new Set(['page','deal','guided','catalogue','comparison','social','guide','product','recommendation','cheaper-alternative','other']);
 const campaigns=new Set(['none','gshock-noire','tsuyosa-rose','casio-retro','tsuyosa-format','budget-50','budget-150','cadeau','solaire','gshock-guide','noel-lui','noel-elle','noel-budget','noel-luxe','noel-gshock','noel-auto','auto-trio','taille','mouvements','premiere-montre','ecodrive-tsuyosa','mako','page-bouton']);
 export function validateMetric(value,{pages,products}){
  if(!value||typeof value!=='object'||Array.isArray(value)||value.consent!==true||value.version!==1)return null;
