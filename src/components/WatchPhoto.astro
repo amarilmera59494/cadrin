@@ -22,7 +22,7 @@ const photo = approved ? clearedPhoto(src, reference) : undefined;
     </div>
     <figcaption>{en ? photo.creditEn || photo.credit : photo.credit}</figcaption>
   </figure>
-) : !production && (
+) : !production && (
   <div class="photo-missing">
     {!detail && <span class="photo-ref">{reference}</span>}
     <small>{en?'Photograph unavailable':'Photographie non disponible'}</small>

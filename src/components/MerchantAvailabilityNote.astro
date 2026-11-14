@@ -3,7 +3,7 @@ import {localeOf,textFor} from '../lib/i18n';
 const t=textFor(localeOf(Astro.url.pathname));
 ---
 <section id="liens-marchands" class="merchant-availability" aria-labelledby="merchant-availability-title">
- <h2 id="merchant-availability-title">{t('Pourquoi un lien est-il parfois suspendu ?','Why is a purchase link sometimes paused?')}</h2>
+ <h2 id="merchant-availability-title">{t('Pourquoi un lien est-il parfois suspendu ?','Why is a purchase link sometimes paused?')}</h2>
  <p>{t('Quand une fiche Tempus ne mène plus au modèle attendu, nous retirons son bouton d’achat. La montre reste consultable pour comparer ses caractéristiques ou la garder en favoris. Cela ne signifie pas qu’elle est en rupture de stock partout.','When a Tempus listing no longer opens the expected model, we remove its purchase button. You can still compare the watch’s specifications or save it. This does not mean it is sold out everywhere.')}</p>
  <p>{t('Le prix affiché reste celui de notre dernier relevé. Nous rétablissons le lien lorsqu’une destination correspondant à la référence a été vérifiée.','The displayed price remains our last recorded price. We restore the link once a destination matching the reference has been verified.')}</p>
 </section>

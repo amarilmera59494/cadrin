@@ -23,6 +23,14 @@ for(const file of files.filter(f=>f.endsWith('.html'))){
  if(missing.length)throw new Error(`Lien Tempus sans affiliation dans ${file} : ${missing[0][0]}`);
  if(next!==html)await writeFile(file,next);
 }
+// Typographie française sur le texte visible des pages françaises : espace insécable avant : ; ? ! » et après «.
+// Seuls les nœuds de texte sont touchés (jamais les balises, attributs, scripts ou styles).
+let typoPages=0;
+for(const file of files.filter(f=>f.endsWith('.html'))){
+ const html=await readFile(file,'utf8');if(!/<html lang="fr"/.test(html))continue;
+ const next=html.split(/(<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<[^>]+>)/).map((part,i)=>i%2?part:part.replace(/ ([:;?!»])/g,' $1').replace(/« /g,'« ')).join('');
+ if(next!==html){await writeFile(file,next);typoPages++;}
+}
 const scriptHashes=new Set();
 for(const file of files.filter(f=>f.endsWith('.html'))){
  const html=await readFile(file,'utf8');

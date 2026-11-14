@@ -2,5 +2,5 @@
 import {localeOf,localPath,textFor} from '../lib/i18n';
 const locale=localeOf(Astro.url.pathname),t=textFor(locale);
 ---
-<aside class="container social-entry"><span>{t('Vous l’avez vue en vidéo ?','Spotted a watch in a video?')}</span><a href={localPath('/vues-sur-nos-reseaux/',locale)}>{t('Retrouvez la bonne référence','Find the exact reference')} <span aria-hidden="true">→</span></a></aside>
+<aside class="container social-entry"><span>{t('Vous l’avez vue en vidéo ?','Spotted a watch in a video?')}</span><a href={localPath('/vues-sur-nos-reseaux/',locale)}>{t('Retrouvez la bonne référence','Find the exact reference')} <span aria-hidden="true">→</span></a></aside>
 <style>.social-entry{display:flex;gap:1rem;justify-content:space-between;align-items:center;padding-block:1.2rem;border-bottom:1px solid var(--line,#c8beb1);color:var(--wine)}.social-entry a{font-weight:650;text-underline-offset:.25em}@media(max-width:600px){.social-entry{align-items:start;flex-direction:column;gap:.35rem}}</style>

@@ -28,7 +28,7 @@ description: "Le bracelet en acier prolonge les lignes de la boîte. Une loupe a
 
 ## Ce qui distingue cette Tsuyosa
 
-Sur cette référence, le cadran noir se lit sur des index bâtons et la date apparaît sous une loupe. Le bracelet métallique fait partie du dessin de la montre. Regardez le raccord entre la boîte et les premiers maillons : c’est là que se joue une partie du tombé au poignet.
+Sur cette référence, le cadran noir se lit sur des index bâtons et la date apparaît sous une loupe. Le bracelet métallique fait partie du dessin de la montre. Regardez le raccord entre la boîte et les premiers maillons : c’est là que se joue une partie du tombé au poignet.
 
 ## Les vérifications en boutique
 

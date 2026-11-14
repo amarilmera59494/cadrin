@@ -28,7 +28,7 @@ facts: [{"label": "Mouvement", "value": "Eco-Drive"}, {"label": "Fonctions", "va
 
 ## Une montre à laisser prendre la lumière
 
-Le calibre J800 emmagasine l’énergie reçue par le cadran. Citizen annonce 240 jours de réserve à pleine charge. Pour quelqu’un qui porte souvent la même montre, l’intérêt est simple : elle se recharge pendant la journée.
+Le calibre J800 emmagasine l’énergie reçue par le cadran. Citizen annonce 240 jours de réserve à pleine charge. Pour quelqu’un qui porte souvent la même montre, l’intérêt est simple : elle se recharge pendant la journée.
 
 ## Avant de choisir
 

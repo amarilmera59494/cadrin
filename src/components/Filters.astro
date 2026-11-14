@@ -8,7 +8,7 @@ const locale=localeOf(Astro.url.pathname),t=textFor(locale);
  <label>{t('Usage envisagé','Suggested use')}<select name="use"><option value="">{t('Tous les usages','All uses')}</option><option value="quotidien">{t('Quotidien','Everyday')}</option><option value="bureau">{t('Bureau','Office')}</option></select></label>
  <button type="reset">{t('Tout réinitialiser','Reset all')}</button>
 </form>
-<noscript><p class="disclosure">{t('Toutes les références sont affichées ci-dessous. Les filtres nécessitent JavaScript ; les fiches et leurs liens restent accessibles.','All references appear below. Filtering requires JavaScript; watch details and their links remain available.')}</p></noscript>
+<noscript><p class="disclosure">{t('Toutes les références sont affichées ci-dessous. Les filtres nécessitent JavaScript ; les fiches et leurs liens restent accessibles.','All references appear below. Filtering requires JavaScript; watch details and their links remain available.')}</p></noscript>
 <script>
 const form=document.querySelector<HTMLFormElement>('#filters');
 if(form){

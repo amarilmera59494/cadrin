@@ -26,7 +26,7 @@ facts: [{"label": "Mouvement", "value": "Eco-Drive"}, {"label": "Fonctions", "va
 ---
 ## Un petit cadran à essayer
 
-La Rainell dessine une goutte autour du cadran bleu. Sa largeur de 26,2 mm est un repère utile si vous connaissez la taille de la montre portée habituellement. Pour un cadeau, regardez aussi la place qu’occupent les aiguilles : la personne apprécie-t-elle un petit bijou qui donne l’heure, ou préfère-t-elle la lire de loin ?
+La Rainell dessine une goutte autour du cadran bleu. Sa largeur de 26,2 mm est un repère utile si vous connaissez la taille de la montre portée habituellement. Pour un cadeau, regardez aussi la place qu’occupent les aiguilles : la personne apprécie-t-elle un petit bijou qui donne l’heure, ou préfère-t-elle la lire de loin ?
 
 ## Avant la mise à longueur
 

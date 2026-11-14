@@ -32,4 +32,4 @@ La Bambino occupe 38,5 mm de diamètre selon la fiche Tempus. De face, elle peut
 
 ## Si vous la portez en alternance
 
-Le calibre F6724 se remonte aussi à la couronne. Orient annonce plus de 40 heures de réserve. Après plusieurs jours dans un tiroir, prévoyez de régler l’heure et la date. Le bracelet en cuir est un autre point de choix : vérifiez sa longueur et l’emplacement des trous avant de vous décider.
+Le calibre F6724 se remonte aussi à la couronne. Orient annonce plus de 40 heures de réserve. Après plusieurs jours dans un tiroir, prévoyez de régler l’heure et la date. Le bracelet en cuir est un autre point de choix : vérifiez sa longueur et l’emplacement des trous avant de vous décider.

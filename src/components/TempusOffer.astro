@@ -4,7 +4,7 @@ const t=textFor(localeOf(Astro.url.pathname));
 const {compact=false}=Astro.props as {compact?:boolean};
 ---
 <aside class:list={['tempus-offer',{compact}]} aria-label={t('Offre de première commande Tempus','Tempus first-order offer')}>
- <div class="offer-copy"><p><strong>{t('Votre première commande chez Tempus ?','Your first order at Tempus?')}</strong> {t('Obtenez 10 % de réduction avec','Get 10% off with')} <code>WELCOME10</code>.</p>
+ <div class="offer-copy"><p><strong>{t('Votre première commande chez Tempus ?','Your first order at Tempus?')}</strong> {t('Obtenez 10 % de réduction avec','Get 10% off with')} <code>WELCOME10</code>.</p>
  <p class="offer-terms">{t('Hors nouveautés et articles déjà remisés. Non cumulable. Vérifiez l’éligibilité et la réduction avant de payer.','Excludes new arrivals and discounted items. Cannot be combined with other offers. Confirm eligibility and the discount before paying.')} <a href="https://tempusshop.com/pages/code-promo">{t('Conditions Tempus ↗','Tempus terms ↗')}</a></p>
  <small>{t('Code public, non exclusif à Cadrin · Annonce vérifiée le 13 novembre 2026.','Public code, not exclusive to Cadrin · Announcement checked on 13 November 2026.')}</small></div>
  <div class="offer-action"><button type="button" data-copy-offer="WELCOME10" data-success={t('Code copié','Code copied')} data-failure={t('Copiez le code WELCOME10 affiché ci-dessus.','Copy WELCOME10 from the text above.')} hidden>{t('Copier le code','Copy the code')}</button><span role="status" aria-live="polite"></span></div>

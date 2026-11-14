@@ -37,7 +37,7 @@ export function ficheSummary(p: CatalogueProduct) {
   const size = sizeNumber(p.caseSize), water = waterMark(p.water), metres = water === null ? waterBar(p) : null;
   const parts: string[] = [];
   const cat = p.category === 'Homme' ? ' homme' : p.category === 'Femme' ? ' femme' : '', mv = movementPhrase(p.movement);
-  parts.push(`Montre${cat}${mv ? ' ' + mv : ''}${size !== null ? ` de ${mm(size)}` : ''}`);
+  parts.push(`Montre${cat}${mv ? ' ' + mv : ''}${size !== null ? ` de ${mm(size)}` : ''}`);
   if (p.glass) parts.push(glassLabel[glassKind(p.glass)]);
   if (water !== null) parts.push(`étanche à ${water} bar`); else if (metres !== null) parts.push(`étanche à ${Math.round(metres * 10)} m`);
   if (p.strap) parts.push(`bracelet ${lower(p.strap)}`);
@@ -51,31 +51,29 @@ export function ficheChecks(p: CatalogueProduct): Check[] {
   const out: Check[] = [], size = sizeNumber(p.caseSize), water = waterBar(p), thick = sizeNumber(p.thickness);
   const inMetres = waterMark(p.water) === null && water !== null;
   const waterGuide = {label: 'Le guide de l’étanchéité', url: '/guides/etancheite-montre-3-5-10-20-atm/'};
-  if (water === null) out.push({title: 'Étanchéité non indiquée', text: 'La fiche du vendeur ne donne pas de valeur exploitable. Demandez-la avant tout usage dans l’eau, et considérez la montre comme non étanche d’ici là.', guide: waterGuide});
-  else if (inMetres && water <= 3) out.push({title: `${p.water} : pas de baignade`, text: 'Indiqué en mètres par le vendeur, soit environ 3 bar : pluie et éclaboussures, pas de piscine.', guide: waterGuide});
-  else if (inMetres) out.push({title: `${p.water} : environ ${water} bar`, text: 'Le vendeur l’indique en mètres. C’est une pression d’essai, pas une profondeur : lisez la notice avant de nager.', guide: waterGuide});
-  else if (water <= 3) out.push({title: `${water} bar : pas de baignade`, text: 'Pluie, éclaboussures et lavage des mains. Retirez-la avant la piscine ou la mer.', guide: waterGuide});
-  else if (water < 10) out.push({title: `${water} bar : la nage ordinaire, selon la notice`, text: 'Pas de plongée, pas de douche chaude ni de sauna. La notice de la référence reste la règle.', guide: waterGuide});
-  else if (water < 20) out.push({title: `${water} bar : natation possible`, text: 'Selon la notice. Évitez la douche chaude et ne touchez pas la couronne sous l’eau.', guide: waterGuide});
-  else out.push({title: `${water} bar : natation et masque-tuba`, text: 'Selon la notice. Pour la plongée avec bouteilles, il faut une montre de plongée certifiée, ce que ce chiffre seul ne garantit pas.', guide: {label: 'Montre de plongée et norme ISO 6425', url: '/guides/montre-de-plongee-iso-6425/'}});
+  if (water === null) { /* donnée absente : signalée dans la fiche technique */ }
+  else if (inMetres && water <= 3) out.push({title: `${p.water} : pas de baignade`, text: 'Indiqué en mètres par le vendeur, soit environ 3 bar : pluie et éclaboussures, pas de piscine.', guide: waterGuide});
+  else if (inMetres) out.push({title: `${p.water} : environ ${water} bar`, text: 'Le vendeur l’indique en mètres. C’est une pression d’essai, pas une profondeur : lisez la notice avant de nager.', guide: waterGuide});
+  else if (water <= 3) out.push({title: `${water} bar : pas de baignade`, text: 'Pluie, éclaboussures et lavage des mains. Retirez-la avant la piscine ou la mer.', guide: waterGuide});
+  else if (water < 10) out.push({title: `${water} bar : la nage ordinaire, selon la notice`, text: 'Pas de plongée, pas de douche chaude ni de sauna. La notice de la référence reste la règle.', guide: waterGuide});
+  else if (water < 20) out.push({title: `${water} bar : natation possible`, text: 'Selon la notice. Évitez la douche chaude et ne touchez pas la couronne sous l’eau.', guide: waterGuide});
+  else out.push({title: `${water} bar : natation et masque-tuba`, text: 'Selon la notice. Pour la plongée avec bouteilles, il faut une montre de plongée certifiée, ce que ce chiffre seul ne garantit pas.', guide: {label: 'Montre de plongée et norme ISO 6425', url: '/guides/montre-de-plongee-iso-6425/'}});
   const moveGuide = {label: 'Automatique, quartz ou solaire', url: '/guides/automatique-quartz-solaire/'};
-  if (p.movement === 'Automatique') out.push({title: 'Automatique : elle s’arrête au repos', text: 'Sans être portée, elle s’arrête une fois sa réserve de marche épuisée (durée indiquée par le fabricant) et doit être remise à l’heure. Moins précise qu’un quartz.', guide: {label: 'Réserve de marche et remontage', url: '/guides/montre-automatique-reserve-de-marche/'}});
-  else if (p.movement === 'Quartz') out.push({title: 'Quartz : une pile à changer', text: 'Rien à régler au quotidien. Faites contrôler l’étanchéité quand la pile est remplacée.', guide: moveGuide});
-  else if (p.movement === 'Solaire') out.push({title: 'Solaire : elle vit de la lumière', text: 'Pas de pile à changer, mais rangez-la à la lumière plutôt que dans une boîte fermée.', guide: moveGuide});
-  else if (/manuel/i.test(p.movement || '')) out.push({title: 'Remontage manuel', text: 'Elle se remonte en tournant la couronne, idéalement chaque jour : un petit rituel à aimer.', guide: moveGuide});
-  else if (!p.movement) out.push({title: 'Mouvement non indiqué', text: 'Quartz, automatique ou solaire : demandez-le au vendeur, il change votre quotidien avec la montre.', guide: moveGuide});
+  if (p.movement === 'Automatique') out.push({title: 'Automatique : elle s’arrête au repos', text: 'Sans être portée, elle s’arrête une fois sa réserve de marche épuisée (durée indiquée par le fabricant) et doit être remise à l’heure. Moins précise qu’un quartz.', guide: {label: 'Réserve de marche et remontage', url: '/guides/montre-automatique-reserve-de-marche/'}});
+  else if (p.movement === 'Quartz') out.push({title: 'Quartz : une pile à changer', text: 'Rien à régler au quotidien. Faites contrôler l’étanchéité quand la pile est remplacée.', guide: moveGuide});
+  else if (p.movement === 'Solaire') out.push({title: 'Solaire : elle vit de la lumière', text: 'Pas de pile à changer, mais rangez-la à la lumière plutôt que dans une boîte fermée.', guide: moveGuide});
+  else if (/manuel/i.test(p.movement || '')) out.push({title: 'Remontage manuel', text: 'Elle se remonte en tournant la couronne, idéalement chaque jour : un petit rituel à aimer.', guide: moveGuide});
   const glassGuide = {label: 'Saphir, minéral ou acrylique', url: '/guides/verre-saphir-mineral-acrylique/'};
-  if (!p.glass) out.push({title: 'Verre non indiqué', text: 'Saphir, minéral ou acrylique : la fiche ne le précise pas. C’est pourtant ce qui décide de la résistance aux rayures.', guide: glassGuide});
-  else { const g = glassKind(p.glass);
+  if (p.glass) { const g = glassKind(p.glass);
     out.push(g === 'saphir' ? {title: 'Verre saphir', text: 'Très résistant aux rayures, mais il peut se fendre sur un choc sec.', guide: glassGuide}
       : g === 'acrylique' ? {title: 'Verre acrylique', text: 'Il se raye plus facilement, mais une rayure légère se polit avec une pâte.', guide: glassGuide}
       : g === 'resine' ? {title: 'Verre en résine', text: 'Un verre en plastique, léger et résistant aux chocs, mais qui se raye facilement.', guide: glassGuide}
-      : {title: 'Verre minéral', text: 'Plus sensible aux rayures qu’un saphir ; une rayure profonde ne part plus.', guide: glassGuide}); }
+      : {title: 'Verre minéral', text: 'Plus sensible aux rayures qu’un saphir ; une rayure profonde ne part plus.', guide: glassGuide}); }
   const sizeGuide = {label: 'Choisir la taille de sa montre', url: '/guides/choisir-taille-montre/'};
-  if (size === null) out.push({title: 'Diamètre à confirmer', text: p.caseSize ? `La fiche indique « ${p.caseSize} » : comparez avec une montre que vous portez déjà.` : 'La fiche ne donne pas le diamètre : demandez-le avant de commander.', guide: sizeGuide});
-  else if (size >= 43) out.push({title: `${mm(size)} : un grand boîtier`, text: 'Imposant sur un poignet fin. Comparez avec une montre que vous portez déjà, en regardant aussi le corne à corne.', guide: sizeGuide});
-  else if (size <= 36) out.push({title: `${mm(size)} : un format discret`, text: 'Idéal sur un poignet fin ou pour une allure vintage. Sur un poignet large, elle peut paraître petite.', guide: sizeGuide});
-  else out.push({title: `${mm(size)} : un format courant`, text: 'Le diamètre ne suffit pas : regardez aussi l’épaisseur et la longueur de corne à corne.', guide: sizeGuide});
+  if (size === null) { /* format non chiffré : la fiche technique reprend la mention du vendeur */ }
+  else if (size >= 43) out.push({title: `${mm(size)} : un grand boîtier`, text: 'Imposant sur un poignet fin. Comparez avec une montre que vous portez déjà, en regardant aussi le corne à corne.', guide: sizeGuide});
+  else if (size <= 36) out.push({title: `${mm(size)} : un format discret`, text: 'Idéal sur un poignet fin ou pour une allure vintage. Sur un poignet large, elle peut paraître petite.', guide: sizeGuide});
+  else out.push({title: `${mm(size)} : un format courant`, text: 'Le diamètre ne suffit pas : regardez aussi l’épaisseur et la longueur de corne à corne.', guide: sizeGuide});
   if (thick !== null && thick >= 13) out.push({title: `${mm(thick)} d’épaisseur`, text: 'Elle passe difficilement sous une manche de chemise ajustée.'});
   const s = strapKind(p.strap);
   if (s === 'cuir') out.push({title: 'Bracelet cuir', text: 'Il se règle sans outil, mais n’aime ni l’eau ni la transpiration intense.'});

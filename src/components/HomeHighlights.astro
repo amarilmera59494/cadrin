@@ -11,7 +11,7 @@ const {part}=Astro.props as {part:'season'|'discover'};
 const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris'}).format(new Date());
 const season=[
  today<='2026-11-30'&&{href:'/black-friday/',kicker:'Black Friday · jusqu’au 30 novembre',title:'Les vraies remises, vérifiées',text:'Les montres déjà en baisse, avec notre propre relevé de prix daté pour repérer les fausses promos.'},
- today<='2026-12-24'&&{href:'/noel/',kicker:'Noël',title:'Idées cadeaux montres',text:'Pour lui, pour elle, par budget : des idées avec leurs points à vérifier avant d’offrir.'},
+ today<='2026-12-24'&&{href:'/noel/',kicker:'Noël',title:'Idées cadeaux montres',text:'Pour lui, pour elle, par budget : des idées avec leurs points à vérifier avant d’offrir.'},
 ].filter(Boolean) as {href:string;kicker:string;title:string;text:string}[];
 const all=(data.products as CatalogueProduct[]).filter(ficheDocumented);
 const pick=['montres-automatiques-moins-de-300-euros','idees-cadeaux-homme-moins-de-200-euros','montres-femme','montres-verre-saphir-moins-de-300-euros'];
@@ -25,7 +25,7 @@ const drops=Object.values(items).filter(r=>r.length>1&&r.at(-1)![1]<r.at(-2)![1]
  <ul class="hh-cards">{cards.map(c=><li><a href={`/selections/${c.slug}/`}><span class="hh-img">{c.lead&&<img src={c.lead.image} width={c.lead.width} height={c.lead.height} loading="lazy" decoding="async" alt=""/>}</span><span class="eyebrow">{c.kicker}</span><strong>{c.title}</strong><span class="hh-meta">{c.count} montres, prix datés</span></a></li>)}</ul>
  <div class="hh-row">
   <div><h3>Les vraies baisses</h3><p>Chaque matin, nous relevons le prix de {data.products.length.toLocaleString('fr-FR')} montres. {drops>0?`${drops} baisse${drops>1?'s':''} relevée${drops>1?'s':''} au dernier relevé.`:'Seules les baisses mesurées par notre propre relevé y figurent.'}</p><a class="text-link" href="/baisses-de-prix/">Voir les baisses de prix →</a></div>
-  <div><h3>A ou B ?</h3><ul>{autoComparisons.slice(0,4).map(c=><li><a href={`/comparatifs/${c.slug}/`}>{c.title}</a></li>)}</ul><a class="text-link" href="/comparatifs/">Tous les comparatifs →</a></div>
+  <div><h3>A ou B ?</h3><ul>{autoComparisons.slice(0,4).map(c=><li><a href={`/comparatifs/${c.slug}/`}>{c.title}</a></li>)}</ul><a class="text-link" href="/comparatifs/">Tous les comparatifs →</a></div>
   <div><h3>Par marque</h3><ul class="hh-brands">{['citizen','seiko','orient','casio-g-shock'].map(s=><li><a href={`/marques/${s}/`}>{s==='casio-g-shock'?'Casio G-Shock':s.charAt(0).toUpperCase()+s.slice(1)}</a></li>)}{brandHubs.map(b=><li><a href={`/marques/${b.slug}/`}>{b.kicker}</a></li>)}</ul></div>
  </div>
 </section>}

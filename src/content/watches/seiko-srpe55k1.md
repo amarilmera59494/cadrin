@@ -28,12 +28,12 @@ facts: [{"label": "Mouvement", "value": "Automatique"}, {"label": "Fonctions", "
 
 ## Une automatique à porter au quotidien
 
-Le cadran noir, les index et le bracelet acier donnent à cette Seiko 5 Sports une présence facile à associer. Son calendrier affiche le jour et la date : deux informations que l’on peut consulter sans changer d’écran. Tempus indique un boîtier de 40 mm, un mouvement 4R36 et un fond transparent.
+Le cadran noir, les index et le bracelet acier donnent à cette Seiko 5 Sports une présence facile à associer. Son calendrier affiche le jour et la date : deux informations que l’on peut consulter sans changer d’écran. Tempus indique un boîtier de 40 mm, un mouvement 4R36 et un fond transparent.
 
 ## Le plaisir d’une mécanique
 
-Le mouvement se remonte lorsque vous portez la montre et accepte aussi le remontage à la couronne. Si vous alternez entre plusieurs montres, une remise à l’heure après l’arrêt fait partie de cette routine. Regardez également la boucle et le réglage du bracelet : ce sont les éléments que vous utiliserez chaque jour.
+Le mouvement se remonte lorsque vous portez la montre et accepte aussi le remontage à la couronne. Si vous alternez entre plusieurs montres, une remise à l’heure après l’arrêt fait partie de cette routine. Regardez également la boucle et le réglage du bracelet : ce sont les éléments que vous utiliserez chaque jour.
 
-## Le détail à choisir : le calendrier
+## Le détail à choisir : le calendrier
 
-Tempus présente cette référence avec des jours en anglais ou en kanji. Faites préciser la version qui vous sera livrée si la langue du calendrier compte pour vous. Le visuel est celui associé par Tempus à cette fiche ; la référence commandée reste SRPE55K1.
+Tempus présente cette référence avec des jours en anglais ou en kanji. Faites préciser la version qui vous sera livrée si la langue du calendrier compte pour vous. Le visuel est celui associé par Tempus à cette fiche ; la référence commandée reste SRPE55K1.

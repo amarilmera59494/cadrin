@@ -23,7 +23,7 @@ const compare = models.filter(w => finder.some(f => f.id===w.id)).slice(0,3).map
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a> / <a href="/guides/">Guides</a></nav>
     <GuideOpening id={entry.id}><header class="reading-heading"><h1>{entry.data.title}</h1><p>{entry.data.description}</p>
-      <div class="reading-meta">Guide documentaire · Sans essai au poignet · {dateLabel(entry.data.verifiedAt!)}</div>
+      <div class="reading-meta">Guide documentaire · {dateLabel(entry.data.verifiedAt!)}</div>
     </header></GuideOpening>
     <div class="guide-layout">
       <GuideNavigation items={[...(entry.id==='offrir-une-montre'?[{href:'#pistes-cadeaux',label:'Les idées cadeaux'}]:[]),...headings.filter(h=>h.depth===2).map(h=>({href:'#'+h.slug,label:h.text})),...(["montres-par-budget","offrir-une-montre","g-shock-montre-jeune"].includes(entry.id)?[{href:'#pour-trancher',label:'Pour trancher'}]:[]),...(models.length?[{href:'#references',label:'Les références'}]:[]),{href:'#sources',label:'Sources et limites'}]}/>

@@ -13,7 +13,7 @@ const weekday = (d:string) => new Intl.DateTimeFormat('fr-FR',{weekday:'long',da
 const groups:Record<string,string> = {auto:'Automatique',chrono:'Chronographe',solaire:'Solaire',elle:'Pour elle',sport:'Sport',habillee:'Habillée',petit:'Petit prix'};
 const tracked = bf.items.map(item => {
   const product = data.products.find(p => p.source.endsWith('/products/' + item.handle));
-  if (!product) throw Error('Montre Black Friday absente du catalogue : ' + item.handle);
+  if (!product) throw Error('Montre Black Friday absente du catalogue : ' + item.handle);
   const first = item.history[0];
   const pct = item.was ? Math.round(100 * (1 - item.price / item.was)) : 0;
   const verifiedDrop = item.price < first.price;
@@ -66,13 +66,13 @@ const anyVerified = deals.some(d => d.verifiedDrop);
     </div>
     <div class="bf-price">
      <p class="bf-now">{money(d.price)}{d.pct > 0 && <span class="bf-pct">−{d.pct}&nbsp;%</span>}</p>
-     {d.was && <p class="bf-was">Prix barré affiché par Tempus : <s>{money(d.was)}</s></p>}
+     {d.was && <p class="bf-was">Prix barré affiché par Tempus : <s>{money(d.was)}</s></p>}
      <p class={'bf-ledger ' + (d.verifiedDrop ? 'is-drop' : '')}>{d.verifiedDrop ? `Baisse vérifiée : ${money(d.first.price)} le ${day(d.first.date)}` : `Notre relevé : ${money(d.first.price)} le ${day(d.first.date)}`}</p>
     </div>
     <a class="button merchant-button bf-buy" data-placement="deal" href={affiliateUrl(d.product.source)} rel="sponsored"><span>{purchaseLabel(d.product, false)}</span><span aria-hidden="true">↗</span></a>
    </li>)}
   </ol>
-  {ended.length > 0 && <section id="remises-terminees" class="bf-ended" aria-labelledby="bf-ended-title"><h3 id="bf-ended-title">Remises terminées</h3><p>Ces montres étaient remisées lors de notre premier relevé. Le vendeur n’affiche plus de prix barré : nous les sortons de la liste ci-dessus.</p><ul>{ended.map(d => <li><a href={ficheHref(d.product) ?? affiliateUrl(d.product.source)} rel={ficheHref(d.product) ? undefined : 'sponsored'}>{d.product.brand} {d.name}</a> : {money(d.price)} aujourd’hui, contre {money(d.first.price)} à notre relevé du {day(d.first.date)}.</li>)}</ul></section>}
+  {ended.length > 0 && <section id="remises-terminees" class="bf-ended" aria-labelledby="bf-ended-title"><h3 id="bf-ended-title">Remises terminées</h3><p>Ces montres étaient remisées lors de notre premier relevé. Le vendeur n’affiche plus de prix barré : nous les sortons de la liste ci-dessus.</p><ul>{ended.map(d => <li><a href={ficheHref(d.product) ?? affiliateUrl(d.product.source)} rel={ficheHref(d.product) ? undefined : 'sponsored'}>{d.product.brand} {d.name}</a> : {money(d.price)} aujourd’hui, contre {money(d.first.price)} à notre relevé du {day(d.first.date)}.</li>)}</ul></section>}
   <p class="small-note">Prix France hors livraison, relevés le {dateLabel(bf.checkedAt, 'fr')} ; susceptibles d’évoluer. Stock et délai à confirmer chez Tempus. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
  </section>
 
@@ -91,14 +91,14 @@ const anyVerified = deals.some(d => d.verifiedDrop);
  <section class="container bf-section bf-next">
   <div>
    <h2>Le {day(bf.blackFriday)}, on relève tout.</h2>
-   <p>Cette page sera mise à jour dans la matinée du Black Friday avec les nouvelles remises, et la mention « baisse vérifiée » quand notre relevé le confirme. Nous publions aussi nos relevés au fil de la semaine sur nos réseaux.</p>
+   <p>Cette page sera mise à jour dans la matinée du Black Friday avec les nouvelles remises, et la mention « baisse vérifiée » quand notre relevé le confirme. Nous publions aussi nos relevés au fil de la semaine sur nos réseaux.</p>
   </div>
   <ul class="bf-social" aria-label="Suivre nos relevés">
    <li><a href="https://www.tiktok.com/@cadrinfr" rel="me noopener">TikTok <span>@cadrinfr</span></a></li>
    <li><a href="https://www.pinterest.com/cadrinfr/" rel="me noopener">Pinterest <span>@cadrinfr</span></a></li>
    <li><a href="https://www.facebook.com/profile.php?id=61596550051041" rel="me noopener">Facebook <span>Cadrin</span></a></li>
   </ul>
-  <p class="bf-more"><a class="text-link" href="/trouver-ma-montre/">Pas de coup de cœur ici ? Trouver la montre qui vous va <span aria-hidden="true">→</span></a></p>
+  <p class="bf-more"><a class="text-link" href="/trouver-ma-montre/">Pas de coup de cœur ici ? Trouver la montre qui vous va <span aria-hidden="true">→</span></a></p>
  </section>
 </Cadrin>
 <style>

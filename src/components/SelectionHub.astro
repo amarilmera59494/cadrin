@@ -23,13 +23,13 @@ const others=family.filter(h=>h.slug!==hub.slug).slice(0,12);
   <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href={base}>{section}</a><span>/</span><span>{hub.kicker}</span></nav>
   <header class="hub-head">
    <div><span class="eyebrow">{base==='/marques/'?'La marque':'La sélection'} · {hub.kicker}</span><h1>{hub.h1.split('<br>').map((s,i)=><>{i>0&&<br/>}{s}</>)}</h1></div>
-   <div class="hub-intro">{hub.intro.map(p=><p>{p}</p>)}</div>
+   <div class="hub-intro">{hub.intro.map(p=><p>{p.replace("{min}",money(Math.min(...matches.map(x=>x.price)))).replace("{max}",money(Math.max(...matches.map(x=>x.price))))}</p>)}</div>
   </header>
   <aside class="hub-criteria" aria-labelledby="criteres">
    <h2 id="criteres">Nos critères</h2>
    <ul>{hub.criteria.map(c=><li>{c}</li>)}</ul>
-   <p>{matches.length} montres correspondent au relevé du {dateLabel(checkedAt)}{matches.length>shown.length?` ; voici les ${shown.length} premières`:''}. Ordre : best-sellers du vendeur, puis prix croissant. Ce n’est pas un classement de qualité, et nous n’avons pas porté ces montres.</p>
-   <p class="small-note">Prix France hors livraison, susceptibles d’évoluer. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
+   <p>{matches.length} montres correspondent au relevé du {dateLabel(checkedAt)}{matches.length>shown.length?` ; voici les ${shown.length} premières`:''}. Ordre : best-sellers du vendeur, puis prix croissant.</p>
+   <p class="small-note">Prix France hors livraison, susceptibles d’évoluer. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
   </aside>
   <ol class="hub-grid">{shown.map((p,i)=><li class="hub-card">
    <a class="hub-photo" href={ficheHref(p)!} tabindex="-1" aria-hidden="true"><img src={p.image} width={p.width} height={p.height} loading={i<4?'eager':'lazy'} decoding="async" alt=""/></a>

@@ -18,10 +18,10 @@ for(const budget of budgets)for(const movement of movements)for(const dial of co
   <button class="button" type="submit">{t('Afficher les montres','Show watches')} <span aria-hidden="true">→</span></button>
   <p class="quick-status" role="status" aria-live="polite"></p><button type="reset" class="quick-reset">{t('Effacer mes critères','Clear my choices')}</button>
  </form>
- <p class="shopping-note">{t('Commande ouverte au dernier relevé ; délai à confirmer chez Tempus. Les caractéristiques non renseignées ne sont pas devinées.','Ordering open at the last check; confirm lead time with Tempus. Missing specifications are not guessed.')}</p>
+ <p class="shopping-note">{t('Commande ouverte au dernier relevé ; délai à confirmer chez Tempus. Les caractéristiques non renseignées ne sont pas devinées.','Ordering open at the last check; confirm lead time with Tempus. Missing specifications are not guessed.')}</p>
  <noscript><p><a class="text-link" href={localPath('/catalogue/',locale)}>{t('Parcourir toutes les montres','Browse all watches')} →</a></p></noscript>
  <div class="shopping-subhead"><h3>{t('Quatre envies, quatre points de départ.','Four directions to explore.')}</h3><a class="text-link" href={localPath('/catalogue/?collection=best&order=open',locale)}>{t('Voir les best-sellers Tempus','See Tempus bestsellers')} →</a></div>
- <p class="shopping-note">{t('Une sélection éditoriale, sans classement. Prix relevés, hors livraison. Liens affiliés : vos achats peuvent rémunérer Cadrin.','An editorial selection, without a ranking. Recorded prices exclude delivery. Affiliate links: purchases may earn Cadrin a commission.')}</p>
+ <p class="shopping-note">{t('Une sélection éditoriale, sans classement. Prix relevés, hors livraison. Liens affiliés : vos achats peuvent rémunérer Cadrin.','An editorial selection, without a ranking. Recorded prices exclude delivery. Affiliate links: purchases may earn Cadrin a commission.')}</p>
  <GuideExamples id="home" en={en}/>
  <a class="text-link" href={localPath('/selections/',locale)}>{t('Lire nos sélections commentées','Read our watch selections')} →</a>
 </section>

@@ -5,5 +5,5 @@ import {localeOf} from '../lib/i18n';
 const {url}=Astro.props as {url:string};
 const affiliate=isTempusProduct(url),en=localeOf(Astro.url.pathname)==='en';
 ---
-{destinationPaused(url)?<span><slot/> — {en?'record retained; purchase link paused':'relevé conservé ; lien d’achat suspendu'}</span>:<a href={affiliate?affiliateUrl(url):url} rel={affiliate?'sponsored':undefined}><slot/>{affiliate&&<span class="source-affiliation"> · {en?'affiliate link':'lien affilié'}</span>}</a>}
+{destinationPaused(url)?<span><slot/> — {en?'record retained; purchase link paused':'relevé conservé ; lien d’achat suspendu'}</span>:<a href={affiliate?affiliateUrl(url):url} rel={affiliate?'sponsored':undefined}><slot/>{affiliate&&<span class="source-affiliation"> · {en?'affiliate link':'lien affilié'}</span>}</a>}
 <style>.source-affiliation{font-size:max(11px,.8em);font-weight:400}</style>
