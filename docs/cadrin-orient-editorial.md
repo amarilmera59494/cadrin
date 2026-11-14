@@ -35,7 +35,7 @@ Candidate isolée `.tmp/orient-release`, puis comparaison d'empreinte des fichie
 
 - Astro : 0 erreur, 0 avertissement, 0 indication après retrait d'une variable inutilisée du test.
 - Contrôle éditorial strict : PASS. 10 dossiers, 20 routes bilingues de dossiers, 18 références photographiques distinctes ; 86 occurrences de sources nommées sur l'ensemble des contenus contrôlés.
-- Production : 211 routes publiques, 212 documents HTML ; contrôle de sortie sans erreur, maximum JS initial gzip 13 890 octets ; 224 contrôles d'hébergement réussis.
+- Production : 211 routes publiques, 212 documents HTML ; contrôle de sortie sans erreur, maximum JS initial gzip 13 891 octets après la finition typographique ; 224 contrôles d'hébergement réussis.
 - Preview : build réussi et 228 contrôles d'hébergement réussis, dont noindex par défaut.
 - `orient-qa.mjs` : 20 mises en page (320/390/768/1024/1440 px), 70 liens internes et ancres, quatre audits axe sans violation détectée, quatre routes sans JavaScript, sept contrôles d'interaction. Photos décodées, références/CTA/code affilié, tableaux traduits, écart de prix, favoris persistants, comparaison des deux modèles et filtres d'alternatives contrôlés. Le défilement au clavier conserve la position des intitulés.
 - `quality-qa.mjs` : PASS sur les parcours existants, 36 mises en page, comparaison, recherche vide, favoris, menu, clavier, six routes sans JS et repli si le catalogue JSON échoue.
@@ -50,3 +50,10 @@ Captures ouvertes : dossier Seiko public avant intervention, bandeaux photo nouv
 Local : `npm run dev -- --port 4321`. Simulation production PowerShell : `$env:SITE_STAGE='production'`, `npm run build`, puis `node scripts/serve-cloudflare.mjs dist-production`.
 
 Longines reste suspendue pour les achats tant que ses destinations ne donnent pas accès aux fiches attendues. L'attribution d'une vraie commission reste à observer chez le partenaire. Ces limites ne sont pas présentées comme résolues par les nouveaux articles.
+
+## Publication et finition
+
+- Première livraison `dd961365807b17296f80cf8d297399408a8cdb5a`, build Cloudflare `18895347-5f8f-471f-a902-b22c55b2322c` : succès observé.
+- Contrôle sur `https://cadrin.fr` : 20 mises en page, 70 liens, quatre audits axe sans violation détectée, quatre routes sans JS et sept contrôles d'interaction, PASS. Rapport `evidence/orient/live/report.json`.
+- Les quatre nouvelles pages répondent 200, figurent dans le sitemap, portent leur canonical, leurs alternates FR/EN et leur balisage Article ; indexation autorisée, code affilié présent. Rapport `evidence/orient/live-metadata.json`.
+- La capture publique desktop a montré un deux-points isolé en début de ligne dans le titre. Les espaces françaises avant ponctuation double ont été rendues insécables. La nouvelle capture `evidence/orient/title-corrected-1440.png` a été ouverte ; la position du deux-points et du point d'interrogation a été mesurée sur la même ligne que leur mot précédent. Build et suite `orient-qa.mjs` relancés, PASS ; preuves finales locales dans `evidence/orient/final/`.
