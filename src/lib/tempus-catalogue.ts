@@ -1,3 +1,4 @@
+import pausedDestinations from '../data/paused-tempus-destinations.json' with {type:'json'};
 export interface CatalogueProduct {
  id:string; handle:string; title:string; brand:string; reference:string; price:number;
  movement:string; category:string; order:string; orderable:boolean; image:string;
@@ -36,7 +37,14 @@ export function filterCatalogue(products:CatalogueProduct[],f:CatalogueFilters){
 export function detailRows(p:CatalogueProduct,en=false):[string,string][]{return [[en?'Dial':'Cadran',p.dial],[en?'Case size':'Dimension du boîtier',p.caseSize],[en?'Thickness':'Épaisseur',p.thickness],[en?'Case material':'Boîtier',p.caseMaterial],[en?'Strap / bracelet':'Bracelet',p.strap],[en?'Crystal':'Verre',p.glass],[en?'Calibre':'Calibre',p.calibre],[en?'Functions':'Fonctions',p.functions],[en?'Water resistance':'Étanchéité',p.water]].filter((r):r is [string,string]=>!!r[1]);}
 // Nine tested Longines destinations redirect to the shop homepage (14 November 2026).
 // Pause this brand's purchase links pending a verified repair; catalogue data is retained.
-export const merchantLinkAvailable=(p:Pick<CatalogueProduct,'brand'>)=>p.brand!=='Longines';
+const pausedPaths=new Set(pausedDestinations.map(p=>new URL(p.source).pathname));
+export function destinationPaused(source:string){
+ try{const url=new URL(source);return url.hostname==='tempusshop.com'&&pausedPaths.has(url.pathname.replace(/^\/[a-z]{2}(?:-[a-z]{2})?\/products\//i,'/products/').replace(/\/$/,''));}catch{return false;}
+}
+type MerchantIdentity=Pick<CatalogueProduct,'brand'>&Partial<Pick<CatalogueProduct,'source'>>;
+export const merchantLinkAvailable=(p:MerchantIdentity)=>p.brand!=='Longines'&&(!p.source||!destinationPaused(p.source));
+export const merchantInfoHref=(p:MerchantIdentity,en=false)=>p.brand==='Longines'?(en?'/en/brands/longines/':'/marques/longines/'):(en?'/en/catalogue/#liens-marchands':'/catalogue/#liens-marchands');
+export const merchantInfoLabel=(p:MerchantIdentity,en=false)=>p.brand==='Longines'?(en?'Read the Longines guide':'Lire le dossier Longines'):(en?'Why this link is paused':'Pourquoi ce lien est suspendu');
 export function purchaseLabel(p:Pick<CatalogueProduct,'orderable'|'order'>,en=false){
  if(!p.orderable)return en?'Check at Tempus':'Vérifier chez Tempus';
  if(p.order==='preorder')return en?'Preorder at Tempus':'Précommander chez Tempus';
@@ -50,7 +58,7 @@ export function filterRecovery(products:CatalogueProduct[],filters:CatalogueFilt
  })).filter(option=>option.count>0).sort((a,b)=>a.count-b.count).slice(0,3);
 }
 export function orderLabel(p:CatalogueProduct,en=false){
- if(!merchantLinkAvailable(p))return en?'Longines purchase links temporarily unavailable':'Liens d’achat Longines temporairement indisponibles';
+ if(!merchantLinkAvailable(p))return p.brand==='Longines'?(en?'Longines purchase links temporarily unavailable':'Liens d’achat Longines temporairement indisponibles'):(en?'Purchase link temporarily paused':'Lien d’achat temporairement suspendu');
  if(!p.orderable)return en?'Ordering unavailable at the last check':'Commande indisponible au relevé';
  if(p.order==='preorder')return en?'Listed as a preorder':'En précommande chez Tempus';
  if(p.order==='order')return en?'Listed as available to order':'Sur commande chez Tempus';

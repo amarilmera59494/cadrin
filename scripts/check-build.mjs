@@ -2,7 +2,7 @@ import {readFile,readdir,writeFile} from 'node:fs/promises';
 import {gzipSync} from 'node:zlib';
 import {isTempusProduct,tempusAffiliate} from '../src/data/affiliation.ts';
 import catalogue from '../src/data/tempus-catalogue.json' with {type:'json'};
-import {purchaseLabel,merchantLinkAvailable} from '../src/lib/tempus-catalogue.ts';
+import {purchaseLabel,merchantLinkAvailable,destinationPaused} from '../src/lib/tempus-catalogue.ts';
 const production=process.env.SITE_STAGE==='production';const dir=production?'dist-production':'dist';
 async function walk(path){return(await Promise.all((await readdir(path,{withFileTypes:true})).map(f=>f.isDirectory()?walk(`${path}/${f.name}`):`${path}/${f.name}`))).flat()}
 const files=await walk(dir), results=[];const errors=[];
@@ -15,6 +15,7 @@ for(const file of files.filter(f=>f.endsWith('.html'))){const html=await readFil
  for(const anchor of html.matchAll(/<a\b([^>]+)>/g)){
   const href=anchor[1].match(/\bhref="([^"]+)"/)?.[1]?.replaceAll('&amp;','&');
   if(href&&isTempusProduct(href)){
+   if(destinationPaused(href))errors.push(`${route}: destination produit suspendue encore cliquable: ${href}`);
    const target=new URL(href),rel=anchor[1].match(/\brel="([^"]+)"/)?.[1]||'';
    if(target.searchParams.getAll('bg_ref').length!==1||target.searchParams.get('bg_ref')!==tempusAffiliate.code||!rel.split(/\s+/).includes('sponsored'))errors.push(`${route}: lien produit Tempus non affilié ou non signalé: ${href}`);
   }

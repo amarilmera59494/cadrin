@@ -42,3 +42,23 @@ L'audit large s'est arrêté volontairement après 84 contrôles : 81 réponses 
 Le premier lot de navigation est publié, sans nouvelle recommandation Tissot/Hamilton/Mido. Commit `4203c282132dd5be1914ef1e12b4fd0fb47c9d93`, build Cloudflare `e55fec25-60b8-409f-b337-28ad6540e405`, succès observé. La suite de navigation a été rejouée sur `https://cadrin.fr` : dix mises en page, deux parcours FR/EN, fonctionnement sans JS et dégradation sur échec des données, PASS. Les captures publiques `evidence/polish/live/fr-390.png` et `fr-1440.png` ont été ouvertes. La page conserve `index, follow`.
 
 L'objectif global reste actif : conséquences des contrôles de destinations, comparaison interprétable, guides et nouvelles pistes restent à traiter. Neuf redirections non-Longines issues de l'échantillon sont préparées dans `evidence/polish/confirmed-redirect-candidates.json`, sans mutation de données produit. Les deux vérifications ad hoc PRX/Khaki sont détaillées ci-dessus. Les nouvelles sources TikTok apparues en parallèle dans le répertoire de travail n'ont pas été modifiées ni incluses dans cette livraison.
+
+
+## Deuxième lot : destinations exactes et affiliation
+
+Le constructeur `affiliateUrl` conserve le chemin exact du produit, les autres paramètres et le fragment, puis fixe une unique valeur `bg_ref=bDlTL8AyKb`. La référence Longines fournie par Pierre sert de cas de régression, avec variantes, ancien identifiant et paramètres dupliqués. Ce test prouve la construction, pas une conversion rémunérée.
+
+Onze destinations supplémentaires constatées comme redirigées sont consignées dans `src/data/paused-tempus-destinations.json` : quatre Hamilton, quatre Tissot et trois Mido. La suspension porte sur ces chemins précis, y compris leurs variantes de langue, jamais sur l'ensemble de ces marques. Le traitement Longines déjà publié est conservé. Les cartes, photos, caractéristiques et favoris restent disponibles. Les filtres de commande ne présentent plus ces références comme commandables. Une note FR/EN explique la suspension sans prétendre à une rupture de stock.
+
+La vérification de build a trouvé une PRX encore cliquable dans le guide haut de gamme. Les exemples de guides et leurs citations appliquent maintenant la même suspension. Le build refuse tout lien produit vers l'un des onze chemins, même correctement affilié. Un test négatif a injecté un tel lien dans une copie de la page générée : refus confirmé, puis restauration exacte. Le compteur singulier « 1 fiche » a également été corrigé après inspection des captures.
+
+Validation locale du 14 novembre :
+- Astro : 174 fichiers, zéro erreur, avertissement ou hint.
+- Publication stricte : PASS ; build : 212 HTML / 211 routes publiques, zéro erreur, maximum JS comptabilisé 14 020 octets gzip.
+- Hébergement : 224 contrôles, PASS.
+- Suite catalogue : dix mises en page, 33 interactions, deux parcours sans JS, aucune erreur.
+- Suite favoris : 25 mises en page et parcours clavier, stockage, partage et comparaison, aucune erreur.
+- Nouvelle suite destinations : 22 cartes FR/EN, comparaison mixte, favoris, explication et changement de langue, guides, catalogue statique sans JS ; huit mises en page 320/390/768/1440, zéro violation axe détectée, PASS.
+- Captures avant/après ouvertes : `evidence/destinations/{before,after}/card-390.png`, après desktop `card-1440.png`, ainsi que les vues de résultats après FR 390/1440. Les captures de carte sont recadrées sur l'élément ; le nombre du nom désigne la largeur du viewport.
+
+Limite conservée : l'audit distant complet reste interrompu par les réponses 429. Aucun stock, prix, droit photo ou suivi de commission n'a été inventé ou revalidé par ces tests locaux. Les travaux TikTok non suivis restent hors livraison. Comparaison éditoriale et prochaine amélioration des guides restent au programme.
