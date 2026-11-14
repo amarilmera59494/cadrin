@@ -84,13 +84,17 @@
   {
    "handle": "citizen-openheart-nh9131-14e",
    "group": "auto",
-   "price": 151.2,
-   "was": 189,
+   "price": 189,
+   "was": null,
    "available": true,
    "history": [
     {
      "date": "2026-11-14",
      "price": 151.2
+    },
+    {
+     "date": "2026-11-14",
+     "price": 189
     }
    ]
   },
