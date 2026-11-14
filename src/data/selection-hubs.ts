@@ -24,6 +24,10 @@ const G = {
   colour: {label: 'Choisir la couleur du cadran', url: '/guides/choisir-couleur-cadran/'},
   online: {label: 'Acheter une montre en ligne', url: '/guides/acheter-montre-en-ligne/'},
   upgrade: {label: 'Passer à une montre plus haut de gamme', url: '/guides/premiere-montre-haut-de-gamme/'},
+  crystal: {label: 'Saphir, minéral ou acrylique', url: '/guides/verre-saphir-mineral-acrylique/'},
+  auto: {label: 'Réserve de marche et remontage', url: '/guides/montre-automatique-reserve-de-marche/'},
+  diver: {label: 'Montre de plongée et norme ISO 6425', url: '/guides/montre-de-plongee-iso-6425/'},
+  spec: {label: 'Lire une fiche technique', url: '/guides/lire-fiche-technique-montre/'},
 };
 
 export const hubs: Hub[] = [
@@ -33,7 +37,7 @@ export const hubs: Hub[] = [
     intro: ['Une automatique se remonte avec les mouvements du poignet : pas de pile, et une trotteuse qui glisse au lieu de sauter. Sous 300 €, on trouve des mouvements japonais éprouvés chez Seiko, Orient ou Citizen, avec des écarts nets sur le verre et l’étanchéité.', 'Regardez d’abord ces deux lignes : un verre saphir résiste bien mieux aux rayures, et 3 bar ne permet pas de se baigner. Vérifiez aussi si la montre s’arrête au repos ; c’est le cas de toutes les automatiques, au bout de leur réserve de marche.'],
     criteria: ['Mouvement automatique indiqué sur la fiche du vendeur', 'Prix France inférieur ou égal à 300 €, hors livraison', 'Commandable au relevé, diamètre, verre et étanchéité renseignés'],
     tips: [['Saphir ou minéral ?', 'À ce prix, le verre saphir fait souvent la différence au fil des années.'], ['Elle s’arrête au repos', 'Si vous alternez plusieurs montres, prévoyez de la remettre à l’heure.'], ['Remontage et stop-seconde', 'Pratiques pour la relancer et la régler à la seconde ; tous les calibres ne les ont pas.']],
-    guides: [G.moves, G.water, G.first], match: p => p.movement === 'Automatique' && p.price <= 300,
+    guides: [G.auto, G.moves, G.crystal], match: p => p.movement === 'Automatique' && p.price <= 300,
   },
   {
     slug: 'montres-moins-de-100-euros', kicker: 'Petit budget', title: 'Montres à moins de 100 €',
@@ -41,7 +45,7 @@ export const hubs: Hub[] = [
     intro: ['Sous 100 €, le quartz domine : précis, sans entretien, avec une pile à changer de temps en temps. Les écarts se jouent sur les matériaux (résine ou acier), le verre et l’étanchéité.', 'C’est le bon budget pour une montre de sport, une rétro numérique ou un premier cadeau. Attention aux remises : comparez avec un prix relevé et daté, pas seulement avec le prix barré.'],
     criteria: ['Prix France de 50 à 100 €, hors livraison', 'Commandable au relevé, diamètre, verre et étanchéité renseignés'],
     tips: [['Résine ou acier', 'La résine est légère et encaisse les chocs ; l’acier fait plus habillé.'], ['Le verre', 'Souvent minéral ou acrylique à ce prix : plus sensible aux rayures qu’un saphir.'], ['L’étanchéité', 'Une montre de sport à 20 bar suit à la piscine ; une 3 bar, non.']],
-    guides: [G.budget, G.water, G.first], match: p => p.price <= 100,
+    guides: [G.budget, G.crystal, G.spec], match: p => p.price <= 100,
   },
   {
     slug: 'montres-de-100-a-200-euros', kicker: 'Budget moyen', title: 'Montres de 100 à 200 €',
@@ -57,7 +61,7 @@ export const hubs: Hub[] = [
     intro: ['Le verre saphir est synthétique et presque inrayable : c’est le détail qui garde une montre nette pendant des années. Longtemps réservé au haut de gamme, on le trouve désormais sous 300 €.', 'Il a une contrepartie : très dur, il peut se fendre sur un choc sec, là où un verre minéral se rayerait. Pour une montre de bureau ou de tous les jours, c’est le meilleur compromis.'],
     criteria: ['Verre saphir indiqué sur la fiche du vendeur', 'Prix France inférieur ou égal à 300 €, hors livraison', 'Commandable au relevé, diamètre et étanchéité renseignés'],
     tips: [['Saphir, pas « traité saphir »', 'Seule la mention « saphir » compte ; un verre minéral traité reste un minéral.'], ['Rayures contre chocs', 'Le saphir résiste aux rayures, pas aux chocs violents.'], ['Le reste de la fiche', 'Le verre ne dit rien de l’étanchéité : vérifiez-la séparément.']],
-    guides: [G.first, G.water, G.upgrade], match: p => has(p.glass, /saphir/) && p.price <= 300,
+    guides: [G.crystal, G.spec, G.upgrade], match: p => has(p.glass, /saphir/) && p.price <= 300,
   },
   {
     slug: 'montres-solaires', kicker: 'Solaire', title: 'Montres solaires',
@@ -73,7 +77,7 @@ export const hubs: Hub[] = [
     intro: ['À 20 bar (200 m), une montre suit la natation et le masque-tuba, selon la notice du fabricant. C’est le niveau des plongeuses et des montres de sport robustes.', 'Ce chiffre ne fait pas une montre de plongée avec bouteilles : celle-ci répond à une norme précise (ISO 6425). Et l’étanchéité vieillit : faites-la contrôler quand la pile est changée ou après un choc.'],
     criteria: ['Étanchéité de 20 bar (200 m) ou plus indiquée sur la fiche du vendeur', 'Commandable au relevé, diamètre et verre renseignés'],
     tips: [['La couronne', 'Si elle est vissée, revissez-la bien avant d’aller dans l’eau.'], ['Pas de chaleur', 'Douche chaude, bain et sauna fatiguent les joints, même à 200 m.'], ['La plongée bouteille', 'Elle demande une montre de plongée certifiée, pas seulement 20 bar.']],
-    guides: [G.water, G.moves], match: p => (waterMark(p.water) ?? 0) >= 20,
+    guides: [G.diver, G.water, G.spec], match: p => (waterMark(p.water) ?? 0) >= 20,
   },
   {
     slug: 'montres-petit-poignet', kicker: '38 mm et moins', title: 'Montres pour petit poignet',

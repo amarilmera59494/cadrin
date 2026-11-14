@@ -28,6 +28,10 @@ export const routePairs:Record<string,string> = {
   '/guides/choisir-taille-montre/':'/en/guides/watch-size-and-fit/',
   '/guides/acheter-montre-en-ligne/':'/en/guides/buying-a-watch-online/',
   '/guides/automatique-quartz-solaire/':'/en/guides/automatic-quartz-or-solar/',
+  '/guides/verre-saphir-mineral-acrylique/':'/en/guides/sapphire-mineral-or-acrylic-crystal/',
+  '/guides/montre-automatique-reserve-de-marche/':'/en/guides/automatic-watch-power-reserve/',
+  '/guides/montre-de-plongee-iso-6425/':'/en/guides/divers-watches-iso-6425/',
+  '/guides/lire-fiche-technique-montre/':'/en/guides/reading-a-watch-specification/',
   ...Object.fromEntries(['casio-f91w','citizen-aw0102-13ae','citizen-aw1231','citizen-rainell-em1201-52l','citizen-tsuyosa-nj0150-81e','orient-bambino-ra-ac0m04y','seiko-srpe55','seiko-srpe55k1'].map(id=>[`/montres/${id}/`,`/en/watches/${id}/`])),
 };
 export function localPath(path:string, locale:Locale):string {

@@ -314,5 +314,63 @@
       "Une petite boîte en goutte et un cadran bleu : la piste montre-bijou.",
       "A small teardrop case and blue dial: the jewellery-watch direction."
     ]
+  ],
+  "crystal-examples": [
+    [
+      "ABL-100WEG-9AEF",
+      "Verre acrylique : l’allure rétro, des rayures qui se polissent.",
+      "Acrylic crystal: retro looks, scratches that can be polished."
+    ],
+    [
+      "SNKL23J1",
+      "Verre Hardlex, le minéral renforcé de Seiko.",
+      "Hardlex, Seiko’s reinforced mineral crystal."
+    ],
+    [
+      "NJ0150-81E",
+      "Verre saphir : très résistant aux rayures.",
+      "Sapphire crystal: highly scratch resistant."
+    ]
+  ],
+  "automatic-examples": [
+    [
+      "SNKL23J1",
+      "Automatique simple : ni remontage manuel ni stop-seconde.",
+      "A simple automatic: no hand-winding, no hacking."
+    ],
+    [
+      "NJ0150-81E",
+      "Calibre 8210 : 42 heures annoncées par Citizen, avec stop-seconde.",
+      "Calibre 8210: 42 hours according to Citizen, with hacking."
+    ],
+    [
+      "RA-AA0001B",
+      "Mako III : une automatique de plongée de style, à 20 ATM.",
+      "Mako III: a diver-style automatic rated 20 ATM."
+    ]
+  ],
+  "diver-examples": [
+    [
+      "NJ0234-58X",
+      "10 ATM : natation et masque-tuba selon Citizen, pas de bouteilles.",
+      "10 ATM: swimming and snorkelling per Citizen, not scuba."
+    ],
+    [
+      "GA-2100-1A1ER",
+      "20 bar : même tableau, une montre de sport, pas de plongée.",
+      "20 bar: same chart, a sports watch, not for scuba."
+    ],
+    [
+      "RA-AA0001B",
+      "20 ATM et lunette tournante : vérifiez la notice avant toute plongée.",
+      "20 ATM and rotating bezel: check the manual before any dive."
+    ]
+  ],
+  "spec-example": [
+    [
+      "NJ0150-81E",
+      "La fiche lue dans ce guide : 40 mm, 11,6 mm, saphir, 5 ATM, calibre 8210.",
+      "The listing read in this guide: 40 mm, 11.6 mm, sapphire, 5 ATM, calibre 8210."
+    ]
   ]
 }

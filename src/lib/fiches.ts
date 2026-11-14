@@ -42,15 +42,15 @@ export function ficheChecks(p: CatalogueProduct): Check[] {
   if (water <= 3) out.push({title: `${water} bar : pas de baignade`, text: 'Pluie, éclaboussures et lavage des mains. Retirez-la avant la piscine ou la mer.', guide: waterGuide});
   else if (water < 10) out.push({title: `${water} bar : la nage ordinaire, selon la notice`, text: 'Pas de plongée, pas de douche chaude ni de sauna. La notice de la référence reste la règle.', guide: waterGuide});
   else if (water < 20) out.push({title: `${water} bar : natation possible`, text: 'Selon la notice. Évitez la douche chaude et ne touchez pas la couronne sous l’eau.', guide: waterGuide});
-  else out.push({title: `${water} bar : natation et masque-tuba`, text: 'Selon la notice. Pour la plongée avec bouteilles, il faut une montre de plongée certifiée, ce que ce chiffre seul ne garantit pas.', guide: waterGuide});
+  else out.push({title: `${water} bar : natation et masque-tuba`, text: 'Selon la notice. Pour la plongée avec bouteilles, il faut une montre de plongée certifiée, ce que ce chiffre seul ne garantit pas.', guide: {label: 'Montre de plongée et norme ISO 6425', url: '/guides/montre-de-plongee-iso-6425/'}});
   const moveGuide = {label: 'Automatique, quartz ou solaire', url: '/guides/automatique-quartz-solaire/'};
-  if (p.movement === 'Automatique') out.push({title: 'Automatique : elle s’arrête au repos', text: 'Sans être portée, elle s’arrête une fois sa réserve de marche épuisée (durée indiquée par le fabricant) et doit être remise à l’heure. Moins précise qu’un quartz.', guide: moveGuide});
+  if (p.movement === 'Automatique') out.push({title: 'Automatique : elle s’arrête au repos', text: 'Sans être portée, elle s’arrête une fois sa réserve de marche épuisée (durée indiquée par le fabricant) et doit être remise à l’heure. Moins précise qu’un quartz.', guide: {label: 'Réserve de marche et remontage', url: '/guides/montre-automatique-reserve-de-marche/'}});
   else if (p.movement === 'Quartz') out.push({title: 'Quartz : une pile à changer', text: 'Rien à régler au quotidien. Faites contrôler l’étanchéité quand la pile est remplacée.', guide: moveGuide});
   else if (p.movement === 'Solaire') out.push({title: 'Solaire : elle vit de la lumière', text: 'Pas de pile à changer, mais rangez-la à la lumière plutôt que dans une boîte fermée.', guide: moveGuide});
-  const g = glassKind(p.glass);
-  out.push(g === 'saphir' ? {title: 'Verre saphir', text: 'Très résistant aux rayures, mais il peut se fendre sur un choc sec.'}
-    : g === 'acrylique' ? {title: 'Verre acrylique', text: 'Il se raye plus facilement, mais une rayure légère se polit avec une pâte.'}
-    : {title: 'Verre minéral', text: 'Plus sensible aux rayures qu’un saphir ; une rayure profonde ne part plus.'});
+  const g = glassKind(p.glass), glassGuide = {label: 'Saphir, minéral ou acrylique', url: '/guides/verre-saphir-mineral-acrylique/'};
+  out.push(g === 'saphir' ? {title: 'Verre saphir', text: 'Très résistant aux rayures, mais il peut se fendre sur un choc sec.', guide: glassGuide}
+    : g === 'acrylique' ? {title: 'Verre acrylique', text: 'Il se raye plus facilement, mais une rayure légère se polit avec une pâte.', guide: glassGuide}
+    : {title: 'Verre minéral', text: 'Plus sensible aux rayures qu’un saphir ; une rayure profonde ne part plus.', guide: glassGuide});
   const sizeGuide = {label: 'Choisir la taille de sa montre', url: '/guides/choisir-taille-montre/'};
   if (size >= 43) out.push({title: `${mm(size)} : un grand boîtier`, text: 'Imposant sur un poignet fin. Comparez avec une montre que vous portez déjà, en regardant aussi le corne à corne.', guide: sizeGuide});
   else if (size <= 36) out.push({title: `${mm(size)} : un format discret`, text: 'Idéal sur un poignet fin ou pour une allure vintage. Sur un poignet large, elle peut paraître petite.', guide: sizeGuide});

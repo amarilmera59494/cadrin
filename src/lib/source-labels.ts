@@ -41,7 +41,12 @@ const documents:Record<string,string>={
  'https://tempusshop.com/en/policies/terms-of-sale':'Tempus — terms of sale',
  'https://tempusshop.com/en/pages/faq':'Tempus — delivery and frequently asked questions',
  'https://tempusshop.com/en/policies/refund-policy':'Tempus — returns policy',
- 'https://tempusshop.com/collections/montre-femme':'Tempus — women’s watch collection'
+ 'https://tempusshop.com/collections/montre-femme':'Tempus — women’s watch collection',
+ 'https://www.citizenwatch.com/us/en/product/NJ0150-56A':'Citizen — NJ0150-56A, calibre 8210 specifications',
+ 'https://www.iso.org/standard/66517.html':'ISO — ISO 6425:2018, divers’ watches',
+ 'https://www.seikowatches.com/jp-ja/customerservice/word/ha':'Seiko — glossary: Hardlex (Japanese)',
+ 'https://www.seikowatches.com/jp-ja/customerservice/word/sa':'Seiko — glossary: sapphire crystal and automatic winding (Japanese)',
+ 'https://www.seikowatches.com/jp-ja/customerservice/word/a':'Seiko — glossary: acrylic crystal (Japanese)'
 };
 const productLabels=new Map(data.products.map(p=>[new URL(p.source).pathname,`Tempus — ${p.brand} ${p.reference}`]));
 export function sourceLabel(url:string){

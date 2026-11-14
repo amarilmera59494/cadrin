@@ -263,5 +263,197 @@
         }
       }
     ]
+  },
+  "verre-saphir-mineral-acrylique": {
+    "title": "Sapphire, mineral or acrylic crystal: which should you choose?",
+    "description": "The crystal decides whether your watch still looks new in a few years. The three families, their strengths and limits, and how to spot them in a listing.",
+    "sections": [
+      {
+        "id": "detail",
+        "title": "The detail you forget, and see every day",
+        "paragraphs": [
+          "In a listing, the crystal takes one word. Yet you look through it every time you read the time, and it keeps, or not, the marks of your days: a desk corner, a door handle, a zip. Three families cover most watches: acrylic, mineral and sapphire.",
+          "None is “the right one” in absolute terms. Each suits a use, a style and a budget."
+        ]
+      },
+      {
+        "id": "families",
+        "title": "The three families",
+        "paragraphs": [
+          "Acrylic, the crystal of vintage watches. Seiko defines it as a crystal made of acrylic resin, also called organic glass. It scratches more easily than the others, but a light scratch can often be reduced with polishing paste. It tends to mark rather than shatter.",
+          "Mineral, the most common compromise. It is inorganic glass, often hardened. Seiko calls its own mineral crystal Hardlex and describes it as inorganic glass given a special strengthening treatment. It resists scratches better than acrylic; a deep scratch, however, will not polish out.",
+          "Sapphire, the benchmark against scratches. It is synthetic sapphire, made artificially, as Seiko states. Citizen highlights its scratch resistance and hardness. Very hard, it can still crack on a sharp knock, like any crystal. Once reserved for high-end watches, it now appears below €300."
+        ],
+        "link": {
+          "label": "Seiko glossary: Hardlex",
+          "url": "https://www.seikowatches.com/jp-ja/customerservice/word/ha"
+        }
+      },
+      {
+        "id": "examples",
+        "title": "Three watches to compare",
+        "paragraphs": [
+          "Three watches from the catalogue, three crystals: the retro Casio in acrylic, the Seiko 5 in Hardlex, the Citizen Tsuyosa in sapphire. They are not ranked by overall quality; they show what the crystal changes in use."
+        ],
+        "examples": "crystal-examples"
+      },
+      {
+        "id": "listing",
+        "title": "How to spot it in a listing",
+        "paragraphs": [
+          "Trust the exact word. “Sapphire” means a sapphire crystal; “Hardlex” or “mineral” a mineral crystal; “acrylic”, “plexiglass” or “hesalite” an organic material. Be wary of vague wording such as “treated crystal” or “sapphire effect”. An anti-reflective coating helps legibility but does not change the material.",
+          "Shape matters too: a domed crystal looks vintage and catches the light; a flat one stays discreet."
+        ]
+      },
+      {
+        "id": "advice",
+        "title": "Our advice by use",
+        "paragraphs": [
+          "Everyday watch, worn for years: aim for sapphire if your budget allows. Sports or work watch: mineral or acrylic cope well, and acrylic can be polished. Retro or occasional dress watch: domed acrylic is part of the charm; accept a few marks.",
+          "The crystal says nothing about water resistance or the movement: read the whole listing before choosing."
+        ]
+      }
+    ]
+  },
+  "montre-automatique-reserve-de-marche": {
+    "title": "Automatic watches: power reserve, winding and good habits",
+    "description": "Why an automatic stops at rest, how to restart it, what power reserve, hand-winding and hacking mean, and the habits that make it last.",
+    "sections": [
+      {
+        "id": "lives",
+        "title": "A watch that lives with you",
+        "paragraphs": [
+          "An automatic watch has no battery. Seiko puts it simply: the movement of your arm automatically winds the mainspring, which then releases its energy to drive the hands. As long as you wear it, it runs.",
+          "That is also what surprises people at first: left on a table, it eventually stops. This is not a fault; it is how it works."
+        ]
+      },
+      {
+        "id": "reserve",
+        "title": "Power reserve: how long at rest",
+        "paragraphs": [
+          "The power reserve is how long the watch keeps running once off the wrist, with the spring well wound. It depends on the calibre and appears in the manufacturer’s listing: Seiko states about 41 hours for the 4R36 calibre; Citizen states 42 hours for calibre 8210, used in the Tsuyosa.",
+          "In practice, an automatic taken off on Friday evening will often have stopped by Monday morning. If you rotate several watches, expect to reset it. Some newer automatics run much longer: read the listing if this matters to you."
+        ]
+      },
+      {
+        "id": "winding",
+        "title": "Hand-winding and hacking",
+        "paragraphs": [
+          "Hand-winding lets you restart the watch by turning the crown instead of shaking it. Seiko lists it for calibre 4R36; for other calibres, check the listing or manual.",
+          "Hacking stops the seconds hand when you pull the crown, so you can set the time to the second. Citizen lists it for calibre 8210, Seiko for the 4R36. The Seiko 5 SNKL23, by contrast, offers neither: wear it or shake it gently to restart it."
+        ],
+        "examples": "automatic-examples"
+      },
+      {
+        "id": "accuracy",
+        "title": "Accuracy: a different relationship with time",
+        "paragraphs": [
+          "An automatic is less accurate than a quartz watch: a few seconds’ drift per day is normal, and it varies with position, temperature and winding. The exact tolerance is in the calibre’s manual. If you want a watch that is always right without thinking about it, quartz or solar will suit you better."
+        ]
+      },
+      {
+        "id": "habits",
+        "title": "Good habits",
+        "paragraphs": [
+          "Restart it with the crown if it can be hand-wound. Never force the crown; if it screws down, unscrew it before setting and screw it back gently, as Seiko stresses, to keep moisture out. Do not touch the crown in water, and avoid heat, baths and saunas. Avoid violent shocks. Have it serviced if it gains or loses time unusually, or as the manufacturer advises."
+        ],
+        "link": {
+          "label": "Seiko care advice",
+          "url": "https://www.seikowatches.com/fr-fr/customerservice/faq/care-maintenance-2"
+        }
+      }
+    ]
+  },
+  "montre-de-plongee-iso-6425": {
+    "title": "Divers’ watches: what ISO 6425 means",
+    "description": "200 m on a listing does not make a divers’ watch. What ISO 6425 covers, how Citizen separates uses, and how to recognise a real diver.",
+    "sections": [
+      {
+        "id": "not-diver",
+        "title": "“Water resistant to 200 m” is not “divers’ watch”",
+        "paragraphs": [
+          "A rotating bezel and 20 bar on a listing look the part. But for scuba diving, manufacturers clearly separate water-resistant watches, even very water-resistant ones, from divers’ watches designed and tested for that use.",
+          "The difference comes from an international standard: ISO 6425, “Horology — Divers’ watches”, whose current edition dates from 2018."
+        ]
+      },
+      {
+        "id": "citizen",
+        "title": "What Citizen says, use by use",
+        "paragraphs": [
+          "Citizen groups uses into five situations: rain, sweat and face washing; work in contact with water and ordinary swimming; skin diving and water sports; scuba diving; saturation diving.",
+          "3 bar covers the first only; 5 bar the first two; 10, 20 and 30 bar the first three, with no scuba diving. Divers’ watches rated 200 m and 300 m cover scuba diving, and Citizen states that they comply with ISO 6425. Saturation divers’ watches go further, sometimes with a helium escape valve."
+        ],
+        "link": {
+          "label": "Read Citizen’s chart",
+          "url": "https://www.citizenwatch-global.com/support/maintenance/wr.html"
+        }
+      },
+      {
+        "id": "standard",
+        "title": "What the standard covers",
+        "paragraphs": [
+          "ISO 6425 sets requirements and test methods for divers’ watches, designed for at least 100 m, and for saturation divers’ watches. It goes beyond water resistance: legibility in the dark, a device to time the dive (often a rotating bezel), resistance to shocks and magnetism, and strap strength.",
+          "A compliant watch usually carries the word “Diver’s” followed by its depth, on the dial or case back. If it is missing, assume nothing: check the manual or the manufacturer’s listing."
+        ]
+      },
+      {
+        "id": "examples",
+        "title": "Three watches to place the levels",
+        "paragraphs": [
+          "None of these watches is presented here as a certified divers’ watch. They show what water-resistance figures allow, according to Citizen’s chart."
+        ],
+        "examples": "diver-examples"
+      },
+      {
+        "id": "before",
+        "title": "Before going in the water",
+        "paragraphs": [
+          "Screw the crown down if it screws, and never operate it underwater. No heat: Citizen and Seiko advise against hot water, baths and saunas. Rinse in fresh water after the sea, not under a running tap, then dry. Have water resistance checked regularly: seals age and shocks weaken them.",
+          "For scuba diving, choose a watch explicitly intended for it, and keep your dive computer: the watch remains a backup instrument."
+        ]
+      }
+    ]
+  },
+  "lire-fiche-technique-montre": {
+    "title": "Reading a watch specification, line by line",
+    "description": "Diameter, thickness, calibre, crystal, water resistance, strap: what each line of a listing means, and what it leaves out, with a full example.",
+    "sections": [
+      {
+        "id": "three",
+        "title": "One listing, ten lines, three decisions",
+        "paragraphs": [
+          "A specification looks dry. Yet it answers the three questions that decide whether a watch gets worn: will it fit my wrist, what can it take, and what will it ask of me day to day. Here is a real listing, the Citizen Tsuyosa NJ0150-81E, read line by line."
+        ],
+        "examples": "spec-example"
+      },
+      {
+        "id": "fit",
+        "title": "Will it fit my wrist?",
+        "paragraphs": [
+          "Diameter (40 mm): the case width without the crown. It is the most visible figure, not the only one. Thickness (11.6 mm): it decides whether the watch slides under a shirt cuff. Lug-to-lug: the distance between the strap attachments, rarely listed; if it exceeds your wrist width, the watch will look too big."
+        ]
+      },
+      {
+        "id": "take",
+        "title": "What can it take?",
+        "paragraphs": [
+          "Crystal (sapphire): sapphire, mineral (Hardlex at Seiko) or acrylic decides scratch resistance. Water resistance (5 ATM): 5 bar, 5 ATM or 50 m mean the same level; according to Citizen’s chart it allows ordinary swimming but not skin diving. Case and bracelet (steel): resin is lighter and absorbs shocks; leather adjusts without tools but dislikes water; a steel bracelet often needs links removed."
+        ]
+      },
+      {
+        "id": "ask",
+        "title": "What will it ask of me?",
+        "paragraphs": [
+          "Movement (automatic): quartz needs a battery now and then, solar needs light, automatic needs to be worn or wound. Calibre (8210): the name of the engine, which leads to the manual and the real specifications; Citizen states 42 hours of power reserve and hacking for the 8210. Functions (date): each function adds a use, and sometimes thickness."
+        ]
+      },
+      {
+        "id": "missing",
+        "title": "What the listing does not say",
+        "paragraphs": [
+          "A listing says nothing about comfort on the wrist, the finishing up close or the sound of the rotor. It can also contain errors: when in doubt, cross-check with the manufacturer’s listing using the exact reference."
+        ]
+      }
+    ]
   }
 }
