@@ -1,14 +1,14 @@
 ---
 status: "published"
-verifiedAt: "2026-11-13"
+verifiedAt: "2026-11-15"
 author: null
-reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
+reviewer: "Contrôle documentaire CADRIN — 2026-11-15"
 rights: "approved"
 image: null
 title: "Première montre haut de gamme : où mettre votre budget ?"
 description: "Un beau bracelet, un mouvement qui vous plaît, une finition particulière : identifiez ce que vous voulez vraiment gagner en montant en gamme."
 related: ["citizen-tsuyosa-nj0150-81e", "orient-bambino-ra-ac0m04y"]
-sources: [{"label": "Hamilton Khaki Field H70455533 chez Tempus", "url": "https://tempusshop.com/products/hamilton-khaki-field-auto-38mm-1"}, {"label": "Tissot PRX quartz chez Tempus", "url": "https://tempusshop.com/products/tissot-prx-noir"}, {"label": "Citizen Tsuyosa chez Tempus", "url": "https://tempusshop.com/products/citizen-tsuyosa-noir-nj0150-81e"}]
+sources: [{"label": "Seiko SRPH49 chez Tempus", "url": "https://tempusshop.com/products/seiko-arabic-dial-green"}, {"label": "Orient RA-AK0803Y chez Tempus", "url": "https://tempusshop.com/products/orient-contemporary-sun-moon-ra-ak0803y"}, {"label": "Citizen Tsuyosa chez Tempus", "url": "https://tempusshop.com/products/citizen-tsuyosa-noir-nj0150-81e"}]
 ---
 
 ## Le mot luxe ne choisit pas à votre place
@@ -19,7 +19,7 @@ Il n’existe pas de montant universel qui transforme une montre en montre de lu
 
 ## Trois références pour préciser vos envies
 
-La PRX quartz met le dessin du bracelet au premier plan tout en gardant le fonctionnement d’un quartz. La Khaki Field H70455533 part dans une autre direction : cuir, cadran de montre de terrain et mouvement automatique. La Tsuyosa sert de contrepoint : avant d’augmenter le budget, regardez ce que vous appréciez déjà dans sa silhouette sur acier.
+La Seiko SRPH49 part du cadran : un vert profond, des chiffres arabes et un jour affiché en anglais ou en arabe, sur une automatique de 40 mm. L’Orient Bambino Sun & Moon met une mécanique au premier plan, avec son indicateur jour et nuit, sur cuir. La Tsuyosa sert de contrepoint : avant d’augmenter le budget, regardez ce que vous appréciez déjà dans sa silhouette sur acier.
 
 Ces modèles ne représentent pas toute la haute horlogerie. Ils donnent trois points de départ concrets chez Tempus pour savoir si votre envie porte sur une forme, une mécanique ou une matière. Les prix affichés dans les cartes sont datés, pas un engagement de disponibilité.
 
