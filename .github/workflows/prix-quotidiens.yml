@@ -5,6 +5,7 @@ name: Prix quotidiens
 on:
   schedule:
     - cron: '15 5 * * *' # 6 h 15 à Paris en hiver, 7 h 15 en été
+    - cron: '0 6 * * *' # passage de secours (7 h à Paris) si le premier a été retardé ; sans effet s'il a abouti
   workflow_dispatch:
 
 permissions:
@@ -31,13 +32,16 @@ jobs:
         run: node scripts/refresh-tempus-offers.mjs --apply
       - name: Mettre à jour l'historique des prix
         run: node scripts/price-history.mjs
+      - name: Relevé Black Friday (jusqu'au 30 novembre 2026)
+        run: |
+          if [ "$(TZ=Europe/Paris date +%F)" \< "2026-12-01" ]; then node scripts/black-friday-refresh.mjs; else echo "Relevé Black Friday terminé."; fi
       - name: Vérifier le site avant publication
         run: npm run check && SITE_STAGE=production npm run build
       - name: Publier
         run: |
           git config user.name "cadrin-prix"
           git config user.email "cadrin-prix@users.noreply.github.com"
-          git add src/data/tempus-catalogue.json public/catalogue.json src/data/price-history.json
+          git add src/data/tempus-catalogue.json public/catalogue.json src/data/price-history.json src/data/black-friday.json
           if git diff --cached --quiet; then echo "Aucun changement de prix."; exit 0; fi
           git commit -m "Relevé des prix du $(TZ=Europe/Paris date +%F)"
           git push origin HEAD:main
