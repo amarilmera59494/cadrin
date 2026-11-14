@@ -1,0 +1,73 @@
+---
+// Page de sélection construite depuis le catalogue : critères, montres (liées à leur fiche), conseils, guides.
+import Cadrin from '../layouts/Cadrin.astro';
+import data from '../data/tempus-catalogue.json';
+import {hubs,type Hub} from '../data/selection-hubs';
+import {affiliateUrl} from '../data/affiliation';
+import {dateLabel} from '../lib/editorial';
+import {purchaseLabel,type CatalogueProduct} from '../lib/tempus-catalogue';
+import {ficheEligible,ficheHref,ficheSummary,ficheTitle} from '../lib/fiches';
+const {hub}=Astro.props as {hub:Hub};
+const all=(data.products as CatalogueProduct[]).filter(ficheEligible);
+const seen=new Set<string>();
+const matches=all.filter(hub.match).filter(p=>{const h=ficheHref(p)!;if(seen.has(h))return false;seen.add(h);return true;})
+ .sort((a,b)=>hub.sort==='price'?a.price-b.price:Number(!!b.bestseller)-Number(!!a.bestseller)||a.price-b.price);
+const shown=matches.slice(0,hub.limit??24);
+const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
+const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
+const others=hubs.filter(h=>h.slug!==hub.slug).slice(0,12);
+---
+<Cadrin title={hub.title} description={hub.description} crumbs={[{name:'Sélections',url:'/selections/'},{name:hub.title,url:`/selections/${hub.slug}/`}]}>
+ <div class="container hub">
+  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/selections/">Sélections</a><span>/</span><span>{hub.kicker}</span></nav>
+  <header class="hub-head">
+   <div><span class="eyebrow">La sélection · {hub.kicker}</span><h1>{hub.h1.split('<br>').map((s,i)=><>{i>0&&<br/>}{s}</>)}</h1></div>
+   <div class="hub-intro">{hub.intro.map(p=><p>{p}</p>)}</div>
+  </header>
+  <aside class="hub-criteria" aria-labelledby="criteres">
+   <h2 id="criteres">Nos critères</h2>
+   <ul>{hub.criteria.map(c=><li>{c}</li>)}</ul>
+   <p>{matches.length} montres correspondent au relevé du {dateLabel(checkedAt)}{matches.length>shown.length?` ; voici les ${shown.length} premières`:''}. Ordre : best-sellers du vendeur, puis prix croissant. Ce n’est pas un classement de qualité, et nous n’avons pas porté ces montres.</p>
+   <p class="small-note">Prix France hors livraison, susceptibles d’évoluer. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
+  </aside>
+  <ol class="hub-grid">{shown.map((p,i)=><li class="hub-card">
+   <a class="hub-photo" href={ficheHref(p)!} tabindex="-1" aria-hidden="true"><img src={p.image} width={p.width} height={p.height} loading={i<4?'eager':'lazy'} decoding="async" alt=""/></a>
+   <span class="eyebrow">{p.brand}{p.bestseller?' · Best-seller':''}</span>
+   <h3><a href={ficheHref(p)!}>{ficheTitle(p)}</a></h3>
+   <p class="hub-sum">{ficheSummary(p)}</p>
+   <p class="hub-price">{money(p.price)}</p>
+   <a class="button merchant-button" data-placement="recommendation" href={affiliateUrl(p.source)} rel="sponsored">{purchaseLabel(p,false)} ↗</a>
+   <a class="hub-more" href={ficheHref(p)!}>Taille, verre et points à vérifier →</a>
+  </li>)}</ol>
+  {matches.length>shown.length&&<p class="hub-all"><a class="text-link" href="/catalogue/">Voir tout le catalogue et filtrer →</a></p>}
+  <section class="hub-tips" aria-labelledby="choisir"><h2 id="choisir">Pour bien choisir</h2><ol>{hub.tips.map(([t,x])=><li><h3>{t}</h3><p>{x}</p></li>)}</ol>
+   <p class="hub-guides">Nos guides : {hub.guides.map((g,i)=><>{i>0&&' · '}<a href={g.url}>{g.label}</a></>)}</p></section>
+  <nav class="hub-others" aria-labelledby="autres"><h2 id="autres">Les autres sélections</h2><ul>{others.map(h=><li><a href={`/selections/${h.slug}/`}><span class="eyebrow">{h.kicker}</span>{h.title}</a></li>)}</ul></nav>
+ </div>
+</Cadrin>
+<style>
+.hub{padding-bottom:var(--section)}
+.hub-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-5);align-items:end;padding:var(--space-2) 0 var(--space-4);border-bottom:2px solid var(--wine)}
+.hub-head h1{font:500 clamp(46px,6vw,88px)/.95 var(--display);text-transform:uppercase;margin:var(--space-2) 0 0;text-wrap:balance}
+.hub-intro p{font-size:17px;line-height:1.6;margin:0 0 var(--space-2)}
+.hub-criteria{margin:var(--space-4) 0;padding:var(--space-3);background:var(--sand);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--space-1) var(--space-5)}
+.hub-criteria h2{font:500 28px/1 var(--display);text-transform:uppercase;margin:0;grid-column:1/-1}
+.hub-criteria ul{margin:0;padding-left:1.1em;line-height:1.6}.hub-criteria p{margin:0;line-height:1.6}.hub-criteria .small-note{grid-column:2}
+.hub-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--space-4) var(--space-3)}
+.hub-card{display:flex;flex-direction:column;gap:6px;min-width:0}
+.hub-photo{display:block;background:#fff;padding:var(--space-2);margin-bottom:var(--space-1)}.hub-photo img{width:100%;height:240px;object-fit:contain}
+.hub-card h3{font-size:18px;line-height:1.3;margin:0}.hub-card h3 a{color:inherit;text-decoration:none}.hub-card h3 a:hover,.hub-card h3 a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.hub-sum{font-size:14px;line-height:1.5;color:var(--muted);margin:0}
+.hub-price{font:500 34px/1 var(--display);margin:6px 0}
+.hub-card .merchant-button{margin-top:auto;min-height:48px;justify-content:center}
+.hub-more{font-size:14px;font-weight:600;min-height:44px;display:flex;align-items:center}
+.hub-all{margin-top:var(--space-4)}
+.hub-tips{margin-top:var(--section)}.hub-tips h2,.hub-others h2{font:500 clamp(30px,3.4vw,44px)/1.05 var(--display);text-transform:uppercase;margin:0 0 var(--space-3)}
+.hub-tips ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-3);counter-reset:t}
+.hub-tips li{counter-increment:t;border-top:3px solid var(--accent);padding-top:var(--space-2)}.hub-tips li::before{content:counter(t,decimal-leading-zero);font:500 28px/1 var(--display);color:var(--accent)}
+.hub-tips h3{font-size:18px;margin:var(--space-1) 0}.hub-tips p{margin:0;line-height:1.55}
+.hub-guides{margin-top:var(--space-4)!important;padding-top:var(--space-2);border-top:1px solid var(--line);max-width:none!important}
+.hub-others{margin-top:var(--section)}.hub-others ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-2)}
+.hub-others a{display:flex;flex-direction:column;gap:4px;min-height:44px;padding:var(--space-2);border:1px solid var(--line);text-decoration:none;color:inherit;font-weight:600;line-height:1.35}.hub-others a:hover,.hub-others a:focus-visible{border-color:var(--wine)}
+@media(max-width:800px){.hub-head{grid-template-columns:1fr;gap:var(--space-3)}.hub-criteria{grid-template-columns:1fr}.hub-criteria .small-note{grid-column:1}.hub-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3) var(--space-2)}.hub-photo img{height:170px}.hub-price{font-size:28px}}
+</style>

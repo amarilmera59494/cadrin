@@ -1,5 +1,39 @@
 ---
-import Cadrin from '../../layouts/Cadrin.astro';import Photo from '../../components/Photo.astro';import {catalogue} from '../../lib/editorial';
+import Cadrin from '../../layouts/Cadrin.astro';import Photo from '../../components/Photo.astro';import {catalogue,dateLabel} from '../../lib/editorial';
+import data from '../../data/tempus-catalogue.json';
+import {hubs} from '../../data/selection-hubs';
+import {ficheEligible,ficheHref} from '../../lib/fiches';
+import type {CatalogueProduct} from '../../lib/tempus-catalogue';
 const {selections,finder}=await catalogue();
+const all=(data.products as CatalogueProduct[]).filter(ficheEligible);
+const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
+const cards=hubs.map(h=>{const seen=new Set<string>();const m=all.filter(h.match).filter(p=>{const k=ficheHref(p)!;if(seen.has(k))return false;seen.add(k);return true;}).sort((a,b)=>Number(!!b.bestseller)-Number(!!a.bestseller)||a.price-b.price);return {...h,count:m.length,lead:m[0],from:Math.min(...m.map(p=>p.price))};});
+const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:n%1?2:0}).format(n);
+const groups:[string,string[]][]=[
+ ['Par budget',['montres-moins-de-100-euros','montres-de-100-a-200-euros','montres-automatiques-moins-de-300-euros','montres-verre-saphir-moins-de-300-euros']],
+ ['Par usage',['montres-etanches-200-metres','montres-solaires','chronographes','montres-petit-poignet']],
+ ['Pour offrir',['idees-cadeaux-homme-moins-de-200-euros','montres-femme','montres-marques-francaises','montres-marques-suisses']],
+];
 ---
-<Cadrin title="Les sélections de montres" description="Des sélections courtes et documentées, pensées pour les usages et les proportions, sans classement ni prix supposé." crumbs={[{name:'Sélections',url:'/selections/'}]}><div class="container"><nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Sélections</span></nav><header class="page-heading"><span class="eyebrow">Réduire le champ</span><h1>Moins de modèles.<br/>Plus de repères.</h1><p>Des pistes à explorer, pas un palmarès. Chaque référence est accompagnée de ses faits, de ses sources et de ses limites.</p>{finder.length>0 && <a class="text-link" href="/trouver-ma-montre/">Filtrer toutes les montres par budget et par style →</a>}</header>{selections.map(s=><section class="editorial-index section"><Photo name="wrist" eager sizes="(max-width:700px) 100vw, 45vw"/><div><span class="eyebrow">La sélection / 01 · {s.data.watches.length} références</span><h2>{s.data.title}</h2><p>{s.data.description}</p><p class="small-note">Photographie d’ambiance, hors sélection. Aucun essai physique revendiqué.</p><a class="text-link" href={`/selections/${s.id}/`}>Explorer les trois montres <span aria-hidden="true">↗</span></a></div></section>)}{!selections.length&&<p class="section">Retrouvez ici nos prochaines sélections. <a href="/notre-methode/">Découvrez nos critères.</a></p>}</div></Cadrin>
+<Cadrin title="Les sélections de montres" description="Douze sélections de montres par budget, par usage et pour offrir : automatiques sous 300 €, verre saphir, solaires, 200 m, petit poignet, montres femme. Critères explicites et prix datés." crumbs={[{name:'Sélections',url:'/selections/'}]}>
+ <div class="container sel">
+  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Sélections</span></nav>
+  <header class="page-heading"><span class="eyebrow">Réduire le champ</span><h1>Moins de modèles.<br/>Plus de repères.</h1><p>Chaque sélection repose sur des critères vérifiables sur la fiche (prix, mouvement, verre, étanchéité, taille), avec des prix datés et les points à vérifier pour chaque montre. Pas de palmarès, pas de note : des pistes claires.</p><p class="small-note">Prix France hors livraison relevés le {dateLabel(checkedAt)}. Liens affiliés : Cadrin peut toucher une commission.</p>{finder.length>0&&<a class="text-link" href="/trouver-ma-montre/">Ou laissez-vous guider en quatre questions →</a>}</header>
+  {groups.map(([label,slugs])=><section class="sel-group" aria-label={label}><h2>{label}</h2><ul>{slugs.map(s=>cards.find(c=>c.slug===s)!).map(c=><li><a href={`/selections/${c.slug}/`}><span class="sel-img">{c.lead&&<img src={c.lead.image} width={c.lead.width} height={c.lead.height} loading="lazy" decoding="async" alt=""/>}</span><span class="eyebrow">{c.kicker}</span><strong>{c.title}</strong><span class="sel-meta">{c.count} montres · dès {money(c.from)}</span></a></li>)}</ul></section>)}
+  {selections.map(s=><section class="editorial-index section"><Photo name="wrist" sizes="(max-width:700px) 100vw, 45vw"/><div><span class="eyebrow">La sélection commentée · {s.data.watches.length} références</span><h2>{s.data.title}</h2><p>{s.data.description}</p><p class="small-note">Photographie d’ambiance, hors sélection. Aucun essai physique revendiqué.</p><a class="text-link" href={`/selections/${s.id}/`}>Explorer les trois montres <span aria-hidden="true">↗</span></a></div></section>)}
+ </div>
+</Cadrin>
+<style>
+.sel-group{padding-top:var(--space-5)}
+.sel-group h2{font:500 clamp(30px,3.4vw,44px)/1.05 var(--display);text-transform:uppercase;margin:0 0 var(--space-3)}
+.sel-group ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-3)}
+.sel-group a{display:flex;flex-direction:column;gap:6px;height:100%;text-decoration:none;color:inherit}
+.sel-img{display:block;background:#fff;padding:var(--space-2);margin-bottom:var(--space-1)}.sel-img img{width:100%;height:200px;object-fit:contain;transition:transform var(--motion)}
+.sel-group a:hover .sel-img img,.sel-group a:focus-visible .sel-img img{transform:scale(1.03)}
+.sel-group strong{font:500 26px/1.05 var(--display);text-transform:uppercase}
+.sel-group a:hover strong,.sel-group a:focus-visible strong{text-decoration:underline;text-underline-offset:4px}
+.sel-meta{font-size:14px;color:var(--muted)}
+@media(max-width:1000px){.sel-group ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.sel-img img{height:150px}.sel-group strong{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.sel-img img{transition:none}}
+</style>
