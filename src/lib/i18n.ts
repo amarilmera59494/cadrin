@@ -5,6 +5,7 @@ export const localeOf = (path:string):Locale => path === '/en' || path.startsWit
 export const routePairs:Record<string,string> = {
   '/':'/en/',
   ...featureRoutes,
+  '/guides/etancheite-montre-3-5-10-20-atm/':'/en/guides/watch-water-resistance-3-5-10-20-atm/',
   '/vues-sur-nos-reseaux/':'/en/seen-on-social/',
   '/analyses/':'/en/analysed-watches/',
   '/mes-favoris/':'/en/saved-watches/',

@@ -1,6 +1,8 @@
+import {gshockComparison} from './gshock-comparison.ts';
 export type Copy=[string,string];
 export type Feature={kind:'brand'|'comparison';slug:string;enSlug:string;brand?:string;title:Copy;intro:Copy;verdict:Copy;choices:{reference:string;label:Copy;why:Copy;limit:Copy}[];sections:{title:Copy;paragraphs:Copy[];source?:string}[];sources:{label:string;url:string}[];verifiedAt:string;rights:'approved'};
 export const features:Feature[]=[
+ gshockComparison,
  {kind:'comparison',slug:'tsuyosa-37-ou-40-mm',enSlug:'tsuyosa-37-or-40-mm',verifiedAt:'2026-11-14',rights:'approved',
  title:['Tsuyosa : 37 ou 40 mm ?','Tsuyosa: 37 or 40 mm?'],
  intro:['La rose de 37 mm vous attire, mais la noire de 40 mm vous semble plus facile à porter ? Le bon choix commence par les proportions que vous aimez déjà, puis par la couleur. Voici ce qui change entre ces références précises.','Drawn to the pink 37 mm, but think the black 40 mm might be easier to wear? Start with proportions you already enjoy, then consider colour. Here is what changes between these exact references.'],

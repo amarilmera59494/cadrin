@@ -1,4 +1,4 @@
-import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {filterCatalogue,emptyFilters,sizeNumber} from '../src/lib/tempus-catalogue.ts';import {parseSpecs,colourFamily,matchesReference} from './import-tempus-specifications.mjs';
+import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {filterCatalogue,emptyFilters,sizeNumber,waterMark} from '../src/lib/tempus-catalogue.ts';import {parseSpecs,colourFamily,matchesReference} from './import-tempus-specifications.mjs';
 const d=JSON.parse(await readFile('src/data/tempus-catalogue.json','utf8')),best=JSON.parse(await readFile('src/data/tempus-bestsellers.json','utf8')),groups=JSON.parse(await readFile('src/data/guide-examples.json','utf8'));
 for(const [key,group]of Object.entries(groups))for(const [ref]of group){const p=d.products.find(p=>p.reference===ref);assert.ok(p,key+': '+ref);if(key.startsWith('budget-'))assert.ok(p.price<=Number(key.split('-')[1]),key+': '+ref+' over budget');}
 for(const p of d.products){assert.equal(p.bestseller,best.ids.includes(p.id));assert.ok(Array.isArray(p.dialColors));}
@@ -16,3 +16,11 @@ assert.deepEqual(d.products.find(p=>p.reference==='NJ0200-50Z').dialColors,['Ros
 
 for(const [ref]of groups.home){assert.equal(d.products.find(p=>p.reference===ref)?.orderable,true,'Home selection needs an orderable listing: '+ref);}
 assert.equal(d.market.country,'FR');assert.equal(d.market.currency,'EUR');
+
+// Explicit markings, not guessed activities or depth conversions.
+for(const [label,value] of [['20 Bar (ISO 22810)',20],['5 ATM (50 mètres)',5],['100 m (10 bar)',10],['20 ATM',20],['3,5 bar',3.5],['100 m',null],['Non étanche',null],['',null],['20 ATM sauf immersion',null],['5 ATM / 10 ATM',null]])assert.equal(waterMark(label),value,label);
+const waterFixtures=['3 ATM','5 ATM','10 ATM','20 ATM','100 m','','10 ATM (100m)'].map((water,i)=>({...d.products[0],id:String(i),water}));
+for(const [water,count] of [['5',4],['10',3],['20',1],['NaN',0],['-1',0],['0',0],['100',0]])assert.equal(filterCatalogue(waterFixtures,{...emptyFilters,water}).length,count,water);
+const aquatic=filterCatalogue(d.products,{...emptyFilters,water:'20',brand:'G-Shock',budget:'150'});
+assert.ok(aquatic.some(p=>p.reference==='GA-2100-1A1ER'));assert.ok(aquatic.every(p=>waterMark(p.water)>=20&&p.price<=150));
+console.log(JSON.stringify({waterMarking:'PASS',waterCombinedFilter:aquatic.length,missingWaterExcluded:true}));

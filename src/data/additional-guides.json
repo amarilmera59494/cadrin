@@ -74,6 +74,17 @@
           "Compare size with a watch the recipient already wears. Look at the clasp and adjustment options. If colour is uncertain, let them choose: black and a vivid colour do not play the same role in an outfit.",
           "A screen does not automatically make a watch a child-safety or location device. If that is the intended use, verify the exact service, phone or subscription requirements and limitations."
         ]
+      },
+      {
+        "id": "black-dials",
+        "title": "Two black GA-2100s to compare",
+        "paragraphs": [
+          "Prefer all black or lighter hour markers? Compare the exact 1A1ER and 1AER before choosing."
+        ],
+        "link": {
+          "label": "Compare the two black GA-2100s",
+          "url": "/en/comparisons/g-shock-ga-2100-1a1er-or-1aer/"
+        }
       }
     ]
   },
@@ -191,6 +202,65 @@
           "A regular running routine may require route recording, pace information or specific exports. Do not assume a watch covers all of these because its listing mentions sport or GPS. Confirm the function in its instructions or with Tempus before ordering.",
           "The ICE Smart’s listed IP68 rating does not automatically authorise swimming or diving. Activity indicators are not a substitute for a medical device either. Choose for your actual routine and the limits of the exact model."
         ]
+      }
+    ]
+  },
+  "etancheite-montre-3-5-10-20-atm": {
+    "title": "3, 5, 10 or 20 ATM: which watch for water?",
+    "description": "Rain, pools and holidays: understand the markings, the strap and the precautions that matter before choosing.",
+    "sections": [
+      {
+        "id": "daily-use",
+        "title": "Start with your day, not a number",
+        "paragraphs": [
+          "Do you want a watch for the office, weekly swimming or a seaside holiday? These are different requirements. Choose the activity that matters before comparing dials. A dress watch on leather can be an excellent everyday choice without following you into a pool.",
+          "The metres in a listing are not a depth to reach with any watch. Read the marking alongside the exact manual, strap and watch condition. A 20 ATM marking does not automatically make it a diving watch."
+        ]
+      },
+      {
+        "id": "markings",
+        "title": "The useful distinctions",
+        "paragraphs": [
+          "3 bar / 3 ATM: everyday splashes, not swimming. Citizen’s usage chart places this level in occasional contact with water. Choose another watch for a swim.",
+          "5 bar / 5 ATM: read the manual before the pool. Citizen permits ordinary swimming at this level for the relevant watches, but not skin diving. A leather strap can still be damaged by immersion.",
+          "10 or 20 bar / ATM: more possibilities, not every sport. Casio’s general chart permits swimming at these levels but excludes scuba diving for ordinary water-resistant watches. The exact manual governs activities and button operation."
+        ],
+        "link": {
+          "label": "Read Citizen’s water-resistance chart",
+          "url": "https://www.citizenwatch-global.com/support/maintenance/wr.html"
+        }
+      },
+      {
+        "id": "examples",
+        "title": "Three watches that show the difference",
+        "paragraphs": [
+          "Tempus lists the Bambino RA-AC0M04Y with 3 ATM and leather: choose it for its dressy appearance. The Tsuyosa NJ0150-81E is listed at 5 ATM. The GA-2100-1A1ER has a 20 bar marking and resin strap. These illustrate different constructions, not a universal quality ranking.",
+          "Before buying for a water activity, find the exact manual and check the supplied strap too. For scuba diving, seek a reference explicitly designed for that use: Citizen distinguishes ISO 6425 diving watches from ordinary watches listed at 20 bar."
+        ],
+        "examples": "water-examples"
+      },
+      {
+        "id": "care",
+        "title": "Showers, seawater and care",
+        "paragraphs": [
+          "Casio advises against bathing, heat and contact with soaps; leave the watch off for showers and saunas. Do not operate wet or submerged controls unless the specific manual permits it.",
+          "After seawater exposure, follow the manufacturer’s rinsing instructions. Seiko advises fresh water and a cloth, avoiding a direct tap jet. Seals and impacts affect resistance over time: after work on the watch or if in doubt, have it checked before swimming again."
+        ],
+        "link": {
+          "label": "Read Seiko’s care advice",
+          "url": "https://www.seikowatches.com/fr-fr/customerservice/faq/care-maintenance-2"
+        }
+      },
+      {
+        "id": "filter",
+        "title": "Filter without guessing",
+        "paragraphs": [
+          "Our catalogue can select a minimum explicit 5, 10 or 20 bar / ATM marking from Tempus data. Listings with no usable value are excluded; metre-only values are not converted. This creates a shortlist to investigate, not certification for water use."
+        ],
+        "link": {
+          "label": "Explore watches marked 10 bar / ATM or higher",
+          "url": "/en/catalogue/?water=10#catalogue-count"
+        }
       }
     ]
   }

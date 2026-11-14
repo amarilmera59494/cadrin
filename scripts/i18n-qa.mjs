@@ -7,6 +7,7 @@ import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 process.env.TEMP=process.env.TMP=path.resolve('.tmp');
+await mkdir(process.env.TEMP,{recursive:true});
 const origin=process.env.QA_ORIGIN||'http://127.0.0.1:4323';
 const dir=process.env.QA_OUTPUT||'evidence/international/browser';await mkdir(dir,{recursive:true});
 const routes=JSON.parse(await readFile(`evidence/cadrin/${production?'production':'preview'}-routes.json`,'utf8')).filter(r=>r.startsWith('/en/')&&!/\/catalogue\/\d+\//.test(r));

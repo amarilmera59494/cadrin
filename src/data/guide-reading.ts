@@ -2,6 +2,7 @@ import type { Locale } from '../lib/i18n';
 type Copy = { title:string; points:string[]; caption:string };
 type Reading = { image:'sleeve'|'wrist'|'leather'; fr:Copy; en:Copy };
 export const guideReading:Record<string,Reading> = {
+ "etancheite-montre-3-5-10-20-atm":{"image": "wrist", "fr": {"title": "Avant d’aller dans l’eau", "points": ["Lisez le marquage et la notice de votre référence.", "Vérifiez aussi le bracelet et l’état des joints.", "20 ATM ne remplace pas une qualification pour la plongée."], "caption": "GA-2100-1A1ER : le marquage est un repère, la notice précise les usages."}, "en": {"title": "Before going into water", "points": ["Read the marking and the exact reference’s manual.", "Check the strap and seal condition too.", "20 ATM does not replace qualification for diving."], "caption": "GA-2100-1A1ER: the marking is a starting point; the manual defines uses."}},
  'choisir-premiere-montre':{image:'sleeve',
   fr:{title:'Commencez par votre quotidien',points:['Un budget total, livraison et ajustement compris.','Un format qui vous plaît au poignet.','Un mouvement dont les habitudes vous conviennent.'],caption:'Une montre se choisit aussi avec les vêtements que vous portez vraiment.'},
   en:{title:'Start with your everyday life',points:['A total budget, including delivery and sizing.','A shape you enjoy wearing.','A movement whose routine suits you.'],caption:'Think about the clothes you actually wear when choosing a watch.'}},

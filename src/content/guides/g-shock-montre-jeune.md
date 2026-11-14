@@ -25,6 +25,10 @@ La GBD-200-2ER privilégie la lecture numérique et une approche liée à l’ac
 
 ::montres[gshock]
 
+Vous aimez la GA-2100 noire, mais vous hésitez sur le cadran ? [Comparez le noir intégral de la 1A1ER aux index clairs de la 1AER](/comparatifs/g-shock-ga-2100-1a1er-ou-1aer/).
+
+Pour la piscine ou les vacances, [notre guide de l’étanchéité](/guides/etancheite-montre-3-5-10-20-atm/) explique les marquages et les précautions.
+
 ## Une montre sportive n’est pas toujours une montre GPS
 
 Bluetooth décrit une liaison avec le téléphone, pas la présence d’un récepteur GPS dans la montre. Pour la GBD-200, Casio décrit l’utilisation du GPS du smartphone pour calibrer les mesures de distance de l’accéléromètre. Ce n’est pas la même promesse qu’enregistrer un parcours grâce à un GPS intégré.
