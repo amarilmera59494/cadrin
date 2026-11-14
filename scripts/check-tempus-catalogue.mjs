@@ -36,6 +36,14 @@ for(const slug of ['casio-g-shock-gac-2500-9a','casio-g-shock-gac-2500-7a']){
 }
 const existing=new URL(affiliateUrl('https://tempusshop.com/en/products/test?variant=123&utm_source=cadrin&bg_ref=old#details'));
 assert.deepEqual(existing.searchParams.getAll('bg_ref'),['bDlTL8AyKb']);assert.equal(existing.searchParams.get('variant'),'123');assert.equal(existing.searchParams.get('utm_source'),'cadrin');assert.equal(existing.hash,'#details');
+// The owner's Longines example uses the same account, without changing the model path.
+const longines='https://tempusshop.com/products/longines-flagship-heritage-moonphase-38-5mm-l4-815-4-02-3';
+assert.equal(affiliateUrl(longines),longines+'?bg_ref=bDlTL8AyKb');
+assert.equal(affiliateUrl(affiliateUrl(longines)),affiliateUrl(longines));
+const duplicated=new URL(affiliateUrl(longines+'?bg_ref=old&variant=123&bg_ref=other#details'));
+assert.deepEqual(duplicated.searchParams.getAll('bg_ref'),['bDlTL8AyKb']);
+assert.equal(duplicated.pathname,new URL(longines).pathname);
+assert.equal(duplicated.searchParams.get('variant'),'123');assert.equal(duplicated.hash,'#details');
 const report={checkedAt:new Date().toISOString(),products:ids.size,photos:images.size,totalPhotoBytes:bytes,filterCases:7,errors:[]};
 await mkdir('evidence/tempus-catalogue',{recursive:true});
 await writeFile('evidence/tempus-catalogue/data-check.json',JSON.stringify(report,null,2));console.log(report);

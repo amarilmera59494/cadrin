@@ -1,0 +1,26 @@
+---
+import {localeOf,textFor} from '../lib/i18n';
+const {items}=Astro.props as {items:{href:string;label:string}[]};
+const t=textFor(localeOf(Astro.url.pathname));
+---
+<aside class="toc guide-navigation" id="sommaire" tabindex="-1" aria-label={t('Sommaire du guide','Guide contents')}>
+ <nav class="guide-desktop-contents" aria-label={t('Dans ce guide','In this guide')}><span class="eyebrow">{t('Dans ce guide','In this guide')}</span>{items.map(item=><a href={item.href}>{item.label}</a>)}</nav>
+ <details class="guide-mobile-contents"><summary>{t('Sommaire du guide','Guide contents')}</summary><nav aria-label={t('Dans ce guide','In this guide')}>{items.map(item=><a href={item.href}>{item.label}</a>)}</nav></details>
+</aside>
+<script>
+ const contents=document.querySelector<HTMLElement>('.guide-navigation');
+ function openContents(){
+  if(!contents||location.hash!=='#sommaire')return;
+  const mobile=contents.querySelector<HTMLDetailsElement>('details')!;
+  if(getComputedStyle(mobile).display!=='none'){mobile.open=true;mobile.querySelector('summary')!.focus({preventScroll:true});}
+  else contents.focus({preventScroll:true});
+  contents.scrollIntoView({block:'start',behavior:'instant'});
+ }
+ openContents();window.addEventListener('hashchange',openContents);
+ document.querySelectorAll<HTMLAnchorElement>('a[href="#sommaire"]').forEach(a=>a.addEventListener('click',()=>{if(location.hash==='#sommaire')openContents();}));
+</script>
+<style>
+ .guide-navigation{scroll-margin-top:24px}.guide-desktop-contents>.eyebrow{display:block;margin-bottom:12px}
+ .guide-mobile-contents{display:none}.guide-mobile-contents summary{min-height:48px;padding:12px 0;cursor:pointer;font-size:14px;font-weight:600}
+ @media(max-width:700px){.guide-navigation{display:block;width:100%;position:static;border-block:1px solid var(--line)}.guide-desktop-contents{display:none}.guide-mobile-contents{display:block}.guide-mobile-contents nav{padding:8px 0 16px}.guide-navigation a{font-size:14px;line-height:1.5;min-height:44px}}
+</style>

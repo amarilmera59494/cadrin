@@ -5,3 +5,5 @@
 
 .reading .guide-example .example-price{margin-top:auto;padding-top:12px}.guide-example .example-status{min-height:34px}
 .reading .guide-example .example-price{font-size:20px;line-height:1.4}.reading .guide-example p{font-size:14px}
+
+.reading .guide-example-compare{margin:-18px 0 32px}.guide-example-compare a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:500}

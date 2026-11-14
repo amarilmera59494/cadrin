@@ -23,7 +23,7 @@ const en=paired?localPath(Astro.url.pathname,'en'):'/en/';
    const target=new URL(link.href);
    if(/^\/(?:en\/)?catalogue\//.test(location.pathname))target.pathname=location.pathname.replace(/^\/(?:en\/)?catalogue\//,link.dataset.language==='en'?'/en/catalogue/':'/catalogue/');
    target.search=location.search;
-   target.hash=location.hash.startsWith('#liste=')?location.hash:['#catalogue-comparison','#comparaison','#affiliation','#liens-marchands','#budget','#taille','#mouvement','#usage'].includes(location.hash)?location.hash:'';
+   target.hash=location.hash.startsWith('#liste=')?location.hash:['#catalogue-comparison','#comparaison','#affiliation','#liens-marchands','#lecture','#sommaire','#pistes-cadeaux','#budget','#taille','#mouvement','#usage'].includes(location.hash)?location.hash:'';
    link.href=target.href;
  });
  refreshLanguageLinks();

@@ -1,6 +1,14 @@
 import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {filterCatalogue,emptyFilters,sizeNumber,waterMark} from '../src/lib/tempus-catalogue.ts';import {parseSpecs,colourFamily,matchesReference} from './import-tempus-specifications.mjs';
+import {guideExamples} from './remark-guide-examples.mjs';
 const d=JSON.parse(await readFile('src/data/tempus-catalogue.json','utf8')),best=JSON.parse(await readFile('src/data/tempus-bestsellers.json','utf8')),groups=JSON.parse(await readFile('src/data/guide-examples.json','utf8'));
 for(const [key,group]of Object.entries(groups))for(const [ref]of group){const p=d.products.find(p=>p.reference===ref);assert.ok(p,key+': '+ref);if(key.startsWith('budget-'))assert.ok(p.price<=Number(key.split('-')[1]),key+': '+ref+' over budget');}
+// A comparison must contain exactly the watches shown immediately above it.
+for(const [key,group] of Object.entries(groups))for(const en of [false,true]){
+ const html=guideExamples(key,en),link=html.match(/data-compare-group="[^"]+" href="([^"]+)"/);
+ const eligible=group.length>=2&&group.length<=3&&key!=='home'&&!key.startsWith('watch-');
+ assert.equal(!!link,eligible,key);
+ if(link){const url=new URL(link[1],'https://cadrin.fr');assert.equal(url.pathname,en?'/en/catalogue/':'/catalogue/');assert.equal(url.hash,'#catalogue-comparison');assert.deepEqual(url.searchParams.get('compare').split(','),group.map(([ref])=>d.products.find(p=>p.reference===ref).id));}
+}
 for(const p of d.products){assert.equal(p.bestseller,best.ids.includes(p.id));assert.ok(Array.isArray(p.dialColors));}
 for(const colour of ['Bleu','Vert','Noir']){const matches=filterCatalogue(d.products,{...emptyFilters,dial:colour});assert.ok(matches.length>0);assert.ok(matches.every(p=>p.dialColors.includes(colour)));}
 assert.ok(filterCatalogue(d.products,{...emptyFilters,collection:'best'}).every(p=>p.bestseller));assert.equal(filterCatalogue(d.products,{...emptyFilters,q:'F91W1YEG'})[0].reference,'F-91W-1YEG');

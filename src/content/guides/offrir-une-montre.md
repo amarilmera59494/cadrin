@@ -6,31 +6,45 @@ reviewer: "Contrôle documentaire CADRIN — 2026-11-13"
 rights: "approved"
 image: null
 title: "Quelle montre offrir, à elle ou à lui ?"
-description: "Une montre déjà portée donne trois indices précieux : sa taille, son bracelet et la manière de lire l’heure."
+description: "Rétro, solaire ou automatique : sept montres à comparer selon ses goûts, avec des photos et les points à vérifier avant de les offrir."
 related: ["citizen-rainell-em1201-52l","citizen-tsuyosa-nj0150-81e","citizen-aw0102-13ae","casio-f91w"]
-sources: [{"label":"Tempus · collection femme","url":"https://tempusshop.com/collections/montre-femme"},{"label":"Citizen · dimensions de la Tsuyosa","url":"https://fr.citizenwatch.eu/fr/p/nj0150-81e/"},{"label":"Citizen · dimensions de la Rainell","url":"https://de.citizenwatch.eu/de/p/em1201-52l/"},{"label":"Citizen Tsuyosa 37 mm rose chez Tempus","url":"https://tempusshop.com/products/citizen-tsuyosa-rose-37mm-nj0200-50z"},{"label":"Citizen Tsuyosa 37 mm bleue chez Tempus","url":"https://tempusshop.com/products/citizen-tsuyosa-bleu-37mm-nj0200-50l"}]
+sources: [{"label": "Tempus · F-91W-1YEG", "url": "https://tempusshop.com/products/casio-vintage-f-91w-1yeg"}, {"label": "Tempus · A158WEA-1EF", "url": "https://tempusshop.com/products/casio-vintage-a158wea-1ef"}, {"label": "Tempus · AW0102-13AE", "url": "https://tempusshop.com/products/citizen-aw0102-13ae"}, {"label": "Tempus · EM1201-52L", "url": "https://tempusshop.com/products/citizen-l-rainell-bleu-em1201-52l"}, {"label": "Tempus · NJ0200-50Z", "url": "https://tempusshop.com/products/citizen-tsuyosa-rose-37mm-nj0200-50z"}, {"label": "Tempus · NJ0200-50L", "url": "https://tempusshop.com/products/citizen-tsuyosa-bleu-37mm-nj0200-50l"}, {"label": "Tempus · NJ0150-81E", "url": "https://tempusshop.com/products/citizen-tsuyosa-noir-nj0150-81e"}]
 ---
 
 ## Regardez ce que la personne porte déjà
 
-Une photo de son poignet, ou quelques minutes avec sa montre préférée, en disent plus long qu’une catégorie de boutique. Notez si elle lit l’heure en chiffres ou sur des aiguilles. Mesurez la boîte de gauche à droite, sans la couronne, puis observez si le bracelet est plutôt ajusté ou lâche. Si elle ne porte jamais de montre, ses bracelets et ses habitudes au travail donnent un premier indice.
+Une montre qu’elle aime vous donne un bon point de départ. Est-elle petite ou très présente ? Sur acier ou sur cuir ? Avec des chiffres ou des aiguilles ? Une photo de son poignet aide à comprendre ses goûts, mais ne suffit pas à mesurer la taille qui lui conviendra.
 
-## Montres pour femme : partir du style de bijou
+Si elle ne porte jamais de montre, cherchez la raison avant de choisir : elle peut aimer le geste de regarder l’heure, ou ne pas vouloir d’objet au poignet. Pour garder la surprise, parlez de ses accessoires ou d’une tenue qu’elle porte souvent. Une préférence précise vaut mieux qu’une montre supposée plaire à tout le monde.
 
-Pour quelqu’un qui porte une chaîne fine ou un petit cadran, la Citizen L Rainell propose une boîte en goutte de 26,2 mm et un bracelet acier. Regardez ensemble la lisibilité des aiguilles si les petits cadrans lui demandent un effort. Une personne qui aime les montres plus présentes peut préférer les 40 mm de la Tsuyosa. Le classement commercial sert à parcourir le catalogue, pas à déterminer le bon diamètre.
+## Un petit cadeau discret ou rétro
 
-[Parcourir les références classées femme](/trouver-ma-montre/?categorie=Femme)
+La Casio F-91W-1YEG garde une allure noire et discrète. L’A158WEA-1EF propose une autre présence visuelle avec son bracelet acier. Toutes deux affichent l’heure en chiffres : c’est le premier goût à vérifier, avant même le prix.
 
-::montres[gift-jewellery]
+L’A158 mérite un regard si la personne porte déjà des accessoires argentés ; la F-91W si elle préfère une montre qui se fait visuellement oublier. Ce sont deux pistes de style, pas un classement de confort. Les photos et les dimensions des cartes permettent de les départager.
 
-## Montres pour homme : regarder la manche et le bracelet
+::montres[gift-retro]
 
-Si son poignet de chemise est souvent fermé, une mesure d’épaisseur a plus d’intérêt qu’un grand boîtier choisi par habitude. Pour quelqu’un qui alterne plusieurs montres, la Citizen Eco-Drive sur cuir se recharge à la lumière. Pour un amateur de mécanique, la Tsuyosa offre le geste de la mise à l’heure et un bracelet acier à faire ajuster. Une Casio numérique reste une piste si c’est ainsi qu’il aime lire l’heure.
+## Une montre habillée, sans remontage
 
-[Parcourir les références classées homme](/trouver-ma-montre/?categorie=Homme)
+Pour quelqu’un qui aime les aiguilles mais ne cherche pas le rituel d’une mécanique, regardez ces deux Citizen solaires. L’AW0102-13AE associe un boîtier de 40 mm à un bracelet cuir. La Rainell EM1201-52L est une proposition très différente : une boîte en goutte de 26,2 mm et un bracelet acier, dans l’esprit d’un bijou.
 
-::montres[gift-everyday]
+Ne choisissez pas entre elles sur la seule étiquette femme ou homme. Regardez plutôt les proportions de ses accessoires, la lisibilité du cadran et le bracelet qu’elle ou il porte volontiers. Le solaire demande aussi de laisser la montre recevoir assez de lumière : ce n’est pas une montre à oublier durablement dans sa boîte. Consultez le statut de commande de chaque carte, surtout si la date du cadeau approche.
+
+::montres[gift-dress]
+
+## De la couleur et le plaisir de la mécanique
+
+La Tsuyosa rose NJ0200-50Z et la bleue NJ0200-50L partagent un format de 37 mm. La noire NJ0150-81E passe à 40 mm. Si la personne choisit déjà toujours du bleu ou du rose, ce goût est une bonne raison de commencer par cette couleur ; le noir n’est pas automatiquement le choix le plus juste.
+
+Ces trois modèles sont automatiques. Le cadeau convient à quelqu’un qui apprécie aussi le fonctionnement d’une montre mécanique et accepte de la remettre à l’heure après un arrêt. Si ce geste l’agace, revenez aux pistes solaires ou numériques. Les photos ne sont pas à l’échelle : ouvrez le comparateur pour regarder les dimensions côte à côte.
+
+::montres[gift-tsuyosa]
 
 ## Garder la surprise et la possibilité d’un échange
 
-Avant de commander, vérifiez la référence complète, le prix livré, le délai annoncé pour votre adresse et les conditions de retour du vendeur. Si un réglage ou une gravure est envisagé, demandez si cette intervention change les possibilités d’échange. Quand vous hésitez entre deux modèles, gardez leurs fiches côte à côte et posez une question concrète : « Tu la porterais avec quel bracelet ? »
+Avant de commander, gardez quatre informations sous la main : la référence complète, le total avec livraison, le délai pour votre adresse et les conditions de retour. Une date de cadeau ne transforme pas une précommande en stock disponible.
+
+Demandez à Tempus si un réglage de bracelet ou une gravure change les possibilités de retour, avant de faire réaliser l’intervention. Conservez les protections et les documents jusqu’à ce que la personne ait découvert la montre et confirmé son choix.
+
+Vous préférez parcourir les catégories ? [Voir les montres classées femme](/catalogue/?category=Femme#catalogue-count) ou [les montres classées homme](/catalogue/?category=Homme#catalogue-count). Ces catégories viennent de Tempus ; elles ne déterminent pas la taille idéale ni les goûts de la personne.

@@ -1,18 +1,18 @@
 ---
 import GuideVisual from './GuideVisual.astro';
 import {readingFor} from '../data/guide-reading';
-import {localeOf} from '../lib/i18n';
+import {localeOf,textFor} from '../lib/i18n';
 const {id}=Astro.props as {id:string};
 const locale=localeOf(Astro.url.pathname);
-const copy=readingFor(id,locale);
+const copy=readingFor(id,locale),t=textFor(locale);
 ---
 <div class="guide-opening">
- <div class="guide-heading"><slot/></div>
+ <div class="guide-heading"><slot/><nav class="guide-start" aria-label={t('Accès rapide au guide','Guide shortcuts')}><a href="#lecture">{t('Lire le guide','Read the guide')} ↓</a>{id==='offrir-une-montre'&&<a href="#pistes-cadeaux">{t('Les idées cadeaux','Gift ideas')} ↓</a>}<a href="#sommaire">{t('Sommaire','Contents')} ↓</a></nav></div>
  <aside class="guide-image"><GuideVisual id={id}/>{copy&&<p>{copy.caption}</p>}</aside>
 </div>
 <style>
  .guide-opening{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:clamp(32px,5vw,80px);align-items:center;margin-bottom:48px}
- .guide-heading{min-width:0}.guide-heading :global(.reading-heading){padding-bottom:0}.guide-heading :global(h1){text-wrap:balance}
+ .guide-start{display:flex;flex-wrap:wrap;gap:4px 24px;margin-top:20px}.guide-start a{display:flex;align-items:center;min-height:44px;font-size:14px;text-underline-offset:4px}.guide-heading{min-width:0}.guide-heading :global(.reading-heading){padding-bottom:0}.guide-heading :global(h1){text-wrap:balance}
  .guide-image{min-width:0}.guide-image :global(picture){aspect-ratio:4/3}.guide-image :global(img){display:block;object-position:50% 57%}
  .guide-image p{font-size:14px;line-height:1.65;margin:14px 0 0;max-width:48ch}.guide-image :global(figcaption){font-size:11px}
  .guide-image :global(.photo-frame){max-height:400px}.guide-image .text-link{font-size:13px;margin-top:10px}

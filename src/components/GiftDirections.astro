@@ -1,0 +1,18 @@
+---
+import {localeOf,textFor} from '../lib/i18n';
+const {hrefs}=Astro.props as {hrefs:string[]};
+const t=textFor(localeOf(Astro.url.pathname));
+const paths=[
+ [t('Discret ou rétro','Small or retro'),t('Deux Casio numériques, deux allures.','Two digital Casios, two different looks.')],
+ [t('Habillée, sans remontage','Dressy, without winding'),t('Deux solaires Citizen, sur cuir ou acier.','Two solar Citizens, on leather or steel.')],
+ [t('Couleur et mécanique','Colour and mechanics'),t('Trois Tsuyosa à comparer en 37 et 40 mm.','Three Tsuyosas to compare in 37 and 40 mm.')]
+];
+---
+<section class="gift-directions" id="pistes-cadeaux" tabindex="-1" aria-labelledby="gift-directions-title">
+ <h2 id="gift-directions-title">{t('Trois pistes pour trouver son cadeau','Three starting points for a gift')}</h2>
+ <p>{t('Partez de ce que la personne aime déjà. Chaque piste donne des références précises, leurs photos et un accès au comparateur.','Start with what they already enjoy. Each direction includes exact references, photos and a link to compare them.')}</p>
+ <nav aria-label={t('Aller aux idées cadeaux','Jump to gift ideas')}>{paths.map(([label,detail],i)=><a href={hrefs[i]}><strong>{label} <span aria-hidden="true">↓</span></strong><span>{detail}</span></a>)}</nav>
+</section>
+<style>
+ .gift-directions{scroll-margin-top:24px}.gift-directions nav{display:grid;gap:10px;margin:20px 0 28px}.gift-directions nav a{display:block;border:1px solid var(--line);padding:16px 18px;text-decoration:none;min-height:48px}.gift-directions strong{display:flex;justify-content:space-between;gap:16px;font-size:17px;font-weight:500}.gift-directions a>span{display:block;font-size:13px;line-height:1.6;margin-top:5px}.gift-directions a:hover strong{text-decoration:underline;text-underline-offset:4px}
+</style>

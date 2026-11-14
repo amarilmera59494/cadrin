@@ -36,12 +36,60 @@ export const englishGuides:Record<string,{title:string;description:string;sectio
   {id:'under-350',title:'Up to €350: three ways to choose an automatic',paragraphs:['The black Tsuyosa, Seiko 5 Sports K1 and Bambino 38 all fit this bracket at the latest recorded prices. The Bambino pairs a beige dial with leather. For the steel models, compare the Citizen’s magnified date with the Seiko’s day-date display, then try the first bracelet links. Check delivery costs if €350 is your total limit.'],link:{label:'Compare automatics up to €350',url:'/en/catalogue/?budget=350&movement=Automatique#catalogue-count'}},
   {id:'under-400',title:'Up to €400: a jewellery-watch silhouette',paragraphs:['The blue Rainell adds a different direction: solar power in a 26.2 mm-wide teardrop case on steel. It may interest someone who likes jewellery watches. For an automatic on leather, the Bambino in the previous bracket remains more relevant. Spending more is not a goal in itself.','These examples use the euro prices displayed by Tempus on 13 November 2026, excluding delivery. They are dated observations, not live offers. Check the current total for your delivery address, including any applicable import charges.'],link:{label:'See watches up to €400',url:'/en/catalogue/?budget=400#catalogue-count'}},
  ]},
- 'offrir-une-montre':{title:'Choosing a watch as a gift',description:'A watch they already wear offers three useful clues: its size, its strap and the way it tells the time.',sections:[
-  {id:'habits',title:'Look at what they already wear',paragraphs:['A photograph of their wrist, or a few minutes with their favourite watch, tells you more than a shop category. Notice whether they use digits or hands. Measure the case from side to side without the crown, then look at whether the strap sits snugly or loosely. If they never wear a watch, their jewellery and working habits offer a starting point.']},
-  {id:'women',title:'Women’s watches: start with their jewellery',paragraphs:['For someone who wears a fine chain bracelet or a small dial, the Citizen L Rainell offers a 26.2 mm teardrop case and steel bracelet. Check whether the hands are easy enough for them to read. Someone who prefers a more prominent watch might enjoy the 40 mm Tsuyosa. Catalogue categories help you browse; they do not decide the right size.'],link:{label:'Browse references listed for women',url:'/en/watch-finder/?categorie=Femme'}},
-  {id:'men',title:'Men’s watches: consider cuffs and straps',paragraphs:['If they keep their shirt cuffs buttoned, thickness matters more than choosing a large case by habit. For someone who rotates between watches, the Citizen Eco-Drive on leather recharges from light. A mechanical enthusiast may prefer setting the Tsuyosa and having its steel bracelet fitted. A digital Casio remains a valid choice if that is how they like to read the time.'],link:{label:'Browse references listed for men',url:'/en/watch-finder/?categorie=Homme'}},
-  {id:'returns',title:'Keep the surprise, and the option to exchange',paragraphs:['Before ordering, check the full reference, delivered price, delivery estimate for the recipient’s address and return conditions. If you plan sizing or engraving, ask whether that affects exchanges. When choosing between two models, keep the pages side by side and ask a concrete question: which strap would you wear?']},
- ]},
+ 'offrir-une-montre':{
+  "title": "Choosing a watch as a gift",
+  "description": "Retro, solar or automatic: seven watches to compare around their tastes, with photos and the details to check before giving one.",
+  "sections": [
+    {
+      "id": "habits",
+      "title": "Look at what they already wear",
+      "paragraphs": [
+        "A watch they enjoy wearing gives you a useful starting point. Is it small or prominent? On steel or leather? With digits or hands? A photograph helps you understand their taste, but it cannot tell you the exact size that will fit.",
+        "If they never wear a watch, find out why before choosing. They might enjoy glancing at their wrist, or prefer not to wear anything there. To keep the surprise, talk about their accessories or a favourite outfit. A specific preference is more useful than a watch you assume everybody will like."
+      ]
+    },
+    {
+      "id": "retro",
+      "title": "A small, understated or retro gift",
+      "paragraphs": [
+        "The Casio F-91W-1YEG has an understated black look. The A158WEA-1EF makes a different impression with its steel bracelet. Both show the time in digits: check that preference before thinking about price.",
+        "Consider the A158 if they already wear silver-coloured accessories, or the F-91W if they prefer a less noticeable watch. These are style directions, not comfort rankings. Compare the photographs and recorded dimensions below."
+      ],
+      "examples": "gift-retro"
+    },
+    {
+      "id": "dress",
+      "title": "A dressier watch, without winding",
+      "paragraphs": [
+        "For someone who enjoys hands but does not want a mechanical routine, consider these two solar Citizens. The AW0102-13AE pairs a 40 mm case with leather. The Rainell EM1201-52L takes a different approach: a 26.2 mm teardrop case and steel bracelet, closer to jewellery.",
+        "Look beyond a men’s or women’s label. Consider the proportions of their accessories, dial readability and the straps they enjoy wearing. Solar watches also need sufficient light; they should not be left indefinitely in their box. Check each card’s ordering status, especially if the gift date is approaching."
+      ],
+      "examples": "gift-dress"
+    },
+    {
+      "id": "colour",
+      "title": "Colour and the appeal of mechanics",
+      "paragraphs": [
+        "The pink Tsuyosa NJ0200-50Z and blue NJ0200-50L share a 37 mm size. The black NJ0150-81E is 40 mm. If they always choose blue or pink, that is a good reason to start with that colour; black is not automatically the right answer.",
+        "All three are automatic. They suit someone who also enjoys how a mechanical watch works and accepts resetting the time after it stops. If that would annoy them, return to the solar or digital options. Photos are not to scale: open the comparison to examine the dimensions side by side."
+      ],
+      "examples": "gift-tsuyosa"
+    },
+    {
+      "id": "returns",
+      "title": "Keep the surprise, and the option to exchange",
+      "paragraphs": [
+        "Before ordering, keep four details handy: the full reference, total including delivery, lead time to your address and return terms. A gift deadline does not turn a preorder into available stock.",
+        "Ask Tempus whether bracelet sizing or engraving changes return options before having the work done. Keep the protective materials and documents until the recipient has seen the watch and confirmed their choice.",
+        "Prefer browsing shop categories? The catalogue includes men’s and women’s categories supplied by Tempus. They do not determine the ideal size or the recipient’s taste."
+      ],
+      "link": {
+        "label": "Browse the catalogue categories",
+        "url": "/en/catalogue/"
+      }
+    }
+  ]
+},
  'bambino-tsuyosa-seiko-5':{title:'Bambino, Tsuyosa or Seiko 5 Sports?',description:'Three automatics with different proportions, bracelets and calendars. Start with the differences you will notice every day.',sections:[
   {id:'bracelet',title:'Start with the bracelet',paragraphs:['If you like leather and a light dial, look first at the Bambino RA-AC0M04Y. With the Tsuyosa NJ0150-81E, steel plays a larger role in the design: the first links extend the case. The Seiko SRPE55K1 also pairs steel with a black dial. Its calendar adds the day of the week to the date, a simple distinction if you consult both at work.']},
   {id:'profile',title:'Look at the watch from the side',paragraphs:['The Bambino is 38.5 mm wide and 12.5 mm thick. Tempus lists a 40 mm width and 10 mm thickness for the Seiko. The smaller face therefore belongs to the taller watch. Compare these dimensions with a watch you already wear. Citizen lists 40 mm and 138 g for the Tsuyosa; bracelet sizing matters when assessing that weight.']},
@@ -63,8 +111,6 @@ if(englishGuides['automatique-quartz-solaire'].sections[1])englishGuides['automa
 if(englishGuides['automatique-quartz-solaire'].sections[2])englishGuides['automatique-quartz-solaire'].sections[2].examples='budget-350';
 if(englishGuides['automatique-quartz-solaire'].sections[3])englishGuides['automatique-quartz-solaire'].sections[3].examples='budget-150';
 if(englishGuides['choisir-taille-montre'].sections[1])englishGuides['choisir-taille-montre'].sections[1].examples='budget-400';
-if(englishGuides['offrir-une-montre'].sections[1])englishGuides['offrir-une-montre'].sections[1].examples='gift-jewellery';
-if(englishGuides['offrir-une-montre'].sections[2])englishGuides['offrir-une-montre'].sections[2].examples='gift-everyday';
 if(englishGuides['bambino-tsuyosa-seiko-5'].sections[0])englishGuides['bambino-tsuyosa-seiko-5'].sections[0].examples='budget-350';
 if(englishGuides['citizen-eco-drive-ou-tsuyosa'].sections[1])englishGuides['citizen-eco-drive-ou-tsuyosa'].sections[1].examples='straps';
 if(englishGuides['acheter-montre-en-ligne'].sections[1])englishGuides['acheter-montre-en-ligne'].sections[1].examples='budget-150';
