@@ -1,0 +1,33 @@
+---
+// Index A–Z des fiches montres, par marque : un chemin direct vers chaque fiche.
+import Cadrin from '../../layouts/Cadrin.astro';
+import data from '../../data/tempus-catalogue.json';
+import {ficheEligible,ficheHref,ficheTitle} from '../../lib/fiches';
+import {dateLabel} from '../../lib/editorial';
+import type {CatalogueProduct} from '../../lib/tempus-catalogue';
+const seen=new Set<string>();
+const all=(data.products as CatalogueProduct[]).filter(ficheEligible).sort((a,b)=>a.price-b.price).filter(p=>{const h=ficheHref(p)!;if(seen.has(h))return false;seen.add(h);return true;});
+const brands=[...new Set(all.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b,'fr'));
+const byBrand=brands.map(b=>({brand:b,id:'marque-'+b.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-'),items:all.filter(p=>p.brand===b).sort((x,y)=>ficheTitle(x).localeCompare(ficheTitle(y),'fr'))}));
+const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
+const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
+---
+<Cadrin title="Toutes les fiches montres, par marque" description={`${all.length} fiches montres classées par marque : prix relevés le ${dateLabel(checkedAt)}, caractéristiques et points à vérifier avant d’acheter.`} crumbs={[{name:'Fiches montres',url:'/montre/'}]}>
+ <div class="container az">
+  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Fiches montres</span></nav>
+  <header class="page-heading"><span class="eyebrow">De A à Z</span><h1>Toutes les fiches,<br/>par marque.</h1><p>{all.length} montres commandables, chacune avec son prix relevé, sa fiche technique et les points à vérifier avant d’acheter. Pour filtrer par budget, taille ou mouvement, passez par <a href="/catalogue/">le catalogue</a> ou <a href="/selections/">nos sélections</a>.</p></header>
+  <nav class="az-jump" aria-label="Aller à une marque">{byBrand.map(g=><a href={'#'+g.id}>{g.brand}<span>{g.items.length}</span></a>)}</nav>
+  {byBrand.map(g=><section class="az-brand" id={g.id} aria-labelledby={g.id+'-t'}><h2 id={g.id+'-t'}>{g.brand}</h2><ul>{g.items.map(p=><li><a href={ficheHref(p)!}>{ficheTitle(p)}</a><span>{money(p.price)}</span></li>)}</ul></section>)}
+ </div>
+</Cadrin>
+<style>
+.az{padding-bottom:var(--section)}
+.az-jump{display:flex;flex-wrap:wrap;gap:var(--space-1);margin:var(--space-3) 0 var(--space-4)}
+.az-jump a{display:inline-flex;gap:6px;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);text-decoration:none;color:inherit;font-weight:600}
+.az-jump a:hover,.az-jump a:focus-visible{border-color:var(--wine)}.az-jump span{font-weight:400;color:var(--muted);font-size:14px}
+.az-brand{padding:var(--space-4) 0;border-top:1px solid var(--line);scroll-margin-top:6rem}
+.az-brand h2{font:500 clamp(28px,3vw,40px)/1 var(--display);text-transform:uppercase;margin:0 0 var(--space-2)}
+.az-brand ul{list-style:none;padding:0;margin:0;columns:3 280px;column-gap:var(--space-4)}
+.az-brand li{display:flex;justify-content:space-between;gap:var(--space-2);break-inside:avoid;padding:6px 0;border-bottom:1px solid #e5ddd2;line-height:1.4}
+.az-brand li a{min-height:24px}.az-brand li span{white-space:nowrap;color:var(--muted);font-size:14px}
+</style>

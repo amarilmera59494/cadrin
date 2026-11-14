@@ -1,0 +1,23 @@
+---
+// Index des analyses détaillées (/montres/<id>/), avec renvoi vers l'index complet des fiches.
+import Cadrin from '../../layouts/Cadrin.astro';
+import data from '../../data/tempus-catalogue.json';
+import {catalogue} from '../../lib/editorial';
+const {watches}=await catalogue();
+const items=watches.map(w=>({w,p:data.products.find(p=>p.reference===w.data.reference)}));
+---
+<Cadrin title="Nos analyses de montres" description="Les montres que nous avons analysées en détail : proportions, mouvement, usages conseillés et limites, avec leurs sources et un prix relevé." crumbs={[{name:'Analyses',url:'/montres/'}]}>
+ <div class="container mi">
+  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Analyses</span></nav>
+  <header class="page-heading"><span class="eyebrow">Les analyses détaillées</span><h1>Regardées de près.</h1><p>Pour ces montres, nous avons croisé les fiches des fabricants et du vendeur, et précisé les usages et les limites. Toutes les autres montres ont leur fiche dans <a href="/montre/">l’index des fiches</a>.</p></header>
+  <ul class="mi-grid">{items.map(({w,p})=><li><a href={`/montres/${w.id}/`}>{p&&<span class="mi-img"><img src={p.image} width={p.width} height={p.height} loading="lazy" decoding="async" alt=""/></span>}<span class="eyebrow">{w.data.brand}</span><strong>{w.data.name} {w.data.reference}</strong><span class="mi-note">{w.data.note}</span></a></li>)}</ul>
+ </div>
+</Cadrin>
+<style>
+.mi{padding-bottom:var(--section)}
+.mi-grid{list-style:none;padding:0;margin:var(--space-4) 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-4) var(--space-3)}
+.mi-grid a{display:flex;flex-direction:column;gap:6px;height:100%;text-decoration:none;color:inherit}
+.mi-img{display:block;background:#fff;padding:var(--space-2);margin-bottom:var(--space-1)}.mi-img img{width:100%;height:220px;object-fit:contain}
+.mi-grid strong{font:500 24px/1.1 var(--display);text-transform:uppercase}.mi-grid a:hover strong,.mi-grid a:focus-visible strong{text-decoration:underline;text-underline-offset:4px}
+.mi-note{font-size:15px;line-height:1.5;color:var(--muted)}
+</style>
