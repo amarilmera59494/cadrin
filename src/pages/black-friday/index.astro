@@ -1,4 +1,5 @@
 ---
+import TempusOffer from '../../components/TempusOffer.astro';
 import {ficheHref} from '../../lib/fiches';
 import Cadrin from '../../layouts/Cadrin.astro';
 import data from '../../data/tempus-catalogue.json';
@@ -72,6 +73,7 @@ const anyVerified = deals.some(d => d.verifiedDrop);
     <a class="button merchant-button bf-buy" data-placement="deal" href={affiliateUrl(d.product.source)} rel="sponsored"><span>{purchaseLabel(d.product, false)}</span><span aria-hidden="true">↗</span></a>
    </li>)}
   </ol>
+  <div class="bf-offer"><TempusOffer compact/></div>
   {ended.length > 0 && <section id="remises-terminees" class="bf-ended" aria-labelledby="bf-ended-title"><h3 id="bf-ended-title">Remises terminées</h3><p>Ces montres étaient remisées lors de notre premier relevé. Le vendeur n’affiche plus de prix barré : nous les sortons de la liste ci-dessus.</p><ul>{ended.map(d => <li><a href={ficheHref(d.product) ?? affiliateUrl(d.product.source)} rel={ficheHref(d.product) ? undefined : 'sponsored'}>{d.product.brand} {d.name}</a> : {money(d.price)} aujourd’hui, contre {money(d.first.price)} à notre relevé du {day(d.first.date)}.</li>)}</ul></section>}
   <p class="small-note">Prix France hors livraison, relevés le {dateLabel(bf.checkedAt, 'fr')} ; susceptibles d’évoluer. Stock et délai à confirmer chez Tempus. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
  </section>
@@ -168,4 +170,5 @@ const anyVerified = deals.some(d => d.verifiedDrop);
  .bf-name h3{font-size:26px}
 }
 .bf-ended{margin-top:var(--space-5);padding:var(--space-3);border:1px solid var(--line)}.bf-ended h3{font:500 26px/1.1 var(--display);text-transform:uppercase;margin:0 0 var(--space-1)}.bf-ended p{margin:0 0 var(--space-2);color:var(--muted)}.bf-ended ul{margin:0;padding-left:1.1em;line-height:1.7}
+.bf-offer{margin-top:var(--space-4)}
 </style>

@@ -6,11 +6,13 @@ import {affiliateUrl} from '../../data/affiliation';
 import {dateLabel} from '../../lib/editorial';
 import {purchaseLabel,orderLabel} from '../../lib/tempus-catalogue';
 import '../../styles/growth.css';
+import TempusOffer from '../../components/TempusOffer.astro';
 const sets=tiktokGuides.map(c=>({...c,items:c.items.map(it=>{const product=data.products.find(p=>p.source.endsWith('/products/'+it.handle));if(!product)throw Error('Référence TikTok absente du catalogue : '+it.handle);return {...it,product};})}));
 const money=(p:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(p);
 ---
 <Cadrin title="Nos comparatifs vus sur TikTok" description="Les montres de nos carrousels TikTok, dans l’ordre des slides : comparatifs, avis de propriétaires résumés, prix datés et liens directs.">
  <div class="container social-page tiktok-page"><header class="page-heading"><span class="eyebrow">CADRIN · TikTok</span><h1>Vu sur TikTok.<br/>Comparé ici.</h1><p>Choisissez le carrousel que vous venez de voir : chaque montre garde son numéro, avec ses chiffres, ce qu’en disent ses propriétaires et un lien direct.</p><p class="small-note">Liens affiliés : vos achats peuvent rémunérer CADRIN. Prix France hors livraison, relevés le {dateLabel((data.offersCheckedAt||data.checkedAt),'fr')}. Avis : synthèse d’avis publics.</p></header>
+ <TempusOffer compact/>
  <a class="tiktok-noel" href="/noel/"><strong>Idées cadeaux de Noël</strong><span>Les montres de nos carrousels « pour lui », « pour elle » et par budget →</span></a>
  <a class="tiktok-noel" href="/vues-sur-nos-reseaux/"><strong>Vu dans nos vidéos</strong><span>La G-Shock noire, la Tsuyosa rose, la Casio rétro : la référence exacte et le lien →</span></a>
  <a class="tiktok-noel" href="/black-friday/"><strong>Black Friday, sans fausses promos</strong><span>Les remises en cours, avec notre propre relevé de prix daté →</span></a>
