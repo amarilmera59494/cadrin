@@ -15,7 +15,7 @@ const csp=`default-src 'self'; script-src 'self' ${[...scriptHashes].join(' ')};
 if(csp.length>1900)throw new Error('CSP trop longue pour les en-têtes Cloudflare.');
 const assetHeaders=files.filter(f=>f.startsWith(`${dir}/_astro/`)).map(f=>`/${f.slice(dir.length+1)}\n  ! Cache-Control\n  Cache-Control: public, max-age=31536000, immutable\n`).join('\n');
 if(files.filter(f=>f.startsWith(`${dir}/_astro/`)).length+3>100)throw new Error('Limite de règles _headers Cloudflare dépassée.');
-await writeFile(`${dir}/_headers`,`/*\n${production?'':'  X-Robots-Tag: noindex, nofollow\n'}${security}  Content-Security-Policy: ${csp}\n  Cache-Control: public, max-age=0, must-revalidate\n\n/404.html\n  X-Robots-Tag: noindex, nofollow\n\n/images/*\n  ! Cache-Control\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n\n${assetHeaders}`);
+await writeFile(`${dir}/_headers`,`/*\n${production?'':'  X-Robots-Tag: noindex, nofollow\n'}${security}  Content-Security-Policy: ${csp}\n  Cache-Control: public, max-age=0, must-revalidate\n\n/404.html\n  X-Robots-Tag: noindex, nofollow\n\n/images/catalogue/*\n  ! Cache-Control\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n\n${assetHeaders}`);
 await writeFile(`${dir}/robots.txt`,`User-agent: *\nAllow: /\n${production?'Sitemap: https://cadrin.fr/sitemap.xml\n':'# Preview : noindex dans le HTML et les en-têtes. Aucun sitemap.\n'}`);
 if(production)await writeFile(`${dir}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.filter(r=>!r.startsWith('/partage/')).map(r=>`<url><loc>https://cadrin.fr${r}</loc></url>`).join('')}</urlset>`);
 await mkdir('evidence/cadrin',{recursive:true});
