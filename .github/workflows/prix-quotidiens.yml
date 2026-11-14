@@ -1,0 +1,43 @@
+# Relevé quotidien des prix Tempus : met à jour le catalogue et l'historique, puis pousse sur main
+# (Cloudflare Workers Builds reconstruit et vérifie le site). S'arrête sans rien écrire si le relevé est bloqué.
+name: Prix quotidiens
+
+on:
+  schedule:
+    - cron: '15 5 * * *' # 6 h 15 à Paris en hiver, 7 h 15 en été
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prix-quotidiens
+  cancel-in-progress: false
+
+jobs:
+  releve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - name: Relever les prix (sans rien écrire en cas d'anomalie)
+        run: node scripts/refresh-tempus-offers.mjs --check
+      - name: Appliquer le relevé
+        run: node scripts/refresh-tempus-offers.mjs --apply
+      - name: Mettre à jour l'historique des prix
+        run: node scripts/price-history.mjs
+      - name: Vérifier le site avant publication
+        run: npm run check && SITE_STAGE=production npm run build
+      - name: Publier
+        run: |
+          git config user.name "cadrin-prix"
+          git config user.email "cadrin-prix@users.noreply.github.com"
+          git add src/data/tempus-catalogue.json public/catalogue.json src/data/price-history.json
+          if git diff --cached --quiet; then echo "Aucun changement de prix."; exit 0; fi
+          git commit -m "Relevé des prix du $(TZ=Europe/Paris date +%F)"
+          git push origin HEAD:main

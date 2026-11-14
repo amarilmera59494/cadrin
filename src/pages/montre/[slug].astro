@@ -3,6 +3,7 @@
 import Cadrin from '../../layouts/Cadrin.astro';
 import data from '../../data/tempus-catalogue.json';
 import bf from '../../data/black-friday.json';
+import history from '../../data/price-history.json';
 import {editorialLinks} from '../../data/editorial-links';
 import {affiliateUrl} from '../../data/affiliation';
 import {dateLabel} from '../../lib/editorial';
@@ -19,6 +20,7 @@ const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency
 const name=ficheTitle(p),checks=ficheChecks(p),{similar,cheaper}=ficheAlternatives(p,all);
 const analysis=editorialLinks[p.reference];
 const record=bf.items.find(i=>p.source.endsWith('/products/'+i.handle));
+const rows=((history as any).items[p.id]||[]) as [string,number,number][];const lowest=rows.length?rows.reduce((m,r)=>r[1]<m[1]?r:m):null;const since=(history as any).since as string;
 const brandPage=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];const brandHref=brandPage?`/marques/${brandPage}/`:null;
 const title=`${name} : prix, taille, étanchéité`;
 const description=`${p.brand} ${p.reference} : ${money(p.price)} relevé le ${dateLabel(checkedAt)}. ${ficheSummary(p)} Ce qu’il faut vérifier avant d’acheter et des alternatives.`;
@@ -57,7 +59,13 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
     {analysis&&<p><a class="text-link" href={`/montres/${analysis}/`}>Lire notre analyse détaillée de ce modèle →</a></p>}
    </section>
 
-   {record&&<section aria-labelledby="releve"><h2 id="releve">Notre relevé de prix</h2><table class="fiche-history"><thead><tr><th scope="col">Date</th><th scope="col">Prix relevé par Cadrin</th></tr></thead><tbody>{record.history.map(h=><tr><td>{dateLabel(h.date)}</td><td>{money(h.price)}</td></tr>)}</tbody></table><p class="small-note">Prix barré annoncé par le vendeur : {money(record.was)}. Seul notre relevé daté permet de vérifier une baisse. <a href="/black-friday/">Toutes les remises suivies →</a></p></section>}
+   <section aria-labelledby="releve"><h2 id="releve">Notre suivi du prix</h2>
+    {rows.length>1?<><table class="fiche-history"><thead><tr><th scope="col">Date du relevé</th><th scope="col">Prix</th><th scope="col">Variation</th></tr></thead><tbody>{rows.slice().reverse().map((r,i,a)=>{const prev=a[i+1];const d=prev?r[1]-prev[1]:0;return <tr><td>{dateLabel(r[0])}</td><td>{money(r[1])}{!r[2]&&' (non commandable)'}</td><td>{prev?(d<0?'Baisse de '+money(-d):d>0?'Hausse de '+money(d):'—'):'Premier relevé'}</td></tr>;})}</tbody></table>
+    <p class="fiche-lowest">Plus bas relevé depuis le {dateLabel(since)} : <strong>{money(lowest![1])}</strong>, le {dateLabel(lowest![0])}.</p></>
+    :<p>Cadrin relève ce prix chaque jour depuis le {dateLabel(since)}. Aucune variation pour l’instant : {money(p.price)}.</p>}
+    {record&&<p class="small-note">Prix barré annoncé par le vendeur : {money(record.was)}. Seul un relevé daté permet de vérifier une baisse. <a href="/black-friday/">Les remises suivies pour le Black Friday →</a></p>}
+    <p class="small-note">Relevés automatiques, prix France hors livraison. <a href="/baisses-de-prix/">Toutes les baisses de prix relevées →</a></p>
+   </section>
 
    {(similar.length>0||cheaper)&&<section aria-labelledby="alternatives"><h2 id="alternatives">Dans le même esprit</h2><p class="fiche-sub">{p.movement}, à un prix proche{similar.some(x=>x.brand!==p.brand)?', chez d’autres marques':''}.</p>
     <ul class="fiche-alts">{[...similar,...(cheaper?[cheaper]:[])].map((x,i)=><li><a href={ficheHref(x)!}><img src={x.image} width={x.width} height={x.height} loading="lazy" alt=""/><span class="eyebrow">{x===cheaper?'Moins chère':x.brand}</span><strong>{ficheTitle(x)}</strong><span>{money(x.price)} · {ficheSummary(x)}</span></a></li>)}</ul></section>}
@@ -92,6 +100,7 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
 .fiche-specs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 var(--space-4);margin:0}
 .fiche-specs div{display:grid;grid-template-columns:11em 1fr;gap:var(--space-2);padding:12px 0;border-bottom:1px solid var(--line)}.fiche-specs dt{color:var(--muted);font-size:14px}.fiche-specs dd{margin:0;font-weight:600;font-size:15px}
 .fiche-history{border-collapse:collapse;min-width:min(100%,420px)}.fiche-history th,.fiche-history td{text-align:left;padding:10px 16px 10px 0;border-bottom:1px solid var(--line)}
+.fiche-lowest{margin-top:var(--space-2)}
 .fiche-sub{margin:-8px 0 var(--space-3);color:var(--muted)}
 .fiche-alts{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:var(--space-3)}
 .fiche-alts a{display:flex;flex-direction:column;gap:6px;height:100%;padding:var(--space-2);background:#f9f6f0;border-top:3px solid var(--wine);text-decoration:none;color:inherit}
