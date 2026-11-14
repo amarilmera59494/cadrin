@@ -10,6 +10,7 @@ async function initialise(host:HTMLElement){
  const form=document.querySelector<HTMLFormElement>('#catalogue-filters')!;
  const cards=document.querySelector<HTMLElement>('#catalogue-cards')!;
  const pager=document.querySelector<HTMLElement>('#catalogue-pagination')!;
+ const topPager=document.querySelector<HTMLElement>('#catalogue-pagination-top')!;
  const count=document.querySelector<HTMLElement>('#catalogue-count')!;
  const comparison=document.querySelector<HTMLElement>('#catalogue-comparison')!;
  const table=document.querySelector<HTMLTableElement>('#catalogue-comparison-table')!;
@@ -47,6 +48,7 @@ async function initialise(host:HTMLElement){
   if(remaining)remaining.focus();else focusResults();
  }
  function drawComparison(){
+  for(const nav of [pager,topPager])for(const a of nav.querySelectorAll<HTMLAnchorElement>('a[data-page]'))a.href=queryFor(Number(a.dataset.page));
   comparison.hidden=!selected.length;jump.hidden=!selected.length||comparisonInView;
   jump.textContent=t('Comparer mes montres','Compare my watches')+' ('+selected.length+'/3)';
   table.replaceChildren();differenceControl.hidden=selected.length<2;
@@ -123,19 +125,23 @@ async function initialise(host:HTMLElement){
   const matches=filterCatalogue(products,filters);if(!matches.length)drawRecovery(filters);const pages=Math.max(1,Math.ceil(matches.length/size));page=Math.min(page,pages);
   cards.replaceChildren(...matches.slice((page-1)*size,page*size).map(card));document.querySelector<HTMLElement>('#catalogue-empty')!.hidden=matches.length!==0;
   count.textContent=`${matches.length.toLocaleString(en?'en-GB':'fr-FR')} ${t('fiches · page','listings · page')} ${page}/${pages}`;
-  pager.hidden=matches.length===0;pager.replaceChildren();function pageLink(n:number,label:string){const a=link(label,queryFor(n));if(n===page)a.setAttribute('aria-current','page');a.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();page=n;render(true,true)});pager.append(a);}
+  pager.hidden=matches.length===0;pager.replaceChildren();topPager.hidden=pages<=1;topPager.replaceChildren();function pageLink(n:number,label:string,target=pager){const a=link(label,queryFor(n));a.dataset.page=String(n);if(n===page)a.setAttribute('aria-current','page');a.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();page=n;render(true,true)});target.append(a);}
   if(page>1)pageLink(page-1,t('← Précédente','← Previous'));for(let n=1;n<=pages;n++)if(n===1||n===pages||Math.abs(n-page)<=2)pageLink(n,String(n));if(page<pages)pageLink(page+1,t('Suivante →','Next →'));
+  if(page>1)pageLink(page-1,t('← Précédente','← Previous'),topPager);topPager.append(el('span',t('Page ','Page ')+page+' / '+pages));if(page<pages)pageLink(page+1,t('Suivante →','Next →'),topPager);
   const active=document.querySelector('#catalogue-active')!;active.replaceChildren();for(const key of filterKeys.filter(k=>k!=='sort')){const f=field(key);if(!f.value)continue;const text=f instanceof HTMLSelectElement?f.selectedOptions[0].textContent:f.value;const chip=el('button',text+' ×');chip.type='button';chip.setAttribute('aria-label',t('Retirer le critère : ','Remove filter: ')+text);chip.addEventListener('click',()=>{field(key).value='';page=1;render(true);field(key).focus();});active.append(chip);}
   syncPicks();drawComparison();jump.textContent=t('Comparer mes montres','Compare my watches')+' ('+selected.length+'/3)';if(update){document.dispatchEvent(new CustomEvent('cadrin:measure',{detail:{event:'filter_change',placement:'catalogue'}}));history.pushState(null,'',queryFor(page));document.dispatchEvent(new Event('cadrin:urlchange'));}if(focus){count.focus();count.scrollIntoView({block:'start',behavior:'instant'});}
  }
  cards.addEventListener('change',event=>{const input=event.target;if(!(input instanceof HTMLInputElement)||input.type!=='checkbox')return;if(input.checked&&selected.length<3)selected.push(input.value);else selected=selected.filter(id=>id!==input.value);syncPicks();drawComparison();history.replaceState(null,'',queryFor(page));document.dispatchEvent(new Event('cadrin:urlchange'));document.dispatchEvent(new CustomEvent('cadrin:measure',{detail:{event:'compare',placement:'comparison',count:selected.length}}));});
  let timer:ReturnType<typeof setTimeout>;
+ field('sort').addEventListener('change',()=>{clearTimeout(timer);page=1;render(true)});
+ document.querySelector('.catalogue-edit-filters')?.addEventListener('click',event=>{event.preventDefault();field('q').focus();form.scrollIntoView({block:'start',behavior:'instant'});});
  form.addEventListener('input',event=>{if(!(event.target instanceof HTMLInputElement))return;clearTimeout(timer);timer=setTimeout(()=>{page=1;render(true)},220)});
  form.addEventListener('change',event=>{if(event.target instanceof HTMLSelectElement){clearTimeout(timer);page=1;render(true)}});
  form.addEventListener('submit',event=>{event.preventDefault();clearTimeout(timer);page=1;render(true,true)});
  form.addEventListener('reset',()=>{clearTimeout(timer);requestAnimationFrame(()=>{page=1;render(true)})});
  window.addEventListener('popstate',()=>{clearTimeout(timer);restore();render()});count.tabIndex=-1;restore();render();
  form.querySelectorAll<HTMLInputElement|HTMLSelectElement|HTMLButtonElement>('input,select,button').forEach(control=>control.disabled=false);
+ field('sort').disabled=false;document.querySelector<HTMLElement>('[data-catalogue-tools]')!.hidden=false;
  form.removeAttribute('aria-disabled');
  if(['#catalogue-comparison','#comparaison'].includes(location.hash)&&selected.length){comparison.focus();comparison.scrollIntoView({block:'start',behavior:'instant'});}
 }
