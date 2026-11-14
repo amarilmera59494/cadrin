@@ -11,7 +11,7 @@ const en=paired?localPath(Astro.url.pathname,'en'):'/en/';
  <a data-language="en" href={en} lang="en" hreflang="en" aria-label="EN — English" aria-current={locale==='en'?'true':undefined}>EN</a>
 </div>
 <aside class="language-suggestion" hidden aria-label="Language suggestion" lang="en">
- <p>Prefer English?</p><a href={en} data-language="en">Read this page in English →</a><button type="button" aria-label="Dismiss language suggestion">×</button>
+ {paired?<><p>Prefer English?</p><a href={en} data-language="en">Read this page in English →</a></>:<><p>This page is available in French only.</p><a href={en} data-language="en">Browse Cadrin in English →</a></>}<button type="button" aria-label="Dismiss language suggestion">×</button>
 </aside>
 <script>
  const links=document.querySelectorAll<HTMLAnchorElement>('[data-language]');
