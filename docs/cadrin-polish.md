@@ -62,3 +62,5 @@ Validation locale du 14 novembre :
 - Captures avant/après ouvertes : `evidence/destinations/{before,after}/card-390.png`, après desktop `card-1440.png`, ainsi que les vues de résultats après FR 390/1440. Les captures de carte sont recadrées sur l'élément ; le nombre du nom désigne la largeur du viewport.
 
 Limite conservée : l'audit distant complet reste interrompu par les réponses 429. Aucun stock, prix, droit photo ou suivi de commission n'a été inventé ou revalidé par ces tests locaux. Les travaux TikTok non suivis restent hors livraison. Comparaison éditoriale et prochaine amélioration des guides restent au programme.
+
+La capture du guide sur viewport 390 px a révélé un lien de suspension trop imposant. Sa typographie et son espacement ont été resserrés dans `guide-examples.css`, puis la capture `evidence/destinations/after/guide-390.png` a été ouverte à nouveau. La suite destinations a été rejouée, PASS.
