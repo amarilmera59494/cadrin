@@ -2,12 +2,13 @@
 // Page de sélection construite depuis le catalogue : critères, montres (liées à leur fiche), conseils, guides.
 import Cadrin from '../layouts/Cadrin.astro';
 import data from '../data/tempus-catalogue.json';
-import {hubs,type Hub} from '../data/selection-hubs';
+import {hubs,brandHubs,type Hub} from '../data/selection-hubs';
 import {affiliateUrl} from '../data/affiliation';
 import {dateLabel} from '../lib/editorial';
 import {purchaseLabel,type CatalogueProduct} from '../lib/tempus-catalogue';
 import {ficheEligible,ficheHref,ficheSummary,ficheTitle} from '../lib/fiches';
-const {hub}=Astro.props as {hub:Hub};
+const {hub,base='/selections/',section='Sélections'}=Astro.props as {hub:Hub;base?:string;section?:string};
+const family=base==='/marques/'?brandHubs:hubs;
 const all=(data.products as CatalogueProduct[]).filter(ficheEligible);
 const seen=new Set<string>();
 const matches=all.filter(hub.match).filter(p=>{const h=ficheHref(p)!;if(seen.has(h))return false;seen.add(h);return true;})
@@ -15,13 +16,13 @@ const matches=all.filter(hub.match).filter(p=>{const h=ficheHref(p)!;if(seen.has
 const shown=matches.slice(0,hub.limit??24);
 const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
 const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
-const others=hubs.filter(h=>h.slug!==hub.slug).slice(0,12);
+const others=family.filter(h=>h.slug!==hub.slug).slice(0,12);
 ---
-<Cadrin title={hub.title} description={hub.description} crumbs={[{name:'Sélections',url:'/selections/'},{name:hub.title,url:`/selections/${hub.slug}/`}]}>
+<Cadrin title={hub.title} description={hub.description} crumbs={[{name:section,url:base},{name:hub.title,url:`${base}${hub.slug}/`}]}>
  <div class="container hub">
-  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/selections/">Sélections</a><span>/</span><span>{hub.kicker}</span></nav>
+  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href={base}>{section}</a><span>/</span><span>{hub.kicker}</span></nav>
   <header class="hub-head">
-   <div><span class="eyebrow">La sélection · {hub.kicker}</span><h1>{hub.h1.split('<br>').map((s,i)=><>{i>0&&<br/>}{s}</>)}</h1></div>
+   <div><span class="eyebrow">{base==='/marques/'?'La marque':'La sélection'} · {hub.kicker}</span><h1>{hub.h1.split('<br>').map((s,i)=><>{i>0&&<br/>}{s}</>)}</h1></div>
    <div class="hub-intro">{hub.intro.map(p=><p>{p}</p>)}</div>
   </header>
   <aside class="hub-criteria" aria-labelledby="criteres">
@@ -42,7 +43,7 @@ const others=hubs.filter(h=>h.slug!==hub.slug).slice(0,12);
   {matches.length>shown.length&&<p class="hub-all"><a class="text-link" href="/catalogue/">Voir tout le catalogue et filtrer →</a></p>}
   <section class="hub-tips" aria-labelledby="choisir"><h2 id="choisir">Pour bien choisir</h2><ol>{hub.tips.map(([t,x])=><li><h3>{t}</h3><p>{x}</p></li>)}</ol>
    <p class="hub-guides">Nos guides : {hub.guides.map((g,i)=><>{i>0&&' · '}<a href={g.url}>{g.label}</a></>)}</p></section>
-  <nav class="hub-others" aria-labelledby="autres"><h2 id="autres">Les autres sélections</h2><ul>{others.map(h=><li><a href={`/selections/${h.slug}/`}><span class="eyebrow">{h.kicker}</span>{h.title}</a></li>)}</ul></nav>
+  <nav class="hub-others" aria-labelledby="autres"><h2 id="autres">{base==='/marques/'?'Les autres marques':'Les autres sélections'}</h2><ul>{others.map(h=><li><a href={`${base}${h.slug}/`}><span class="eyebrow">{h.kicker}</span>{h.title}</a></li>)}</ul></nav>
  </div>
 </Cadrin>
 <style>

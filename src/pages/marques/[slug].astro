@@ -1,7 +1,9 @@
 ---
 import FeaturePage from '../../components/FeaturePage.astro';
+import SelectionHub from '../../components/SelectionHub.astro';
 import {features} from '../../data/features';
-export function getStaticPaths(){return features.filter(f=>f.kind==='brand').map(feature=>({params:{slug:feature.slug},props:{feature}}));}
-const {feature}=Astro.props;
+import {brandHubs} from '../../data/selection-hubs';
+export function getStaticPaths(){return [...features.filter(f=>f.kind==='brand').map(feature=>({params:{slug:feature.slug},props:{feature,hub:null}})),...brandHubs.map(hub=>({params:{slug:hub.slug},props:{feature:null,hub}}))];}
+const {feature,hub}=Astro.props as any;
 ---
-<FeaturePage feature={feature}/>
+{hub?<SelectionHub hub={hub} base="/marques/" section="Marques"/>:<FeaturePage feature={feature}/>}

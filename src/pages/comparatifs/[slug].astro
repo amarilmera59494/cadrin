@@ -1,7 +1,9 @@
 ---
 import FeaturePage from '../../components/FeaturePage.astro';
+import AutoComparison from '../../components/AutoComparison.astro';
 import {features} from '../../data/features';
-export function getStaticPaths(){return features.filter(f=>f.kind==='comparison').map(feature=>({params:{slug:feature.slug},props:{feature}}));}
-const {feature}=Astro.props;
+import {autoComparisons} from '../../data/auto-comparisons';
+export function getStaticPaths(){return [...features.filter(f=>f.kind==='comparison').map(feature=>({params:{slug:feature.slug},props:{feature,cmp:null}})),...autoComparisons.map(cmp=>({params:{slug:cmp.slug},props:{feature:null,cmp}}))];}
+const {feature,cmp}=Astro.props as any;
 ---
-<FeaturePage feature={feature}/>
+{cmp?<AutoComparison cmp={cmp}/>:<FeaturePage feature={feature}/>}
