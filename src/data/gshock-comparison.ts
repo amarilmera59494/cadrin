@@ -3,7 +3,7 @@ import type {Feature} from './features.ts';
 export const gshockComparison:Feature={
  kind:'comparison',slug:'g-shock-ga-2100-1a1er-ou-1aer',enSlug:'g-shock-ga-2100-1a1er-or-1aer',verifiedAt:'2026-11-14',rights:'approved',
  title:['G-Shock noire : GA-2100-1A1ER ou GA-2100-1AER ?','Black G-Shock: GA-2100-1A1ER or GA-2100-1AER?'],
- intro:['Une lettre change, et le cadran prend une autre allure. Ces deux GA-2100 partagent la même silhouette octogonale : l’une joue le noir intégral, l’autre fait ressortir ses index. Voici comment les départager.','One character changes, and the dial takes on a different look. These GA-2100s share an octagonal outline: one goes all black, while the other brings its hour markers forward. Here is how to choose.'],
+ intro:['Presque le même nom, deux cadrans bien différents. Ces deux GA-2100 partagent la même silhouette octogonale : l’une joue le noir intégral, l’autre fait ressortir ses index. Voici comment les départager.','Almost the same name, two very different dials. These GA-2100s share an octagonal outline: one goes all black, while the other brings its hour markers forward. Here is how to choose.'],
  verdict:['Notre préférence va à la 1AER si vous voulez des repères clairs sur un cadran noir. Choisissez la 1A1ER si le ton sur ton est précisément ce qui vous plaît. Les fonctions ne sont pas une raison de préférer l’une à l’autre.','We would choose the 1AER for light markers on a black dial. Pick the 1A1ER if its tone-on-tone finish is exactly what appeals. Functions are not a reason to prefer one over the other.'],
  choices:[
   {reference:'GA-2100-1A1ER',label:['1A1ER : le noir intégral','1A1ER: all black'],why:['C’est celle de notre vidéo G-Shock : lunette, bracelet et cadran prolongent la même palette sombre. Elle plaît surtout pour cette unité visuelle, avec les aiguilles et le petit écran qui se fondent dans l’ensemble.','This is the G-Shock from our video: bezel, strap and dial continue the same dark palette. Its appeal is that visual unity, with the hands and small screen blending into the whole.'],limit:['Les index sombres se détachent moins sur les photos. Si vous consultez souvent l’heure d’un coup d’œil, comparez aussi la 1AER.','The dark markers stand out less in photographs. If you often glance at the time, compare the 1AER too.']},
@@ -17,6 +17,6 @@ export const gshockComparison:Feature={
  ],sources:[
   {label:'Casio — GA-2100-1A',url:'https://www.casio.com/fr/watches/gshock/product.GA-2100-1A/'},
   {label:'Casio — GA-2100-1A1',url:'https://www.casio.com/fr/watches/gshock/product.GA-2100-1A1/'},
-  {label:'Casio — utilisation dans l’eau',url:'https://www.casio.com/europe/support/watches/faq/article/00/05/15/61/'}
+  {label:'Casio — Water resistance',url:'https://www.casio.com/europe/support/watches/faq/article/00/05/15/61/'}
  ]
 };

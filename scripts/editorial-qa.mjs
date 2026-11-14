@@ -18,6 +18,7 @@ try{
   await page.setViewportSize({width,height:900});const response=await page.goto(origin+route);assert.equal(response.status(),200);
   await page.locator('h1').waitFor();await page.evaluate(async()=>{document.querySelectorAll('img').forEach(img=>img.loading='eager');await Promise.all([...document.images].map(img=>img.decode().catch(()=>{})));await document.fonts.ready;});
   assert.equal(await page.locator('h1').count(),1);
+  if(route.startsWith('/en/'))assert.equal((await page.locator('main').innerText()).includes('Résine renforcé'),false);
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);assert.equal(overflow,false,`${route} ${width}`);
   const images=await page.locator('main img').evaluateAll(imgs=>imgs.map(img=>({src:img.getAttribute('src'),loaded:img.complete&&img.naturalWidth>0})));
   assert.ok(images.length>=2);assert.ok(images.every(img=>img.loaded),JSON.stringify(images));
