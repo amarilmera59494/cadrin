@@ -4,6 +4,7 @@ import Cadrin from '../../layouts/Cadrin.astro';
 import data from '../../data/tempus-catalogue.json';
 import bf from '../../data/black-friday.json';
 import history from '../../data/price-history.json';
+import {reviewFor} from '../../data/review-syntheses';
 import {editorialLinks} from '../../data/editorial-links';
 import {affiliateUrl} from '../../data/affiliation';
 import {dateLabel} from '../../lib/editorial';
@@ -21,6 +22,7 @@ const name=ficheTitle(p),checks=ficheChecks(p),{similar,cheaper}=ficheAlternativ
 const analysis=editorialLinks[p.reference];
 const record=bf.items.find(i=>p.source.endsWith('/products/'+i.handle));
 const rows=((history as any).items[p.id]||[]) as [string,number,number][];const lowest=rows.length?rows.reduce((m,r)=>r[1]<m[1]?r:m):null;const since=(history as any).since as string;
+const review=reviewFor(p.reference);
 const brandPage=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];const brandHref=brandPage?`/marques/${brandPage}/`:null;
 const title=`${name} : prix, taille, étanchéité`;
 const description=`${p.brand} ${p.reference} : ${money(p.price)} relevé le ${dateLabel(checkedAt)}. ${ficheSummary(p)} Ce qu’il faut vérifier avant d’acheter et des alternatives.`;
@@ -59,6 +61,7 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
     {analysis&&<p><a class="text-link" href={`/montres/${analysis}/`}>Lire notre analyse détaillée de ce modèle →</a></p>}
    </section>
 
+   {review&&<section class="reviews" aria-labelledby="tests"><h2 id="tests">Ce qu’en disent les tests publiés</h2><p class="reviews-intro">Synthèse de tests et d’avis publics sur la {review.family}, consultés le 14 novembre 2026. Cadrin n’a pas porté cette montre : nous résumons ce qui revient d’une source à l’autre.</p><div class="reviews-cols"><div><h3>Ce qui est apprécié</h3><ul class="plus">{review.plus.map(x=><li>{x}</li>)}</ul></div><div><h3>Ce qui fait hésiter</h3><ul class="minus">{review.minus.map(x=><li>{x}</li>)}</ul></div></div>{review.note&&<p class="small-note">{review.note}</p>}<p class="reviews-src">Sources : {review.sources.map((s,i)=><>{i>0&&' · '}<a href={s.url} rel="nofollow noopener" target="_blank">{s.label} ↗</a></>)}</p></section>}
    <section aria-labelledby="releve"><h2 id="releve">Notre suivi du prix</h2>
     {rows.length>1?<><table class="fiche-history"><thead><tr><th scope="col">Date du relevé</th><th scope="col">Prix</th><th scope="col">Variation</th></tr></thead><tbody>{rows.slice().reverse().map((r,i,a)=>{const prev=a[i+1];const d=prev?r[1]-prev[1]:0;return <tr><td>{dateLabel(r[0])}</td><td>{money(r[1])}{!r[2]&&' (non commandable)'}</td><td>{prev?(d<0?'Baisse de '+money(-d):d>0?'Hausse de '+money(d):'—'):'Premier relevé'}</td></tr>;})}</tbody></table>
     <p class="fiche-lowest">Plus bas relevé depuis le {dateLabel(since)} : <strong>{money(lowest![1])}</strong>, le {dateLabel(lowest![0])}.</p></>
@@ -101,6 +104,17 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
 .fiche-specs div{display:grid;grid-template-columns:11em 1fr;gap:var(--space-2);padding:12px 0;border-bottom:1px solid var(--line)}.fiche-specs dt{color:var(--muted);font-size:14px}.fiche-specs dd{margin:0;font-weight:600;font-size:15px}
 .fiche-history{border-collapse:collapse;min-width:min(100%,420px)}.fiche-history th,.fiche-history td{text-align:left;padding:10px 16px 10px 0;border-bottom:1px solid var(--line)}
 .fiche-lowest{margin-top:var(--space-2)}
+.reviews h2{font:500 clamp(30px,3.4vw,44px)/1.05 var(--display);text-transform:uppercase;margin:0 0 var(--space-2)}
+.reviews-intro{color:var(--muted);margin:0 0 var(--space-3)}
+.reviews-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.reviews h3{font-size:18px;margin:0 0 var(--space-1)}
+.reviews ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.reviews li{position:relative;padding-left:30px;line-height:1.5}
+.reviews li::before{position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:15px}
+.reviews .plus li::before{content:'+';background:#dcefe0;color:#1f5e3a}
+.reviews .minus li::before{content:'−';background:#f6dcd8;color:#7a2a20}
+.reviews-src{margin-top:var(--space-3)!important;font-size:14px;max-width:none!important}
+@media(max-width:700px){.reviews-cols{grid-template-columns:1fr;gap:var(--space-3)}}
 .fiche-sub{margin:-8px 0 var(--space-3);color:var(--muted)}
 .fiche-alts{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:var(--space-3)}
 .fiche-alts a{display:flex;flex-direction:column;gap:6px;height:100%;padding:var(--space-2);background:#f9f6f0;border-top:3px solid var(--wine);text-decoration:none;color:inherit}

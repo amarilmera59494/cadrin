@@ -4,6 +4,7 @@ import Cadrin from '../layouts/Cadrin.astro';
 import data from '../data/tempus-catalogue.json';
 import history from '../data/price-history.json';
 import {autoComparisons,type AutoComparison} from '../data/auto-comparisons';
+import {reviewFor} from '../data/review-syntheses';
 import {affiliateUrl} from '../data/affiliation';
 import {dateLabel} from '../lib/editorial';
 import {purchaseLabel,orderLabel,sizeNumber,waterMark,merchantLinkAvailable,type CatalogueProduct} from '../lib/tempus-catalogue';
@@ -23,6 +24,7 @@ const ta=sizeNumber(a.thickness),tb=sizeNumber(b.thickness);if(ta!==null&&tb!==n
 if(/saphir/i.test(a.glass||'')!==/saphir/i.test(b.glass||''))diffs.push(`Le verre : ${a.glass} contre ${b.glass}. Le saphir résiste bien mieux aux rayures.`);
 const rowsH=(p:CatalogueProduct)=>((history as any).items[p.id]||[]) as [string,number,number][];
 const others=autoComparisons.filter(c=>c.slug!==cmp.slug);
+const reviews=both.map(p=>({p,r:reviewFor(p.reference)})).filter(x=>x.r);
 ---
 <Cadrin title={cmp.title} description={`${cmp.title} Prix relevés le ${dateLabel(checkedAt)}, caractéristiques côte à côte, différences utiles et verdict selon votre usage.`} crumbs={[{name:'Comparatifs',url:'/comparatifs/'},{name:cmp.title,url:`/comparatifs/${cmp.slug}/`}]}>
  <div class="container ac">
@@ -31,6 +33,7 @@ const others=autoComparisons.filter(c=>c.slug!==cmp.slug);
   <div class="ac-duo">{both.map((p,i)=><article><span class="ac-n" aria-hidden="true">{i+1}</span><a class="ac-photo" href={ficheHref(p)??undefined} tabindex="-1" aria-hidden="true"><img src={p.image} width={p.width} height={p.height} alt="" fetchpriority={i===0?'high':undefined}/></a><span class="eyebrow">{p.brand}</span><h2>{ficheHref(p)?<a href={ficheHref(p)!}>{ficheTitle(p)}</a>:ficheTitle(p)}</h2><p class="ac-price">{money(p.price)}</p><p class="small-note">{orderLabel(p,false)}{rowsH(p).length>1?` · ${rowsH(p).length} relevés de prix`:''}</p><a class="button merchant-button" data-placement="comparison" href={affiliateUrl(p.source)} rel="sponsored">{purchaseLabel(p,false)} ↗</a></article>)}</div>
   <section aria-labelledby="tableau"><h2 id="tableau" class="ac-h2">Côte à côte</h2><div class="ac-table-wrap" tabindex="0" role="region" aria-label="Tableau comparatif, faites défiler horizontalement"><table class="ac-table"><thead><tr><th scope="col"><span class="visually-hidden">Caractéristique</span></th>{both.map(p=><th scope="col">{ficheTitle(p)}</th>)}</tr></thead><tbody>{rows.map(([l,f])=><tr class={f(a)!==f(b)?'ac-diff':undefined}><th scope="row">{l}</th><td>{f(a)}</td><td>{f(b)}</td></tr>)}</tbody></table></div><p class="small-note">Les lignes surlignées sont celles qui diffèrent.</p></section>
   {diffs.length>0&&<section aria-labelledby="ecarts"><h2 id="ecarts" class="ac-h2">Ce qui les sépare vraiment</h2><ul class="ac-diffs">{diffs.map(d=><li>{d}</li>)}</ul></section>}
+  {reviews.length>0&&<section aria-labelledby="tests"><h2 id="tests" class="ac-h2">Ce qu’en disent les tests publiés</h2><p class="small-note">Synthèse de tests et d’avis publics, consultés le 14 novembre 2026. Cadrin n’a pas porté ces montres.</p><div class="ac-reviews">{reviews.map(({p,r})=><div><h3>{ficheTitle(p)}</h3><ul class="plus">{r!.plus.map(x=><li>{x}</li>)}</ul><ul class="minus">{r!.minus.map(x=><li>{x}</li>)}</ul>{r!.note&&<p class="small-note">{r!.note}</p>}<p class="ac-src">Sources : {r!.sources.map((s,i)=><>{i>0&&' · '}<a href={s.url} rel="nofollow noopener" target="_blank">{s.label} ↗</a></>)}</p></div>)}</div></section>}
   <section class="ac-verdict" aria-labelledby="verdict"><h2 id="verdict" class="ac-h2">Notre verdict, selon votre usage</h2><div>{cmp.verdict.map((v,i)=><p><strong>{ficheTitle(both[i])}</strong> {v}</p>)}</div><p class="small-note">Une recommandation par profil, pas un classement : aucune des deux n’est « meilleure » dans l’absolu.</p></section>
   <p class="ac-guides">Nos guides : {cmp.guides.map((g,i)=><>{i>0&&' · '}<a href={g.url}>{g.label}</a></>)}</p>
   <nav class="ac-others" aria-labelledby="autres-cmp"><h2 id="autres-cmp" class="ac-h2">D’autres comparatifs</h2><ul>{others.map(c=><li><a href={`/comparatifs/${c.slug}/`}>{c.title}</a></li>)}</ul></nav>
@@ -54,6 +57,10 @@ const others=autoComparisons.filter(c=>c.slug!==cmp.slug);
 .ac-table .ac-diff td{background:var(--sand);font-weight:600}
 .ac-diffs{padding-left:1.1em;line-height:1.7;max-width:46em}
 .ac-verdict div{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}.ac-verdict div p{margin:0;padding:var(--space-3);background:var(--sand);line-height:1.55}.ac-verdict strong{display:block;margin-bottom:6px}
+.ac-reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-4)}.ac-reviews h3{font-size:18px;margin:0 0 var(--space-2)}
+.ac-reviews ul{list-style:none;padding:0;margin:0 0 var(--space-2);display:grid;gap:8px}.ac-reviews li{position:relative;padding-left:28px;line-height:1.5}
+.ac-reviews li::before{position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px}
+.ac-reviews .plus li::before{content:'+';background:#dcefe0;color:#1f5e3a}.ac-reviews .minus li::before{content:'−';background:#f6dcd8;color:#7a2a20}.ac-src{font-size:14px;max-width:none!important}
 .ac-guides{margin-top:var(--space-4)!important;padding-top:var(--space-2);border-top:1px solid var(--line);max-width:none!important}
 .ac-others ul{padding-left:1.1em;line-height:2}
 @media(max-width:700px){.ac-duo{grid-template-columns:1fr 1fr;gap:var(--space-2)}.ac-photo{padding:var(--space-1)}.ac-photo img{height:170px}.ac-price{font-size:30px}.ac-duo h2{font-size:16px}.ac-verdict div{grid-template-columns:1fr}}
