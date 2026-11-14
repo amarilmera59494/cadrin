@@ -66,12 +66,12 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
     {rows.length>1?<><table class="fiche-history"><thead><tr><th scope="col">Date du relevé</th><th scope="col">Prix</th><th scope="col">Variation</th></tr></thead><tbody>{rows.slice().reverse().map((r,i,a)=>{const prev=a[i+1];const d=prev?r[1]-prev[1]:0;return <tr><td>{dateLabel(r[0])}</td><td>{money(r[1])}{!r[2]&&' (non commandable)'}</td><td>{prev?(d<0?'Baisse de '+money(-d):d>0?'Hausse de '+money(d):'—'):'Premier relevé'}</td></tr>;})}</tbody></table>
     <p class="fiche-lowest">Plus bas relevé depuis le {dateLabel(since)} : <strong>{money(lowest![1])}</strong>, le {dateLabel(lowest![0])}.</p></>
     :<p>Cadrin relève ce prix chaque jour depuis le {dateLabel(since)}. Aucune variation pour l’instant : {money(p.price)}.</p>}
-    {record&&<p class="small-note">Prix barré annoncé par le vendeur : {money(record.was)}. Seul un relevé daté permet de vérifier une baisse. <a href="/black-friday/">Les remises suivies pour le Black Friday →</a></p>}
+    {record&&<p class="small-note">{record.was?<>Prix barré annoncé par le vendeur : {money(record.was)}. </>:null}Seul un relevé daté permet de vérifier une baisse. <a href="/black-friday/">Les remises suivies pour le Black Friday →</a></p>}
     <p class="small-note">Relevés automatiques, prix France hors livraison. <a href="/baisses-de-prix/">Toutes les baisses de prix relevées →</a></p>
    </section>
 
    {(similar.length>0||cheaper)&&<section aria-labelledby="alternatives"><h2 id="alternatives">Dans le même esprit</h2><p class="fiche-sub">{p.movement}, à un prix proche{similar.some(x=>x.brand!==p.brand)?', chez d’autres marques':''}.</p>
-    <ul class="fiche-alts">{[...similar,...(cheaper?[cheaper]:[])].map((x,i)=><li><a href={ficheHref(x)!}><img src={x.image} width={x.width} height={x.height} loading="lazy" alt=""/><span class="eyebrow">{x===cheaper?'Moins chère':x.brand}</span><strong>{ficheTitle(x)}</strong><span>{money(x.price)} · {ficheSummary(x)}</span></a></li>)}</ul></section>}
+    <ul class="fiche-alts">{[...similar,...(cheaper?[cheaper]:[])].map(x=><li><a href={ficheHref(x)!}><img src={x.image} width={x.width} height={x.height} loading="lazy" alt=""/><span class="eyebrow">{x===cheaper?'Moins chère':x.brand}</span><strong>{ficheTitle(x)}</strong><span>{money(x.price)} · {ficheSummary(x)}</span></a></li>)}</ul></section>}
 
    <section class="fiche-more" aria-labelledby="comparer"><h2 id="comparer">Comparer avant de choisir</h2><ul>
     <li><a href={'/catalogue/?brand='+encodeURIComponent(p.brand)+'&compare='+p.id+'#catalogue-count'}>Comparer avec d’autres {p.brand} du catalogue →</a></li>
