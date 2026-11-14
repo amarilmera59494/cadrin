@@ -5,7 +5,7 @@ if(panel){
  const status=panel.querySelector('[data-measure-status]')!;
  const dnt=navigator.doNotTrack==='1'||(navigator as Navigator&{globalPrivacyControl?:boolean}).globalPrivacyControl===true;
  const read=():Decision=>{try{const x=JSON.parse(localStorage.getItem(key)||'null');return x&&x.until>Date.now()&&x.until<=Date.now()+ttl+60000&&['yes','no'].includes(x.value)?x.value:null;}catch{return null;}};
- const q=new URLSearchParams(location.search),allowedSources=['tiktok','pinterest','instagram','google','bing','direct','other'],allowedCampaigns=['gshock-noire','tsuyosa-rose','casio-retro','tsuyosa-format','budget-50','budget-150','cadeau','solaire','gshock-guide'];
+ const q=new URLSearchParams(location.search),allowedSources=['tiktok','pinterest','instagram','google','bing','direct','other'],allowedCampaigns=['gshock-noire','tsuyosa-rose','casio-retro','tsuyosa-format','budget-50','budget-150','cadeau','solaire','gshock-guide','noel-lui','noel-elle','noel-budget','noel-luxe','noel-gshock','noel-auto','auto-trio','taille','mouvements','premiere-montre','ecodrive-tsuyosa','mako'];
  let source=q.get('utm_source')||'direct';if(!allowedSources.includes(source))source='other';
  if(source==='direct'&&document.referrer){try{const h=new URL(document.referrer).hostname;if(h!==location.hostname)source=h.endsWith('tiktok.com')?'tiktok':h.endsWith('pinterest.com')||h.endsWith('pinterest.fr')?'pinterest':h.endsWith('instagram.com')?'instagram':h.includes('google.')?'google':h.endsWith('bing.com')?'bing':'other';}catch{}}
  const campaign=allowedCampaigns.includes(q.get('utm_campaign')||'')?q.get('utm_campaign')!:'none';
