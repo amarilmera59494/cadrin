@@ -2,10 +2,10 @@
 import Cadrin from '../../layouts/Cadrin.astro';import Photo from '../../components/Photo.astro';import {catalogue,dateLabel} from '../../lib/editorial';
 import data from '../../data/tempus-catalogue.json';
 import {hubs} from '../../data/selection-hubs';
-import {ficheEligible,ficheHref} from '../../lib/fiches';
+import {ficheDocumented,ficheHref} from '../../lib/fiches';
 import type {CatalogueProduct} from '../../lib/tempus-catalogue';
 const {selections,finder}=await catalogue();
-const all=(data.products as CatalogueProduct[]).filter(ficheEligible);
+const all=(data.products as CatalogueProduct[]).filter(ficheDocumented);
 const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
 const cards=hubs.map(h=>{const seen=new Set<string>();const m=all.filter(h.match).filter(p=>{const k=ficheHref(p)!;if(seen.has(k))return false;seen.add(k);return true;}).sort((a,b)=>Number(!!b.bestseller)-Number(!!a.bestseller)||a.price-b.price);return {...h,count:m.length,lead:m[0],from:Math.min(...m.map(p=>p.price))};});
 const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:n%1?2:0}).format(n);

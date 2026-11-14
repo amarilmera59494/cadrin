@@ -12,7 +12,7 @@ import {detailRows,orderLabel,purchaseLabel,type CatalogueProduct} from '../../l
 import {ficheEligible,ficheSlug,ficheHref,ficheSummary,ficheChecks,ficheAlternatives,ficheTitle} from '../../lib/fiches';
 export function getStaticPaths(){
  const all=data.products as CatalogueProduct[],seen=new Set<string>();
- return all.filter(ficheEligible).filter(p=>{const s=ficheSlug(p);if(seen.has(s))return false;seen.add(s);return true;}).map(p=>({params:{slug:ficheSlug(p)},props:{p}}));
+ return all.filter(ficheEligible).sort((a,b)=>a.price-b.price).filter(p=>{const s=ficheSlug(p);if(seen.has(s))return false;seen.add(s);return true;}).map(p=>({params:{slug:ficheSlug(p)},props:{p}}));
 }
 const {p}=Astro.props as {p:CatalogueProduct};
 const all=data.products as CatalogueProduct[];
@@ -24,8 +24,8 @@ const record=bf.items.find(i=>p.source.endsWith('/products/'+i.handle));
 const rows=((history as any).items[p.id]||[]) as [string,number,number][];const lowest=rows.length?rows.reduce((m,r)=>r[1]<m[1]?r:m):null;const since=(history as any).since as string;
 const review=reviewFor(p.reference);
 const brandPage=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];const brandHref=brandPage?`/marques/${brandPage}/`:null;
-const title=`${name} : prix, taille, étanchéité`;
-const description=`${p.brand} ${p.reference} : ${money(p.price)} relevé le ${dateLabel(checkedAt)}. ${ficheSummary(p)} Ce qu’il faut vérifier avant d’acheter et des alternatives.`;
+const title=[`${name} : prix, taille, étanchéité`,`${name} : prix et fiche`,name,`${p.brand} ${p.reference} : prix et fiche`].find(x=>x.length<=61)??`${p.brand} ${p.reference}`;
+const descBase=`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. ${ficheSummary(p)}`;const description=[descBase+' Points à vérifier et alternatives.',descBase,`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. Caractéristiques, points à vérifier et alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
 const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.guide!])).values()];
 ---
 <Cadrin title={title} description={description} crumbs={[{name:'Catalogue',url:'/catalogue/'},{name:`${p.brand} ${p.reference}`,url:`/montre/${ficheSlug(p)}/`}]}>
@@ -56,7 +56,7 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
 
    <section aria-labelledby="fiche-tech">
     <h2 id="fiche-tech">La fiche technique</h2>
-    <dl class="fiche-specs"><div><dt>Marque</dt><dd>{p.brand}</dd></div><div><dt>Référence</dt><dd>{p.reference}</dd></div><div><dt>Mouvement</dt><dd>{p.movement}</dd></div>{detailRows(p,false).map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+    <dl class="fiche-specs"><div><dt>Marque</dt><dd>{p.brand}</dd></div><div><dt>Référence</dt><dd>{p.reference}</dd></div><div><dt>Mouvement</dt><dd>{p.movement||'Non indiqué'}</dd></div>{detailRows(p,false).map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
     <p class="small-note">Caractéristiques annoncées par la fiche du vendeur{p.specCheckedAt?`, relevées le ${dateLabel(p.specCheckedAt)}`:''}. Non mesurées par Cadrin, sans essai au poignet.</p>
     {analysis&&<p><a class="text-link" href={`/montres/${analysis}/`}>Lire notre analyse détaillée de ce modèle →</a></p>}
    </section>

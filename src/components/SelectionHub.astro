@@ -6,10 +6,10 @@ import {hubs,brandHubs,type Hub} from '../data/selection-hubs';
 import {affiliateUrl} from '../data/affiliation';
 import {dateLabel} from '../lib/editorial';
 import {purchaseLabel,type CatalogueProduct} from '../lib/tempus-catalogue';
-import {ficheEligible,ficheHref,ficheSummary,ficheTitle} from '../lib/fiches';
+import {ficheDocumented,ficheHref,ficheSummary,ficheTitle} from '../lib/fiches';
 const {hub,base='/selections/',section='Sélections'}=Astro.props as {hub:Hub;base?:string;section?:string};
 const family=base==='/marques/'?brandHubs:hubs;
-const all=(data.products as CatalogueProduct[]).filter(ficheEligible);
+const all=(data.products as CatalogueProduct[]).filter(ficheDocumented);
 const seen=new Set<string>();
 const matches=all.filter(hub.match).filter(p=>{const h=ficheHref(p)!;if(seen.has(h))return false;seen.add(h);return true;})
  .sort((a,b)=>hub.sort==='price'?a.price-b.price:Number(!!b.bestseller)-Number(!!a.bestseller)||a.price-b.price);
