@@ -1,0 +1,103 @@
+---
+// Fiche modèle générée depuis le catalogue : caractéristiques, points à vérifier, prix daté, alternatives.
+import Cadrin from '../../layouts/Cadrin.astro';
+import data from '../../data/tempus-catalogue.json';
+import bf from '../../data/black-friday.json';
+import {editorialLinks} from '../../data/editorial-links';
+import {affiliateUrl} from '../../data/affiliation';
+import {dateLabel} from '../../lib/editorial';
+import {detailRows,orderLabel,purchaseLabel,type CatalogueProduct} from '../../lib/tempus-catalogue';
+import {ficheEligible,ficheSlug,ficheHref,ficheSummary,ficheChecks,ficheAlternatives,ficheTitle} from '../../lib/fiches';
+export function getStaticPaths(){
+ const all=data.products as CatalogueProduct[],seen=new Set<string>();
+ return all.filter(ficheEligible).filter(p=>{const s=ficheSlug(p);if(seen.has(s))return false;seen.add(s);return true;}).map(p=>({params:{slug:ficheSlug(p)},props:{p}}));
+}
+const {p}=Astro.props as {p:CatalogueProduct};
+const all=data.products as CatalogueProduct[];
+const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
+const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
+const name=ficheTitle(p),checks=ficheChecks(p),{similar,cheaper}=ficheAlternatives(p,all);
+const analysis=editorialLinks[p.reference];
+const record=bf.items.find(i=>p.source.endsWith('/products/'+i.handle));
+const brandPage=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];const brandHref=brandPage?`/marques/${brandPage}/`:null;
+const title=`${name} : prix, taille, étanchéité`;
+const description=`${p.brand} ${p.reference} : ${money(p.price)} relevé le ${dateLabel(checkedAt)}. ${ficheSummary(p)} Ce qu’il faut vérifier avant d’acheter et des alternatives.`;
+const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.guide!])).values()];
+---
+<Cadrin title={title} description={description} crumbs={[{name:'Catalogue',url:'/catalogue/'},{name:`${p.brand} ${p.reference}`,url:`/montre/${ficheSlug(p)}/`}]}>
+ <div class="container fiche">
+  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/catalogue/">Catalogue</a><span>/</span><a href={'/catalogue/?brand='+encodeURIComponent(p.brand)}>{p.brand}</a><span>/</span><span>{p.reference}</span></nav>
+  <header class="fiche-head">
+   <div class="fiche-photo"><img src={p.image} width={p.width} height={p.height} alt={`${p.title}, photo du vendeur`} fetchpriority="high"/><small>Photo du vendeur, non retouchée</small></div>
+   <div class="fiche-intro">
+    <span class="eyebrow">{p.brand}{p.category?` · ${p.category}`:''}</span>
+    <h1>{name}</h1>
+    <p class="fiche-lead">{ficheSummary(p)}</p>
+    <div class="fiche-buy">
+     <p class="fiche-price"><strong>{money(p.price)}</strong><small>Prix France relevé le {dateLabel(checkedAt)}, hors livraison.</small></p>
+     <p class="fiche-status">{orderLabel(p,false)}</p>
+     <a class="button merchant-button" data-placement="product" href={affiliateUrl(p.source)} rel="sponsored">{purchaseLabel(p,false)} ↗</a>
+     <button class="save-watch" type="button" data-save-id={p.id} data-save-label={p.reference} hidden>Garder en favoris</button>
+     <small class="affiliate-note">Lien affilié : Cadrin peut toucher une commission, sans surcoût pour vous. Vérifiez le prix et le délai chez le vendeur avant de commander.</small>
+    </div>
+   </div>
+  </header>
+
+  <div class="fiche-body">
+   <section class="fiche-checks" aria-labelledby="verifier">
+    <h2 id="verifier">À vérifier avant d’acheter</h2>
+    <ol>{checks.map(c=><li><h3>{c.title}</h3><p>{c.text}</p></li>)}</ol>
+    {guideLinks.length>0&&<p class="fiche-guides">Pour aller plus loin : {guideLinks.map((g,i)=><>{i>0&&' · '}<a href={g.url}>{g.label}</a></>)}</p>}
+   </section>
+
+   <section aria-labelledby="fiche-tech">
+    <h2 id="fiche-tech">La fiche technique</h2>
+    <dl class="fiche-specs"><div><dt>Marque</dt><dd>{p.brand}</dd></div><div><dt>Référence</dt><dd>{p.reference}</dd></div><div><dt>Mouvement</dt><dd>{p.movement}</dd></div>{detailRows(p,false).map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+    <p class="small-note">Caractéristiques annoncées par la fiche du vendeur{p.specCheckedAt?`, relevées le ${dateLabel(p.specCheckedAt)}`:''}. Non mesurées par Cadrin, sans essai au poignet.</p>
+    {analysis&&<p><a class="text-link" href={`/montres/${analysis}/`}>Lire notre analyse détaillée de ce modèle →</a></p>}
+   </section>
+
+   {record&&<section aria-labelledby="releve"><h2 id="releve">Notre relevé de prix</h2><table class="fiche-history"><thead><tr><th scope="col">Date</th><th scope="col">Prix relevé par Cadrin</th></tr></thead><tbody>{record.history.map(h=><tr><td>{dateLabel(h.date)}</td><td>{money(h.price)}</td></tr>)}</tbody></table><p class="small-note">Prix barré annoncé par le vendeur : {money(record.was)}. Seul notre relevé daté permet de vérifier une baisse. <a href="/black-friday/">Toutes les remises suivies →</a></p></section>}
+
+   {(similar.length>0||cheaper)&&<section aria-labelledby="alternatives"><h2 id="alternatives">Dans le même esprit</h2><p class="fiche-sub">{p.movement}, à un prix proche{similar.some(x=>x.brand!==p.brand)?', chez d’autres marques':''}.</p>
+    <ul class="fiche-alts">{[...similar,...(cheaper?[cheaper]:[])].map((x,i)=><li><a href={ficheHref(x)!}><img src={x.image} width={x.width} height={x.height} loading="lazy" alt=""/><span class="eyebrow">{x===cheaper?'Moins chère':x.brand}</span><strong>{ficheTitle(x)}</strong><span>{money(x.price)} · {ficheSummary(x)}</span></a></li>)}</ul></section>}
+
+   <section class="fiche-more" aria-labelledby="comparer"><h2 id="comparer">Comparer avant de choisir</h2><ul>
+    <li><a href={'/catalogue/?brand='+encodeURIComponent(p.brand)+'&compare='+p.id+'#catalogue-count'}>Comparer avec d’autres {p.brand} du catalogue →</a></li>
+    {brandHref&&<li><a href={brandHref}>Notre dossier sur la marque {p.brand} →</a></li>}
+    <li><a href="/trouver-ma-montre/">Trouver une montre selon vos critères →</a></li>
+    <li><a href="/notre-methode/">Comment nous sélectionnons et vérifions →</a></li>
+   </ul></section>
+  </div>
+ </div>
+</Cadrin>
+<style>
+.fiche{padding-bottom:var(--section)}
+.fiche-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:var(--space-5);align-items:start;padding-block:var(--space-2) var(--space-5);border-bottom:1px solid var(--line)}
+.fiche-photo{background:#fff;padding:var(--space-4);text-align:center}.fiche-photo img{width:100%;max-width:420px;height:auto;aspect-ratio:4/5;object-fit:contain}.fiche-photo small{display:block;margin-top:var(--space-1);font-size:11px;color:var(--muted)}
+.fiche-intro h1{font:500 clamp(40px,5vw,68px)/1 var(--display);text-transform:uppercase;margin:var(--space-2) 0;text-wrap:balance}
+.fiche-lead{font-size:19px;line-height:1.5;max-width:34em}
+.fiche-buy{margin-top:var(--space-4);padding:var(--space-3);background:var(--sand)}
+.fiche-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-2);margin:0 0 var(--space-1)}.fiche-price strong{font:500 46px/1 var(--display);white-space:nowrap}.fiche-price small{font-size:12px;color:var(--muted)}
+.fiche-status{font-size:14px;margin:0 0 var(--space-2)}
+.fiche-buy .merchant-button{width:100%;min-height:52px;justify-content:center}
+.fiche-buy .affiliate-note{display:block;margin-top:var(--space-2);font-size:12px;line-height:1.5;color:var(--muted)}
+.fiche-body{display:grid;gap:var(--section);padding-top:var(--section);max-width:960px}
+.fiche-body h2{font:500 clamp(30px,3.4vw,44px)/1.05 var(--display);text-transform:uppercase;margin:0 0 var(--space-3)}
+.fiche-checks ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-3);counter-reset:c}
+.fiche-checks li{counter-increment:c;border-top:3px solid var(--accent);padding-top:var(--space-2)}
+.fiche-checks li::before{content:counter(c,decimal-leading-zero);font:500 28px/1 var(--display);color:var(--accent)}
+.fiche-checks h3{font-size:18px;line-height:1.3;margin:var(--space-1) 0}.fiche-checks p{margin:0;line-height:1.55}
+.fiche-guides{margin-top:var(--space-4)!important;padding-top:var(--space-2);border-top:1px solid var(--line);font-size:15px;max-width:none!important}
+.fiche-specs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0 var(--space-4);margin:0}
+.fiche-specs div{display:grid;grid-template-columns:11em 1fr;gap:var(--space-2);padding:12px 0;border-bottom:1px solid var(--line)}.fiche-specs dt{color:var(--muted);font-size:14px}.fiche-specs dd{margin:0;font-weight:600;font-size:15px}
+.fiche-history{border-collapse:collapse;min-width:min(100%,420px)}.fiche-history th,.fiche-history td{text-align:left;padding:10px 16px 10px 0;border-bottom:1px solid var(--line)}
+.fiche-sub{margin:-8px 0 var(--space-3);color:var(--muted)}
+.fiche-alts{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:var(--space-3)}
+.fiche-alts a{display:flex;flex-direction:column;gap:6px;height:100%;padding:var(--space-2);background:#f9f6f0;border-top:3px solid var(--wine);text-decoration:none;color:inherit}
+.fiche-alts a:hover strong,.fiche-alts a:focus-visible strong{text-decoration:underline}
+.fiche-alts img{width:100%;height:190px;object-fit:contain;background:#fff;margin-bottom:var(--space-1)}
+.fiche-alts strong{font-size:16px;line-height:1.3}.fiche-alts span:last-child{font-size:14px;line-height:1.45;color:var(--muted)}
+.fiche-more ul{list-style:none;padding:0;margin:0;display:grid;gap:var(--space-1)}.fiche-more a{display:inline-flex;min-height:44px;align-items:center;font-weight:600}
+@media(max-width:800px){.fiche-head{grid-template-columns:1fr;gap:var(--space-3)}.fiche-photo{padding:var(--space-3)}.fiche-photo img{max-width:300px}.fiche-specs div{grid-template-columns:9em 1fr}}
+</style>

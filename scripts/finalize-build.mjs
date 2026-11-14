@@ -4,6 +4,25 @@ const production=process.env.SITE_STAGE==='production';const dir=production?'dis
 const security='  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n';
 async function walk(path){const files=await readdir(path,{withFileTypes:true});return (await Promise.all(files.map(f=>f.isDirectory()?walk(`${path}/${f.name}`):`${path}/${f.name}`))).flat()}
 const files=await walk(dir);const routes=files.filter(f=>f.endsWith('/index.html')).map(f=>'/'+f.slice(dir.length+1,-10));
+// Tout lien vers Tempus porte l'identifiant d'affiliation et rel="sponsored", y compris les pages d'information
+// (conditions, FAQ, codes promo) écrites à la main dans les contenus. Le build échoue s'il en reste un sans.
+const affiliateCode=(await readFile('src/data/affiliation.ts','utf8')).match(/code:'([A-Za-z0-9]+)'/)[1];
+const tempusHref=/href="(https:\/\/(?:www\.)?tempusshop\.com[^"]*)"/;
+let tagged=0;
+for(const file of files.filter(f=>f.endsWith('.html'))){
+ const html=await readFile(file,'utf8');
+ const next=html.replace(/<a\b[^>]*>/g,tag=>{
+  const m=tag.match(tempusHref);if(!m)return tag;
+  const url=new URL(m[1].replaceAll('&amp;','&'));url.hostname='tempusshop.com';
+  let out=tag;if(url.searchParams.get('bg_ref')!==affiliateCode){url.searchParams.set('bg_ref',affiliateCode);out=out.replace(m[0],`href="${url.href.replaceAll('&','&amp;')}"`);tagged++;}
+  const rel=out.match(/\srel="([^"]*)"/);
+  if(!rel)out=out.replace(/^<a\b/,'<a rel="sponsored"');else if(!/\bsponsored\b/.test(rel[1]))out=out.replace(rel[0],` rel="${rel[1]} sponsored"`);
+  return out;
+ });
+ const missing=[...next.matchAll(/<a\b[^>]*href="https:\/\/(?:www\.)?tempusshop\.com[^"]*"[^>]*>/g)].filter(t=>!t[0].includes(`bg_ref=${affiliateCode}`)||!/\brel="[^"]*\bsponsored\b/.test(t[0]));
+ if(missing.length)throw new Error(`Lien Tempus sans affiliation dans ${file} : ${missing[0][0]}`);
+ if(next!==html)await writeFile(file,next);
+}
 const scriptHashes=new Set();
 for(const file of files.filter(f=>f.endsWith('.html'))){
  const html=await readFile(file,'utf8');
@@ -20,4 +39,4 @@ await writeFile(`${dir}/robots.txt`,`User-agent: *\nAllow: /\n${production?'Site
 if(production)await writeFile(`${dir}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.filter(r=>!r.startsWith('/partage/')).map(r=>`<url><loc>https://cadrin.fr${r}</loc></url>`).join('')}</urlset>`);
 await mkdir('evidence/cadrin',{recursive:true});
 await writeFile(`evidence/cadrin/${production?'production':'preview'}-routes.json`,JSON.stringify(routes,null,2));
-console.log(`${production?'Production':'Preview'} : ${routes.length} routes, headers et robots générés.`);
+console.log(`${production?"Production":"Preview"} : ${routes.length} routes, headers et robots générés ; ${tagged} liens Tempus complétés avec l’affiliation.`);

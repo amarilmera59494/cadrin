@@ -3,16 +3,19 @@ import type {CatalogueProduct} from '../lib/tempus-catalogue';
 import {purchaseLabel,orderLabel,merchantInfoHref,merchantInfoLabel,detailRows,merchantLinkAvailable} from '../lib/tempus-catalogue';
 import {affiliateUrl} from '../data/affiliation';
 import {editorialLinks} from '../data/editorial-links';
+import {ficheHref} from '../lib/fiches';
 import {localeOf,term,textFor} from '../lib/i18n';
 const {product:p}=Astro.props as {product:CatalogueProduct};
 const locale=localeOf(Astro.url.pathname),en=locale==='en',t=textFor(locale);
 const analysis=editorialLinks[p.reference];
+const fiche=en?null:ficheHref(p);
 ---
 <article class="catalogue-card" data-id={p.id} data-reference={p.reference}>
  <a class="catalogue-image" href={merchantLinkAvailable(p)?affiliateUrl(p.source):merchantInfoHref(p,en)} rel={merchantLinkAvailable(p)?'sponsored':undefined} aria-label={`${p.title} — ${merchantLinkAvailable(p)?t('voir chez Tempus, lien affilié','view at Tempus, affiliate link'):merchantInfoLabel(p,en)}`}><img src={p.image} width={p.width} height={p.height} loading="lazy" decoding="async" alt={`${p.title} — ${t('visuel Tempus','Tempus listing image')}`}/></a>
- <div class="catalogue-copy">{p.bestseller&&<span class="catalogue-badge">{t('Best-seller Tempus','Tempus bestseller')}</span>}<p class="eyebrow">{p.brand}</p><h2>{p.title}</h2><p class="catalogue-reference">{t('Réf. marchand : ' ,'Retailer ref: ')}{p.reference}</p><p class="catalogue-spec">{p.movement?term(p.movement,locale):t('Mouvement non renseigné','Movement not specified')}</p>
+ <div class="catalogue-copy">{p.bestseller&&<span class="catalogue-badge">{t('Best-seller Tempus','Tempus bestseller')}</span>}<p class="eyebrow">{p.brand}</p><h2>{fiche?<a class="catalogue-fiche" href={fiche}>{p.title}</a>:p.title}</h2><p class="catalogue-reference">{t('Réf. marchand : ' ,'Retailer ref: ')}{p.reference}</p><p class="catalogue-spec">{p.movement?term(p.movement,locale):t('Mouvement non renseigné','Movement not specified')}</p>
  {detailRows(p,en).length>0&&<details class="catalogue-details"><summary>{t('Dimensions et détails','Size and details')}</summary><dl>{detailRows(p,en).map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl><small>{t('Source : fiche Tempus','Source: Tempus listing')}</small></details>}<p class="catalogue-price">{new Intl.NumberFormat(en?'en-GB':'fr-FR',{style:'currency',currency:'EUR'}).format(p.price)}</p><p class="catalogue-status">{orderLabel(p,en)}</p>
  {merchantLinkAvailable(p)&&<a class="button merchant-button catalogue-cta" data-placement="catalogue" href={affiliateUrl(p.source)} rel="sponsored"><span>{purchaseLabel(p,en)}</span><span aria-hidden="true">↗</span></a>}{!merchantLinkAvailable(p)&&<a class="text-link" href={merchantInfoHref(p,en)}>{merchantInfoLabel(p,en)} →</a>}<small>{merchantLinkAvailable(p)?t('Lien affilié · photo Tempus','Affiliate link · photo: Tempus'):t('Photo Tempus · prix au relevé','Tempus photo · recorded price')}</small>
+{fiche&&<a class="catalogue-analysis" href={fiche}>Prix, taille et points à vérifier →</a>}
  {analysis&&<a class="catalogue-analysis" href={(en?'/en/watches/':'/montres/')+analysis+'/'}>{t('Lire notre analyse documentaire','Read our documentary analysis')} →</a>}
  <button class="save-watch" type="button" data-save-id={p.id} data-save-label={p.reference} hidden>{t('Garder en favoris','Save watch')}</button>
  <label class="catalogue-pick" hidden><input type="checkbox" value={p.id}/>{t('Comparer','Compare')}</label></div>
