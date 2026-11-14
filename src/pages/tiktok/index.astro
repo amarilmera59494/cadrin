@@ -1,0 +1,32 @@
+---
+import Cadrin from '../../layouts/Cadrin.astro';
+import data from '../../data/tempus-catalogue.json';
+import {tiktokGuides} from '../../data/tiktok-guides';
+import {affiliateUrl} from '../../data/affiliation';
+import {dateLabel} from '../../lib/editorial';
+import {purchaseLabel,orderLabel} from '../../lib/tempus-catalogue';
+import '../../styles/growth.css';
+const sets=tiktokGuides.map(c=>({...c,items:c.items.map(it=>{const product=data.products.find(p=>p.source.endsWith('/products/'+it.handle));if(!product)throw Error('Référence TikTok absente du catalogue : '+it.handle);return {...it,product};})}));
+const money=(p:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(p);
+---
+<Cadrin title="Nos comparatifs vus sur TikTok" description="Les montres de nos carrousels TikTok, dans l’ordre des slides : comparatifs, avis de propriétaires résumés, prix datés et liens directs.">
+ <div class="container social-page tiktok-page"><header class="page-heading"><span class="eyebrow">CADRIN · TikTok</span><h1>Vu sur TikTok.<br/>Comparé ici.</h1><p>Choisissez le carrousel que vous venez de voir : chaque montre garde son numéro, avec ses chiffres, ce qu’en disent ses propriétaires et un lien direct.</p><p class="small-note">Liens affiliés : vos achats peuvent rémunérer CADRIN. Prix France hors livraison, relevés le {dateLabel((data.offersCheckedAt||data.checkedAt),'fr')}. Avis : synthèse d’avis publics, sans essai au poignet par Cadrin.</p></header>
+ <a class="tiktok-noel" href="/noel/"><strong>Idées cadeaux de Noël</strong><span>Les montres de nos carrousels « pour lui », « pour elle » et par budget →</span></a>
+ <nav class="social-jumps" aria-label="Choisir un carrousel">{sets.map(c=><a href={'#'+c.id}>{c.title}</a>)}</nav>
+ {sets.map(c=><section class="noel-set" id={c.id}><span class="eyebrow">{c.kicker}</span><h2>{c.title}</h2><p class="tiktok-summary">{c.summary}</p><p><a class="tiktok-guide" href={c.guide}>{c.guideLabel} →</a></p><ol class="noel-grid">{c.items.map((it,i)=><li class="noel-card" data-reference={it.product.reference}><span class="noel-num" aria-hidden="true">{i+1}</span><img src={it.product.image} width={it.product.width} height={it.product.height} loading="lazy" alt={it.product.title}/><h3>{it.name}</h3><p class="social-reference">Réf. {it.product.reference}</p><p class="social-price">{money(it.product.price)}</p><p class="small-note">{orderLabel(it.product,false)}</p>{it.plus&&<div class="tiktok-reviews"><p class="tiktok-rv-title">Ce que les propriétaires apprécient</p><ul>{it.plus.map(x=><li>{x}</li>)}</ul><p class="tiktok-rv-title">Ce qui les fait hésiter</p><ul class="minus">{it.minus?.map(x=><li>{x}</li>)}</ul></div>}<a class="button merchant-button" data-placement="social" href={affiliateUrl(it.product.source)} rel="sponsored">{purchaseLabel(it.product,false)} ↗</a><small class="affiliate-note">Lien affilié · Photo Tempus</small></li>)}</ol>{c.sources&&<details class="tiktok-sources"><summary>Sources des avis</summary><ul>{c.sources.map(s=><li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label} ↗</a></li>)}</ul></details>}</section>)}
+ <section class="social-banner"><p><strong>Première commande chez Tempus ?</strong> Le code public WELCOME10 donne −10 %, hors nouveautés et articles déjà remisés, non cumulable. Vérifiez la réduction avant de payer.</p><a href="/trouver-ma-montre/">Chercher une autre montre →</a></section></div>
+</Cadrin>
+<style>
+.tiktok-noel{display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:baseline;margin:0 0 1.5rem;padding:1rem 1.2rem;background:#4a1725;color:#f5f0e6;text-decoration:none;border-radius:4px}.tiktok-noel strong{font-size:1.1rem}
+.noel-set{padding:3rem 0;border-bottom:1px solid #cdbfb4;scroll-margin-top:7rem}.noel-set h2{font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;margin:.4rem 0 1rem}
+.tiktok-summary{max-width:60ch;margin:0 0 .8rem}.tiktok-guide{font-weight:600}
+.noel-grid{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.noel-card{position:relative;background:#f9f6f0;border-top:3px solid #792a40;padding:1.2rem;display:flex;flex-direction:column;min-width:0}
+.noel-card img{width:100%;height:240px;object-fit:contain;background:#fff}
+.noel-num{position:absolute;top:.8rem;left:.8rem;width:2.4rem;height:2.4rem;border-radius:50%;background:#4a1725;color:#f5f0e6;display:grid;place-items:center;font-weight:700;font-size:1.2rem}
+.noel-card h3{font-size:1.2rem;line-height:1.3;margin:.9rem 0 .3rem}.noel-card .social-price{font-size:1.6rem;margin:.4rem 0}
+.tiktok-reviews{font-size:.95rem;margin:.6rem 0 1rem}.tiktok-reviews ul{margin:.2rem 0 .6rem;padding-left:1.1rem}.tiktok-rv-title{font-weight:700;margin:.4rem 0 0;color:#4a1725}
+.noel-card .button{margin-top:auto;width:100%;min-height:48px}
+.tiktok-sources{margin-top:1.2rem;font-size:.95rem}.tiktok-sources summary{cursor:pointer;font-weight:600}
+@media(max-width:740px){.noel-grid{grid-template-columns:1fr;gap:.8rem}.noel-card img{height:200px}}
+</style>
