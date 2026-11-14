@@ -122,3 +122,24 @@ Publication du quatrième lot : commit `b577a3bd0612b3474cd0491544c3b0bab06b6d0a
 La relecture suivante a identifié une ancienne règle décrite à tort dans les guides taille et Bambino/Tsuyosa/Seiko. La fiche Casio utilise déjà 33,2 mm de largeur et celle de Seiko les 40 mm du tableau Tempus ; les guides disaient encore que la première restait à confirmer et que la seconde venait du fabricant. Les textes FR/EN sont alignés sur les données réellement utilisées. La divergence interne de la page Seiko (40 mm dans le tableau, 42,5 mm dans le descriptif) est expliquée en nommant la valeur retenue ; le choix anglais/kanji reste à préciser. Les pages Tempus exactes Casio, Seiko et Orient ont été consultées le 14 novembre. Aucune modification de cote, de prix ou de stock dans ce correctif.
 
 Les sources exactes ont été ajoutées aux deux guides. Le contrôle des citations a rejeté un chemin Orient saisi incorrectement ; il a été remplacé par le chemin déjà enregistré dans le catalogue (`/products/orient-classic-ra-ac0m04y`), puis contrôlé sur la page Tempus. Publication stricte et build passent ; huit vues locales FR/EN à 390/1440 px vérifient les nouveaux textes, les ancres et l’absence de débordement. Capture mobile du passage de taille examinée (`evidence/guides/consistency/`).
+
+
+## Revue de clôture de l’objectif de finition
+
+Le correctif éditorial est publié sous `cb162f8d4f0d26e32179843cd9051b76e779ffca` ; build Cloudflare `e92b5b6e-c111-46fb-9372-0a7660dabbc8`, succès terminal observé. Les quatre pages corrigées FR/EN répondent 200 et servent le nouveau texte. La vue mobile publique a été ouverte et sa capture examinée.
+
+La revue finale reprend les cinq points du plan ci-dessus. Navigation catalogue, suspensions exactes, comparaison, guides et pistes cadeaux ont chacun une preuve navigateur et une livraison. Les rapports publics des trois premiers lots ont été relus ; les composants de catalogue, favoris, repères de comparaison et données de suspension n’ont pas changé depuis leur dernière preuve publiée. Les changements de guides ont leur propre contrôle complet, leur test public et la correction éditoriale ciblée. Aucune nouvelle famille dont la destination échoue n’est présentée comme achetable. Les nouvelles idées sont effectivement intégrées : entrées cadeaux par goût, comparaison des petits groupes et explications des différences, sans classement artificiel.
+
+Contrôle transversal final : la suite anglaise complète donne 102 vues, 463 liens, 45 pages sans JavaScript, zéro échec et zéro erreur ; la suite française de ce lot compte 116 vues, 472 liens et 46 pages sans JavaScript. Le domaine public passe 229 contrôles d’hébergement : 212 routes publiques, protections HTTP, archives exclues, sitemap, vraie 404, cache des assets, HEAD, refus de POST et redirections HTTP/www vers HTTPS. Production indexable, preview noindex. La page TikTok ajoutée en parallèle est conservée. Les fichiers non suivis `.claude/`, `MEMORY.md` et `marketing/` ne font partie d’aucun de ces commits.
+
+Lighthouse 13.6.0, profil mobile simulé, trois passages par page, sans autre audit navigateur lourd simultané, sur le serveur Cloudflare local :
+
+| Page | Performance médiane | Accessibilité automatique | LCP médian | CLS | TBT médian |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Accueil | 98 | 100 | 2,490 s | 0 | 49 ms |
+| Guide première montre | 100 | 100 | 0,914 s | 0 | 50 ms |
+| Catalogue | 100 | 100 | 1,064 s | 0 | 9,5 ms |
+
+Ces résultats sont des mesures de laboratoire locales ; ils ne prouvent ni les Core Web Vitals terrain, ni une accessibilité parfaite, ni un taux de conversion. Les rapports complets, paramètres et captures sont conservés dans `evidence/guides/`. Matrice exigence/preuve/limite : `evidence/guides/completion-audit.json`.
+
+La finition demandée dans cet objectif est livrée et vérifiée ; aucune correction d’implémentation identifiée ne reste ouverte dans ce périmètre. Les limites externes demeurent explicites : contrôle intégral des destinations arrêté sur 429, boutons suspendus conservés, commissions réelles non testées et appareils physiques Safari/iOS non testés. La maintenance des offres et une éventuelle réactivation de destinations nécessitent de nouvelles observations ; aucun résultat commercial n’est promis.
