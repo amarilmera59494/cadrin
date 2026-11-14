@@ -1,4 +1,5 @@
 ---
+import {ficheHref} from '../../lib/fiches';
 import Cadrin from '../../layouts/Cadrin.astro';
 import data from '../../data/tempus-catalogue.json';
 import bf from '../../data/black-friday.json';
@@ -10,7 +11,7 @@ const money = (n:number) => new Intl.NumberFormat('fr-FR',{style:'currency',curr
 const day = (d:string) => new Intl.DateTimeFormat('fr-FR',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(d));
 const weekday = (d:string) => new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(d));
 const groups:Record<string,string> = {auto:'Automatique',chrono:'Chronographe',solaire:'Solaire',elle:'Pour elle',sport:'Sport',habillee:'Habillée',petit:'Petit prix'};
-const deals = bf.items.map(item => {
+const tracked = bf.items.map(item => {
   const product = data.products.find(p => p.source.endsWith('/products/' + item.handle));
   if (!product) throw Error('Montre Black Friday absente du catalogue : ' + item.handle);
   const first = item.history[0];
@@ -21,9 +22,11 @@ const deals = bf.items.map(item => {
   const rest = product.title.replace(/\s*-\s*\d{6}$/, '').replace(new RegExp('^' + product.brand + '\\s+', 'i'), '');
   const name = /^\d/.test(rest) ? product.title : rest;
   return {...item, product, pct, first, verifiedDrop, ref, name};
-}).filter(d => d.available && merchantLinkAvailable(d.product)).sort((a,b) => Number(b.verifiedDrop) - Number(a.verifiedDrop) || b.pct - a.pct);
+}).filter(d => d.available && merchantLinkAvailable(d.product));
+// Une remise est « en cours » si le vendeur affiche un prix barré, ou si notre relevé montre une baisse.
+const deals = tracked.filter(d => d.was || d.verifiedDrop).sort((a,b) => Number(b.verifiedDrop) - Number(a.verifiedDrop) || b.pct - a.pct);
+const ended = tracked.filter(d => !d.was && !d.verifiedDrop);
 const anyVerified = deals.some(d => d.verifiedDrop);
-const under100 = deals.filter(d => d.price < 100).length;
 ---
 <Cadrin title="Black Friday montres 2026 : les vraies remises, vérifiées" description={`Les montres déjà remisées chez Tempus, avec notre propre relevé de prix daté. Le ${day(bf.blackFriday)}, nous comparons pour savoir ce qui baisse vraiment.`}>
  <section class="bf-hero">
@@ -37,7 +40,7 @@ const under100 = deals.filter(d => d.price < 100).length;
     </div>
    </div>
    <ol class="bf-calendar" aria-label="Le calendrier du Black Friday">
-    <li class="is-now"><time datetime={bf.checkedAt}>{weekday(bf.checkedAt)}</time><strong>Premier relevé</strong><span>{deals.length} montres déjà remisées par Tempus</span></li>
+    <li class="is-now"><time datetime={bf.checkedAt}>{weekday(bf.checkedAt)}</time><strong>Premier relevé</strong><span>{bf.items.length} montres remisées relevées par Cadrin</span></li>
     <li><time datetime={bf.blackFriday}>{weekday(bf.blackFriday)}</time><strong>Black Friday</strong><span>Nouveau relevé et mise à jour de la page</span></li>
     <li><time datetime={bf.cyberMonday}>{weekday(bf.cyberMonday)}</time><strong>Cyber Monday</strong><span>Dernier relevé de la semaine</span></li>
     <li><span class="bf-tbc">Date à confirmer</span><strong>Livraison avant Noël</strong><span>Vérifiez le délai chez Tempus avant de commander</span></li>
@@ -69,6 +72,7 @@ const under100 = deals.filter(d => d.price < 100).length;
     <a class="button merchant-button bf-buy" data-placement="deal" href={affiliateUrl(d.product.source)} rel="sponsored"><span>{purchaseLabel(d.product, false)}</span><span aria-hidden="true">↗</span></a>
    </li>)}
   </ol>
+  {ended.length > 0 && <section id="remises-terminees" class="bf-ended" aria-labelledby="bf-ended-title"><h3 id="bf-ended-title">Remises terminées</h3><p>Ces montres étaient remisées lors de notre premier relevé. Le vendeur n’affiche plus de prix barré : nous les sortons de la liste ci-dessus.</p><ul>{ended.map(d => <li><a href={ficheHref(d.product) ?? affiliateUrl(d.product.source)} rel={ficheHref(d.product) ? undefined : 'sponsored'}>{d.product.brand} {d.name}</a> : {money(d.price)} aujourd’hui, contre {money(d.first.price)} à notre relevé du {day(d.first.date)}.</li>)}</ul></section>}
   <p class="small-note">Prix France hors livraison, relevés le {dateLabel(bf.checkedAt, 'fr')} ; susceptibles d’évoluer. Stock et délai à confirmer chez Tempus. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
  </section>
 
@@ -163,4 +167,5 @@ const under100 = deals.filter(d => d.price < 100).length;
  .bf-now{font-size:34px}
  .bf-name h3{font-size:26px}
 }
+.bf-ended{margin-top:var(--space-5);padding:var(--space-3);border:1px solid var(--line)}.bf-ended h3{font:500 26px/1.1 var(--display);text-transform:uppercase;margin:0 0 var(--space-1)}.bf-ended p{margin:0 0 var(--space-2);color:var(--muted)}.bf-ended ul{margin:0;padding-left:1.1em;line-height:1.7}
 </style>
