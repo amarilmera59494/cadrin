@@ -19,7 +19,9 @@
     "qa:i18n": "node scripts/i18n-qa.mjs",
     "catalogue:refresh": "node scripts/refresh-tempus-offers.mjs --check",
     "catalogue:apply": "node scripts/refresh-tempus-offers.mjs --apply",
-    "retention:check": "node scripts/retention-check.mjs"
+    "retention:check": "node scripts/retention-check.mjs",
+    "links:probe": "node scripts/probe-tempus-destinations.mjs",
+    "links:apply": "node scripts/probe-tempus-destinations.mjs --apply"
   },
   "dependencies": {
     "@fontsource-variable/bodoni-moda": "5.3.0",

@@ -39,9 +39,9 @@ const copy=englishWatches[id];
 const selected=selection?selection.data.watches.map(key=>watches.find(w=>w.id===key)!):[];
 const related=guide?guide.data.related.flatMap(key=>watches.filter(w=>w.id===key)):[];
 const title=kind==='watch'&&watch?`${watch.data.brand} ${watch.data.name} ${watch.data.reference}`:kind==='guide'?content.title:kind==='selection'?'Three watches for everyday life':kind==='selections'?'The watch selections':kind==='guides'?'Guides to choosing well':'Our method and its limits';
-const description=kind==='watch'?copy.note:kind==='guide'?content.description:kind==='selection'?'Mechanical, solar or digital: three ways to live with an everyday watch.':kind==='guides'?'Budget, proportions, movements and gifts: useful guides to finding a watch you will enjoy wearing.':kind==='selections'?'Short, documented selections that explain what sets each watch apart.':'How Cadrin separates published specifications, editorial interpretation and hands-on testing.';
+const description=kind==='watch'?copy.note:kind==='guide'?content.description:kind==='selection'?'Mechanical, solar or digital: three ways to live with an everyday watch.':kind==='guides'?'Budget, proportions, movements and gifts: useful guides to finding a watch you will enjoy wearing.':kind==='selections'?'Short, documented selections by budget and use that explain what sets each watch apart.':'How Cadrin separates published specifications, editorial interpretation and hands-on testing.';
 ---
-<Cadrin title={title} description={description} article={kind==='guide'} verifiedAt={guide?.data.verifiedAt} crumbs={[{name:title,url:Astro.url.pathname}]}>
+<Cadrin title={kind==='watch'?title+': specs and limits':title} description={description} article={kind==='guide'} verifiedAt={guide?.data.verifiedAt} crumbs={[{name:title,url:Astro.url.pathname}]}>
  <div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/en/">Home</a><span>/</span>{kind==='watch'&&<><a href="/en/selections/">Selections</a><span>/</span></>}{kind==='guide'&&<><a href="/en/guides/">Guides</a><span>/</span></>}<span>{title}</span></nav>
   {kind==='watch'&&watch&&<>

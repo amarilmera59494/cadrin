@@ -6,10 +6,10 @@ import {catalogue} from '../../lib/editorial';
 const {watches}=await catalogue();
 const items=watches.map(w=>({w,p:data.products.find(p=>p.reference===w.data.reference)}));
 ---
-<Cadrin title="Nos analyses de montres" description="Les montres que nous avons analysées en détail : proportions, mouvement, usages conseillés et limites, avec leurs sources et un prix relevé." crumbs={[{name:'Analyses',url:'/montres/'}]}>
+<Cadrin title="Les montres analysées en détail" description="Les montres que nous avons analysées en détail : proportions, mouvement, usages conseillés et limites, avec leurs sources et un prix relevé." crumbs={[{name:'Analyses',url:'/montres/'}]}>
  <div class="container mi">
   <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Analyses</span></nav>
-  <header class="page-heading"><span class="eyebrow">Les analyses détaillées</span><h1>Regardées de près.</h1><p>Pour ces montres, nous avons croisé les fiches des fabricants et du vendeur, et précisé les usages et les limites. Toutes les autres montres ont leur fiche dans <a href="/montre/">l’index des fiches</a>.</p></header>
+  <header class="page-heading"><span class="eyebrow">Les analyses détaillées</span><h1>Regardées de près.</h1><p>Pour ces montres, nous avons croisé les fiches des fabricants et du vendeur, et précisé les usages et les limites. Pour les comparer entre elles, ouvrez <a href="/analyses/">le comparateur des analyses</a>. Toutes les autres montres ont leur fiche dans <a href="/montre/">l’index des fiches</a>.</p></header>
   <ul class="mi-grid">{items.map(({w,p})=><li><a href={`/montres/${w.id}/`}>{p&&<span class="mi-img"><img src={p.image} width={p.width} height={p.height} loading="lazy" decoding="async" alt=""/></span>}<span class="eyebrow">{w.data.brand}</span><strong>{w.data.name} {w.data.reference}</strong><span class="mi-note">{w.data.note}</span></a></li>)}</ul>
  </div>
 </Cadrin>

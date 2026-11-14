@@ -14,11 +14,13 @@ for (const f of files) {
   const r = route(f), h = fs.readFileSync(f, 'utf8');
   if (r.startsWith('/404')) continue;
   const title = strip(h.match(/<title>([\s\S]*?)<\/title>/)?.[1] || ''), desc = h.match(/<meta name="description" content="([^"]*)"/)?.[1] || '';
-  if (!title) add('titre manquant', r); else { if (title.length > 70) add('titre > 70 car.', `${r} (${title.length})`); (titles.get(title) || titles.set(title, []).get(title)).push(r); }
-  if (!desc) add('description manquante', r); else { if (desc.length > 170) add('description > 170 car.', `${r} (${desc.length})`); if (desc.length < 70) add('description < 70 car.', `${r} (${desc.length})`); (descs.get(desc) || descs.set(desc, []).get(desc)).push(r); }
+  // Les pages non indexées (/partage/, aperçus Facebook) ne sont pas soumises aux longueurs des résultats de recherche.
+  const noindex = /<meta name="robots" content="noindex/.test(h);
+  if (!title) add('titre manquant', r); else { if (title.length > 70 && !noindex) add('titre > 70 car.', `${r} (${title.length})`); if (!noindex) (titles.get(title) || titles.set(title, []).get(title)).push(r); }
+  if (!desc) add('description manquante', r); else { if (desc.length > 170 && !noindex) add('description > 170 car.', `${r} (${desc.length})`); if (desc.length < 70) add('description < 70 car.', `${r} (${desc.length})`); (descs.get(desc) || descs.set(desc, []).get(desc)).push(r); }
   const h1 = (h.match(/<h1\b/g) || []).length; if (h1 !== 1) add('nombre de H1 ≠ 1', `${r} (${h1})`);
   if (!/<link rel="canonical"/.test(h)) add('canonical manquante', r);
-  if (/<meta name="robots" content="noindex/.test(h)) add('noindex en production', r);
+  if (noindex && !r.startsWith('/partage/')) add('noindex en production', r);
   for (const m of h.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)) {
     const href = m[1].replace(/&amp;/g, '&');
     if (href.startsWith('/') && !href.startsWith('//') && !exists(href)) add('lien interne cassé', `${r} → ${href}`);
