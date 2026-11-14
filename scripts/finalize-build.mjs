@@ -17,7 +17,7 @@ const assetHeaders=files.filter(f=>f.startsWith(`${dir}/_astro/`)).map(f=>`/${f.
 if(files.filter(f=>f.startsWith(`${dir}/_astro/`)).length+2>100)throw new Error('Limite de règles _headers Cloudflare dépassée.');
 await writeFile(`${dir}/_headers`,`/*\n${production?'':'  X-Robots-Tag: noindex, nofollow\n'}${security}  Content-Security-Policy: ${csp}\n  Cache-Control: public, max-age=0, must-revalidate\n\n/404.html\n  X-Robots-Tag: noindex, nofollow\n\n${assetHeaders}`);
 await writeFile(`${dir}/robots.txt`,`User-agent: *\nAllow: /\n${production?'Sitemap: https://cadrin.fr/sitemap.xml\n':'# Preview : noindex dans le HTML et les en-têtes. Aucun sitemap.\n'}`);
-if(production)await writeFile(`${dir}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.map(r=>`<url><loc>https://cadrin.fr${r}</loc></url>`).join('')}</urlset>`);
+if(production)await writeFile(`${dir}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.filter(r=>!r.startsWith('/partage/')).map(r=>`<url><loc>https://cadrin.fr${r}</loc></url>`).join('')}</urlset>`);
 await mkdir('evidence/cadrin',{recursive:true});
 await writeFile(`evidence/cadrin/${production?'production':'preview'}-routes.json`,JSON.stringify(routes,null,2));
 console.log(`${production?'Production':'Preview'} : ${routes.length} routes, headers et robots générés.`);

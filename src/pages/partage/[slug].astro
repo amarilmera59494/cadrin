@@ -1,0 +1,36 @@
+---
+// Pages de partage pour Facebook : aperçu de lien (Open Graph) dédié, puis renvoi vers la bonne section du site.
+// Non indexées. Le contenu reprend fidèlement la page de destination.
+import {facebookShares} from '../../data/facebook-shares';
+export function getStaticPaths(){return facebookShares.map(s=>({params:{slug:s.slug},props:{share:s}}));}
+const {share}=Astro.props;
+const origin='https://cadrin.fr';
+const self=new URL(`/partage/${share.slug}/`,origin).href;
+const target=share.target;
+---
+<!doctype html>
+<html lang="fr" data-target={target}>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{share.title} — Cadrin</title>
+<meta name="description" content={share.description}/>
+<meta name="robots" content="noindex, follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Cadrin"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta property="og:title" content={share.title}/>
+<meta property="og:description" content={share.description}/>
+<meta property="og:image" content={origin+share.image}/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content={share.title}/>
+<meta property="og:url" content={self}/>
+<link rel="canonical" href={self}/>
+<meta name="theme-color" content="#4a1725"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<script is:inline>location.replace(document.documentElement.dataset.target);</script>
+<style>body{margin:0;font-family:system-ui,sans-serif;background:#f5f0e6;color:#4a1725;display:grid;place-items:center;min-height:100vh;padding:24px;box-sizing:border-box}main{max-width:640px}img{width:100%;height:auto;border-radius:8px}a{color:#792a40;font-weight:700}</style>
+</head>
+<body><main><img src={share.image} width="1200" height="630" alt=""/><h1>{share.title}</h1><p>{share.description}</p><p><a href={target}>Ouvrir sur cadrin.fr →</a></p><p><small>Liens affiliés : Cadrin peut toucher une commission.</small></p></main></body>
+</html>
