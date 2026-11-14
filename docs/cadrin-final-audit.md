@@ -61,3 +61,12 @@ La sélection intermédiaire avait un score d'accessibilité de 98 à cause du s
 Longines reste consultable mais ses boutons d'achat sont suspendus : les contrôles du 14 novembre ont trouvé des redirections vers l'accueil ou une 404 sur les destinations ciblées, dont la Flagship Heritage Moonphase fournie par le propriétaire. Les collections FR/EN consultées n'affichaient aucun produit. Ce constat n'est ni une rupture mondiale ni un contrôle individuel des 620 références enregistrées. Une fiche Tempus exacte de nouveau accessible permettra de réactiver ces liens, avec le même code affilié.
 
 Les commissions réelles, les performances sur appareils physiques Safari/iOS, les Core Web Vitals terrain et les résultats SEO/conversion ne sont pas établis par ces tests locaux. Aucun score commercial « S+ » ni revenu garanti n'est déduit de l'audit. Le prix et la disponibilité continuent d'exiger une actualisation régulière par la procédure existante.
+
+## Version publiée et contrôle de livraison
+
+- Code publié : `a130c0feac5224f1a112a792464ed4ce1e5415bd`. Build Cloudflare `17dd8d28-1fb2-4913-9272-5d868353e109` : succès observé.
+- Sur `https://cadrin.fr` : suite `selection-qa.mjs` réussie, 12 mises en page, deux audits axe sans violation détectée, interactions et parcours sans JavaScript FR/EN. Captures publiques `evidence/final-audit/live/fr-390.png` et `fr-1440.png` ouvertes et inspectées.
+- `hosting-check.mjs` sur le domaine public : 228 contrôles réussis, dont les 211 routes publiques, les exclusions et vraies 404, les en-têtes de protection, le sitemap, le cache immutable, HEAD/POST et les redirections HTTP/www vers HTTPS canonique. Rapport `evidence/final-audit/live-hosting.json`.
+- Inspection dans le navigateur connecté : les trois nouveaux liens et le titre de section sont présents, canonical correct, `index, follow`, aucun débordement à 390 px.
+
+La revue de clôture couvre le périmètre site réalisable : contenus existants consolidés, parcours bilingue, affiliation centralisée, responsive, contrôles de publication et déploiement vérifié. Il ne reste pas de correction identifiée dans ce lot. Les dépendances externes et les validations non exécutées sont explicitement conservées ci-dessus ; elles ne sont pas déclarées résolues et ne justifient pas de nouveaux articles de remplissage.
