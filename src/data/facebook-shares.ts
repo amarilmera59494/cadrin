@@ -90,5 +90,26 @@ export const facebookShares = [
   "description": "La plongeuse automatique Orient Mako III Kamasu : verre saphir, 200 m, mouvement maison F6922 avec remontage manuel et stop-seconde. Ce que les propriétaires apprécient, ce qui les fait hésiter, et les 3 couleurs : noire, rouge, verte.",
   "image": "/partage/avis-orient-mako-iii.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=mako#s05-orient-mako-iii"
+ },
+ {
+  "slug": "black-friday",
+  "title": "Black Friday montres 2026 : les vraies remises, vérifiées",
+  "description": "Black Friday montre homme et femme : 16 montres déjà remisées (Lip, Seiko, Citizen, Orient, Casio, Timex), de 27,93 € à 520 €, chacune avec notre relevé de prix daté pour distinguer une vraie baisse d’une fausse promo. Idée cadeau de Noël à petit prix.",
+  "image": "/partage/black-friday.jpg",
+  "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=black-friday"
+ },
+ {
+  "slug": "black-friday-reflexes",
+  "title": "Fausse promo Black Friday : 4 réflexes avant d’acheter une montre",
+  "description": "Comment repérer une fausse promo pendant le Black Friday : le prix barré doit être le plus bas des 30 derniers jours, comparez avec un relevé daté, ajoutez livraison et retour, lisez les conditions du code. Check-list à enregistrer avant d’acheter une montre.",
+  "image": "/partage/black-friday-reflexes.jpg",
+  "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=bf-reflexes#fausse-promo"
+ },
+ {
+  "slug": "black-friday-jour-j",
+  "title": "Black Friday montres : les prix relevés le jour J",
+  "description": "Black Friday 2026 : nous avons relevé les prix des montres le matin du 27 novembre et comparé chacun à notre relevé du 14 novembre. Seules les vraies baisses portent la mention « baisse vérifiée ». Montres homme et femme, idées cadeaux de Noël.",
+  "image": "/partage/black-friday-jour-j.jpg",
+  "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=bf-jour-j"
  }
 ] as const;
