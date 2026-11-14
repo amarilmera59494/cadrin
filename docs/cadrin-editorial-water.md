@@ -50,4 +50,15 @@ Captures dans `evidence/editorial/` : `0-390.png` et `0-1440.png` pour le compar
 
 Local : `npm run dev -- --port 4321`. Production locale : définir `SITE_STAGE=production`, lancer `npm run build`, puis `node scripts/serve-cloudflare.mjs dist-production`.
 
-La qualité globale « S+ » reste un objectif, pas un label mesuré. Le blocage des destinations Longines n’est pas levé par cette livraison. Une construction d’URL correcte ne prouve pas une commission attribuée ; celle-ci se vérifie dans le programme partenaire. Aucun score Lighthouse ni résultat commercial n’est revendiqué pour cette itération.
+La qualité globale « S+ » reste un objectif, pas un label mesuré. Le blocage des destinations Longines n’est pas levé par cette livraison. Une construction d’URL correcte ne prouve pas une commission attribuée ; celle-ci se vérifie dans le programme partenaire. Les mesures de laboratoire ci-dessous ne prouvent pas les performances terrain ni un résultat commercial.
+
+
+## Publication observée
+
+- Livraison principale : `6523b449c71e8195d4baf372a60019a1fbe3d447`, build Cloudflare `af2f16ad-63ec-48c5-806b-63f3b7fbee69`, succès observé.
+- Correction finale : `5961de3d26db554b16c44f128ca841d94158d9fb`, build `b932a23f-93d0-4152-841a-912eaa3ad2ea`, succès observé. Une variante d’écriture du matériau GA-2100 restait française dans le tableau anglais : traduction ajoutée, capture revue et assertion de non-régression ajoutée au test éditorial.
+- Vérification HTTP publique le 14 novembre 2026 à 11:15 UTC : les quatre nouvelles pages répondent 200, canonical exact, indexation autorisée, liens FR/EN et code affilié présents ; sitemap contenant les quatre routes ; véritable 404 sur une route inexistante.
+- `QA_ORIGIN=https://cadrin.fr node scripts/editorial-qa.mjs` : PASS, 20 mises en page, 4 audits axe sans violation détectée, 45 destinations internes, 6 contrôles de filtre et 6 routes sans JavaScript. Rapports et captures dans `evidence/editorial/live/`.
+- Page publiée également ouverte dans le navigateur connecté : viewport mesuré 1440 × 1000, capture `evidence/editorial/live-connected-1440.png`, ouverte et examinée.
+
+Deux diagnostics Lighthouse mobiles locaux sur le code final : comparatif 100/100, LCP 909 ms ; guide 100/100, LCP 1887 ms. CLS et TBT à zéro sur ces deux exécutions. Une exécution par page, serveur local, simulation mobile Lighthouse : ce ne sont ni des médianes de campagnes répétées ni des données CrUX de visiteurs. Rapports bruts dans `evidence/editorial/performance/`.
