@@ -1,5 +1,7 @@
 // Lightweight routing data: do not ship editorial article bodies to the browser.
 export const featureRoutes:Record<string,string> = {
+  "/marques/orient/": "/en/brands/orient/",
+  "/comparatifs/orient-bambino-ou-seiko-presage/": "/en/comparisons/orient-bambino-or-seiko-presage/",
   "/comparatifs/g-shock-ga-2100-1a1er-ou-1aer/": "/en/comparisons/g-shock-ga-2100-1a1er-or-1aer/",
   "/comparatifs/tsuyosa-37-ou-40-mm/": "/en/comparisons/tsuyosa-37-or-40-mm/",
   "/comparatifs/casio-retro-ou-g-shock/": "/en/comparisons/casio-retro-or-g-shock/",

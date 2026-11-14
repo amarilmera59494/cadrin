@@ -1,7 +1,9 @@
 import {gshockComparison} from './gshock-comparison.ts';
+import {orientGuide,bambinoComparison} from './orient-features.ts';
 export type Copy=[string,string];
-export type Feature={kind:'brand'|'comparison';slug:string;enSlug:string;brand?:string;title:Copy;intro:Copy;verdict:Copy;choices:{reference:string;label:Copy;why:Copy;limit:Copy}[];sections:{title:Copy;paragraphs:Copy[];source?:string}[];sources:{label:string;url:string}[];verifiedAt:string;rights:'approved'};
+export type Feature={kind:'brand'|'comparison';slug:string;enSlug:string;brand?:string;priceGap?:boolean;title:Copy;intro:Copy;verdict:Copy;choices:{reference:string;label:Copy;why:Copy;limit:Copy}[];sections:{title:Copy;paragraphs:Copy[];source?:string;links?:{href:string;label:Copy}[]}[];sources:{label:string;url:string}[];verifiedAt:string;rights:'approved'};
 export const features:Feature[]=[
+ orientGuide,bambinoComparison,
  gshockComparison,
  {kind:'comparison',slug:'tsuyosa-37-ou-40-mm',enSlug:'tsuyosa-37-or-40-mm',verifiedAt:'2026-11-14',rights:'approved',
  title:['Tsuyosa : 37 ou 40 mm ?','Tsuyosa: 37 or 40 mm?'],

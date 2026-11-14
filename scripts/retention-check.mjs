@@ -17,7 +17,7 @@ for(const f of features){
  for(const source of f.sources){assert.equal(new URL(source.url).protocol,'https:');assert.ok(source.label);}
  for(const choice of f.choices){const p=data.products.find(p=>p.reference===choice.reference);assert.ok(p,choice.reference);await fs.access('public'+p.image);assert.equal(new URL(p.imageSource).hostname,'cdn.shopify.com');assert.ok(p.source.endsWith('/'+p.handle));assert.ok(p.specCheckedAt);}
 }
-assert.equal(features.filter(f=>f.kind==='brand').length,4);assert.equal(features.filter(f=>f.kind==='comparison').length,4);
+assert.equal(features.filter(f=>f.kind==='brand').length,5);assert.equal(features.filter(f=>f.kind==='comparison').length,5);
 assert.deepEqual(cleanIds(['1','2','1','<script>','',2]),['1','2']);assert.equal(cleanIds(Array.from({length:20},(_,i)=>String(i))).length,12);
 assert.deepEqual(readSaved('{broken'),[]);assert.deepEqual(readSaved('{"version":2,"ids":["1"]}'),[]);assert.deepEqual(readSaved('{"version":1,"ids":["1","2"]}'),['1','2']);
 for(const hash of ['#liste=','#liste=<script>','#liste=1,2,no','#liste='+Array.from({length:13},(_,i)=>i).join(',')])assert.equal(sharedIds(hash).invalid,true);

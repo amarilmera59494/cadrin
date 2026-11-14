@@ -3,6 +3,10 @@
 // from another listing's title. URLs and affiliate handling remain unchanged.
 import data from '../data/tempus-catalogue.json' with {type:'json'};
 const documents:Record<string,string>={
+ 'https://orient-watch.com/en/about_orient/':'Orient — company history',
+ 'https://orient-watch.com/en/orient/collection/sports/diver-design/RA-AA0004E/':'Orient — Kamasu RA-AA0004E specifications',
+ 'https://orient-watch.com/en/orient/collection/classic/classic-and-simple-style-semi-skeleton/RA-AG0002S/':'Orient — open-heart RA-AG0002S specifications',
+ 'https://www.seikowatches.com/fr-fr/products/presage/srpb41j1':'Seiko — Presage SRPB41J1 specifications (French)',
  'https://www.seikowatches.com/us-en/special/heritage/':'Seiko — watchmaking history',
  'https://www.seikowatches.com/global-en/special/heritage/':'Seiko — watchmaking history',
  'https://www.seikowatches.com/us-en/customerservice/knowledge/quartz-knowledge':'Seiko — how quartz watches work',
