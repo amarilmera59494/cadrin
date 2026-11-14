@@ -42,3 +42,10 @@ Les captures avant/après ont été ouvertes et examinées. Le défaut de demi-l
 - Prévisualisation : `npm run dev -- --port 4321`. Production locale PowerShell : `$env:SITE_STAGE='production'`, `npm run build`, puis `node scripts/serve-cloudflare.mjs dist-production`.
 
 Cette livraison améliore des défauts démontrés ; elle ne constitue pas une certification globale « S+ », une validation manuelle de chaque caractéristique des 2 902 références ou une garantie de revenus.
+
+## Publication observée
+
+- Commit `cb76873e76e4e6324d7e1259476a0d2e07817abe`, build Cloudflare `3968b983-0ac0-490b-9f91-8876708dd115` : succès observé.
+- `QA_ORIGIN=https://cadrin.fr node scripts/catalogue-trust-qa.mjs` : PASS avec les mêmes 12 mises en page, 4 états de filtre, 3 audits axe et 3 routes sans JavaScript. Preuves dans `evidence/catalogue-trust/live/`.
+- Contrôle HTTP public : trois pages 200 avec canonical exact, alternates FR/EN, indexation autorisée et liens affiliés ; catalogue JSON corrigé ; route inexistante 404 ; robots autorisant l'exploration. Résultats horodatés dans `evidence/catalogue-trust/live-metadata.json`.
+- Ouverture supplémentaire dans le navigateur connecté, viewport mesuré 390 × 844 : la Casio MTP-1302PD-4AVEF affiche Rouge, le bouton pointe vers sa destination exacte avec `bg_ref=bDlTL8AyKb`. Capture `evidence/catalogue-trust/live-connected-390.png`, ouverte et examinée.
