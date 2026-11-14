@@ -50,3 +50,9 @@ node scripts/serve-cloudflare.mjs dist-production
 Routes concernées : `/catalogue/`, `/trouver-ma-montre/`, `/mes-favoris/`, `/vues-sur-nos-reseaux/`, `/montres/citizen-tsuyosa-nj0150-81e/`, `/montres/seiko-srpe55k1/`, `/guides/montres-par-budget/`, et leurs versions anglaises. Les dossiers de `/marques/` et `/comparatifs/` restent disponibles.
 
 Le dossier `marketing/` et le fichier non suivi `MEMORY.md`, apparu pendant la session, ne font pas partie de cette livraison.
+
+## Publication vérifiée
+
+Commit de production `59ae3700297a1fa0587f28b2d81e6570e5e94d47`, build Cloudflare `b9924ae7-7bb7-43a0-bd7e-f67422e80727` terminé avec succès. Après déploiement, les 202 routes du sitemap répondent HTTP 200, avec indexation autorisée et canonical attendu ; une URL inconnue répond réellement 404.
+
+Le contrôle navigateur public confirme la récupération d'une recherche vide, les photos du comparateur, le mode différences, l'enregistrement et le compteur des favoris, les statuts marchands FR/EN, le code affilié et la suspension Longines. Aucune erreur signalée. Dix captures de composants et deux captures de page complète ont été produites en ligne aux viewports 390 / 1440 px ; les captures du comparateur desktop, de la fiche mobile et des cartes de guide mobile ont été ouvertes et examinées. Preuves dans `evidence/quality/live/`, rapport `report.json`, dimensions `captures.json`.
