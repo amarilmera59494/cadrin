@@ -1,7 +1,7 @@
 // Carrousels TikTok toute l'année, série 02 (14/11/2026). Même ordre et mêmes numéros que les slides.
 // Avis : synthèse d'avis publics de propriétaires (sources ci-dessous), aucun essai Cadrin.
 export type TiktokGuideItem = {handle: string; name: string; plus?: string[]; minus?: string[]};
-export type TiktokGuide = {id: string; kicker: string; title: string; summary: string; guide: string; guideLabel: string; items: TiktokGuideItem[]; sources?: {label: string; url: string}[]};
+export type TiktokGuide = {id: string; kicker: string; title: string; summary: string; guide: string; guideLabel: string; items: TiktokGuideItem[]; plusTitle?: string; minusTitle?: string; sources?: {label: string; url: string}[]};
 
 export const tiktokGuides: TiktokGuide[] = [
  {
@@ -51,6 +51,66 @@ export const tiktokGuides: TiktokGuide[] = [
    {label: 'G-Central, fiche G-Shock GA-2100', url: 'https://www.g-central.com/specs/g-shock-ga-2100/'},
    {label: 'Decaf Journal, G-Shock GA-2100', url: 'https://www.decafjournal.com/casio-g-shock-ga-2100-review/'},
    {label: 'G-Central, Casio ABL-100', url: 'https://g-central.com/?p=72704'},
+  ],
+ },
+ {
+  id: 's04-automatique-quartz-solaire',
+  plusTitle: 'Pour vous si…',
+  minusTitle: 'À prévoir',
+  kicker: 'La question du lundi matin',
+  title: 'Automatique, quartz ou solaire ?',
+  summary: 'Après trois jours dans un tiroir, le quartz et le solaire tournent encore, l’automatique est à relancer. Le quartz demande une pile, le solaire de la lumière, l’automatique un entretien mécanique.',
+  guide: '/guides/automatique-quartz-solaire/',
+  guideLabel: 'Lire le guide automatique, quartz ou solaire',
+  items: [
+   {handle: 'casio-g-shock-ga-2100-1a1er', name: 'Quartz : G-Shock GA-2100', plus: ['Vous voulez la reprendre et partir', 'Vous la portez au sport ou dehors'], minus: ['Une pile à changer un jour']},
+   {handle: 'citizen-aw0102-13ae', name: 'Solaire : Citizen Eco-Drive', plus: ['Vous voulez oublier la pile', 'Vous portez des tenues habillées'], minus: ['À ranger à la lumière, pas dans une boîte fermée', 'Étanche à 30 m']},
+   {handle: 'citizen-tsuyosa-noir-nj0150-81e', name: 'Automatique : Citizen Tsuyosa', plus: ['Vous aimez la mécanique et le geste', 'Vous voulez le verre saphir'], minus: ['Arrêtée après environ 2 jours au repos', 'Moins précise qu’un quartz']},
+  ],
+ },
+ {
+  id: 's05-orient-mako-iii',
+  kicker: 'L’avis des propriétaires',
+  title: 'Orient Mako III : ça vaut 399 € ?',
+  summary: 'Verre saphir, 200 m, mouvement maison F6922 avec remontage à la main et stop-seconde, 42 mm pour 13 mm d’épaisseur. Trois couleurs au même prix.',
+  guide: '/marques/orient/',
+  guideLabel: 'Voir notre page Orient',
+  items: [
+   {handle: '1-orient-mako-iii-kamasu-ra-aa0001b19b', name: 'Mako III noire', plus: ['Le rapport qualité-prix, cité très souvent', 'Se porte bien au quotidien', 'Saphir et 200 m à ce prix'], minus: ['Fermoir simple, pas usiné', 'Précision jugée moyenne par certains', '13 mm : pas faite pour la chemise']},
+   {handle: 'orient-mako-iii-kamasu-ra-aa0003r19b', name: 'Mako III rouge'},
+   {handle: '1-orient-mako-iii-kamasu-ra-aa0004e19b', name: 'Mako III verte'},
+  ],
+  sources: [
+   {label: 'Ben’s Watch Club, Orient Kamasu', url: 'https://benswatchclub.squarespace.com/blog/orient-kamasu-review'},
+   {label: 'Deployant, Mako III Kamasu verte', url: 'https://deployant.com/review-the-new-dark-green-mako-iii-kamasu-by-orient/'},
+   {label: 'Dialicious, avis de propriétaires', url: 'https://www.dialicious.com/en/orient/mako_iii_kamasu'},
+  ],
+ },
+ {
+  id: 's06-premiere-montre-erreurs',
+  kicker: 'Première montre',
+  title: '5 erreurs à éviter',
+  summary: 'Regarder seulement le diamètre, oublier le prix total, croire qu’il faut une mécanique, acheter sans lire la fiche, négliger le bracelet. Et trois premiers choix sûrs.',
+  guide: '/guides/choisir-premiere-montre/',
+  guideLabel: 'Lire le guide de la première montre',
+  items: [
+   {handle: 'casio-g-shock-ga-2100-1a1er', name: 'G-Shock GA-2100'},
+   {handle: 'citizen-aw0102-13ae', name: 'Citizen Eco-Drive'},
+   {handle: 'citizen-tsuyosa-noir-nj0150-81e', name: 'Citizen Tsuyosa'},
+  ],
+ },
+ {
+  id: 's07-eco-drive-ou-tsuyosa',
+  plusTitle: 'Pour vous si…',
+  minusTitle: 'À prévoir',
+  kicker: 'Même marque, deux énergies',
+  title: 'Solaire ou automatique ?',
+  summary: 'Deux Citizen de 40 mm. L’Eco-Drive annonce 240 jours de réserve à pleine charge, la Tsuyosa environ 42 heures, avec en échange le verre saphir, 50 m et un bracelet acier.',
+  guide: '/guides/citizen-eco-drive-ou-tsuyosa/',
+  guideLabel: 'Lire le guide Eco-Drive ou Tsuyosa',
+  items: [
+   {handle: 'citizen-aw0102-13ae', name: 'Citizen Eco-Drive', plus: ['Vous alternez entre plusieurs montres', 'Vous aimez le look cuir et doré'], minus: ['Il lui faut de la lumière', 'Verre minéral, 30 m']},
+   {handle: 'citizen-tsuyosa-noir-nj0150-81e', name: 'Citizen Tsuyosa', plus: ['Vous la portez presque tous les jours', 'Vous voulez saphir et 50 m'], minus: ['À remettre à l’heure après environ 2 jours au repos']},
   ],
  },
 ];
