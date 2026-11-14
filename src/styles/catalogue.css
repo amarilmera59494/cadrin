@@ -35,3 +35,5 @@ body:has(#catalogue-compare-jump:not([hidden])) .saved-notice{bottom:90px}
 
 #catalogue-filters .catalogue-show-results{grid-column:1/-1;background:var(--wine);color:var(--paper);padding:12px 20px;min-height:48px;text-decoration:none;text-align:center;justify-content:center}.catalogue-heading h1{max-width:16ch}.catalogue-context{margin-block:14px}.catalogue-context details{font-size:12px}#catalogue-count{scroll-margin-top:24px}
 @media(max-width:700px){.catalogue-heading h1{font-size:36px}.catalogue-heading .text-link{margin-top:4px}.catalogue-context summary{padding-block:5px}.catalogue .breadcrumb{padding-block:14px}.catalogue-heading{padding-bottom:18px}}
+/* A single matching reference needs no empty second column on a phone. */
+@media(max-width:700px){.catalogue-grid>.catalogue-card:only-child{grid-column:1/-1}}

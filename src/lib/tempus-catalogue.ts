@@ -29,7 +29,7 @@ export function filterCatalogue(products:CatalogueProduct[],f:CatalogueFilters){
    (!f.water||(['5','10','20'].includes(f.water)&&water!==null&&water>=Number(f.water)))&&
    (!f.collection||(f.collection==='best'&&p.bestseller===true))&&(!f.feature||normalise(p.functions||'').includes(normalise(f.feature)))&&
    (!f.movement||p.movement===f.movement)&&(!f.category||p.category===f.category)&&
-   (!f.order||(f.order==='unflagged'?p.order==='check'&&p.orderable:f.order==='open'?p.orderable:p.order===f.order));
+   (!f.order||(merchantLinkAvailable(p)&&(f.order==='unflagged'?p.order==='check'&&p.orderable:f.order==='open'?p.orderable:p.order===f.order)));
  });
  return rows.sort((a,b)=>(f.sort==='price'?a.price-b.price:f.sort==='price-desc'?b.price-a.price:f.sort==='size'?(sizeNumber(a.caseSize)??Infinity)-(sizeNumber(b.caseSize)??Infinity):f.sort==='brand'?0:Number(!!b.bestseller)-Number(!!a.bestseller)||Number(b.orderable)-Number(a.orderable))||a.brand.localeCompare(b.brand,'fr')||a.title.localeCompare(b.title,'fr')||a.id.localeCompare(b.id));
 }

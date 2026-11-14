@@ -8,7 +8,7 @@ image: null
 title: "Automatique, quartz ou solaire : laquelle choisir ?"
 description: "Le bon mouvement dépend surtout de la façon dont vous portez votre montre. Partons des gestes du quotidien, pas d’une hiérarchie entre passionnés."
 related: ["casio-f91w","citizen-aw0102-13ae","seiko-srpe55k1"]
-sources: [{"label":"Seiko — fonctionnement du quartz","url":"https://www.seikowatches.com/us-en/special/heritage/"},{"label":"Seiko — notice des calibres 4R","url":"https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/index"},{"label":"Citizen — technologie Eco-Drive","url":"https://www.citizenwatch-global.com/technologies/eco-drive/index.html"},{"label":"Citizen — notice des calibres J7/J8 (PDF)","url":"https://www.citizenwatch-global.com/support/pdf/j7xx_j80x_j81x_j83x/e.pdf"},{"label":"Seiko — caractéristiques SRPE55","url":"https://www.seikowatches.com/uk-en/products/5sports/srpe55"}]
+sources: [{"label":"Seiko — fonctionnement du quartz","url":"https://www.seikowatches.com/us-en/customerservice/knowledge/quartz-knowledge"},{"label":"Seiko — notice des calibres 4R","url":"https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/index"},{"label":"Citizen — technologie Eco-Drive","url":"https://www.citizenwatch-global.com/technologies/eco-drive/index.html"},{"label":"Citizen — notice des calibres J7/J8 (PDF)","url":"https://www.citizenwatch-global.com/support/pdf/j7xx_j80x_j81x_j83x/e.pdf"},{"label":"Seiko — caractéristiques SRPE55","url":"https://www.seikowatches.com/uk-en/products/5sports/srpe55"}]
 ---
 
 ## La question du lundi matin

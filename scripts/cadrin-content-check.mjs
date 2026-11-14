@@ -9,6 +9,7 @@ import {englishWatches} from '../src/data/english-watches.ts';
 import {routePairs} from '../src/lib/i18n.ts';
 const items=[];const errors=[];
 const {spawnSync}=await import('node:child_process');
+const trustCheck=spawnSync(process.execPath,['scripts/catalogue-trust-check.mjs'],{encoding:'utf8'});if(trustCheck.status!==0)errors.push('Fiabilité du catalogue et sources: '+trustCheck.stderr);
 const qualityCheck=spawnSync(process.execPath,['scripts/quality-check.mjs'],{encoding:'utf8'});if(qualityCheck.status!==0)errors.push('Parcours de choix: '+qualityCheck.stderr);
 const retentionCheck=spawnSync(process.execPath,['scripts/retention-check.mjs'],{encoding:'utf8'});if(retentionCheck.status!==0)errors.push('Dossiers, favoris et actualisation: '+retentionCheck.stderr);
 const selectionCheck=spawnSync(process.execPath,['scripts/selection-data-check.mjs'],{encoding:'utf8'});if(selectionCheck.status!==0)errors.push('Sélection et exemples: '+selectionCheck.stderr);
