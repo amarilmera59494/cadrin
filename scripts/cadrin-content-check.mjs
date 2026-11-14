@@ -13,6 +13,7 @@ const trustCheck=spawnSync(process.execPath,['scripts/catalogue-trust-check.mjs'
 const qualityCheck=spawnSync(process.execPath,['scripts/quality-check.mjs'],{encoding:'utf8'});if(qualityCheck.status!==0)errors.push('Parcours de choix: '+qualityCheck.stderr);
 const retentionCheck=spawnSync(process.execPath,['scripts/retention-check.mjs'],{encoding:'utf8'});if(retentionCheck.status!==0)errors.push('Dossiers, favoris et actualisation: '+retentionCheck.stderr);
 const destinationCheck=spawnSync(process.execPath,['scripts/destination-pauses-check.mjs'],{encoding:'utf8'});if(destinationCheck.status!==0)errors.push('Destinations suspendues: '+destinationCheck.stderr);
+const comparisonCheck=spawnSync(process.execPath,['scripts/comparison-insights-check.mjs'],{encoding:'utf8'});if(comparisonCheck.status!==0)errors.push('Repères de comparaison: '+comparisonCheck.stderr);
 const selectionCheck=spawnSync(process.execPath,['scripts/selection-data-check.mjs'],{encoding:'utf8'});if(selectionCheck.status!==0)errors.push('Sélection et exemples: '+selectionCheck.stderr);
 const catalogueCheck=spawnSync(process.execPath,['scripts/check-tempus-catalogue.mjs'],{encoding:'utf8'});if(catalogueCheck.status!==0)errors.push('Catalogue Tempus: '+catalogueCheck.stderr);
 for(const collection of ['watches','guides','selections'])for(const name of await readdir(`src/content/${collection}`)){

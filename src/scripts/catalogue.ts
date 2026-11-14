@@ -1,5 +1,6 @@
 import {filterCatalogue,filterKeys,filterRecovery,purchaseLabel,orderLabel,detailRows,normalise,type CatalogueFilters,type CatalogueProduct} from '../lib/tempus-catalogue';
 import {merchantLinkAvailable,merchantInfoHref,merchantInfoLabel} from '../lib/tempus-catalogue';
+import {comparisonInsights} from '../lib/comparison-insights';
 import {term} from '../lib/i18n';
 import {affiliateUrl} from '../data/affiliation';
 import {editorialLinks} from '../data/editorial-links';
@@ -38,6 +39,17 @@ async function initialise(host:HTMLElement){
  const differences=document.querySelector<HTMLInputElement>('#comparison-differences')!;
  const differenceControl=document.querySelector<HTMLElement>('#comparison-differences-control')!;
  const comparisonSummary=document.querySelector<HTMLElement>('#comparison-summary')!;
+ const insights=document.querySelector<HTMLElement>('#comparison-insights')!;
+ const insightCards=document.querySelector<HTMLElement>('#comparison-insights-cards')!;
+ const shareStatus=document.querySelector<HTMLElement>('#comparison-share-status')!;
+ const shareFallback=document.querySelector<HTMLElement>('#comparison-share-fallback')!;
+ const shareInput=document.querySelector<HTMLInputElement>('#comparison-share-url')!;
+ let shareRevision=0;
+ document.querySelector('#comparison-share')!.addEventListener('click',async()=>{
+  const revision=shareRevision,url=new URL(root,location.origin);url.searchParams.set('compare',selected.join(','));url.hash='catalogue-comparison';
+  try{await navigator.clipboard.writeText(url.href);if(revision!==shareRevision)return;shareStatus.textContent=t('Lien de comparaison copié.','Comparison link copied.');shareFallback.hidden=true;}
+  catch{if(revision!==shareRevision)return;shareInput.value=url.href;shareFallback.hidden=false;shareInput.focus();shareInput.select();shareStatus.textContent=t('Sélectionnez et copiez le lien ci-dessous.','Select and copy the link below.');}
+ });
  let comparisonInView=false;
  new IntersectionObserver(([entry])=>{comparisonInView=entry.isIntersecting;jump.hidden=!selected.length||comparisonInView;},{rootMargin:'0px 0px -80px 0px'}).observe(comparison);
  function focusResults(){count.focus();count.scrollIntoView({block:'start',behavior:'instant'});}
@@ -52,11 +64,18 @@ async function initialise(host:HTMLElement){
   comparison.hidden=!selected.length;jump.hidden=!selected.length||comparisonInView;
   jump.textContent=t('Comparer mes montres','Compare my watches')+' ('+selected.length+'/3)';
   table.replaceChildren();differenceControl.hidden=selected.length<2;
+  const openInsights=new Set([...insightCards.querySelectorAll<HTMLDetailsElement>('details[open]')].map(d=>d.dataset.insight));
+  shareRevision++;shareFallback.hidden=true;shareStatus.textContent='';shareInput.value='';insights.hidden=selected.length<2;insightCards.replaceChildren();
   if(!selected.length)return;
   const watches=selected.map(id=>byId.get(id)!);
   table.style.setProperty('--comparison-count',String(watches.length));
-  const priceGap=Math.max(...watches.map(p=>p.price))-Math.min(...watches.map(p=>p.price));
-  comparisonSummary.textContent=(selected.length<2?t('Ajoutez une deuxième montre pour voir les différences.','Add a second watch to see the differences.'):priceGap===0?t('Même prix au relevé. Regardez surtout le format, le mouvement et les matières.','Same recorded price. Focus on size, movement and materials.'):t('Écart entre les prix extrêmes : ','Difference between lowest and highest price: ')+money(priceGap)+'.')+' '+t('Prix France hors livraison, relevés le ','France prices exclude delivery, checked on ')+checkedAt.split('-').reverse().join('/')+'.';
+  for(const insight of comparisonInsights(watches,en)){
+   const card=el('details',undefined,'comparison-insight');card.dataset.insight=insight.id;card.open=openInsights.has(insight.id);
+   const summary=el('summary'),heading=el('span'),icon=el('span',undefined,'comparison-insight-icon');icon.setAttribute('aria-hidden','true');heading.append(el('span',insight.kicker,'eyebrow'),el('strong',insight.title));summary.append(heading,icon);card.append(summary);const content=el('div',undefined,'comparison-insight-content'),dl=el('dl');
+   for(const row of insight.rows){const group=el('div');group.append(el('dt',row.label),el('dd',row.value));dl.append(group);}
+   content.append(dl,el('p',insight.note,'comparison-insight-note'),link(insight.guide.label+' →',insight.guide.url));card.append(content);insightCards.append(card);
+  }
+  comparisonSummary.textContent=(selected.length<2?t('Ajoutez une deuxième montre pour voir les différences.','Add a second watch to see the differences.'):t('Comparez le budget, le format et le quotidien, puis les détails.','Compare budget, size and daily routines, then the details.'))+' '+t('Prix France hors livraison, relevés le ','France prices exclude delivery, checked on ')+checkedAt.split('-').reverse().join('/')+'.';
   table.append(el('caption',t('Comparaison des données Tempus','Comparison of Tempus data')));
   const head=el('thead'),tr=el('tr'),first=el('th',t('Repère','Detail'));first.scope='col';tr.append(first);
   for(const p of watches){
@@ -94,7 +113,7 @@ async function initialise(host:HTMLElement){
    for(const text of values)row.append(el('td',text));body.append(row);
   }
   if(!visible){const row=el('tr'),cell=el('td',t('Aucune différence dans les caractéristiques renseignées. Les photos et références restent distinctes ; les données absentes ne prouvent pas une équivalence.','No difference in the recorded specifications. Photos and references remain distinct; missing data does not establish equivalence.'));cell.colSpan=watches.length+1;row.append(cell);body.append(row);}
-  const buyRow=el('tr'),th=el('th',t('Lien affilié','Affiliate link'));th.scope='row';buyRow.append(th);
+  const buyRow=el('tr'),th=el('th',t('Chez Tempus','At Tempus'));th.scope='row';buyRow.append(th);
   for(const p of watches){const td=el('td');td.append(retailer(p));buyRow.append(td);}
   body.append(buyRow);table.append(body);
  }

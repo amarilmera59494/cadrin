@@ -64,3 +64,32 @@ Validation locale du 14 novembre :
 Limite conservée : l'audit distant complet reste interrompu par les réponses 429. Aucun stock, prix, droit photo ou suivi de commission n'a été inventé ou revalidé par ces tests locaux. Les travaux TikTok non suivis restent hors livraison. Comparaison éditoriale et prochaine amélioration des guides restent au programme.
 
 La capture du guide sur viewport 390 px a révélé un lien de suspension trop imposant. Sa typographie et son espacement ont été resserrés dans `guide-examples.css`, puis la capture `evidence/destinations/after/guide-390.png` a été ouverte à nouveau. La suite destinations a été rejouée, PASS.
+
+
+## Troisième lot : comprendre et partager une comparaison
+
+Le tableau chiffré reste disponible. Trois repères lisibles le précèdent désormais : budget, format et habitudes liées au mouvement. Ils sont calculés à partir des modèles réellement sélectionnés. Aucun score de qualité, confort au poignet, classement de ventes ou gagnant artificiel n'est attribué.
+
+- Budget : écart calculé au centime, prix identiques traités séparément, absence de prix conservée. Une destination suspendue n'est pas présentée comme une offre disponible.
+- Format : intervalle seulement si toutes les dimensions sont des valeurs simples positives en millimètres. Mesures rectangulaires, multiples ou absentes : pas de classement numérique. Les valeurs exactes et épaisseurs restent lisibles.
+- Quotidien : regroupement par type de mouvement explicitement renseigné, avec un lien vers le guide pertinent. Type inconnu conservé ; aucune autonomie ou précision déduite du seul type.
+
+Les explications de mécanique et de recharge lumineuse ont été rapprochées des sources fabricant consultées le 14 novembre : [Citizen, comprendre une montre mécanique](https://www.citizenwatch-global.com/support/maintenance/mechanical.html), [Citizen, Eco-Drive](https://www.citizenwatch-global.com/technologies/eco-drive/index.html) et [Citizen, exposition régulière à la lumière](https://faq.citizenwatch.co.uk/hc/en-gb/articles/6978879213207-Should-I-leave-my-Eco-Drive-watch-in-the-dark). Les durées propres à certains calibres ne sont pas généralisées. Les notices exactes restent la référence.
+
+L'inspection mobile a conduit à remplacer les trois longs blocs ouverts (1 534 px mesurés pour les repères sur le viewport 390 px) par des blocs natifs dépliables. Leur titre garde le résultat utile visible. L'état ouvert est conservé quand on affiche seulement les différences. Les liens vers les guides restent dans les explications ; un accès direct permet de sauter au tableau.
+
+« Partager ces montres » copie une URL contenant seulement les références sélectionnées, dans la bonne langue, avec l'ancre du comparateur. Il ne transporte pas les filtres inutiles. Si le presse-papiers est refusé, un champ sélectionnable reçoit le focus. Une modification de sélection efface le lien de secours ; une réponse tardive ne ressuscite pas l'ancienne comparaison.
+
+L'un des premiers passages de QA a attendu le décodage de photos chargées paresseusement hors écran. Cause identifiée avec une sonde : le test attendait une image dont il ne déclenchait pas le chargement. Les captures forcent désormais le chargement des seules photos de comparaison avant décodage. Les processus de test restés en attente ont été arrêtés explicitement ; ils ne sont pas comptés comme réussis.
+
+
+Vérifications du troisième lot :
+- Test des repères : prix égaux, calcul décimal, mouvements mixtes et absents, dimensions simples, rectangulaires, manquantes ou invalides, achat suspendu et lots sur tout le catalogue. Intégré au contrôle de publication.
+- Astro final : 177 fichiers, zéro erreur, avertissement ou hint. Production : 212 HTML, 211 routes publiques, zéro erreur ; JavaScript comptabilisé par le vérificateur : 16 207 octets gzip maximum (14 020 avant ce lot). Aucune dépendance ajoutée.
+- Preview : 216 HTML, contrôles noindex et absence de sitemap de production réussis. Production reste indexable, 404 exclue.
+- Hébergement : 224 contrôles réussis ; contrôle de publication strict réussi.
+- Nouvelle suite comparaison : dix mises en page FR/EN 320, 390, 768, 1024 et 1440 px, zéro violation axe détectée ; blocs au clavier, état ouvert conservé, partage/rechargement, retrait/effacement, guide accessible, secours du presse-papiers et réponse tardive, PASS.
+- Suite qualité existante : 36 mises en page 360–1920 px ; recherche vide, compteur, comparaison, sauvegarde, menus et focus, six routes sans JavaScript et échec simulé du JSON, aucune erreur.
+- Captures avant/après de viewport dans `evidence/comparison/{before,after}/`, FR/EN. Les captures FR 390/1440, EN 320 et le bloc « Au quotidien » ouvert sur mobile ont été examinés. Un espace a été ajouté sous le résumé ouvert : le contour de focus ne doit pas recouvrir la première référence.
+
+Les contrôles ne mesurent pas un taux de conversion. L'audit des destinations distant reste incomplet et les suspensions précédentes sont préservées. La prochaine étape porte sur les guides et les parcours cadeaux, avant l'audit final de l'objectif global.
