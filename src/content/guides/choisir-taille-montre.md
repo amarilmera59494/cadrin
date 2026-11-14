@@ -8,7 +8,7 @@ image: null
 title: "Quelle taille de montre pour votre poignet ?"
 description: "Le diamètre ne raconte qu’une partie de l’histoire. Voici comment comparer une montre à celle que vous portez déjà."
 related: ["orient-bambino-ra-ac0m04y","seiko-srpe55k1","citizen-rainell-em1201-52l"]
-sources: [{"label":"Seiko — dimensions SRPE55","url":"https://www.seikowatches.com/uk-en/products/5sports/srpe55"},{"label":"Seiko — dimensions SRPG35","url":"https://www.seikowatches.com/uk-en/products/5sports/srpg35"},{"label":"Orient — Bambino RA-AC0M04Y","url":"https://orient-watch.com/en/orient/collection/classic/classic-and-simple-style-38/RA-AC0M04Y/"},{"label":"Citizen — Rainell EM1201-52L","url":"https://de.citizenwatch.eu/de/p/em1201-52l/"}]
+sources: [{"label":"Tempus — Casio F-91W-1YEG","url":"https://tempusshop.com/products/casio-vintage-f-91w-1yeg"},{"label":"Tempus — Seiko SRPE55K1","url":"https://tempusshop.com/products/seiko-5-srpe55k1-date-kanji"},{"label":"Tempus — Orient Bambino RA-AC0M04Y","url":"https://tempusshop.com/products/orient-classic-ra-ac0m04y"},{"label":"Seiko — dimensions SRPE55","url":"https://www.seikowatches.com/uk-en/products/5sports/srpe55"},{"label":"Seiko — dimensions SRPG35","url":"https://www.seikowatches.com/uk-en/products/5sports/srpg35"},{"label":"Orient — Bambino RA-AC0M04Y","url":"https://orient-watch.com/en/orient/collection/classic/classic-and-simple-style-38/RA-AC0M04Y/"},{"label":"Citizen — Rainell EM1201-52L","url":"https://de.citizenwatch.eu/de/p/em1201-52l/"}]
 ---
 
 ## Commencez par une montre connue
@@ -27,7 +27,7 @@ Un exemple montre pourquoi il faut regarder les deux axes : Seiko annonce 40 mm 
 
 ## La manche mérite son propre essai
 
-La Bambino RA-AC0M04Y mesure 38,5 mm de large selon Orient, mais aussi 12,5 mm d’épaisseur. Regardez-la de profil, puis fermez votre manche. Posez la main à plat et pliez le poignet comme au clavier. Ce geste renseigne davantage sur votre usage qu’une photo prise de face.
+Tempus indique 38,5 mm de large et 12,5 mm d’épaisseur pour la Bambino RA-AC0M04Y. Regardez-la de profil, puis fermez votre manche. Posez la main à plat et pliez le poignet comme au clavier. Ce geste renseigne davantage sur votre usage qu’une photo prise de face.
 
 Le bracelet joue aussi : ses premiers maillons peuvent prolonger la présence de la boîte, tandis qu’un cuir plus souple ne se place pas de la même façon. Ne déduisez pas sa compatibilité d’une simple ressemblance. Avant un remplacement, vérifiez l’attache et l’entrecorne de la référence exacte.
 
@@ -39,8 +39,8 @@ Les catégories homme ou femme servent à naviguer dans un catalogue. Elles ne r
 
 ## Si deux fiches ne donnent pas la même cote
 
-Ne faites pas la moyenne. Vérifiez d’abord la référence complète et la variante. Dans notre sélection, les informations de largeur de la Casio et les diamètres annoncés sur la page Tempus de la Seiko demandent encore une confirmation. Les fiches Cadrin conservent ces réserves et le sélecteur exclut une largeur inconnue lorsqu’un plafond de largeur est choisi.
+Ne faites pas la moyenne. Vérifiez la référence complète, puis la source de chaque mesure. Pour la Casio F-91W-1YEG, notre fiche reprend les 38,2 × 33,2 × 8,5 mm publiés par Tempus : la largeur retenue est 33,2 mm. Pour la Seiko SRPE55K1, nous utilisons les 40 mm du tableau technique Tempus. Un paragraphe de cette même page mentionne 42,5 mm ; ce n’est pas la valeur reprise dans nos outils.
 
-Demandez au vendeur une mesure de l’exemplaire proposé, puis ses conditions de retour. En attendant, comparez seulement les dimensions documentées.
+Si quelques millimètres peuvent décider de votre achat, demandez à Tempus une mesure de l’exemplaire proposé et vérifiez les conditions de retour. Une cote publiée aide à comparer ; elle ne remplace pas un essayage.
 
 [Comparer les dimensions des montres](/trouver-ma-montre/?comparer=orient-bambino-ra-ac0m04y,seiko-srpe55k1,citizen-rainell-em1201-52l#comparaison)
