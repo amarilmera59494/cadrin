@@ -23,19 +23,23 @@ export function ficheSlug(p: Pick<CatalogueProduct, 'brand' | 'title' | 'referen
 
 export function ficheHref(p: CatalogueProduct) { return ficheEligible(p) ? `${ficheBase}${ficheSlug(p)}/` : null; }
 
-const glassKind = (g = '') => { const s = normalise(g); return s.includes('saphir') ? 'saphir' : s.includes('acryl') || s.includes('plexi') || s.includes('hesalite') ? 'acrylique' : 'mineral'; };
+const glassKind = (g = '') => { const s = normalise(g); return s.includes('saphir') ? 'saphir' : s.includes('resine') ? 'resine' : s.includes('acryl') || s.includes('plexi') || s.includes('hesalite') ? 'acrylique' : 'mineral'; };
+const glassLabel: Record<string, string> = {saphir: 'verre saphir', mineral: 'verre minéral', acrylique: 'verre acrylique', resine: 'verre en résine'};
+// Étanchéité en bar : marquage bar/ATM, ou mètres convertis (10 m ≈ 1 bar) quand la fiche ne donne que des mètres.
+export function waterBar(p: CatalogueProduct) { const w = waterMark(p.water); if (w !== null) return w; const m = (p.water || '').match(/^(\d+)\s*(?:m|mètres|metres)\b/i); return m ? Number(m[1]) / 10 : null; }
+const movementPhrase = (m = '') => ({Automatique: 'automatique', Quartz: 'à quartz', Solaire: 'solaire', Manuel: 'mécanique à remontage manuel', 'Connectée': 'connectée'} as Record<string, string>)[m] ?? '';
 const strapKind = (s = '') => { const n = normalise(s); return /cuir|veau|bovin|alligator/.test(n) ? 'cuir' : /acier|metal|titane|milanais|maille/.test(n) ? 'metal' : /resine|caoutchouc|silicone|nylon|tissu|nato/.test(n) ? 'souple' : ''; };
 const mm = (n: number) => `${String(n).replace('.', ',')} mm`;
-const lower = (s = '') => s.charAt(0).toLowerCase() + s.slice(1);
+const lower = (s = '') => /^[A-Z]{2}/.test(s) ? s : s.charAt(0).toLowerCase() + s.slice(1);
 
 // Une phrase de synthèse, factuelle, limitée à ce que la fiche indique.
 export function ficheSummary(p: CatalogueProduct) {
-  const size = sizeNumber(p.caseSize), water = waterMark(p.water);
+  const size = sizeNumber(p.caseSize), water = waterMark(p.water), metres = water === null ? waterBar(p) : null;
   const parts: string[] = [];
-  const head = p.movement ? `${p.movement}${size !== null ? ` de ${mm(size)}` : ''}` : size !== null ? `Montre de ${mm(size)}` : 'Montre';
-  parts.push(head);
-  if (p.glass) parts.push({saphir: 'verre saphir', mineral: 'verre minéral', acrylique: 'verre acrylique'}[glassKind(p.glass)]);
-  if (water !== null) parts.push(`étanche à ${water} bar`);
+  const cat = p.category === 'Homme' ? ' homme' : p.category === 'Femme' ? ' femme' : '', mv = movementPhrase(p.movement);
+  parts.push(`Montre${cat}${mv ? ' ' + mv : ''}${size !== null ? ` de ${mm(size)}` : ''}`);
+  if (p.glass) parts.push(glassLabel[glassKind(p.glass)]);
+  if (water !== null) parts.push(`étanche à ${water} bar`); else if (metres !== null) parts.push(`étanche à ${Math.round(metres * 10)} m`);
   if (p.strap) parts.push(`bracelet ${lower(p.strap)}`);
   return parts.join(', ') + '.';
 }
@@ -44,9 +48,12 @@ export type Check = {title: string; text: string; guide?: {label: string; url: s
 
 // « À vérifier avant d'acheter » : règles fixes, reprises de nos guides ; une donnée absente devient un point à demander.
 export function ficheChecks(p: CatalogueProduct): Check[] {
-  const out: Check[] = [], size = sizeNumber(p.caseSize), water = waterMark(p.water), thick = sizeNumber(p.thickness);
+  const out: Check[] = [], size = sizeNumber(p.caseSize), water = waterBar(p), thick = sizeNumber(p.thickness);
+  const inMetres = waterMark(p.water) === null && water !== null;
   const waterGuide = {label: 'Le guide de l’étanchéité', url: '/guides/etancheite-montre-3-5-10-20-atm/'};
   if (water === null) out.push({title: 'Étanchéité non indiquée', text: 'La fiche du vendeur ne donne pas de valeur exploitable. Demandez-la avant tout usage dans l’eau, et considérez la montre comme non étanche d’ici là.', guide: waterGuide});
+  else if (inMetres && water <= 3) out.push({title: `${p.water} : pas de baignade`, text: 'Indiqué en mètres par le vendeur, soit environ 3 bar : pluie et éclaboussures, pas de piscine.', guide: waterGuide});
+  else if (inMetres) out.push({title: `${p.water} : environ ${water} bar`, text: 'Le vendeur l’indique en mètres. C’est une pression d’essai, pas une profondeur : lisez la notice avant de nager.', guide: waterGuide});
   else if (water <= 3) out.push({title: `${water} bar : pas de baignade`, text: 'Pluie, éclaboussures et lavage des mains. Retirez-la avant la piscine ou la mer.', guide: waterGuide});
   else if (water < 10) out.push({title: `${water} bar : la nage ordinaire, selon la notice`, text: 'Pas de plongée, pas de douche chaude ni de sauna. La notice de la référence reste la règle.', guide: waterGuide});
   else if (water < 20) out.push({title: `${water} bar : natation possible`, text: 'Selon la notice. Évitez la douche chaude et ne touchez pas la couronne sous l’eau.', guide: waterGuide});
@@ -62,6 +69,7 @@ export function ficheChecks(p: CatalogueProduct): Check[] {
   else { const g = glassKind(p.glass);
     out.push(g === 'saphir' ? {title: 'Verre saphir', text: 'Très résistant aux rayures, mais il peut se fendre sur un choc sec.', guide: glassGuide}
       : g === 'acrylique' ? {title: 'Verre acrylique', text: 'Il se raye plus facilement, mais une rayure légère se polit avec une pâte.', guide: glassGuide}
+      : g === 'resine' ? {title: 'Verre en résine', text: 'Un verre en plastique, léger et résistant aux chocs, mais qui se raye facilement.', guide: glassGuide}
       : {title: 'Verre minéral', text: 'Plus sensible aux rayures qu’un saphir ; une rayure profonde ne part plus.', guide: glassGuide}); }
   const sizeGuide = {label: 'Choisir la taille de sa montre', url: '/guides/choisir-taille-montre/'};
   if (size === null) out.push({title: 'Diamètre à confirmer', text: p.caseSize ? `La fiche indique « ${p.caseSize} » : comparez avec une montre que vous portez déjà.` : 'La fiche ne donne pas le diamètre : demandez-le avant de commander.', guide: sizeGuide});
