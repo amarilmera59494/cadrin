@@ -10,6 +10,9 @@ npm run dev -- --port 4321
 
 Preview : http://127.0.0.1:4321/ — noindex par défaut.
 
+- [Audit transversal et sélection visuelle](docs/cadrin-final-audit.md)
+- [Orient et comparatif Bambino / Presage](docs/cadrin-orient-editorial.md)
+- [Fiabilité des données du catalogue](docs/cadrin-catalogue-trust.md)
 - [Finition du parcours, comparateur et favoris](docs/cadrin-quality.md)
 - [Comparatif G-Shock, guide étanchéité et filtre documenté](docs/cadrin-editorial-water.md)
 - [Dossiers de marque, comparatifs et actualisation contrôlée](docs/cadrin-retention.md)
@@ -29,7 +32,7 @@ La version anglaise démarre sur `/en/`, son sélecteur sur `/en/watch-finder/`.
 
 Routes principales : `/`, `/catalogue/`, `/en/catalogue/`, `/selections/`, `/selections/trois-montres-au-quotidien/`, `/montres/seiko-srpe55k1/`, `/montres/citizen-aw0102-13ae/`, `/montres/casio-f91w/`, `/guides/`, `/guides/choisir-premiere-montre/`, `/notre-methode/`, et la 404.
 
-Le sélecteur `/trouver-ma-montre/` propose un choix guidé parmi dix références puis ouvre le catalogue complet. Les six analyses détaillées restent dans `/analyses/`. L’explorateur `/catalogue/` rassemble 2 902 fiches marchandes de 24 marques avec photos Tempus, filtres et comparaison de trois modèles. Les quatorze guides FR/EN, quatre dossiers de marque et quatre comparatifs sont illustrés et reliés aux outils. La liste de favoris est locale, partageable et limitée à douze modèles. Deux anciennes fiches sans destination exacte restent archivées et exclues de production.
+Le sélecteur `/trouver-ma-montre/` propose un choix guidé parmi dix références puis ouvre le catalogue complet. Les six analyses détaillées restent dans `/analyses/`. L’explorateur `/catalogue/` rassemble 2 902 fiches marchandes de 24 marques avec photos Tempus, filtres et comparaison de trois modèles. Les quatorze guides FR/EN, cinq dossiers de marque et cinq comparatifs sont illustrés et reliés aux outils. La liste de favoris est locale, partageable et limitée à douze modèles. Deux anciennes fiches sans destination exacte restent archivées et exclues de production.
 
 Les liens produits Tempus portent tous `bg_ref=bDlTL8AyKb` et `rel="sponsored"`, y compris les citations marchandes. La construction est centralisée et contrôlée au build. L’autorisation photographique déclarée par le propriétaire est consignée dans `licenses/tempus-media.md`. Les prix sont des relevés datés, hors livraison ; précommande, sur commande et stock physique ne sont pas confondus. WELCOME10 est présenté avec ses exclusions, sans remise appliquée artificiellement aux prix.
 

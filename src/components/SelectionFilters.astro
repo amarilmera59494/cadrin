@@ -1,0 +1,15 @@
+---
+import Filters from './Filters.astro';
+import AffiliateNotice from './AffiliateNotice.astro';
+import {localeOf,textFor} from '../lib/i18n';
+const {count}=Astro.props as {count:number};
+const t=textFor(localeOf(Astro.url.pathname));
+---
+<div class="selection-controls">
+ <h2>{t('Les trois montres en détail','The three watches in detail')}</h2>
+ <details class="selection-refine"><summary>{t('Affiner ces trois montres','Refine these three watches')}</summary><Filters/></details>
+ <div class="filter-meta"><output id="result-count" aria-live="polite" aria-atomic="true">{count} {t('références à explorer','watches to explore')}</output><p>{t('Le diamètre seul ne prédit pas le confort.','Diameter alone does not determine comfort.')}</p></div>
+ <AffiliateNotice/>
+ <div class="empty-state" id="empty" hidden><h3>{t('Aucune référence pour ces critères.','No watches match these filters.')}</h3><p>{t('Cette sélection est volontairement courte. Essayez un autre mouvement ou élargissez les dimensions.','This is a short selection. Try another movement or broaden the size filter.')}</p><button class="button" id="empty-reset" type="button">{t('Réinitialiser les filtres','Reset filters')}</button></div>
+</div>
+<style>.selection-controls h2{font-family:inherit;font-size:clamp(24px,2.4vw,32px);line-height:1.25;letter-spacing:normal;text-transform:none}.selection-refine{border-block:1px solid var(--line);margin-top:24px}.selection-refine summary{padding:16px 0;min-height:48px;font-weight:600;cursor:pointer}.selection-controls{margin-bottom:28px}.selection-controls .disclosure{margin-top:0}.empty-state .button{margin-top:22px}</style>

@@ -1,0 +1,20 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import {clearedPhoto} from '../data/product-photos';
+import {localeOf,localPath,textFor,term} from '../lib/i18n';
+const {watches}=Astro.props as {watches:CollectionEntry<'watches'>[]};
+const locale=localeOf(Astro.url.pathname),t=textFor(locale);
+---
+<nav class="selection-overview" aria-label={t('Voir les fiches des trois montres','View the three watch details')}>
+ {watches.map(w=>{const p=w.data,photo=p.rights==='approved'?clearedPhoto(p.image,p.reference):undefined;return <a href={localPath(`/montres/${w.id}/`,locale)}>
+  {photo&&<div class="selection-preview-photo"><img src={photo.src} alt={locale==='en'?photo.altEn||photo.alt:photo.alt} width={photo.width} height={photo.height} loading="eager" decoding="async"/></div>}
+  <strong>{p.brand}</strong><span>{term(p.movement,locale)}</span><small>{p.reference}</small>
+  {photo&&<small class="selection-preview-credit">{locale==='en'?photo.creditEn||photo.credit:photo.credit}</small>}
+ </a>})}
+</nav>
+<p class="selection-preview-caption">{t('Ouvrez une fiche pour voir les dimensions, le prix relevé et le lien Tempus. Photos Tempus ; modèles non représentés à la même échelle.','Open a watch’s details for dimensions, the recorded price and its Tempus link. Tempus photos; watches are not shown to the same scale.')}</p>
+<style>
+.selection-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px}.selection-overview a{display:flex;flex-direction:column;gap:4px;text-decoration:none;min-width:0}.selection-overview a:hover strong{text-decoration:underline;text-underline-offset:4px}.selection-preview-photo{background:white;margin-bottom:8px;padding:12px}.selection-preview-photo img{display:block;width:100%;height:190px;object-fit:contain}.selection-overview strong{font-size:1rem}.selection-overview span{font-size:.9rem}.selection-overview small{font-size:.75rem;overflow-wrap:anywhere}.selection-preview-caption{font-size:.78rem;line-height:1.6;margin-top:16px;color:var(--muted);max-width:80ch}
+@media(max-width:700px){.selection-overview{gap:12px;margin-top:20px}.selection-preview-photo{padding:6px}.selection-preview-photo img{height:128px}.selection-overview strong{font-size:.9rem}.selection-overview span{font-size:.78rem}.selection-overview small{font-size:.69rem}.selection-preview-caption{font-size:.72rem}}
+.selection-overview .selection-preview-credit{color:var(--muted);font-size:.72rem;line-height:1.5;margin-top:4px}
+</style>

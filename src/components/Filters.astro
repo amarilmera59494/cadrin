@@ -1,16 +1,32 @@
-<form class="filter-form" id="filters" hidden><label>Mouvement<select name="movement"><option value="">Tous les mouvements</option><option>Automatique</option><option>Quartz</option><option>Solaire</option></select></label><label>Dimensions renseignées<select name="size"><option value="">Toutes les références</option><option value="medium">Boîtier rond de 40 mm</option><option value="unknown">Dimensions à confirmer</option></select></label><label>Usage envisagé<select name="use"><option value="">Tous les usages</option><option value="quotidien">Quotidien</option><option value="bureau">Bureau</option></select></label><button type="reset">Tout réinitialiser</button></form>
-<noscript><p class="disclosure">Toutes les références sont affichées ci-dessous. Les filtres nécessitent JavaScript ; les fiches et leurs liens restent accessibles.</p></noscript>
+---
+import {localeOf,textFor,term} from '../lib/i18n';
+const locale=localeOf(Astro.url.pathname),t=textFor(locale);
+---
+<form class="filter-form" id="filters" data-locale={locale} hidden>
+ <label>{t('Mouvement','Movement')}<select name="movement"><option value="">{t('Tous les mouvements','All movements')}</option>{['Automatique','Quartz','Solaire'].map(v=><option value={v}>{term(v,locale)}</option>)}</select></label>
+ <label>{t('Dimensions renseignées','Recorded dimensions')}<select name="size"><option value="">{t('Toutes les références','All references')}</option><option value="medium">{t('Boîtier rond de 40 mm','Round 40 mm case')}</option><option value="unknown">{t('Dimensions à confirmer','Dimensions not recorded')}</option></select></label>
+ <label>{t('Usage envisagé','Suggested use')}<select name="use"><option value="">{t('Tous les usages','All uses')}</option><option value="quotidien">{t('Quotidien','Everyday')}</option><option value="bureau">{t('Bureau','Office')}</option></select></label>
+ <button type="reset">{t('Tout réinitialiser','Reset all')}</button>
+</form>
+<noscript><p class="disclosure">{t('Toutes les références sont affichées ci-dessous. Les filtres nécessitent JavaScript ; les fiches et leurs liens restent accessibles.','All references appear below. Filtering requires JavaScript; watch details and their links remain available.')}</p></noscript>
 <script>
 const form=document.querySelector<HTMLFormElement>('#filters');
 if(form){
  const rows=[...document.querySelectorAll<HTMLElement>('[data-product-row]')];
  const count=document.querySelector<HTMLOutputElement>('#result-count')!;
  const empty=document.querySelector<HTMLElement>('#empty')!;
- form.hidden=false;
- const params=new URLSearchParams(location.search);
- for(const select of form.querySelectorAll('select')){const value=params.get(select.name);if(value&&[...select.options].some(o=>o.value===value))select.value=value}
- function update(){const data=new FormData(form!);let total=0;rows.forEach(row=>{const known=!!row.dataset.size,size=Number(row.dataset.size),bucket=data.get('size');const fits=!bucket||(bucket==='unknown'?!known:known&&size===40);const visible=(!data.get('movement')||data.get('movement')===row.dataset.movement)&&(!data.get('use')||data.get('use')===row.dataset.use)&&fits;row.hidden=!visible;if(visible)total++});count.textContent=`${total} référence${total>1?'s':''} à explorer`;empty.hidden=total>0;const url=new URL(location.href);for(const key of ['movement','size','use']){const value=data.get(key);if(value)url.searchParams.set(key,String(value));else url.searchParams.delete(key)}history.replaceState(null,'',url)}
- form.addEventListener('submit',e=>e.preventDefault());form.addEventListener('change',update);form.addEventListener('reset',()=>requestAnimationFrame(update));
- document.querySelector('#empty-reset')?.addEventListener('click',()=>{form.reset();form.querySelector('select')?.focus()});update();
+ const disclosure=form.closest<HTMLDetailsElement>('details');
+ const en=form.dataset.locale==='en';form.hidden=false;
+ function restore(){const params=new URLSearchParams(location.search);for(const select of form!.querySelectorAll('select')){const value=params.get(select.name)||'';select.value=[...select.options].some(o=>o.value===value)?value:'';}if([...form!.querySelectorAll('select')].some(s=>s.value)&&disclosure)disclosure.open=true;}
+ function update(push=false){
+  const data=new FormData(form!);let total=0;
+  rows.forEach(row=>{const known=!!row.dataset.size,size=Number(row.dataset.size),bucket=data.get('size');const fits=!bucket||(bucket==='unknown'?!known:known&&size===40);const visible=(!data.get('movement')||data.get('movement')===row.dataset.movement)&&(!data.get('use')||data.get('use')===row.dataset.use)&&fits;row.hidden=!visible;if(visible)total++;});
+  count.textContent=en?`${total} watch${total===1?'':'es'} to explore`:`${total} référence${total>1?'s':''} à explorer`;empty.hidden=total>0;
+  const url=new URL(location.href);for(const key of ['movement','size','use']){const value=data.get(key);if(value)url.searchParams.set(key,String(value));else url.searchParams.delete(key);}
+  if(url.href!==location.href){if(push)history.pushState(null,'',url);else history.replaceState(null,'',url);document.dispatchEvent(new Event('cadrin:urlchange'));}
+ }
+ form.addEventListener('submit',e=>e.preventDefault());form.addEventListener('change',()=>update(true));form.addEventListener('reset',()=>requestAnimationFrame(()=>update(true)));
+ window.addEventListener('popstate',()=>{restore();update();});
+ document.querySelector('#empty-reset')?.addEventListener('click',()=>{form.reset();if(disclosure)disclosure.open=true;form.querySelector('select')?.focus();});restore();update();
 }
 </script>
