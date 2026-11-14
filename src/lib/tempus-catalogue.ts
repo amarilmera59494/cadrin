@@ -29,6 +29,18 @@ export function detailRows(p:CatalogueProduct,en=false):[string,string][]{return
 // Nine tested Longines destinations redirect to the shop homepage (14 November 2026).
 // Pause this brand's purchase links pending a verified repair; catalogue data is retained.
 export const merchantLinkAvailable=(p:Pick<CatalogueProduct,'brand'>)=>p.brand!=='Longines';
+export function purchaseLabel(p:Pick<CatalogueProduct,'orderable'|'order'>,en=false){
+ if(!p.orderable)return en?'Check at Tempus':'Vérifier chez Tempus';
+ if(p.order==='preorder')return en?'Preorder at Tempus':'Précommander chez Tempus';
+ if(p.order==='order')return en?'Order at Tempus':'Commander chez Tempus';
+ return en?'Buy at Tempus':'Acheter chez Tempus';
+}
+/** Suggest explicit, single-filter changes. Never silently widen a budget or selection. */
+export function filterRecovery(products:CatalogueProduct[],filters:CatalogueFilters){
+ return filterKeys.filter(key=>key!=='sort'&&!!filters[key]).map(key=>({
+  key,count:filterCatalogue(products,{...filters,[key]:''}).length
+ })).filter(option=>option.count>0).sort((a,b)=>a.count-b.count).slice(0,3);
+}
 export function orderLabel(p:CatalogueProduct,en=false){
  if(!merchantLinkAvailable(p))return en?'Longines purchase links temporarily unavailable':'Liens d’achat Longines temporairement indisponibles';
  if(!p.orderable)return en?'Ordering unavailable at the last check':'Commande indisponible au relevé';

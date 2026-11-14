@@ -1,0 +1,10 @@
+---
+import {features,featurePath} from '../data/features';
+import {localeOf,textFor} from '../lib/i18n';
+const {reference,brand}=Astro.props as {reference:string;brand:string};
+const en=localeOf(Astro.url.pathname)==='en',t=textFor(en?'en':'fr');
+const related=features.filter(f=>f.choices.some(p=>p.reference===reference)||f.kind==='brand'&&(f.brand===brand||f.slug==='casio-g-shock'&&brand==='G-Shock'))
+ .sort((a,b)=>Number(a.kind==='brand')-Number(b.kind==='brand')).slice(0,3);
+---
+{related.length>0&&<section class="watch-reading"><span class="eyebrow">{t('Pour bien choisir','Choose with confidence')}</span><h2>{t('Ce modèle dans son contexte.','Put this watch in context.')}</h2><p>{t('Les différences avec d’autres références, les gammes de la marque et les points qui peuvent faire pencher votre choix.','Compare other references, understand the brand’s collections and see what could make the difference for you.')}</p><ul>{related.map(f=><li><a href={featurePath(f,en)}>{f.title[en?1:0]} <span aria-hidden="true">→</span></a></li>)}</ul></section>}
+<style>.watch-reading ul{list-style:none;padding:0}.watch-reading li{margin:0;padding:0;border-bottom:1px solid var(--line)}.watch-reading a{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:52px;padding:12px 0;font-size:15px;text-decoration:none}.watch-reading a:hover{text-decoration:underline}.watch-reading a span{flex-shrink:0}</style>

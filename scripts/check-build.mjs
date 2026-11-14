@@ -1,6 +1,8 @@
 import {readFile,readdir,writeFile} from 'node:fs/promises';
 import {gzipSync} from 'node:zlib';
 import {isTempusProduct,tempusAffiliate} from '../src/data/affiliation.ts';
+import catalogue from '../src/data/tempus-catalogue.json' with {type:'json'};
+import {purchaseLabel,merchantLinkAvailable} from '../src/lib/tempus-catalogue.ts';
 const production=process.env.SITE_STAGE==='production';const dir=production?'dist-production':'dist';
 async function walk(path){return(await Promise.all((await readdir(path,{withFileTypes:true})).map(f=>f.isDirectory()?walk(`${path}/${f.name}`):`${path}/${f.name}`))).flat()}
 const files=await walk(dir), results=[];const errors=[];
@@ -16,6 +18,16 @@ for(const file of files.filter(f=>f.endsWith('.html'))){const html=await readFil
    const target=new URL(href),rel=anchor[1].match(/\brel="([^"]+)"/)?.[1]||'';
    if(target.searchParams.getAll('bg_ref').length!==1||target.searchParams.get('bg_ref')!==tempusAffiliate.code||!rel.split(/\s+/).includes('sponsored'))errors.push(`${route}: lien produit Tempus non affilié ou non signalé: ${href}`);
   }
+ }
+ // A dated unavailable/preorder offer must not keep a generic Buy CTA in cached Markdown.
+ const english=route.startsWith('/en/');
+ for(const [,attrs,body]of html.matchAll(/<a\b([^>]+)>([\s\S]*?)<\/a>/g)){
+  if(!/\bclass="[^"]*merchant-button/.test(attrs))continue;
+  const href=attrs.match(/\bhref="([^"]+)"/)?.[1]?.replaceAll('&amp;','&');
+  if(!href||!isTempusProduct(href))continue;
+  const path=new URL(href).pathname.replace(/^\/en\//,'/');
+  const product=catalogue.products.find(p=>new URL(p.source).pathname===path);
+  if(product&&(!merchantLinkAvailable(product)||!body.replace(/<[^>]+>/g,'').includes(purchaseLabel(product,english))))errors.push(`${route}: bouton incohérent avec le statut de ${product.reference}`);
  }
  for(const match of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)){const json=JSON.parse(match[1]);if(/"(?:Offer|Review|AggregateRating|Product)"/.test(JSON.stringify(json)))errors.push(`${route}: schema non autorisé`)}
  let jsBytes=0;for(const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){if(match[1].includes('application/ld+json'))continue;const src=match[1].match(/src="([^"]+)"/);jsBytes+=gzipSync(src?await readFile(dir+src[1]):Buffer.from(match[2])).length;}if(jsBytes>60000)errors.push(`${route}: budget JS dépassé`);
