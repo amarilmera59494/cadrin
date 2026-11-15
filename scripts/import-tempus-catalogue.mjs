@@ -16,7 +16,8 @@ for(const p of products){const v=p.variants[0],img=p.images[0],reference=v?.sku?
  if(!['Montre','Montres'].includes(p.product_type))reason='not-watch';else if(p.variants.length!==1)reason='multiple-variants';else if(!reference)reason='missing-sku';else if(!img?.src||img.product_id!==p.id||new URL(img.src).hostname!=='cdn.shopify.com')reason='missing-approved-image';else if(!(Number(v.price)>0))reason='invalid-price';
  if(reason){excluded.push({id:p.id,title:p.title,reason});continue;}
  const tags=p.tags.map(t=>t.toLowerCase());const movement=tags.includes('connecte')?'Connectée':tags.some(t=>['eco-drive','solar'].includes(t))?'Solaire':tags.includes('automatique')?'Automatique':tags.includes('quartz')?'Quartz':tags.includes('manuel')?'Manuel':'';
- const category=tags.some(t=>['femme','woman'].includes(t))?'Femme':tags.includes('homme')?'Homme':tags.includes('enfant')?'Enfant':'';
+ // Genre : étiquettes Tempus d'abord ; à défaut, le nom de la ligne du fabricant (« Lady », « Ladies », « Femme », « Homme »).
+ const category=tags.some(t=>['femme','woman'].includes(t))?'Femme':tags.includes('homme')?'Homme':tags.includes('enfant')?'Enfant':/(lady|ladies|femme|women)/i.test(p.title)?'Femme':/(homme|gents)/i.test(p.title)?'Homme':'';
  const order=tags.includes('precommande')?'preorder':tags.some(t=>['en commande','sur commande'].includes(t))?'order':'check';
  items.push({id:String(p.id),handle:p.handle,title:p.title,brand:brandNames[p.vendor]||p.vendor,reference,price:Number(v.price),movement,category,order,orderable:v.available===true,image:`/images/catalogue/${p.id}.webp`,imageSource:img.src,width:400,height:500,source:`https://tempusshop.com/products/${p.handle}`});
 }
