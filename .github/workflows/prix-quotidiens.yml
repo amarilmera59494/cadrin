@@ -4,13 +4,10 @@ name: Prix quotidiens
 
 on:
   schedule:
-    # GitHub peut retarder les tâches programmées de plusieurs heures (7 h 30 observées le 15/11/2026) :
-    # plusieurs passages, à des minutes peu chargées, pour que le relevé soit en ligne avant 8 h 30.
-    # Les passages suivants sont sans effet si les prix n'ont pas changé (rien n'est publié).
+    # Un relevé par jour. GitHub peut retarder une tâche de plusieurs heures (7 h 30 observées le 15/11/2026) :
+    # un second passage sert de secours et s'arrête aussitôt si le relevé du jour est déjà fait.
     - cron: '7 1 * * *'  # ≈ 2 h 07 à Paris (hiver)
-    - cron: '7 3 * * *'  # ≈ 4 h 07
-    - cron: '17 5 * * *' # ≈ 6 h 17
-    - cron: '43 5 * * *' # ≈ 6 h 43
+    - cron: '17 4 * * *' # ≈ 5 h 17, secours
   workflow_dispatch:
 
 permissions:
@@ -26,23 +23,37 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - name: Relevé du jour déjà fait ?
+        id: gate
+        run: |
+          today="$(TZ=Europe/Paris date +%F)"
+          done="$(node -p "require('./src/data/price-history.json').updatedAt")"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$done" = "$today" ]; then echo "Relevé du $today déjà fait : rien à faire."; echo "skip=true" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/setup-node@v4
+        if: steps.gate.outputs.skip != 'true'
         with:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
+        if: steps.gate.outputs.skip != 'true'
       - name: Relever les prix (sans rien écrire en cas d'anomalie)
+        if: steps.gate.outputs.skip != 'true'
         run: node scripts/refresh-tempus-offers.mjs --check
       - name: Appliquer le relevé
+        if: steps.gate.outputs.skip != 'true'
         run: node scripts/refresh-tempus-offers.mjs --apply
       - name: Mettre à jour l'historique des prix
+        if: steps.gate.outputs.skip != 'true'
         run: node scripts/price-history.mjs
       - name: Relevé Black Friday (jusqu'au 30 novembre 2026)
+        if: steps.gate.outputs.skip != 'true'
         run: |
           if [ "$(TZ=Europe/Paris date +%F)" \< "2026-12-01" ]; then node scripts/black-friday-refresh.mjs; else echo "Relevé Black Friday terminé."; fi
       - name: Vérifier le site avant publication
+        if: steps.gate.outputs.skip != 'true'
         run: npm run check && SITE_STAGE=production npm run build
       - name: Publier
+        if: steps.gate.outputs.skip != 'true'
         run: |
           git config user.name "cadrin-prix"
           git config user.email "cadrin-prix@users.noreply.github.com"
