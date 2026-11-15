@@ -1,5 +1,6 @@
 import {writeFile,readFile,readdir,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import {existsSync} from 'node:fs';
 const production=process.env.SITE_STAGE==='production';const dir=production?'dist-production':'dist';
 const security='  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n';
 async function walk(path){const files=await readdir(path,{withFileTypes:true});return (await Promise.all(files.map(f=>f.isDirectory()?walk(`${path}/${f.name}`):`${path}/${f.name}`))).flat()}
@@ -43,6 +44,10 @@ if(csp.length>1900)throw new Error('CSP trop longue pour les en-têtes Cloudflar
 const assetHeaders=files.filter(f=>f.startsWith(`${dir}/_astro/`)).map(f=>`/${f.slice(dir.length+1)}\n  ! Cache-Control\n  Cache-Control: public, max-age=31536000, immutable\n`).join('\n');
 if(files.filter(f=>f.startsWith(`${dir}/_astro/`)).length+3>100)throw new Error('Limite de règles _headers Cloudflare dépassée.');
 await writeFile(`${dir}/_headers`,`/*\n${production?'':'  X-Robots-Tag: noindex, nofollow\n'}${security}  Content-Security-Policy: ${csp}\n  Cache-Control: public, max-age=0, must-revalidate\n\n/404.html\n  X-Robots-Tag: noindex, nofollow\n\n/images/catalogue/*\n  ! Cache-Control\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n\n${assetHeaders}`);
+// Adresses renommées (ex. orthographe d'une marque corrigée) : redirections permanentes vers la nouvelle page.
+const moved=JSON.parse(await readFile('src/data/redirects.json','utf8'));
+for(const {from,to} of moved){if(!existsSync(`${dir}${to}index.html`))throw new Error(`Redirection vers une page absente : ${to}`);if(existsSync(`${dir}${from}index.html`))throw new Error(`Redirection depuis une page encore publiée : ${from}`);}
+await writeFile(`${dir}/_redirects`,moved.map(({from,to})=>`${from} ${to} 301`).join('\n')+'\n');
 await writeFile(`${dir}/robots.txt`,`User-agent: *\nAllow: /\n${production?'Sitemap: https://cadrin.fr/sitemap.xml\n':'# Preview : noindex dans le HTML et les en-têtes. Aucun sitemap.\n'}`);
 if(production)await writeFile(`${dir}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.filter(r=>!r.startsWith('/partage/')).map(r=>`<url><loc>https://cadrin.fr${r}</loc></url>`).join('')}</urlset>`);
 await mkdir('evidence/cadrin',{recursive:true});

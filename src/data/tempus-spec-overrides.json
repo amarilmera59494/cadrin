@@ -20,5 +20,175 @@
       "movement": "Quartz",
       "functions": "Chronomètre, Alarme"
     }
+  },
+  "16071077953870": {
+    "reference": "AL-525N4AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-automatic-bleu-caoutchouc-al-525n4ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-525N4AE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité ni le verre. Valeurs reprises de la fiche officielle Alpina de la même référence (200 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 41x42.50mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "20 ATM (200 mètres)",
+      "glass": "Saphir anti-reflet",
+      "caseSize": "41 mm"
+    }
+  },
+  "16071084507470": {
+    "reference": "AL-525BRG3AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-automatic-california-sunburst-brun-al-525brg3ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-525BRG3AE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité ni le verre. Valeurs reprises de la fiche officielle Alpina de la même référence (200 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 39x40.50mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "20 ATM (200 mètres)",
+      "glass": "Saphir anti-reflet",
+      "caseSize": "39 mm"
+    }
+  },
+  "16071082836302": {
+    "reference": "AL-525GRG3AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-automatic-california-vert-sapin-al-525grg3ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-525GRG3AE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité ni le verre. Valeurs reprises de la fiche officielle Alpina de la même référence (200 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 39x40.50mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "20 ATM (200 mètres)",
+      "glass": "Saphir anti-reflet",
+      "caseSize": "39 mm"
+    }
+  },
+  "16071074971982": {
+    "reference": "AL-525B4AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-automatic-noir-al-525b4ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-525B4AE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité ni le verre. Valeurs reprises de la fiche officielle Alpina de la même référence (200 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 41x42,50 mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "20 ATM (200 mètres)",
+      "glass": "Saphir anti-reflet",
+      "caseSize": "41 mm"
+    }
+  },
+  "16071074742606": {
+    "reference": "AL-525GR4AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-automatic-vert-british-racing-caoutchouc-al-525gr4ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-525GR4AE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité ni le verre. Valeurs reprises de la fiche officielle Alpina de la même référence (200 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 41x42.50mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "20 ATM (200 mètres)",
+      "glass": "Saphir anti-reflet",
+      "caseSize": "41 mm"
+    }
+  },
+  "16071075496270": {
+    "reference": "AL-220BG2AE6B",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-quartz-al-220bg2ae6b",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-220BG2AE6B.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 34x35,2mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "34 mm"
+    }
+  },
+  "16071077036366": {
+    "reference": "AL-220K2AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-quartz-al-220k2ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://alpinawatches.com/products/extreme-quartz-al-220k2ae6",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 34x35,2mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "34 mm"
+    }
+  },
+  "16071080018254": {
+    "reference": "AL-220PI2AE6B",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-quartz-al-220pi2ae6b",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-220PI2AE6B.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 34 x 35,2 mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "34 mm"
+    }
+  },
+  "16071083131214": {
+    "reference": "AL-220TB2AE6B",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-quartz-al-220tb2ae6b",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-220TB2AE6B.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 34x35,2mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "34 mm"
+    }
+  },
+  "16071061438798": {
+    "reference": "AL-140BRG3AE6B",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-solarmetre-al-140brg3ae6b",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-140BRG3AE6B.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 37.50 x 38.90mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "37,5 mm"
+    }
+  },
+  "16071062552910": {
+    "reference": "AL-140LGR3AE6B",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-solarmetre-al-140lgr3ae6b",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-140LGR3AE6B.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 37.50 x 38.90mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "37,5 mm"
+    }
+  },
+  "16071065076046": {
+    "reference": "AL-140N3AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-solarmetre-al-140n3ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-140N3AE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 37.50 x 38.90mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "37,5 mm"
+    }
+  },
+  "16071066353998": {
+    "reference": "AL-140W3AE6",
+    "source": "https://tempusshop.com/products/alpina-alpiner-extreme-solarmetre-al-140w3ae6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-140W3AE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (100 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 37.50 x 38.90mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "10 ATM (100 mètres)",
+      "caseSize": "37,5 mm"
+    }
+  },
+  "16071052099918": {
+    "reference": "AL-525S4H6",
+    "source": "https://tempusshop.com/products/alpina-seastrong-diver-300-heritage-automatic-al-525s4h6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-525S4H6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité. Valeur reprise de la fiche officielle Alpina de la même référence (300 m, verre saphir antireflet).",
+    "values": {
+      "water": "30 ATM (300 mètres)"
+    }
+  },
+  "16071079526734": {
+    "reference": "AL-520G3VE6",
+    "source": "https://tempusshop.com/products/alpina-seastrong-diver-extreme-automatic-x-the-real-time-show-al-520g3ve6",
+    "checkedAt": "2026-11-15",
+    "evidence": "https://us.alpinawatches.com/product/AL-520G3VE6.html",
+    "reason": "La fiche Tempus ne donne ni l’étanchéité ni le verre. Valeurs reprises de la fiche officielle Alpina de la même référence (300 m, verre saphir antireflet). Diamètre : largeur du boîtier, premier nombre de la mesure « 39 x 40,50 mm » (largeur × longueur entre cornes, ordre confirmé par la fiche officielle).",
+    "values": {
+      "water": "30 ATM (300 mètres)",
+      "glass": "Saphir anti-reflet",
+      "caseSize": "39 mm"
+    }
   }
 }

@@ -7,6 +7,8 @@ if(new Set(products.map(p=>p.id)).size!==products.length)throw Error('Duplicate 
 const currency=await (await fetch('https://tempusshop.com/cart.js?country=FR&currency=EUR')).json();if(currency.currency!=='EUR')throw Error('Expected EUR');
 await writeFile('evidence/tempus-catalogue/raw.json',JSON.stringify({checkedAt,market:{country:"FR",currency:"EUR"},pages,products},null,2));
 const referenceOverrides=JSON.parse(await readFile('src/data/tempus-reference-overrides.json','utf8'));
+// Noms de marque mal orthographiés dans le flux du vendeur : affichés correctement sur le site.
+const brandNames={'Swiss Millitary':'Swiss Military'};
 let previous=[];try{previous=JSON.parse(await readFile('src/data/tempus-catalogue.json','utf8')).products}catch{}
 const oldSources=new Map(previous.map(p=>[p.id,p.imageSource]));
 await mkdir('public/images/catalogue',{recursive:true});const excluded=[],items=[];
@@ -16,7 +18,7 @@ for(const p of products){const v=p.variants[0],img=p.images[0],reference=v?.sku?
  const tags=p.tags.map(t=>t.toLowerCase());const movement=tags.includes('connecte')?'Connectée':tags.some(t=>['eco-drive','solar'].includes(t))?'Solaire':tags.includes('automatique')?'Automatique':tags.includes('quartz')?'Quartz':tags.includes('manuel')?'Manuel':'';
  const category=tags.some(t=>['femme','woman'].includes(t))?'Femme':tags.includes('homme')?'Homme':tags.includes('enfant')?'Enfant':'';
  const order=tags.includes('precommande')?'preorder':tags.some(t=>['en commande','sur commande'].includes(t))?'order':'check';
- items.push({id:String(p.id),handle:p.handle,title:p.title,brand:p.vendor,reference,price:Number(v.price),movement,category,order,orderable:v.available===true,image:`/images/catalogue/${p.id}.webp`,imageSource:img.src,width:400,height:500,source:`https://tempusshop.com/products/${p.handle}`});
+ items.push({id:String(p.id),handle:p.handle,title:p.title,brand:brandNames[p.vendor]||p.vendor,reference,price:Number(v.price),movement,category,order,orderable:v.available===true,image:`/images/catalogue/${p.id}.webp`,imageSource:img.src,width:400,height:500,source:`https://tempusshop.com/products/${p.handle}`});
 }
 let done=0;const errors=[];let index=0;
 async function worker(){while(index<items.length){const p=items[index++];try{const path='public'+p.image;try{await access(path);if(oldSources.get(p.id)!==p.imageSource)throw Error('Image changed')}catch{const u=new URL(p.imageSource);u.searchParams.set('width','400');const r=await fetch(u,{signal:AbortSignal.timeout(30000)});if(!r.ok)throw Error('HTTP '+r.status);const b=await sharp(Buffer.from(await r.arrayBuffer())).resize(400,500,{fit:'contain',background:'#ffffff',withoutEnlargement:true}).webp({quality:78}).toBuffer();await writeFile(path,b);}const meta=await sharp(path).metadata();p.width=meta.width;p.height=meta.height;}catch(e){errors.push({id:p.id,error:String(e)});}done++;if(done%300===0)console.log(done+'/'+items.length);}}
