@@ -1,0 +1,41 @@
+# Contrôle hebdomadaire des liens Tempus : chaque lien de montre commandable est testé un par un.
+# Les liens qui renvoient vers l'accueil sont suspendus (plus de bouton d'achat, plus de page montre) ;
+# ceux qui fonctionnent à nouveau sont réactivés. En cas d'écart massif, rien n'est appliqué (garde-fou).
+name: Liens hebdo
+
+on:
+  schedule:
+    - cron: '37 1 * * 1' # lundi ≈ 2 h 37 à Paris (hiver)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prix-quotidiens # jamais en même temps que le relevé des prix (mêmes fichiers)
+  cancel-in-progress: false
+
+jobs:
+  liens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - name: Contrôler chaque lien Tempus
+        run: node scripts/probe-tempus-destinations.mjs --apply
+      - name: Vérifier le site avant publication
+        run: npm run check && SITE_STAGE=production npm run build && node scripts/destination-pauses-check.mjs
+      - name: Publier
+        run: |
+          git config user.name "cadrin-liens"
+          git config user.email "cadrin-liens@users.noreply.github.com"
+          git add src/data/paused-tempus-destinations.json
+          if git diff --cached --quiet; then echo "Aucun lien à suspendre ni à réactiver."; exit 0; fi
+          git commit -m "Liens Tempus contrôlés le $(TZ=Europe/Paris date +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main

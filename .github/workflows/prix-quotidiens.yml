@@ -4,8 +4,13 @@ name: Prix quotidiens
 
 on:
   schedule:
-    - cron: '15 5 * * *' # 6 h 15 à Paris en hiver, 7 h 15 en été
-    - cron: '0 6 * * *' # passage de secours (7 h à Paris) si le premier a été retardé ; sans effet s'il a abouti
+    # GitHub peut retarder les tâches programmées de plusieurs heures (7 h 30 observées le 15/11/2026) :
+    # plusieurs passages, à des minutes peu chargées, pour que le relevé soit en ligne avant 8 h 30.
+    # Les passages suivants sont sans effet si les prix n'ont pas changé (rien n'est publié).
+    - cron: '7 1 * * *'  # ≈ 2 h 07 à Paris (hiver)
+    - cron: '7 3 * * *'  # ≈ 4 h 07
+    - cron: '17 5 * * *' # ≈ 6 h 17
+    - cron: '43 5 * * *' # ≈ 6 h 43
   workflow_dispatch:
 
 permissions:

@@ -17,7 +17,7 @@ let done = 0;
 for (const p of targets) {
   for (let attempt = 0; attempt < 5; attempt++) {
     try {
-      const r = await fetch(p.source + '?bg_ref=bDlTL8AyKb', {redirect: 'manual', headers: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36', 'Accept-Language': 'fr-FR,fr;q=0.9'}, signal: AbortSignal.timeout(20000)});
+      const r = await fetch(p.source + '?bg_ref=bDlTL8AyKb', {redirect: 'manual', headers: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36', 'Accept-Language': 'fr-FR,fr;q=0.9', 'Cookie': 'localization=FR; cart_currency=EUR'}, signal: AbortSignal.timeout(20000)});
       const loc = r.headers.get('location'); await r.body?.cancel();
       if (r.status === 429) { await sleep(30000); continue; }
       const to = loc ? new URL(loc, p.source).pathname : '';
@@ -36,6 +36,13 @@ fs.mkdirSync('evidence', {recursive: true});
 fs.writeFileSync('evidence/tempus-probe.json', JSON.stringify({checkedAt: today, probed, dead: dead.length, revived: revived.length, results}, null, 1));
 const byBrand = {}; for (const [, x] of dead) byBrand[x.brand] = (byBrand[x.brand] || 0) + 1;
 console.log(JSON.stringify({checkedAt: today, probed, dead: dead.length, revived: revived.length, byBrand}));
+// Garde-fous : un écart massif d'un coup signale plutôt un problème de contrôle (marché, blocage) qu'un vrai changement.
+const newlyDead = dead.filter(([source]) => !paused.some(v => v.source === source)).length;
+const maxChange = Number(process.env.PROBE_MAX_CHANGE || 60);
+if (apply && (newlyDead > maxChange || revived.length > maxChange)) {
+  console.error(`Écart trop important (${newlyDead} nouveaux liens morts, ${revived.length} réactivés) : rien n'est appliqué. Vérifiez à la main, puis relancez avec PROBE_MAX_CHANGE si c'est confirmé.`);
+  process.exit(3);
+}
 if (apply) {
   const known = new Set(paused.map(v => v.source)), revivedSet = new Set(revived.map(v => v.source));
   const next = paused.filter(v => !revivedSet.has(v.source));
