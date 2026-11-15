@@ -50,6 +50,8 @@ Une automatique est moins précise qu’une montre à quartz : un écart de que
 - **Évitez les chocs violents** : une automatique reste un mécanisme de précision.
 - **Faites-la réviser** quand elle prend du retard ou de l’avance de façon inhabituelle, ou selon les conseils du fabricant.
 
+[Régler l’heure et la date sans abîmer le mécanisme](/guides/regler-montre-heure-date/)
+
 ## Pour qui ?
 
 Une automatique est faite pour vous si vous aimez l’idée d’une mécanique au poignet et si vous la portez presque tous les jours. Si elle doit dormir des semaines dans un tiroir, un solaire sera plus pratique.

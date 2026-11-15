@@ -47,4 +47,6 @@ Une fiche technique a l’air aride. Elle répond pourtant aux trois questions q
 
 Une fiche ne dit rien du confort au poignet, de la qualité des finitions vue de près, ni du bruit du rotor. Elle peut aussi contenir des erreurs : en cas de doute, recoupez avec la fiche du fabricant, à partir de la référence exacte. Sur chaque page de montre, nous reprenons ces lignes et indiquons les points à vérifier avant d’acheter.
 
+Un mot vous échappe ? [Le lexique horloger](/guides/lexique-horloger/) les explique simplement.
+
 [Explorer le catalogue](/catalogue/)

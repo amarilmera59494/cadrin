@@ -455,5 +455,205 @@
         ]
       }
     ]
+  },
+  "regler-montre-heure-date": {
+    "title": "Setting a watch: time, date and the mistake to avoid",
+    "description": "The crown positions, the hours when you never touch the date, the trick for telling noon from midnight, and the right method in five steps.",
+    "sections": [
+      {
+        "id": "mistake",
+        "title": "The mistake almost everyone makes once",
+        "paragraphs": [
+          "It is 11 p.m. You take a watch out of the drawer and correct the date. The next morning it has not changed. Or it changes at noon.",
+          "The reason is mechanical. In the evening, the date does not flip all at once at midnight: the mechanism starts pushing it a few hours before. If you force the date during that time, you are working against it. Seiko warns that the date may then stop changing properly, or that the mechanism may be damaged.",
+          "The good news: you only need to remember one time window and one trick."
+        ]
+      },
+      {
+        "id": "crown",
+        "title": "First, find the crown",
+        "paragraphs": [
+          "The crown is the small button on the side of the case. On a watch with a date, it usually has three positions. Pushed in is the normal position; on automatics that allow it, turning it there winds the spring. At the first click you set the date, and the day when the watch shows it. At the second click you set the time, and on many watches the seconds hand stops (known as hacking).",
+          "If the crown screws down, which is common on watches rated 10 bar and above, unscrew it towards you until it springs free. After setting, push it back and screw it down without forcing. That seal is what keeps water out."
+        ]
+      },
+      {
+        "id": "window",
+        "title": "The no-go window: 9 p.m. to 4 a.m.",
+        "paragraphs": [
+          "Never change the date while the watch shows a time between 9 p.m. and 4 a.m.",
+          "These figures come from the manuals. For the Seiko 4R35 calibre (date only), Seiko advises against setting the date between 9 p.m. and 1 a.m. For the 4R36 (day and date, used in the Seiko 5 Sports), the window runs from 9 p.m. to 4 a.m., because the day changes later than the date, around 4 a.m. At Citizen and Orient, the window depends on the calibre. The manual has the final word: Citizen lets you find it using the calibre number engraved on the case back.",
+          "Remembering “9 p.m. to 4 a.m.” protects you in almost every case."
+        ]
+      },
+      {
+        "id": "trick",
+        "title": "The trick: 6:30",
+        "paragraphs": [
+          "A watch with hands cannot tell 10 a.m. from 10 p.m. When it shows 10 o’clock, you cannot know whether you are inside the no-go window.",
+          "The answer: move the hands to 6:30 first. Whether it is 6:30 in the morning or 6:30 in the evening, you are outside the risky hours, and you can set the date safely."
+        ]
+      },
+      {
+        "id": "method",
+        "title": "The right method in five steps",
+        "paragraphs": [
+          "1. Set the hands to 6:30. Unscrew the crown if needed, pull it to the second click and turn.",
+          "2. Set the date to yesterday. Push the crown to the first click and turn until yesterday’s date shows. On the 4R36, Seiko says one direction sets the date and the other sets the day.",
+          "3. Find midnight. Pull back to the second click and advance the hands until the date moves to today. That is midnight: you are now in the morning.",
+          "4. Advance to the exact time. If it is 3 p.m., keep going past noon. On a mechanical watch, Seiko suggests going slightly past the target time and then coming back to it, for a precise minute hand.",
+          "5. Push the crown in on the beat. If your watch hacks, the seconds hand restarts the moment you push: do it on a time signal. Screw the crown down if it was screwed.",
+          "The sign of a mistake: if the date changes around noon, the watch is set twelve hours out. Simply advance the hands by twelve hours."
+        ]
+      },
+      {
+        "id": "month",
+        "title": "The first of the month",
+        "paragraphs": [
+          "The date mechanism counts to 31 every month. After a 30-day month, and after February, the watch will show “31” instead of “1”. At the first click, advance the date by one. Do it during the day, between 4 a.m. and 9 p.m."
+        ]
+      },
+      {
+        "id": "movement",
+        "title": "Depending on the movement",
+        "paragraphs": [
+          "A stopped automatic: get it running before you set it, with a few turns of the crown if the calibre accepts hand winding. Otherwise it will stop again while you set it.",
+          "Quartz and solar: the same crown logic and the same care with the date. A solar watch that has slept in the dark may need light before it starts again.",
+          "Digital and connected watches: you set them with the buttons, not a crown. The procedure depends on the module. At Casio, the module number is engraved on the case back and the matching manual is on the brand’s website."
+        ],
+        "link": {
+          "label": "Power reserve and winding an automatic",
+          "url": "/en/guides/automatic-watch-power-reserve/"
+        }
+      },
+      {
+        "id": "habits",
+        "title": "Small habits that keep you away from the watchmaker",
+        "paragraphs": [
+          "Never set a watch in water or with wet hands: with the crown pulled out, it is no longer water-resistant. Never force anything: a crown that resists is often a crown that is not fully unscrewed. Always push the crown fully home, and screw it down if it is a screw-down crown.",
+          "Keep the manual, or at least the calibre number. It is the manual that is right when a general rule does not fit your model."
+        ],
+        "link": {
+          "label": "Reading a watch specification",
+          "url": "/en/guides/reading-a-watch-specification/"
+        }
+      }
+    ]
+  },
+  "lexique-horloger": {
+    "title": "Watch glossary: the words on a watch listing, explained simply",
+    "description": "Calibre, lug to lug, Hardlex, hacking, GMT, COSC, 316L: the terms you meet on a watch listing, grouped by theme and explained without jargon.",
+    "sections": [
+      {
+        "id": "why",
+        "title": "Why this glossary",
+        "paragraphs": [
+          "A watch listing can read like an engine manual. Yet about twenty words are enough to understand nearly all of it. Here they are, grouped by part of the watch, with what each term changes for you day to day."
+        ]
+      },
+      {
+        "id": "case",
+        "title": "The case",
+        "paragraphs": [
+          "Case: the body of the watch. Its material (steel, titanium, resin) affects weight and scratch resistance.",
+          "Diameter: the width of the case, excluding the crown. It is the most quoted figure, but it does not tell the whole story.",
+          "Lug to lug: the length from the tip of one pair of lugs to the other. It often decides whether the watch overhangs your wrist.",
+          "Lugs: the arms of the case that hold the strap. Lug width is the gap between them, and it is the strap width to buy (20 mm, 22 mm and so on).",
+          "Bezel: the ring around the crystal. On a divers’ watch it turns in one direction only, to time a dive.",
+          "Crown: the button used to set the time and date. A screw-down crown screws onto the case to keep water out more reliably.",
+          "Case back: the rear of the case. A transparent back shows the movement; a screw-down back improves water resistance.",
+          "Water resistance (ATM, bar): a test pressure, not a diving depth. 3 bar means rain; 10 bar means swimming, per the manual."
+        ],
+        "link": {
+          "label": "Water resistance explained",
+          "url": "/en/guides/watch-water-resistance-3-5-10-20-atm/"
+        }
+      },
+      {
+        "id": "crystal",
+        "title": "The crystal",
+        "paragraphs": [
+          "Sapphire: nearly scratch-proof, but it can crack from a sharp knock.",
+          "Mineral: the usual compromise. Hardlex is the name Seiko gives its hardened mineral crystal.",
+          "Acrylic (or Hesalite): it scratches, but light scratches polish out.",
+          "Antireflective coating: reduces glare so the dial is easier to read in bright sunlight."
+        ],
+        "link": {
+          "label": "Sapphire, mineral or acrylic",
+          "url": "/en/guides/sapphire-mineral-or-acrylic-crystal/"
+        }
+      },
+      {
+        "id": "dial",
+        "title": "The dial and hands",
+        "paragraphs": [
+          "Indices: the hour markers on the dial (batons, numerals, dots).",
+          "Seconds hand: the hand that counts seconds. Small seconds is a seconds hand in its own small sub-dial.",
+          "Date window: the small aperture that shows the date or day.",
+          "Lume: the material that glows in the dark after absorbing light. Super-LumiNova is the name of a very common pigment.",
+          "Sunburst: a dial brushed in rays from the centre, so it plays with the light.",
+          "Open heart: an opening in the dial that shows the balance wheel beating.",
+          "Skeleton: a watch cut away as far as possible to show the movement."
+        ]
+      },
+      {
+        "id": "movement",
+        "title": "The movement",
+        "paragraphs": [
+          "Movement or calibre: the engine of the watch. Its name (4R36, 8210, NH35…) lets you find the manual and the exact specifications.",
+          "Quartz: battery-powered, very accurate, no daily care needed.",
+          "Solar: a quartz that recharges from light. Eco-Drive is the name of Citizen’s technology.",
+          "Automatic: mechanical, wound by the movement of your wrist.",
+          "Hand winding: you wind the spring by turning the crown. Some automatics allow it too.",
+          "Power reserve: how long a mechanical watch keeps running once off the wrist. About 41 hours for the Seiko 4R36.",
+          "Hacking: the seconds hand stops when you pull the crown, so you can set the time to the second.",
+          "Jewels: small synthetic rubies used as bearings to reduce friction. Their number is not a measure of quality.",
+          "Chronometer: a watch certified for its accuracy, in Switzerland by COSC. Not to be confused with a chronograph."
+        ],
+        "link": {
+          "label": "Automatic, quartz or solar",
+          "url": "/en/guides/automatic-quartz-or-solar/"
+        }
+      },
+      {
+        "id": "functions",
+        "title": "Functions",
+        "paragraphs": [
+          "Complication: any function beyond telling the time (date, chronograph, moon phase…).",
+          "Chronograph: a built-in stopwatch, started and stopped with pushers.",
+          "Tachymeter: a scale on the bezel or dial that, used with the chronograph, gives a speed over a known distance.",
+          "GMT: an extra 24-hour hand to follow a second time zone.",
+          "Moon phase: a disc that shows the moon’s appearance through the month.",
+          "ISO 6425 divers’ watch: a divers’ watch that meets a specific testing standard, well beyond a simple water-resistance figure."
+        ],
+        "link": {
+          "label": "Divers’ watches and ISO 6425",
+          "url": "/en/guides/divers-watches-iso-6425/"
+        }
+      },
+      {
+        "id": "materials",
+        "title": "Straps and materials",
+        "paragraphs": [
+          "316L: the most common grade of stainless steel in watchmaking, chosen for its corrosion resistance.",
+          "Titanium: lighter than steel, comfortable on a large case.",
+          "PVD and DLC: very thin coatings that colour steel (black, gold, rose gold). They are durable but can wear on sharp edges.",
+          "Gold-plated: a thin layer of gold over a base metal, unlike solid gold.",
+          "Folding clasp: a clasp that folds open, so you can put the watch on without dropping it.",
+          "NATO strap: a fabric strap that passes under the case and is easy to change."
+        ]
+      },
+      {
+        "id": "next",
+        "title": "What next?",
+        "paragraphs": [
+          "With these words, a specification reads in a minute. To go further, our guide shows you how to spot what really matters for your wrist, and what is marketing."
+        ],
+        "link": {
+          "label": "Reading a watch specification",
+          "url": "/en/guides/reading-a-watch-specification/"
+        }
+      }
+    ]
   }
 }
