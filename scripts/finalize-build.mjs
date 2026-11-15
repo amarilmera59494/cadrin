@@ -38,7 +38,7 @@ for(const file of files.filter(f=>f.endsWith('.html'))){
   if(!/\bsrc=|application\/ld\+json/.test(match[1])&&match[2].trim())scriptHashes.add(`'sha256-${createHash('sha256').update(match[2].replace(/\r\n?/g,'\n')).digest('base64')}'`);
  }
 }
-const csp=`default-src 'self'; script-src 'self' ${[...scriptHashes].join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`;
+const csp=`default-src 'self'; script-src 'self' https://static.cloudflareinsights.com ${[...scriptHashes].join(' ')}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'`;
 if(csp.length>1900)throw new Error('CSP trop longue pour les en-têtes Cloudflare.');
 const assetHeaders=files.filter(f=>f.startsWith(`${dir}/_astro/`)).map(f=>`/${f.slice(dir.length+1)}\n  ! Cache-Control\n  Cache-Control: public, max-age=31536000, immutable\n`).join('\n');
 if(files.filter(f=>f.startsWith(`${dir}/_astro/`)).length+3>100)throw new Error('Limite de règles _headers Cloudflare dépassée.');

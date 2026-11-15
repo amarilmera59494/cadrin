@@ -1,3 +1,9 @@
+// Mesure d'audience Cloudflare Web Analytics : sans cookie ni identifiant lecteur, chargée sauf refus des statistiques ou signal DNT/GPC.
+{
+ const off=navigator.doNotTrack==='1'||(navigator as Navigator&{globalPrivacyControl?:boolean}).globalPrivacyControl===true;
+ let declined=false;try{const x=JSON.parse(localStorage.getItem('cadrin-measure-choice-v1')||'null');declined=!!x&&x.value==='no'&&x.until>Date.now();}catch{}
+ if(!off&&!declined&&location.hostname==='cadrin.fr'){const s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.dataset.cfBeacon=JSON.stringify({token:'499f53de13e14f9bbc097ebd93f3fb2d',spa:false});document.head.append(s);}
+}
 const panel=document.querySelector<HTMLDetailsElement>('[data-measurement]');
 if(panel){
  const key='cadrin-measure-choice-v1',ttl=180*86400000,en=document.documentElement.lang==='en',t=(a:string,b:string)=>en?b:a;
