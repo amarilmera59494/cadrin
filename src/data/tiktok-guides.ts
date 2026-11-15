@@ -144,7 +144,7 @@ export const tiktokGuides: TiktokGuide[] = [
  {
   id: "s10-offrir-sans-taille",
   kicker: "Cadeau surprise",
-  title: "Offrir une montre sans connaître son poignet",
+  title: "Son poignet ? Aucune idée : 3 astuces pour viser juste",
   summary: "Trois façons de deviner la bonne taille sans rien demander, et le bracelet le plus simple à ajuster. Vérifiez aussi les conditions de retour avant de commander.",
   guide: "/guides/offrir-une-montre/",
   guideLabel: "Lire le guide pour offrir une montre",
@@ -157,7 +157,7 @@ export const tiktokGuides: TiktokGuide[] = [
  {
   id: "s11-couleur-cadran",
   kicker: "Même montre, trois couleurs",
-  title: "Noir, bleu ou vert : quel cadran offrir ?",
+  title: "Même montre, 3 couleurs : une seule est la bonne",
   summary: "Le noir va avec tout, le bleu apporte de la couleur sans prendre toute la place, le vert est plus affirmé. Des pistes de style, pas des règles : regardez ce que la personne porte vraiment.",
   guide: "/guides/choisir-couleur-cadran/",
   guideLabel: "Lire le guide des couleurs de cadran",
@@ -170,7 +170,7 @@ export const tiktokGuides: TiktokGuide[] = [
  {
   id: "s12-duo-lui-elle",
   kicker: "Noël à deux",
-  title: "Une pour lui, une pour elle",
+  title: "La même montre, en deux tailles",
   summary: "Trois duos assortis sans être identiques : la même ligne en deux tailles. Lip Himalaya (29 et 40 mm), Orient Bambino (36 et 38 mm), Alpina Alpiner Extreme (34 et 41 mm). Photos à des échelles proches.",
   guide: "/guides/offrir-une-montre/",
   guideLabel: "Lire le guide pour offrir une montre",
