@@ -12,6 +12,19 @@ const paused = JSON.parse(fs.readFileSync(pausedFile, 'utf8'));
 const targets = catalogue.filter(p => p.orderable && p.brand !== 'Longines');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const today = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/Paris'}).format(new Date());
+// Témoin de marché : la boutique ne montre pas les mêmes produits selon le pays du visiteur. Si des liens suspendus
+// (qui renvoient vers l'accueil depuis la France) répondent normalement ici, ce contrôle ne voit pas le marché français
+// (par exemple depuis un serveur GitHub aux États-Unis) : il s'arrête sans rien modifier.
+const sentinels = paused.filter(v => v.reason === 'redirect-to-home').slice(0, 5);
+let sentinelOk = 0;
+for (const v of sentinels) {
+  try { const r = await fetch(v.source + '?bg_ref=bDlTL8AyKb', {redirect: 'manual', headers: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36', 'Accept-Language': 'fr-FR,fr;q=0.9', 'Cookie': 'localization=FR; cart_currency=EUR'}, signal: AbortSignal.timeout(20000)}); await r.body?.cancel(); if (r.status === 200) sentinelOk++; } catch {}
+  await sleep(delay);
+}
+if (sentinels.length && sentinelOk === sentinels.length) {
+  console.log(`Marché français non visible depuis cette connexion (${sentinelOk}/${sentinels.length} liens témoins répondent normalement) : contrôle ignoré, rien n'est modifié. Lancez-le depuis une connexion française : npm run links:probe.`);
+  process.exit(0);
+}
 const results = {};
 let done = 0;
 for (const p of targets) {

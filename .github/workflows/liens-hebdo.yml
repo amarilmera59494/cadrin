@@ -1,11 +1,12 @@
 # Contrôle hebdomadaire des liens Tempus : chaque lien de montre commandable est testé un par un.
 # Les liens qui renvoient vers l'accueil sont suspendus (plus de bouton d'achat, plus de page montre) ;
 # ceux qui fonctionnent à nouveau sont réactivés. En cas d'écart massif, rien n'est appliqué (garde-fou).
+# Pas de passage programmé : le 15/11/2026, depuis les serveurs GitHub (États-Unis), la boutique montrait comme valides
+# les 576 liens qui renvoient vers l'accueil en France. Le contrôle se lance à la main, depuis une connexion française
+# (npm run links:probe, puis npm run links:apply) ; ici, il s'arrête de lui-même s'il ne voit pas le marché français.
 name: Liens hebdo
 
 on:
-  schedule:
-    - cron: '37 1 * * 1' # lundi ≈ 2 h 37 à Paris (hiver)
   workflow_dispatch:
 
 permissions:
