@@ -9,9 +9,9 @@ import CadrinHeader from '../components/CadrinHeader.astro';
 import CadrinFooter from '../components/CadrinFooter.astro';
 import {site} from '../data/site';
 import {production} from '../lib/editorial';
-import {localeOf,localPath,routePairs,textFor} from '../lib/i18n';
+import {localeOf,localPath,pairedPrefix,routePairs,textFor} from '../lib/i18n';
 const locale=localeOf(Astro.url.pathname), t=textFor(locale);
-const hasAlternate=Object.entries(routePairs).some(([fr,en])=>[fr,en].includes(Astro.url.pathname));
+const hasAlternate=pairedPrefix(Astro.url.pathname)||Object.entries(routePairs).some(([fr,en])=>[fr,en].includes(Astro.url.pathname));
 interface Props {title:string;description:string;article?:boolean;notFound?:boolean;crumbs?:{name:string;url:string}[];verifiedAt?:string|null}
 const {title,description,article=false,notFound=false,crumbs=[],verifiedAt}=Astro.props;
 const fullTitle=(title+' — Cadrin').length<=70?title+' — Cadrin':title;

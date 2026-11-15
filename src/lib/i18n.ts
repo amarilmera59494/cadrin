@@ -2,6 +2,7 @@ import {featureRoutes} from '../data/feature-routes.ts';
 import {cataloguePages} from '../data/catalogue-meta.ts';
 export type Locale = 'fr' | 'en';
 export const localeOf = (path:string):Locale => path === '/en' || path.startsWith('/en/') ? 'en' : 'fr';
+export const pairedPrefix=(path:string)=>/^\/(?:montre|en\/watch)\//.test(path);
 export const routePairs:Record<string,string> = {
   '/':'/en/',
   ...featureRoutes,
@@ -32,10 +33,15 @@ export const routePairs:Record<string,string> = {
   '/guides/montre-automatique-reserve-de-marche/':'/en/guides/automatic-watch-power-reserve/',
   '/guides/montre-de-plongee-iso-6425/':'/en/guides/divers-watches-iso-6425/',
   '/guides/lire-fiche-technique-montre/':'/en/guides/reading-a-watch-specification/',
+  '/guides/regler-montre-heure-date/':'/en/guides/setting-a-watch-time-and-date/',
+  '/guides/lexique-horloger/':'/en/guides/watch-glossary/',
   ...Object.fromEntries(['casio-f91w','citizen-aw0102-13ae','citizen-aw1231','citizen-rainell-em1201-52l','citizen-tsuyosa-nj0150-81e','orient-bambino-ra-ac0m04y','seiko-srpe55','seiko-srpe55k1'].map(id=>[`/montres/${id}/`,`/en/watches/${id}/`])),
 };
 export function localPath(path:string, locale:Locale):string {
   const u=new URL(path,'https://cadrin.fr');
+  // Fiches montres générées : même identifiant dans les deux langues (/montre/<slug>/ ↔ /en/watch/<slug>/).
+  const fiche=u.pathname.match(/^\/(?:montre|en\/watch)\/(.*)$/);
+  if(fiche)return (locale==='en'?'/en/watch/':'/montre/')+fiche[1]+u.search+u.hash;
   const fr=Object.entries(routePairs).find(([,en])=>en===u.pathname)?.[0] || u.pathname;
   return (locale==='en' ? routePairs[fr] || '/en/' : fr)+u.search+u.hash;
 }

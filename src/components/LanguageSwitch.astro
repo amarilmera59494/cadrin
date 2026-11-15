@@ -1,7 +1,7 @@
 ---
-import {localeOf,localPath,routePairs} from '../lib/i18n';
+import {localeOf,localPath,pairedPrefix,routePairs} from '../lib/i18n';
 const locale=localeOf(Astro.url.pathname);
-const paired=Object.entries(routePairs).some(([fr,en])=>[fr,en].includes(Astro.url.pathname));
+const paired=pairedPrefix(Astro.url.pathname)||Object.entries(routePairs).some(([fr,en])=>[fr,en].includes(Astro.url.pathname));
 const fr=paired?localPath(Astro.url.pathname,'fr'):'/';
 const en=paired?localPath(Astro.url.pathname,'en'):'/en/';
 ---

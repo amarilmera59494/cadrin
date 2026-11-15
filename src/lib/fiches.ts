@@ -21,14 +21,15 @@ export function ficheSlug(p: Pick<CatalogueProduct, 'brand' | 'title' | 'referen
   return base.includes(ref) || base.includes(ref.replace(/[0-9]{2}[a-z]$/, '')) ? base : `${base}-${ref}`;
 }
 
-export function ficheHref(p: CatalogueProduct) { return ficheEligible(p) ? `${ficheBase}${ficheSlug(p)}/` : null; }
+export const ficheBaseEn = '/en/watch/';
+export function ficheHref(p: CatalogueProduct, en = false) { return ficheEligible(p) ? `${en ? ficheBaseEn : ficheBase}${ficheSlug(p)}/` : null; }
 
-const glassKind = (g = '') => { const s = normalise(g); return s.includes('saphir') ? 'saphir' : s.includes('resine') ? 'resine' : s.includes('acryl') || s.includes('plexi') || s.includes('hesalite') ? 'acrylique' : 'mineral'; };
+export const glassKind = (g = '') => { const s = normalise(g); return s.includes('saphir') ? 'saphir' : s.includes('resine') ? 'resine' : s.includes('acryl') || s.includes('plexi') || s.includes('hesalite') ? 'acrylique' : 'mineral'; };
 const glassLabel: Record<string, string> = {saphir: 'verre saphir', mineral: 'verre minéral', acrylique: 'verre acrylique', resine: 'verre en résine'};
 // Étanchéité en bar : marquage bar/ATM, ou mètres convertis (10 m ≈ 1 bar) quand la fiche ne donne que des mètres.
 export function waterBar(p: CatalogueProduct) { const w = waterMark(p.water); if (w !== null) return w; const m = (p.water || '').match(/^(\d+)\s*(?:m|mètres|metres)\b/i); return m ? Number(m[1]) / 10 : null; }
 const movementPhrase = (m = '') => ({Automatique: 'automatique', Quartz: 'à quartz', Solaire: 'solaire', Manuel: 'mécanique à remontage manuel', 'Connectée': 'connectée'} as Record<string, string>)[m] ?? '';
-const strapKind = (s = '') => { const n = normalise(s); return /cuir|veau|bovin|alligator/.test(n) ? 'cuir' : /acier|metal|titane|milanais|maille/.test(n) ? 'metal' : /resine|caoutchouc|silicone|nylon|tissu|nato/.test(n) ? 'souple' : ''; };
+export const strapKind = (s = '') => { const n = normalise(s); return /cuir|veau|bovin|alligator/.test(n) ? 'cuir' : /acier|metal|titane|milanais|maille/.test(n) ? 'metal' : /resine|caoutchouc|silicone|nylon|tissu|nato/.test(n) ? 'souple' : ''; };
 const mm = (n: number) => `${String(n).replace('.', ',')} mm`;
 const lower = (s = '') => /^[A-Z]{2}/.test(s) ? s : s.charAt(0).toLowerCase() + s.slice(1);
 
