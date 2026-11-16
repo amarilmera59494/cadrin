@@ -115,7 +115,7 @@ export const facebookShares = [
  {
   "slug": "deja-en-baisse",
   "title": "Déjà −50 % — Cinq montres déjà en baisse, de 99,50 € à 520 €",
-  "description": "Cinq montres déjà en baisse, de 99,50 € à 520 €. Prix barrés annoncés par le vendeur, nos prix datés à côté.",
+  "description": "Cinq montres déjà en baisse, de 99,50 € à 520 €. Nos prix relevés et datés chaque jour.",
   "image": "/partage/deja-en-baisse.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-deja-en-baisse#deja-en-baisse"
  },
@@ -128,8 +128,8 @@ export const facebookShares = [
  },
  {
   "slug": "bf-jour-j",
-  "title": "Black friday — Les remises sur les montres, avec nos prix relevés et datés à côté des prix barrés",
-  "description": "Les remises sur les montres, avec nos prix relevés et datés à côté des prix barrés.",
+  "title": "Black friday — Les remises sur les montres, avec nos prix relevés et datés",
+  "description": "Les remises sur les montres, avec nos prix relevés et datés.",
   "image": "/partage/bf-jour-j.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-bf-jour-j"
  },
