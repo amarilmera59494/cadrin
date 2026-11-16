@@ -195,5 +195,145 @@ export const facebookShares = [
   "description": "Trois montres françaises, trois budgets. Celle qui doit son nom à un président est la deuxième.",
   "image": "/partage/montres-francaises.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-montres-francaises#s16-montres-francaises"
+ },
+ {
+  "slug": "sel-femme",
+  "title": "Montres femme — Solaires, automatiques, G-Shock plus petites : les montres femme commandables, triées et comparables",
+  "description": "Solaires, automatiques, G-Shock plus petites : les montres femme commandables, triées et comparables.",
+  "image": "/partage/sel-femme.jpg",
+  "target": "https://cadrin.fr/selections/montres-femme/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-femme"
+ },
+ {
+  "slug": "sel-cadeau-homme",
+  "title": "Un cadeau pour lui — Des montres à offrir à un homme sans dépasser 200 €, avec leurs points forts et leurs limites",
+  "description": "Des montres à offrir à un homme sans dépasser 200 €, avec leurs points forts et leurs limites.",
+  "image": "/partage/sel-cadeau-homme.jpg",
+  "target": "https://cadrin.fr/selections/idees-cadeaux-homme-moins-de-200-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-cadeau-homme"
+ },
+ {
+  "slug": "sel-chronographes",
+  "title": "Chrono- graphes — Des compteurs, des poussoirs et un vrai chronomètre au poignet : les chronographes commandables",
+  "description": "Des compteurs, des poussoirs et un vrai chronomètre au poignet : les chronographes commandables.",
+  "image": "/partage/sel-chronographes.jpg",
+  "target": "https://cadrin.fr/selections/chronographes/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-chronographes"
+ },
+ {
+  "slug": "sel-petit-poignet",
+  "title": "Petit poignet — Des boîtiers discrets, pour un poignet fin ou une allure vintage",
+  "description": "Des boîtiers discrets, pour un poignet fin ou une allure vintage.",
+  "image": "/partage/sel-petit-poignet.jpg",
+  "target": "https://cadrin.fr/selections/montres-petit-poignet/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-petit-poignet"
+ },
+ {
+  "slug": "sel-100-200",
+  "title": "Le bon budget — Solaire, quartz ou automatique : ce que l’on trouve de mieux entre 100 et 200 €",
+  "description": "Solaire, quartz ou automatique : ce que l’on trouve de mieux entre 100 et 200 €.",
+  "image": "/partage/sel-100-200.jpg",
+  "target": "https://cadrin.fr/selections/montres-de-100-a-200-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-100-200"
+ },
+ {
+  "slug": "sel-solaires",
+  "title": "Montres solaires — Elles se rechargent à la lumière : pas de pile à changer, pas de remontage",
+  "description": "Elles se rechargent à la lumière : pas de pile à changer, pas de remontage.",
+  "image": "/partage/sel-solaires.jpg",
+  "target": "https://cadrin.fr/selections/montres-solaires/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-solaires"
+ },
+ {
+  "slug": "sel-etanches-200",
+  "title": "Étanches à 200 m — Natation, snorkeling, vacances : des montres marquées 20 bar ou plus",
+  "description": "Natation, snorkeling, vacances : des montres marquées 20 bar ou plus.",
+  "image": "/partage/sel-etanches-200.jpg",
+  "target": "https://cadrin.fr/selections/montres-etanches-200-metres/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-etanches-200"
+ },
+ {
+  "slug": "sel-auto-300",
+  "title": "Automa- tiques — Une mécanique au poignet, sans pile, à moins de 300 € : Citizen, Seiko, Orient et d’autres",
+  "description": "Une mécanique au poignet, sans pile, à moins de 300 € : Citizen, Seiko, Orient et d’autres.",
+  "image": "/partage/sel-auto-300.jpg",
+  "target": "https://cadrin.fr/selections/montres-automatiques-moins-de-300-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-auto-300"
+ },
+ {
+  "slug": "sel-suisses",
+  "title": "Marques suisses — Alpina, Squale, Vulcain, Swiss Military : des montres suisses commandables, comparées",
+  "description": "Alpina, Squale, Vulcain, Swiss Military : des montres suisses commandables, comparées.",
+  "image": "/partage/sel-suisses.jpg",
+  "target": "https://cadrin.fr/selections/montres-marques-suisses/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-suisses"
+ },
+ {
+  "slug": "sel-saphir-300",
+  "title": "Verre saphir — Le verre qui ne se raye presque pas, sans payer le prix d’une montre de luxe",
+  "description": "Le verre qui ne se raye presque pas, sans payer le prix d’une montre de luxe.",
+  "image": "/partage/sel-saphir-300.jpg",
+  "target": "https://cadrin.fr/selections/montres-verre-saphir-moins-de-300-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-saphir-300"
+ },
+ {
+  "slug": "marque-seiko",
+  "title": "Seiko — Seiko 5 automatique, chronographe, cadran à chiffres arabes : par où commencer chez Seiko",
+  "description": "Seiko 5 automatique, chronographe, cadran à chiffres arabes : par où commencer chez Seiko.",
+  "image": "/partage/marque-seiko.jpg",
+  "target": "https://cadrin.fr/marques/seiko/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-seiko"
+ },
+ {
+  "slug": "marque-citizen",
+  "title": "Citizen — Eco-Drive solaire, Tsuyosa automatique ou montre bijou : choisir sa Citizen",
+  "description": "Eco-Drive solaire, Tsuyosa automatique ou montre bijou : choisir sa Citizen.",
+  "image": "/partage/marque-citizen.jpg",
+  "target": "https://cadrin.fr/marques/citizen/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-citizen"
+ },
+ {
+  "slug": "marque-lip",
+  "title": "Lip — Née à Besançon en 1867 : Himalaya, Général de Gaulle, Churchill",
+  "description": "Née à Besançon en 1867 : Himalaya, Général de Gaulle, Churchill. Les Lip commandables.",
+  "image": "/partage/marque-lip.jpg",
+  "target": "https://cadrin.fr/marques/lip/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-lip"
+ },
+ {
+  "slug": "marque-orient",
+  "title": "Orient — Bambino habillée, Kamasu de plongée, cœur ouvert : des automatiques japonaises à prix doux",
+  "description": "Bambino habillée, Kamasu de plongée, cœur ouvert : des automatiques japonaises à prix doux.",
+  "image": "/partage/marque-orient.jpg",
+  "target": "https://cadrin.fr/marques/orient/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-orient"
+ },
+ {
+  "slug": "marque-squale",
+  "title": "Squale — Des montres de plongée depuis 1959, étanches jusqu’à 500 m",
+  "description": "Des montres de plongée depuis 1959, étanches jusqu’à 500 m.",
+  "image": "/partage/marque-squale.jpg",
+  "target": "https://cadrin.fr/marques/squale/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-squale"
+ },
+ {
+  "slug": "marque-timex",
+  "title": "Timex — Une marque américaine depuis 1854 : chronographes, montres de terrain et classiques accessibles",
+  "description": "Une marque américaine depuis 1854 : chronographes, montres de terrain et classiques accessibles.",
+  "image": "/partage/marque-timex.jpg",
+  "target": "https://cadrin.fr/marques/timex/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-timex"
+ },
+ {
+  "slug": "guide-etancheite",
+  "title": "3, 5, 10 ou 20 bar ? — Pluie, piscine ou plongée : ce que le chiffre d’étanchéité permet vraiment",
+  "description": "Pluie, piscine ou plongée : ce que le chiffre d’étanchéité permet vraiment.",
+  "image": "/partage/guide-etancheite.jpg",
+  "target": "https://cadrin.fr/guides/etancheite-montre-3-5-10-20-atm/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-etancheite"
+ },
+ {
+  "slug": "guide-saphir",
+  "title": "Saphir ou minéral ? — Le verre qui se raye, celui qui se fend, celui qui se polit : bien choisir",
+  "description": "Le verre qui se raye, celui qui se fend, celui qui se polit : bien choisir.",
+  "image": "/partage/guide-saphir.jpg",
+  "target": "https://cadrin.fr/guides/verre-saphir-mineral-acrylique/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-saphir"
+ },
+ {
+  "slug": "guide-plongee",
+  "title": "Vraie montre de plongée ? — Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité",
+  "description": "Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité.",
+  "image": "/partage/guide-plongee.jpg",
+  "target": "https://cadrin.fr/guides/montre-de-plongee-iso-6425/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-plongee"
+ },
+ {
+  "slug": "guide-coeur-ouvert",
+  "title": "Voir le mécanisme — Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment",
+  "description": "Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment.",
+  "image": "/partage/guide-coeur-ouvert.jpg",
+  "target": "https://cadrin.fr/guides/squelette-coeur-ouvert-tourbillon/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-coeur-ouvert"
  }
 ] as const;
