@@ -5,6 +5,20 @@ export type TiktokGuide = {id: string; kicker: string; title: string; summary: s
 
 export const tiktokGuides: TiktokGuide[] = [
  {
+  id: 's17-seiko-promo',
+  kicker: 'En promotion en ce moment',
+  title: 'Seiko à −20 % : 4 qui valent le coup',
+  summary: 'Une Seiko 5 automatique, une petite seconde au verre saphir, une 34 mm pour elle et un chronographe bleu. La promotion peut s’arrêter à tout moment : le prix affiché ici est celui du dernier relevé.',
+  guide: '/marques/seiko/',
+  guideLabel: 'Voir toutes les Seiko',
+  items: [
+   {handle: 'seiko-5-snkl23j1', name: 'Seiko 5 automatique'},
+   {handle: 'seiko-petite-seconde-acier-srk047p1', name: 'Seiko petite seconde'},
+   {handle: 'seiko-sur573', name: 'Seiko 34 mm'},
+   {handle: 'seiko-chronographe-ssb477p1', name: 'Seiko chronographe bleu'},
+  ],
+ },
+ {
   id: 's01-tsuyosa-bambino-seiko5',
   kicker: 'Le comparatif honnête',
   title: 'Tsuyosa, Bambino ou Seiko 5 ?',
