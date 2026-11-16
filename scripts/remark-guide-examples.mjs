@@ -5,7 +5,9 @@ import {purchaseLabel,orderLabel,merchantLinkAvailable,merchantInfoHref,merchant
 import {affiliateUrl} from '../src/data/affiliation.ts';
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function guideExamples(key,en=false){
- const picks=groups[key];if(!picks)throw Error('Unknown guide example group '+key);
+ const listed=groups[key];if(!listed)throw Error('Unknown guide example group '+key);
+ // Accueil : une montre en rupture disparaît d’elle-même au lieu de bloquer le déploiement quotidien.
+ const picks=key==='home'?listed.filter(([ref])=>data.products.find(p=>p.reference===ref)?.orderable):listed;
  const compared=picks.map(([ref])=>data.products.find(p=>p.reference===ref)?.id);
  const compare=picks.length>=2&&picks.length<=3&&key!=='home'&&!key.startsWith('watch-')?`<p class="guide-example-compare"><a data-compare-group="${escape(key)}" href="${en?'/en/catalogue/':'/catalogue/'}?compare=${compared.join(',')}#catalogue-comparison">${en?`Compare these ${picks.length} watches`:`Comparer ces ${picks.length} montres`} →</a></p>`:'';
  const money=n=>new Intl.NumberFormat(en?'en-GB':'fr-FR',{style:'currency',currency:'EUR'}).format(n);

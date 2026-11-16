@@ -22,7 +22,7 @@ const specs=JSON.parse(await readFile('src/data/tempus-specifications.json','utf
 
 assert.deepEqual(d.products.find(p=>p.reference==='NJ0200-50Z').dialColors,['Rose']);
 
-for(const [ref]of groups.home){assert.equal(d.products.find(p=>p.reference===ref)?.orderable,true,'Home selection needs an orderable listing: '+ref);}
+const homeOrderable=groups.home.filter(([ref])=>d.products.find(p=>p.reference===ref)?.orderable).map(([ref])=>ref);assert.ok(homeOrderable.length>=3,'Home selection needs at least 3 orderable listings: '+homeOrderable.join(', '));
 assert.equal(d.market.country,'FR');assert.equal(d.market.currency,'EUR');
 
 // Explicit markings, not guessed activities or depth conversions.
