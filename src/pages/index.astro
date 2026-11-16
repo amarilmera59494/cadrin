@@ -14,7 +14,7 @@ const budget=guides.find(g=>g.id==='montres-par-budget');
 const guide=guides.find(g=>g.id==='choisir-premiere-montre');const selection=selections[0];
 
 ---
-<Cadrin title="Une montre. Votre allure." description="Des sélections et des guides pour choisir une montre selon votre budget, votre style et votre poignet.">
+<Cadrin title="Choisir une montre : comparatifs, guides et idées cadeaux" description="Comparatifs, guides et idées cadeaux pour choisir une montre selon votre budget, votre style et votre poignet. Prix relevés chaque jour.">
  <section class="home-hero"><div class="hero-copy"><span class="eyebrow">Le sens du porté</span><h1>Une montre.<br/><span>Votre allure.</span></h1><p>Des sélections et des guides pour choisir une montre selon votre budget, votre style et votre poignet.</p><div class="hero-actions"><a class="button" href="#choisir">Trouver ma montre <span aria-hidden="true">↗</span></a>{guide&&<a class="hero-secondary" href={`/guides/${guide.id}/`}>Choisir ma première montre <span aria-hidden="true">→</span></a>}</div></div><Photo name="sleeve" eager sizes="(max-width: 700px) 100vw, 54vw"/></section>
  <HomeHighlights part="season"/>
  <SocialEntry/>

@@ -9,6 +9,7 @@ const files=await walk(dir), results=[];const errors=[];
 for(const file of files.filter(f=>f.endsWith('.html'))){const html=await readFile(file,'utf8');const route=file.slice(dir.length);const is404=route==='/404.html';
  if(/AU PORTÉ|Étude de design|\/concepts\/|cadrin\.com/.test(html))errors.push(`${route}: marque ou concept archivé`);
  const noindex=html.includes('content="noindex, nofollow"');if(noindex!==(!production||is404))errors.push(`${route}: robots incorrects`);
+ const softNoindex=html.includes('content="noindex, follow"');if(softNoindex&&!/^\/(?:en\/)?(?:mes-favoris|saved-watches|catalogue|partage)\//.test(route))errors.push(`${route}: noindex inattendu`);
  if(production&&!is404&&!html.includes('rel="canonical" href="https://cadrin.fr/'))errors.push(`${route}: canonical absent`);
  if(!production&&html.includes('rel="canonical"'))errors.push(`${route}: canonical en preview`);
  // Every product exit, including source citations, must credit the real account.
@@ -52,7 +53,7 @@ if(files.some(f=>f.includes('/concepts/')))errors.push('Concepts dans le build')
 const hasSitemap=files.includes(`${dir}/sitemap.xml`);if(hasSitemap!==production)errors.push('Sitemap incorrect');
 if(production){
  const sitemap=await readFile(`${dir}/sitemap.xml`,'utf8');
- const expected=files.filter(f=>f.endsWith('/index.html')&&!f.includes('/partage/')).map(f=>'https://cadrin.fr/'+f.slice(dir.length+1,-10)).sort();
+ const expected=[];for(const f of files.filter(f=>f.endsWith('/index.html')&&!f.includes('/partage/'))){const url='https://cadrin.fr/'+f.slice(dir.length+1,-10),html=await readFile(f,'utf8');if(html.includes('content="noindex'))continue;if(html.match(/<link rel="canonical" href="([^"]+)"/)?.[1]!==url)continue;expected.push(url);}expected.sort();
  const actual=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort();
  if(JSON.stringify(actual)!==JSON.stringify(expected))errors.push('Sitemap différent des pages indexables générées');
 }

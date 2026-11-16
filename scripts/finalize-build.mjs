@@ -24,6 +24,14 @@ for(const file of files.filter(f=>f.endsWith('.html'))){
  if(missing.length)throw new Error(`Lien Tempus sans affiliation dans ${file} : ${missing[0][0]}`);
  if(next!==html)await writeFile(file,next);
 }
+// Liens internes vers des vues filtrées (?brand=, ?dial=, ?compare=…) : rel="nofollow", pour que Google passe son temps
+// sur les vraies pages (ces vues ont déjà une canonique vers la page sans filtre).
+let filterLinks=0;
+for(const file of files.filter(f=>f.endsWith('.html'))){
+ const html=await readFile(file,'utf8');
+ const next=html.replace(/<a\b[^>]*>/g,tag=>{const h=tag.match(/\shref="(\/[^"#]*\?[^"]*)"/);if(!h||/\brel=/.test(tag))return tag;filterLinks++;return tag.replace(/^<a\b/,'<a rel="nofollow"');});
+ if(next!==html)await writeFile(file,next);
+}
 // Typographie française sur le texte visible des pages françaises : espace insécable avant : ; ? ! » et après «.
 // Seuls les nœuds de texte sont touchés (jamais les balises, attributs, scripts ou styles).
 let typoPages=0;
@@ -49,7 +57,16 @@ const moved=JSON.parse(await readFile('src/data/redirects.json','utf8'));
 for(const {from,to} of moved){if(!existsSync(`${dir}${to}index.html`))throw new Error(`Redirection vers une page absente : ${to}`);if(existsSync(`${dir}${from}index.html`))throw new Error(`Redirection depuis une page encore publiée : ${from}`);}
 await writeFile(`${dir}/_redirects`,moved.map(({from,to})=>`${from} ${to} 301`).join('\n')+'\n');
 await writeFile(`${dir}/robots.txt`,`User-agent: *\nAllow: /\n${production?'Sitemap: https://cadrin.fr/sitemap.xml\n':'# Preview : noindex dans le HTML et les en-têtes. Aucun sitemap.\n'}`);
-if(production)await writeFile(`${dir}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.filter(r=>!r.startsWith('/partage/')).map(r=>`<url><loc>https://cadrin.fr${r}</loc></url>`).join('')}</urlset>`);
+// Plan du site : seulement les pages indexables dont la canonique est elle-même (pas de noindex, pas de page doublon).
+const indexable=[];
+for(const r of routes.filter(r=>!r.startsWith('/partage/'))){
+ const html=await readFile(`${dir}${r}index.html`,'utf8');
+ if(/<meta name="robots" content="noindex/.test(html))continue;
+ const canon=html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+ if(canon&&canon!=='https://cadrin.fr'+r)continue;
+ indexable.push(r);
+}
+if(production)await writeFile(`${dir}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${indexable.map(r=>`<url><loc>https://cadrin.fr${r}</loc></url>`).join('')}</urlset>`);
 await mkdir('evidence/cadrin',{recursive:true});
 await writeFile(`evidence/cadrin/${production?'production':'preview'}-routes.json`,JSON.stringify(routes,null,2));
 console.log(`${production?"Production":"Preview"} : ${routes.length} routes, headers et robots générés ; ${tagged} liens Tempus complétés avec l’affiliation.`);

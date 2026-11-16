@@ -29,7 +29,7 @@ const descBase=`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(che
 const missingSpecs=[!p.caseSize&&'Dimension du boîtier',!p.glass&&'Verre',!p.water&&'Étanchéité'].filter(Boolean) as string[];
 const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.guide!])).values()];
 ---
-<Cadrin title={title} description={description} crumbs={[{name:'Catalogue',url:'/catalogue/'},{name:`${p.brand} ${p.reference}`,url:`/montre/${ficheSlug(p)}/`}]}>
+<Cadrin title={title} description={description} canonicalPath={analysis?`/montres/${analysis}/`:undefined} crumbs={[{name:'Catalogue',url:'/catalogue/'},{name:`${p.brand} ${p.reference}`,url:`/montre/${ficheSlug(p)}/`}]}>
  <div class="container fiche">
   <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/catalogue/">Catalogue</a><span>/</span><a href={'/catalogue/?brand='+encodeURIComponent(p.brand)}>{p.brand}</a><span>/</span><span>{p.reference}</span></nav>
   <header class="fiche-head">
