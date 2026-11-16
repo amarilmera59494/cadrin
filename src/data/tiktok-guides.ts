@@ -14,7 +14,7 @@ export const tiktokGuides: TiktokGuide[] = [
   items: [
    {handle: 'seiko-5-snkl23j1', name: 'Seiko 5 SNKL23', plus: ['Réputée increvable', 'La vraie automatique la moins chère des trois', 'Un 38 mm qui va à presque tous les poignets'], minus: ['Ni remontage à la main, ni stop-seconde', 'Précision variable d’un exemplaire à l’autre']},
    {handle: 'citizen-tsuyosa-noir-nj0150-81e', name: 'Citizen Tsuyosa', plus: ['Verre saphir, très résistant aux rayures', 'Bracelet intégré, effet « montre chère »', 'Étanche à 50 m'], minus: ['Couronne petite, pas facile à saisir', 'Passe mal sous une manche ajustée']},
-   {handle: 'orient-classic-ra-ac0m04y', name: 'Orient Bambino', plus: ['Le verre bombé, très habillé', 'Paraît plus fine qu’elle ne l’est', 'Mouvement conçu et fabriqué par Orient'], minus: ['Verre minéral, plus sensible aux rayures qu’un saphir', 'Bracelet cuir d’origine jugé moyen', '30 m : pas faite pour nager']},
+   {handle: 'orient-bambino-38mm-ra-bb0002s', name: 'Orient Bambino', plus: ['Le verre bombé, très habillé', 'Paraît plus fine qu’elle ne l’est', 'Mouvement conçu et fabriqué par Orient'], minus: ['Verre minéral, plus sensible aux rayures qu’un saphir', 'Bracelet cuir d’origine jugé moyen', '30 m : pas faite pour nager']},
   ],
   sources: [
    {label: 'Avis clients Citizen sur la Tsuyosa (reviews.io)', url: 'https://www.reviews.io/product-reviews/store/citizenwatch-com/NJ0150-56X?page=1'},
@@ -32,7 +32,7 @@ export const tiktokGuides: TiktokGuide[] = [
   guideLabel: 'Lire le guide des tailles de montre',
   items: [
    {handle: 'citizen-tsuyosa-vert-37mm-nj0200-50x', name: 'Tsuyosa 37 mm'},
-   {handle: 'orient-classic-ra-ac0m04y', name: 'Bambino 38,5 mm'},
+   {handle: 'orient-bambino-38mm-ra-bb0002s', name: 'Bambino 38 mm'},
    {handle: 'citizen-tsuyosa-verte-nj0150-81x', name: 'Tsuyosa 40 mm'},
   ],
  },
@@ -122,7 +122,7 @@ export const tiktokGuides: TiktokGuide[] = [
   guide: "/guides/etancheite-montre-3-5-10-20-atm/",
   guideLabel: "Lire le guide de l’étanchéité",
   items: [
-   {handle: "orient-classic-ra-ac0m04y", name: "Orient Bambino · 30 m"},
+   {handle: "orient-bambino-38mm-ra-bb0002s", name: "Orient Bambino · 30 m"},
    {handle: "citizen-tsuyosa-bleu-nj0150-81l", name: "Citizen Tsuyosa · 50 m"},
    {handle: "citizen-tsuyosa-shore-nj0234-58x", name: "Tsuyosa Shore · 100 m"},
    {handle: "casio-g-shock-ga-2100-1a1er", name: "G-Shock GA-2100 · 200 m"},
@@ -150,7 +150,7 @@ export const tiktokGuides: TiktokGuide[] = [
   guideLabel: "Lire le guide pour offrir une montre",
   items: [
    {handle: "citizen-aw0102-13ae", name: "Citizen Eco-Drive · 40 mm"},
-   {handle: "lip-rallye-chronographe-39-mm-671808", name: "Lip Rallye chrono · 39 mm"},
+   {handle: "lip-himalaya-chronographe-40-mm-671592", name: "Lip Himalaya chrono · 40 mm"},
    {handle: "orient-bambino-36mm-ra-bb0103s30b", name: "Orient Bambino · 36 mm"},
   ],
  },
@@ -193,7 +193,7 @@ export const tiktokGuides: TiktokGuide[] = [
   items: [
    {handle: "seiko-petite-seconde-acier-srk047p1", name: "Classique · Seiko"},
    {handle: "casio-g-shock-ga-2100-1a1er", name: "Sport · G-Shock"},
-   {handle: "lip-rallye-chronographe-39-mm-671808", name: "Rétro · Lip"},
+   {handle: "lip-himalaya-chronographe-40-mm-671592", name: "Rétro · Lip"},
    {handle: "citizen-tsuyosa-shore-nj0234-58x", name: "Baroudeur · Citizen"},
   ],
  },

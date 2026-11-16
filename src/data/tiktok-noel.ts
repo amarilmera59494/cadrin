@@ -161,8 +161,8 @@ export const tiktokNoel = [
     "profile": "La couleur qui change tout"
    },
    {
-    "handle": "orient-classic-ra-ac0m04y",
-    "name": "Orient Classic Bambino",
+    "handle": "orient-bambino-38mm-ra-bb0002s",
+    "name": "Orient Bambino 38 mm",
     "profile": "La classique habillée"
    },
    {
