@@ -114,224 +114,224 @@ export const facebookShares = [
  },
  {
   "slug": "deja-en-baisse",
-  "title": "Déjà −50 % — Cinq montres déjà en baisse, de 99,50 € à 520 €",
+  "title": "Déjà −50 % : cinq montres en baisse avant le Black Friday",
   "description": "Cinq montres déjà en baisse, de 99,50 € à 520 €. Nos prix relevés et datés chaque jour.",
   "image": "/partage/deja-en-baisse.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-deja-en-baisse#deja-en-baisse"
  },
  {
   "slug": "bf-reflexes",
-  "title": "−50 % ? vérifiez ça d’abord — Trois réflexes avant d’acheter une montre en promotion",
+  "title": "Montre en promo : 3 réflexes avant d’acheter au Black Friday",
   "description": "Trois réflexes avant d’acheter une montre en promotion. Le troisième évite le piège le plus courant.",
   "image": "/partage/bf-reflexes.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-bf-reflexes"
  },
  {
   "slug": "bf-jour-j",
-  "title": "Black friday — Les remises sur les montres, avec nos prix relevés et datés chaque jour depuis le 14 novembre",
+  "title": "Black Friday montres : les remises, avec nos prix relevés et datés",
   "description": "Les remises sur les montres, avec nos prix relevés et datés chaque jour depuis le 14 novembre.",
   "image": "/partage/bf-jour-j.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-bf-jour-j"
  },
  {
   "slug": "offrir-sans-taille",
-  "title": "Son poignet ? aucune idée — Trois astuces pour offrir une montre à la bonne taille, sans rien demander",
+  "title": "Offrir une montre sans connaître la taille de son poignet : 3 astuces",
   "description": "Trois astuces pour offrir une montre à la bonne taille, sans rien demander.",
   "image": "/partage/offrir-sans-taille.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-offrir-sans-taille#s10-offrir-sans-taille"
  },
  {
   "slug": "duo-lui-elle",
-  "title": "La même montre deux tailles — Trois duos assortis, de 199 € à 1 695 € la montre, et la règle pour ne pas faire « jumeaux »",
+  "title": "Montres assorties pour couple : 3 duos à offrir à Noël",
   "description": "Trois duos assortis, de 199 € à 1 695 € la montre, et la règle pour ne pas faire « jumeaux ».",
   "image": "/partage/duo-lui-elle.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-duo-lui-elle#s12-duo-lui-elle"
  },
  {
   "slug": "regler-montre",
-  "title": "Régler sa montre — La plage horaire où l’on ne touche jamais la date, et la méthode en cinq gestes",
+  "title": "Comment régler l’heure et la date d’une montre sans l’abîmer",
   "description": "La plage horaire où l’on ne touche jamais la date, et la méthode en cinq gestes.",
   "image": "/partage/regler-montre.jpg",
   "target": "https://cadrin.fr/guides/regler-montre-heure-date/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-regler-montre"
  },
  {
   "slug": "27-fois-plus-chere",
-  "title": "27 fois plus chère — Ce que vous payez vraiment à chaque palier de prix",
+  "title": "Montre à 100 € ou à 2 700 € : ce que vous payez vraiment",
   "description": "Ce que vous payez vraiment à chaque palier de prix. Le plus gros saut de qualité n’est pas où l’on croit.",
   "image": "/partage/27-fois-plus-chere.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-27-fois-plus-chere#s14-27-fois-plus-chere"
  },
  {
   "slug": "couleur-cadran",
-  "title": "Une seule est la bonne — Noir, bleu ou vert : le test des dix secondes pour choisir celle qui ira avec tout",
+  "title": "Quelle couleur de cadran choisir : noir, bleu ou vert ?",
   "description": "Noir, bleu ou vert : le test des dix secondes pour choisir celle qui ira avec tout.",
   "image": "/partage/couleur-cadran.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-couleur-cadran#s11-couleur-cadran"
  },
  {
   "slug": "lexique-horloger",
-  "title": "Les mots d’une montre — Calibre, corne à corne, stop-seconde, GMT : les termes d’une fiche, expliqués simplement",
+  "title": "Lexique horloger : les mots d’une fiche montre expliqués",
   "description": "Calibre, corne à corne, stop-seconde, GMT : les termes d’une fiche, expliqués simplement.",
   "image": "/partage/lexique-horloger.jpg",
   "target": "https://cadrin.fr/guides/lexique-horloger/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-lexique-horloger"
  },
  {
   "slug": "marques-connaisseurs",
-  "title": "4 marques méconnues — Suisse, Allemagne, France : des montres de passionnés que l’on croise rarement",
+  "title": "4 marques de montres méconnues : Suisse, Allemagne, France",
   "description": "Suisse, Allemagne, France : des montres de passionnés que l’on croise rarement.",
   "image": "/partage/marques-connaisseurs.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marques-connaisseurs#s15-marques-connaisseurs"
  },
  {
   "slug": "alpina",
-  "title": "Alpina — Des montres sportives suisses depuis 1883 : quinze modèles commandables, avec leurs caractéristiques sourcées",
+  "title": "Alpina : montres sportives suisses depuis 1883",
   "description": "Des montres sportives suisses depuis 1883 : quinze modèles commandables, avec leurs caractéristiques sourcées.",
   "image": "/partage/alpina.jpg",
   "target": "https://cadrin.fr/marques/alpina/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-alpina"
  },
  {
   "slug": "montres-francaises",
-  "title": "185 € ou 2 390 € ? — Trois montres françaises, trois budgets",
+  "title": "Montres françaises : 3 marques, de 185 € à 2 390 €",
   "description": "Trois montres françaises, trois budgets. Celle qui doit son nom à un président est la deuxième.",
   "image": "/partage/montres-francaises.jpg",
   "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-montres-francaises#s16-montres-francaises"
  },
  {
   "slug": "sel-femme",
-  "title": "Montres femme — Solaires, automatiques, G-Shock plus petites : les montres femme commandables, triées et comparables",
+  "title": "Montres femme : la sélection, du petit prix à l’automatique",
   "description": "Solaires, automatiques, G-Shock plus petites : les montres femme commandables, triées et comparables.",
   "image": "/partage/sel-femme.jpg",
   "target": "https://cadrin.fr/selections/montres-femme/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-femme"
  },
  {
   "slug": "sel-cadeau-homme",
-  "title": "Un cadeau pour lui — Des montres à offrir à un homme sans dépasser 200 €, avec leurs points forts et leurs limites",
+  "title": "Idée cadeau homme : des montres à moins de 200 €",
   "description": "Des montres à offrir à un homme sans dépasser 200 €, avec leurs points forts et leurs limites.",
   "image": "/partage/sel-cadeau-homme.jpg",
   "target": "https://cadrin.fr/selections/idees-cadeaux-homme-moins-de-200-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-cadeau-homme"
  },
  {
   "slug": "sel-chronographes",
-  "title": "Chrono- graphes — Des compteurs, des poussoirs et un vrai chronomètre au poignet : les chronographes commandables",
+  "title": "Montres chronographes : la sélection, du quartz au chrono suisse",
   "description": "Des compteurs, des poussoirs et un vrai chronomètre au poignet : les chronographes commandables.",
   "image": "/partage/sel-chronographes.jpg",
   "target": "https://cadrin.fr/selections/chronographes/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-chronographes"
  },
  {
   "slug": "sel-petit-poignet",
-  "title": "Petit poignet — Des boîtiers discrets, pour un poignet fin ou une allure vintage, avec la taille exacte de chacun",
+  "title": "Montre pour petit poignet : la sélection des petits formats",
   "description": "Des boîtiers discrets, pour un poignet fin ou une allure vintage, avec la taille exacte de chacun.",
   "image": "/partage/sel-petit-poignet.jpg",
   "target": "https://cadrin.fr/selections/montres-petit-poignet/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-petit-poignet"
  },
  {
   "slug": "sel-100-200",
-  "title": "Le bon budget — Solaire, quartz ou automatique : ce que l’on trouve de mieux entre 100 et 200 €",
+  "title": "Montres de 100 à 200 € : la sélection",
   "description": "Solaire, quartz ou automatique : ce que l’on trouve de mieux entre 100 et 200 €.",
   "image": "/partage/sel-100-200.jpg",
   "target": "https://cadrin.fr/selections/montres-de-100-a-200-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-100-200"
  },
  {
   "slug": "sel-solaires",
-  "title": "Montres solaires — Elles se rechargent à la lumière : pas de pile à changer, pas de remontage",
+  "title": "Montres solaires : jamais de pile à changer",
   "description": "Elles se rechargent à la lumière : pas de pile à changer, pas de remontage.",
   "image": "/partage/sel-solaires.jpg",
   "target": "https://cadrin.fr/selections/montres-solaires/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-solaires"
  },
  {
   "slug": "sel-etanches-200",
-  "title": "Étanches à 200 m — Natation, snorkeling, vacances : des montres marquées 20 bar ou plus, de la G-Shock à la plongeuse",
+  "title": "Montres étanches à 200 m : la sélection",
   "description": "Natation, snorkeling, vacances : des montres marquées 20 bar ou plus, de la G-Shock à la plongeuse.",
   "image": "/partage/sel-etanches-200.jpg",
   "target": "https://cadrin.fr/selections/montres-etanches-200-metres/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-etanches-200"
  },
  {
   "slug": "sel-auto-300",
-  "title": "Automa- tiques — Une mécanique au poignet, sans pile, à moins de 300 € : Citizen, Seiko, Orient et d’autres",
+  "title": "Montres automatiques à moins de 300 €",
   "description": "Une mécanique au poignet, sans pile, à moins de 300 € : Citizen, Seiko, Orient et d’autres.",
   "image": "/partage/sel-auto-300.jpg",
   "target": "https://cadrin.fr/selections/montres-automatiques-moins-de-300-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-auto-300"
  },
  {
   "slug": "sel-suisses",
-  "title": "Marques suisses — Alpina, Squale, Vulcain, Swiss Military : des montres suisses commandables, comparées",
+  "title": "Montres suisses : la sélection, d’Alpina à Squale",
   "description": "Alpina, Squale, Vulcain, Swiss Military : des montres suisses commandables, comparées.",
   "image": "/partage/sel-suisses.jpg",
   "target": "https://cadrin.fr/selections/montres-marques-suisses/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-suisses"
  },
  {
   "slug": "sel-saphir-300",
-  "title": "Verre saphir — Le verre qui ne se raye presque pas, sans payer le prix d’une montre de luxe",
+  "title": "Montres avec verre saphir à moins de 300 €",
   "description": "Le verre qui ne se raye presque pas, sans payer le prix d’une montre de luxe.",
   "image": "/partage/sel-saphir-300.jpg",
   "target": "https://cadrin.fr/selections/montres-verre-saphir-moins-de-300-euros/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-saphir-300"
  },
  {
   "slug": "marque-seiko",
-  "title": "Seiko — Seiko 5 automatique, chronographe, cadran à chiffres arabes : par où commencer chez Seiko",
+  "title": "Seiko : du quartz à la mécanique, trouver sa montre",
   "description": "Seiko 5 automatique, chronographe, cadran à chiffres arabes : par où commencer chez Seiko.",
   "image": "/partage/marque-seiko.jpg",
   "target": "https://cadrin.fr/marques/seiko/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-seiko"
  },
  {
   "slug": "marque-citizen",
-  "title": "Citizen — Eco-Drive solaire, Tsuyosa automatique ou montre bijou : choisir sa Citizen",
+  "title": "Citizen : Eco-Drive, Tsuyosa ou montre bijou ?",
   "description": "Eco-Drive solaire, Tsuyosa automatique ou montre bijou : choisir sa Citizen.",
   "image": "/partage/marque-citizen.jpg",
   "target": "https://cadrin.fr/marques/citizen/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-citizen"
  },
  {
   "slug": "marque-lip",
-  "title": "Lip — Née à Besançon en 1867 : Himalaya, Général de Gaulle, Churchill",
+  "title": "Lip : la marque horlogère française née en 1867",
   "description": "Née à Besançon en 1867 : Himalaya, Général de Gaulle, Churchill. Les Lip commandables.",
   "image": "/partage/marque-lip.jpg",
   "target": "https://cadrin.fr/marques/lip/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-lip"
  },
  {
   "slug": "marque-orient",
-  "title": "Orient — Bambino habillée, Kamasu de plongée, cœur ouvert : des automatiques japonaises à prix doux",
+  "title": "Orient : Bambino, Kamasu ou cœur ouvert ?",
   "description": "Bambino habillée, Kamasu de plongée, cœur ouvert : des automatiques japonaises à prix doux.",
   "image": "/partage/marque-orient.jpg",
   "target": "https://cadrin.fr/marques/orient/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-orient"
  },
  {
   "slug": "marque-squale",
-  "title": "Squale — Des montres de plongée depuis 1959, étanches jusqu’à 500 m : les Squale commandables",
+  "title": "Squale : montres de plongée suisses depuis 1959",
   "description": "Des montres de plongée depuis 1959, étanches jusqu’à 500 m : les Squale commandables.",
   "image": "/partage/marque-squale.jpg",
   "target": "https://cadrin.fr/marques/squale/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-squale"
  },
  {
   "slug": "marque-timex",
-  "title": "Timex — Une marque américaine depuis 1854 : chronographes, montres de terrain et classiques accessibles",
+  "title": "Timex : la montre américaine accessible",
   "description": "Une marque américaine depuis 1854 : chronographes, montres de terrain et classiques accessibles.",
   "image": "/partage/marque-timex.jpg",
   "target": "https://cadrin.fr/marques/timex/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-timex"
  },
  {
   "slug": "guide-etancheite",
-  "title": "3, 5, 10 ou 20 bar ? — Pluie, piscine ou plongée : ce que le chiffre d’étanchéité permet vraiment",
+  "title": "Montre étanche : que veulent dire 3, 5, 10 et 20 ATM ?",
   "description": "Pluie, piscine ou plongée : ce que le chiffre d’étanchéité permet vraiment.",
   "image": "/partage/guide-etancheite.jpg",
   "target": "https://cadrin.fr/guides/etancheite-montre-3-5-10-20-atm/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-etancheite"
  },
  {
   "slug": "guide-saphir",
-  "title": "Saphir ou minéral ? — Le verre qui se raye, celui qui se fend, celui qui se polit : bien choisir",
+  "title": "Verre saphir, minéral ou acrylique : lequel choisir ?",
   "description": "Le verre qui se raye, celui qui se fend, celui qui se polit : bien choisir.",
   "image": "/partage/guide-saphir.jpg",
   "target": "https://cadrin.fr/guides/verre-saphir-mineral-acrylique/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-saphir"
  },
  {
   "slug": "guide-plongee",
-  "title": "Vraie montre de plongée ? — Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité, et comment la reconnaître",
+  "title": "Montre de plongée : ce que garantit la norme ISO 6425",
   "description": "Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité, et comment la reconnaître.",
   "image": "/partage/guide-plongee.jpg",
   "target": "https://cadrin.fr/guides/montre-de-plongee-iso-6425/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-plongee"
  },
  {
   "slug": "guide-coeur-ouvert",
-  "title": "Voir le mécanisme — Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment du mécanisme d’une montre",
+  "title": "Squelette, cœur ouvert ou tourbillon : les différences",
   "description": "Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment du mécanisme d’une montre.",
   "image": "/partage/guide-coeur-ouvert.jpg",
   "target": "https://cadrin.fr/guides/squelette-coeur-ouvert-tourbillon/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-coeur-ouvert"
