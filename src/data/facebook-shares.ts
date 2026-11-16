@@ -1,4 +1,4 @@
-// Pages de partage Facebook (aperçu de lien). Généré par marketing/facebook-01/share.mjs.
+// Pages de partage Facebook (aperçu de lien). Série 01 : marketing/facebook-01/share.mjs ; série 02 : marketing/serie-02/render.mjs.
 export const facebookShares = [
  {
   "slug": "noel-lui",
@@ -111,5 +111,89 @@ export const facebookShares = [
   "description": "Black Friday 2026 : nous avons relevé les prix des montres le matin du 27 novembre et comparé chacun à notre relevé du 14 novembre. Seules les vraies baisses portent la mention « baisse vérifiée ». Montres homme et femme, idées cadeaux de Noël.",
   "image": "/partage/black-friday-jour-j.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=bf-jour-j"
+ },
+ {
+  "slug": "deja-en-baisse",
+  "title": "Déjà −50 % — Cinq montres déjà en baisse, de 99,50 € à 520 €",
+  "description": "Cinq montres déjà en baisse, de 99,50 € à 520 €. Prix barrés annoncés par le vendeur, nos prix datés à côté.",
+  "image": "/partage/deja-en-baisse.jpg",
+  "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-deja-en-baisse#deja-en-baisse"
+ },
+ {
+  "slug": "bf-reflexes",
+  "title": "−50 % ? vérifiez ça d’abord — Trois réflexes avant d’acheter une montre en promotion",
+  "description": "Trois réflexes avant d’acheter une montre en promotion. Le troisième évite le piège le plus courant.",
+  "image": "/partage/bf-reflexes.jpg",
+  "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-bf-reflexes"
+ },
+ {
+  "slug": "bf-jour-j",
+  "title": "Black friday — Les remises sur les montres, avec nos prix relevés et datés à côté des prix barrés",
+  "description": "Les remises sur les montres, avec nos prix relevés et datés à côté des prix barrés.",
+  "image": "/partage/bf-jour-j.jpg",
+  "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-bf-jour-j"
+ },
+ {
+  "slug": "offrir-sans-taille",
+  "title": "Son poignet ? aucune idée — Trois astuces pour offrir une montre à la bonne taille, sans rien demander",
+  "description": "Trois astuces pour offrir une montre à la bonne taille, sans rien demander.",
+  "image": "/partage/offrir-sans-taille.jpg",
+  "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-offrir-sans-taille#s10-offrir-sans-taille"
+ },
+ {
+  "slug": "duo-lui-elle",
+  "title": "La même montre deux tailles — Trois duos assortis, de 199 € à 1 695 € la montre, et la règle pour ne pas faire « jumeaux »",
+  "description": "Trois duos assortis, de 199 € à 1 695 € la montre, et la règle pour ne pas faire « jumeaux ».",
+  "image": "/partage/duo-lui-elle.jpg",
+  "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-duo-lui-elle#s12-duo-lui-elle"
+ },
+ {
+  "slug": "regler-montre",
+  "title": "Régler sa montre — La plage horaire où l’on ne touche jamais la date, et la méthode en cinq gestes",
+  "description": "La plage horaire où l’on ne touche jamais la date, et la méthode en cinq gestes.",
+  "image": "/partage/regler-montre.jpg",
+  "target": "https://cadrin.fr/guides/regler-montre-heure-date/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-regler-montre"
+ },
+ {
+  "slug": "27-fois-plus-chere",
+  "title": "27 fois plus chère — Ce que vous payez vraiment à chaque palier de prix",
+  "description": "Ce que vous payez vraiment à chaque palier de prix. Le plus gros saut de qualité n’est pas où l’on croit.",
+  "image": "/partage/27-fois-plus-chere.jpg",
+  "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-27-fois-plus-chere#s14-27-fois-plus-chere"
+ },
+ {
+  "slug": "couleur-cadran",
+  "title": "Une seule est la bonne — Noir, bleu ou vert : le test des dix secondes pour choisir celle qui ira avec tout",
+  "description": "Noir, bleu ou vert : le test des dix secondes pour choisir celle qui ira avec tout.",
+  "image": "/partage/couleur-cadran.jpg",
+  "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-couleur-cadran#s11-couleur-cadran"
+ },
+ {
+  "slug": "lexique-horloger",
+  "title": "Les mots d’une montre — Calibre, corne à corne, stop-seconde, GMT : les termes d’une fiche, expliqués simplement",
+  "description": "Calibre, corne à corne, stop-seconde, GMT : les termes d’une fiche, expliqués simplement.",
+  "image": "/partage/lexique-horloger.jpg",
+  "target": "https://cadrin.fr/guides/lexique-horloger/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-lexique-horloger"
+ },
+ {
+  "slug": "marques-connaisseurs",
+  "title": "4 marques méconnues — Suisse, Allemagne, France : des montres de passionnés que l’on croise rarement",
+  "description": "Suisse, Allemagne, France : des montres de passionnés que l’on croise rarement.",
+  "image": "/partage/marques-connaisseurs.jpg",
+  "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marques-connaisseurs#s15-marques-connaisseurs"
+ },
+ {
+  "slug": "alpina",
+  "title": "Alpina — Des montres sportives suisses depuis 1883 : quinze modèles commandables, avec leurs caractéristiques sourcées",
+  "description": "Des montres sportives suisses depuis 1883 : quinze modèles commandables, avec leurs caractéristiques sourcées.",
+  "image": "/partage/alpina.jpg",
+  "target": "https://cadrin.fr/marques/alpina/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-alpina"
+ },
+ {
+  "slug": "montres-francaises",
+  "title": "185 € ou 2 390 € ? — Trois montres françaises, trois budgets",
+  "description": "Trois montres françaises, trois budgets. Celle qui doit son nom à un président est la deuxième.",
+  "image": "/partage/montres-francaises.jpg",
+  "target": "https://cadrin.fr/tiktok/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-montres-francaises#s16-montres-francaises"
  }
 ] as const;
