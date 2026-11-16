@@ -128,8 +128,8 @@ export const facebookShares = [
  },
  {
   "slug": "bf-jour-j",
-  "title": "Black friday — Les remises sur les montres, avec nos prix relevés et datés",
-  "description": "Les remises sur les montres, avec nos prix relevés et datés.",
+  "title": "Black friday — Les remises sur les montres, avec nos prix relevés et datés chaque jour depuis le 14 novembre",
+  "description": "Les remises sur les montres, avec nos prix relevés et datés chaque jour depuis le 14 novembre.",
   "image": "/partage/bf-jour-j.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-bf-jour-j"
  },
@@ -219,8 +219,8 @@ export const facebookShares = [
  },
  {
   "slug": "sel-petit-poignet",
-  "title": "Petit poignet — Des boîtiers discrets, pour un poignet fin ou une allure vintage",
-  "description": "Des boîtiers discrets, pour un poignet fin ou une allure vintage.",
+  "title": "Petit poignet — Des boîtiers discrets, pour un poignet fin ou une allure vintage, avec la taille exacte de chacun",
+  "description": "Des boîtiers discrets, pour un poignet fin ou une allure vintage, avec la taille exacte de chacun.",
   "image": "/partage/sel-petit-poignet.jpg",
   "target": "https://cadrin.fr/selections/montres-petit-poignet/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-petit-poignet"
  },
@@ -240,8 +240,8 @@ export const facebookShares = [
  },
  {
   "slug": "sel-etanches-200",
-  "title": "Étanches à 200 m — Natation, snorkeling, vacances : des montres marquées 20 bar ou plus",
-  "description": "Natation, snorkeling, vacances : des montres marquées 20 bar ou plus.",
+  "title": "Étanches à 200 m — Natation, snorkeling, vacances : des montres marquées 20 bar ou plus, de la G-Shock à la plongeuse",
+  "description": "Natation, snorkeling, vacances : des montres marquées 20 bar ou plus, de la G-Shock à la plongeuse.",
   "image": "/partage/sel-etanches-200.jpg",
   "target": "https://cadrin.fr/selections/montres-etanches-200-metres/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-sel-etanches-200"
  },
@@ -296,8 +296,8 @@ export const facebookShares = [
  },
  {
   "slug": "marque-squale",
-  "title": "Squale — Des montres de plongée depuis 1959, étanches jusqu’à 500 m",
-  "description": "Des montres de plongée depuis 1959, étanches jusqu’à 500 m.",
+  "title": "Squale — Des montres de plongée depuis 1959, étanches jusqu’à 500 m : les Squale commandables",
+  "description": "Des montres de plongée depuis 1959, étanches jusqu’à 500 m : les Squale commandables.",
   "image": "/partage/marque-squale.jpg",
   "target": "https://cadrin.fr/marques/squale/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-marque-squale"
  },
@@ -324,15 +324,15 @@ export const facebookShares = [
  },
  {
   "slug": "guide-plongee",
-  "title": "Vraie montre de plongée ? — Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité",
-  "description": "Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité.",
+  "title": "Vraie montre de plongée ? — Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité, et comment la reconnaître",
+  "description": "Ce qu’ajoute la norme ISO 6425 à un simple chiffre d’étanchéité, et comment la reconnaître.",
   "image": "/partage/guide-plongee.jpg",
   "target": "https://cadrin.fr/guides/montre-de-plongee-iso-6425/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-plongee"
  },
  {
   "slug": "guide-coeur-ouvert",
-  "title": "Voir le mécanisme — Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment",
-  "description": "Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment.",
+  "title": "Voir le mécanisme — Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment du mécanisme d’une montre",
+  "description": "Squelette, cœur ouvert, tourbillon : ce que chacun montre vraiment du mécanisme d’une montre.",
   "image": "/partage/guide-coeur-ouvert.jpg",
   "target": "https://cadrin.fr/guides/squelette-coeur-ouvert-tourbillon/?utm_source=facebook&utm_medium=organic_social&utm_campaign=s02-guide-coeur-ouvert"
  }
