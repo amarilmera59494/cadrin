@@ -8,6 +8,7 @@ import TempusBenefits from './TempusBenefits.astro';
 import WatchFitComparison from './WatchFitComparison.astro';
 import GuideOpening from './GuideOpening.astro';
 import GuideTakeaways from './GuideTakeaways.astro';
+import Verdict from './Verdict.astro';
 import MovementComparison from './MovementComparison.astro';
 import { render, type CollectionEntry } from 'astro:content';
 import Cadrin from '../layouts/Cadrin.astro';
@@ -25,6 +26,7 @@ const compare = models.filter(w => finder.some(f => f.id===w.id)).slice(0,3).map
     <GuideOpening id={entry.id}><header class="reading-heading"><h1>{entry.data.title}</h1><p>{entry.data.description}</p>
       <div class="reading-meta">Guide documentaire · {dateLabel(entry.data.verifiedAt!)}</div>
     </header></GuideOpening>
+    {entry.id==='offrir-une-montre'&&<Verdict placement="guide:offrir-une-montre"/>}
     <div class="guide-layout">
       <GuideNavigation items={[...(entry.id==='offrir-une-montre'?[{href:'#pistes-cadeaux',label:'Les idées cadeaux'}]:[]),...headings.filter(h=>h.depth===2).map(h=>({href:'#'+h.slug,label:h.text})),...(["montres-par-budget","offrir-une-montre","g-shock-montre-jeune"].includes(entry.id)?[{href:'#pour-trancher',label:'Pour trancher'}]:[]),...(models.length?[{href:'#references',label:'Les références'}]:[]),{href:'#sources',label:'Sources et limites'}]}/>
       <article class="reading" id="lecture" tabindex="-1" aria-label="Lire le guide"><GuideTakeaways id={entry.id}/>{entry.id==='offrir-une-montre'&&<GiftDirections hrefs={headings.filter(h=>h.depth===2).slice(1,4).map(h=>'#'+h.slug)}/>}{entry.id==='choisir-taille-montre'&&<WatchFitComparison/>}{entry.id==='automatique-quartz-solaire'&&<section><MovementComparison/></section>}<section class="guide-prose"><Content/></section><GuideDecision id={entry.id}/>

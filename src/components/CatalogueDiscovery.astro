@@ -6,7 +6,7 @@ const {compact=false}=Astro.props as {compact?:boolean};
 const root=localPath('/catalogue/',locale);
 ---
 <aside class:list={['catalogue-discovery',{compact}]} aria-label={t('Poursuivre votre recherche','Continue your search')}>
- <span class="eyebrow">{t('Pour élargir le choix','Keep exploring')}</span><h2>{t('Votre budget. Vos repères.','Your budget. Your bearings.')}</h2>
+ <h2>{t('Élargir le choix au catalogue','Explore the full catalogue')}</h2>
  <p>{t(`Notre explorateur rassemble ${data.products.length.toLocaleString('fr-FR')} fiches de montres chez Tempus. Cherchez une référence ou rapprochez trois modèles avant de consulter le vendeur.`,`Our explorer brings together ${data.products.length.toLocaleString('en-GB')} watch listings at Tempus. Search for a reference or compare three watches before visiting the retailer.`)}</p>
  <div><a href={root+'?budget=150#catalogue-count'}>{t('Jusqu’à 150 €','Up to €150')} →</a><a href={root+'?budget=500&movement=Automatique#catalogue-count'}>{t('Automatiques jusqu’à 500 €','Automatics up to €500')} →</a><a href={root+'?brand=Seiko#catalogue-count'}>Seiko →</a><a href={root+'?brand=Citizen#catalogue-count'}>Citizen →</a><a href={root+'?brand=Orient#catalogue-count'}>Orient →</a><a href={root}>{t('Tout le catalogue','Full catalogue')} →</a></div>
  <small>{t('Données et photos Tempus, relevées et datées. Le catalogue élargi ne constitue pas une analyse de chaque modèle.','Dated retailer data and photographs. The wider catalogue is not an analysis of every model.')}</small>

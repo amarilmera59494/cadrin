@@ -1,6 +1,7 @@
 // Sélections construites depuis le catalogue (/selections/<slug>/).
 // Critères explicites et vérifiables sur les fiches ; ordre : best-sellers du vendeur, puis prix croissant.
-// Aucune note, aucun classement de qualité, aucun essai revendiqué.
+// Une montre est désignée en tête (« Notre choix », src/data/verdicts.ts) ; les autres ne sont pas classées.
+// Aucune note chiffrée, aucun essai revendiqué.
 import type {CatalogueProduct} from '../lib/tempus-catalogue';
 import {normalise,sizeNumber,waterMark} from '../lib/tempus-catalogue';
 

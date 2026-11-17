@@ -4,4 +4,4 @@ import {localeOf,textFor} from '../lib/i18n';
 const {id}=Astro.props as {id:string};
 const locale=localeOf(Astro.url.pathname),copy=readingFor(id,locale),t=textFor(locale);
 ---
-{copy&&<section class="summary-box"><span class="eyebrow">{t('À garder en tête','Keep in mind')}</span><h2>{copy.title}</h2><ul>{copy.points.map(point=><li>{point}</li>)}</ul></section>}
+{copy&&<section class="summary-box"><h2>{copy.title}</h2><ul>{copy.points.map(point=><li>{point}</li>)}</ul></section>}

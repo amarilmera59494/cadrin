@@ -71,3 +71,6 @@ html.buy-bar-on .language-suggestion{bottom:84px}
 
 /* Inputs on the sand filter panels; referenced by catalogue.css and WatchFinder.astro. */
 :root{--ivory:var(--paper)}
+
+/* First-watch guide: chapter headings are questions; the old tagline becomes the chapter lead. */
+.reading .chapter-lead{font-size:clamp(18px,1.6vw,21px);line-height:1.45;color:var(--wine);margin:-12px 0 20px;max-width:32em}

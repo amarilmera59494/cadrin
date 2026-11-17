@@ -1,6 +1,7 @@
 ---
 // Page de sélection construite depuis le catalogue : critères, montres (liées à leur fiche), conseils, guides.
 import Cadrin from '../layouts/Cadrin.astro';
+import Verdict from './Verdict.astro';
 import data from '../data/tempus-catalogue.json';
 import {hubs,brandHubs,type Hub} from '../data/selection-hubs';
 import {affiliateUrl} from '../data/affiliation';
@@ -25,10 +26,11 @@ const others=family.filter(h=>h.slug!==hub.slug).slice(0,12);
    <div><span class="eyebrow">{base==='/marques/'?'La marque':'La sélection'} · {hub.kicker}</span><h1>{hub.h1.split('<br>').map((s,i)=><>{i>0&&<br/>}{s}</>)}</h1></div>
    <div class="hub-intro">{hub.intro.map(p=><p>{p.replace("{min}",money(Math.min(...matches.map(x=>x.price)))).replace("{max}",money(Math.max(...matches.map(x=>x.price))))}</p>)}</div>
   </header>
+  {base==='/selections/'&&<Verdict placement={hub.slug} match={hub.match}/>}
   <aside class="hub-criteria" aria-labelledby="criteres">
    <h2 id="criteres">Nos critères</h2>
    <ul>{hub.criteria.map(c=><li>{c}</li>)}</ul>
-   <p>{matches.length===1?'1 montre correspond':`${matches.length} montres correspondent`} au relevé du {dateLabel(checkedAt)}{matches.length>shown.length?` ; voici les ${shown.length} premières`:''}. Ordre : best-sellers du vendeur, puis prix croissant.</p>
+   <p>{matches.length===1?'1 montre correspond':`${matches.length} montres correspondent`} au relevé du {dateLabel(checkedAt)}{matches.length>shown.length?` ; voici les ${shown.length} premières`:''}. {base==='/selections/'?'Sous notre choix, les autres pistes ne sont pas classées : best-sellers du vendeur, puis prix croissant.':'Ordre : best-sellers du vendeur, puis prix croissant.'}</p>
    <p class="small-note">Prix France hors livraison, susceptibles d’évoluer. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
   </aside>
   <ol class="hub-grid">{shown.map((p,i)=><li class="hub-card">

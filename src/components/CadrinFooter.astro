@@ -1,11 +1,46 @@
 ---
 import MeasurementChoice from './MeasurementChoice.astro';
 import {localeOf,localPath,textFor} from '../lib/i18n';
-const locale=localeOf(Astro.url.pathname),t=textFor(locale);
+const locale=localeOf(Astro.url.pathname),t=textFor(locale),fr=locale==='fr';
 import Wordmark from './Wordmark.astro';
 import {launch} from '../data/launch';
 import { production } from '../lib/editorial';
+const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris'}).format(new Date());
+const season=fr&&today>=`${today.slice(0,4)}-11-01`&&today<=`${today.slice(0,4)}-12-24`;
 ---
-<footer class="c-footer"><div class="container"><div class="footer-main"><div><Wordmark footer/></div><nav aria-label={t('Navigation de pied de page','Footer navigation')}>{locale==='fr'&&<a href='/noel/'>Idées cadeaux de Noël</a>}<a href={localPath('/mes-favoris/',locale)}>{t('Mes favoris','Saved watches')} (<span data-saved-count>0</span>)</a><a href={localPath('/marques/',locale)}>{t('Les marques','Watch brands')}</a>{locale==='fr'&&<a href='/baisses-de-prix/'>Les baisses de prix</a>}{locale==='fr'&&<a href='/montre/'>Toutes les fiches montres</a>}<a href={localPath('/comparatifs/',locale)}>{t('Les comparatifs','Comparisons')}</a><a href={localPath('/vues-sur-nos-reseaux/',locale)}>{t('Vues sur nos réseaux','Seen on our socials')}</a><a href={localPath('/analyses/',locale)}>{t('Nos analyses','Our analyses')}</a><a href={localPath('/catalogue/',locale)}>{t('Catalogue Tempus','Tempus catalogue')}</a><a href={localPath('/selections/',locale)}>{t('Explorer les sélections','Explore the selections')}</a><a href={localPath('/guides/',locale)}>{t('Les guides','Guides')}</a><a href={localPath('/notre-methode/',locale)}>{t('Notre méthode','Our method')}</a><a href={localPath('/notre-methode/#affiliation',locale)}>{t('Affiliation & transparence','Affiliate disclosure')}</a><a href={localPath('/contact/',locale)}>{t('Nous écrire','Contact us')}</a>{(!production||launch.legalPagesApproved)&&<><a href={localPath('/mentions-legales/',locale)}>{t('Mentions légales','Legal notice')}</a><a href={localPath('/confidentialite/',locale)}>{t('Confidentialité','Privacy')}</a></>}</nav><p class="footer-statement">{t('Média horloger en français et en anglais.','Watch guides in French and English.')}</p></div><p id="saved-announcement" class="saved-notice" role="status" aria-live="polite"></p><MeasurementChoice/><div class="footer-bottom"><span>{t('CADRIN · Le sens du porté.','CADRIN · Made for your wrist.')}</span><span>{!production && t('Prévisualisation','Preview')}</span></div></div></footer>
+<footer class="c-footer"><div class="container"><div class="footer-main"><div><Wordmark footer/></div>
+ <nav class="footer-nav" aria-label={t('Navigation de pied de page','Footer navigation')}>
+  <div class="footer-group"><h2 class="footer-title">{t('Choisir','Choose')}</h2>
+   {season&&<a href="/noel/">Idées cadeaux de Noël</a>}
+   <a href={localPath('/trouver-ma-montre/',locale)}>{t('Trouver ma montre','Watch finder')}</a>
+   <a href={localPath('/selections/',locale)}>{t('Les sélections','Selections')}</a>
+   <a href={localPath('/comparatifs/',locale)}>{t('Les comparatifs','Comparisons')}</a>
+   {fr&&<a href="/baisses-de-prix/">Les baisses de prix</a>}
+   <a href={localPath('/mes-favoris/',locale)}>{t('Mes favoris','Saved watches')} (<span data-saved-count>0</span>)</a>
+  </div>
+  <div class="footer-group"><h2 class="footer-title">{t('Comprendre','Learn')}</h2>
+   <a href={localPath('/guides/',locale)}>{t('Les guides','Guides')}</a>
+   <a href={localPath('/marques/',locale)}>{t('Les marques','Watch brands')}</a>
+   <a href={localPath('/analyses/',locale)}>{t('Les analyses détaillées','In-depth analyses')}</a>
+   <a href={localPath('/catalogue/',locale)}>{t('Le catalogue complet','The full catalogue')}</a>
+   {fr&&<a href="/montre/">Index des fiches montres</a>}
+   <a href={localPath('/vues-sur-nos-reseaux/',locale)}>{t('Vues sur nos réseaux','Seen on our socials')}</a>
+  </div>
+  <div class="footer-group"><h2 class="footer-title">Cadrin</h2>
+   <a href={localPath('/notre-methode/',locale)}>{t('Notre méthode','Our method')}</a>
+   <a href={localPath('/notre-methode/#affiliation',locale)}>{t('Affiliation et transparence','Affiliate disclosure')}</a>
+   <a href={localPath('/contact/',locale)}>{t('Nous écrire','Contact us')}</a>
+   {(!production||launch.legalPagesApproved)&&<><a href={localPath('/mentions-legales/',locale)}>{t('Mentions légales','Legal notice')}</a><a href={localPath('/confidentialite/',locale)}>{t('Confidentialité','Privacy')}</a></>}
+  </div>
+ </nav>
+ <p class="footer-statement">{t('Média horloger en français et en anglais.','Watch guides in French and English.')}</p></div><p id="saved-announcement" class="saved-notice" role="status" aria-live="polite"></p><MeasurementChoice/><div class="footer-bottom"><span>{t('CADRIN · Le sens du porté.','CADRIN · Made for your wrist.')}</span><span>{!production && t('Prévisualisation','Preview')}</span></div></div></footer>
 
-<style>.footer-main nav{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;align-items:center}.footer-main nav a{line-height:1.5;padding-block:8px;min-height:44px}@media(min-width:1001px){.footer-main{grid-template-columns:.8fr 1.6fr .7fr}}@media(max-width:1000px) and (min-width:701px){.footer-main{grid-template-columns:.7fr 1.5fr}}@media(max-width:700px){.footer-main nav{gap:6px 18px}}</style>
+<style>
+.footer-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 28px;align-items:start}
+.footer-group{display:flex;flex-direction:column;align-items:start}
+.footer-title{font:600 12px/1.4 var(--text);letter-spacing:.08em;text-transform:uppercase;color:#e2cccd;margin:0 0 6px}
+.footer-main .footer-group a{line-height:1.45;padding-block:8px;min-height:44px;display:flex;align-items:center}
+@media(min-width:1001px){.footer-main{grid-template-columns:.7fr 2fr .6fr}}
+@media(max-width:1000px) and (min-width:701px){.footer-main{grid-template-columns:.6fr 2fr}}
+@media(max-width:700px){.footer-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px}.footer-group:last-child{grid-column:1/-1}}
+</style>

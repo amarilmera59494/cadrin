@@ -29,8 +29,10 @@ const title=[`${name} : prix, taille, étanchéité`,`${name} : prix et fiche`,n
 const descBase=`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. ${ficheSummary(p)}`;const description=[descBase+' Points à vérifier et alternatives.',descBase,`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. Caractéristiques, points à vérifier et alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
 const missingSpecs=[!p.caseSize&&'Dimension du boîtier',!p.glass&&'Verre',!p.water&&'Étanchéité'].filter(Boolean) as string[];
 const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.guide!])).values()];
+// Données Product/Offer : le prix relevé affiché sur la page, sans note, sans avis, sans disponibilité affirmée.
+const productSchema=[{'@type':'Product',name:name,brand:{'@type':'Brand',name:p.brand},mpn:p.reference,sku:p.reference,image:new URL(p.image,'https://cadrin.fr').href,description:ficheSummary(p),offers:{'@type':'Offer',price:p.price.toFixed(2),priceCurrency:'EUR',seller:{'@type':'Organization',name:'Tempus'}}}];
 ---
-<Cadrin title={title} description={description} canonicalPath={analysis?`/montres/${analysis}/`:undefined} crumbs={[{name:'Catalogue',url:'/catalogue/'},{name:`${p.brand} ${p.reference}`,url:`/montre/${ficheSlug(p)}/`}]}>
+<Cadrin title={title} description={description} schema={productSchema} canonicalPath={analysis?`/montres/${analysis}/`:undefined} crumbs={[{name:'Catalogue',url:'/catalogue/'},{name:`${p.brand} ${p.reference}`,url:`/montre/${ficheSlug(p)}/`}]}>
  <div class="container fiche">
   <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href="/catalogue/">Catalogue</a><span>/</span><a href={'/catalogue/?brand='+encodeURIComponent(p.brand)}>{p.brand}</a><span>/</span><span>{p.reference}</span></nav>
   <header class="fiche-head">

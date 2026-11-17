@@ -14,8 +14,8 @@ const locale=localeOf(Astro.url.pathname), t=textFor(locale);
 const hasAlternate=pairedPrefix(Astro.url.pathname)||Object.entries(routePairs).some(([fr,en])=>[fr,en].includes(Astro.url.pathname));
 // noindex : page utile aux visiteurs mais sans intérêt dans Google (favoris, pages 2+ du catalogue).
 // canonicalPath : page qui couvre le même sujet plus complètement (ex. fiche → analyse détaillée).
-interface Props {title:string;description:string;article?:boolean;notFound?:boolean;noindex?:boolean;canonicalPath?:string;crumbs?:{name:string;url:string}[];verifiedAt?:string|null}
-const {title,description,article=false,notFound=false,noindex=false,canonicalPath,crumbs=[],verifiedAt}=Astro.props;
+interface Props {title:string;description:string;article?:boolean;notFound?:boolean;noindex?:boolean;canonicalPath?:string;crumbs?:{name:string;url:string}[];verifiedAt?:string|null;schema?:Record<string,unknown>[]}
+const {title,description,article=false,notFound=false,noindex=false,canonicalPath,crumbs=[],verifiedAt,schema:extraSchema=[]}=Astro.props;
 const fullTitle=(title+' — Cadrin').length<=70?title+' — Cadrin':title;
 const clip=(d:string,n=160)=>{if(d.length<=n)return d;const cut=d.slice(0,n-1);const end=Math.max(cut.lastIndexOf('. '),cut.lastIndexOf(' ? '),cut.lastIndexOf(' ! '));return end>90?cut.slice(0,end+1):cut.slice(0,cut.lastIndexOf(' ')).replace(/[,;:]$/,'')+'…';};
 const metaDescription=clip(description);
@@ -23,7 +23,8 @@ const canonical=new URL(canonicalPath||Astro.url.pathname,site.publicOrigin).hre
 const schema={'@context':'https://schema.org','@graph':[
   {'@type':'WebSite',name:'Cadrin',url:site.publicOrigin,inLanguage:locale},
   ...(crumbs.length?[{'@type':'BreadcrumbList',itemListElement:[{name:t('Accueil','Home'),url:localPath('/',locale)},...crumbs].map((c,i)=>({'@type':'ListItem',position:i+1,name:c.name,item:new URL(c.url,site.publicOrigin).href}))}]:[]),
-  ...(article?[{'@type':'Article',headline:title,description,inLanguage:locale,...(verifiedAt?{dateModified:verifiedAt}:{})}]:[])
+  ...(article?[{'@type':'Article',headline:title,description,inLanguage:locale,...(verifiedAt?{dateModified:verifiedAt}:{})}]:[]),
+  ...extraSchema
 ]};
 ---
 <!doctype html><html lang={locale}><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{fullTitle}</title><meta name="description" content={metaDescription}/><meta name="robots" content={!production||notFound?'noindex, nofollow':noindex?'noindex, follow':'index, follow'}/><link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin/><link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin/><link rel="preload" href={logoFont} as="font" type="font/woff2" crossorigin/><meta name="theme-color" content="#4a1725"/>{production&&!notFound&&<link rel="canonical" href={canonical}/>}{production&&!notFound&&!noindex&&!canonicalPath&&hasAlternate&&<>{(['fr','en'] as const).map(lang=><link rel="alternate" hreflang={lang} href={new URL(localPath(Astro.url.pathname,lang),site.publicOrigin).href}/>)}<link rel="alternate" hreflang="x-default" href={new URL(localPath(Astro.url.pathname,'fr'),site.publicOrigin).href}/></>}<meta property="og:title" content={fullTitle}/><meta property="og:description" content={metaDescription}/><meta property="og:type" content={article?'article':'website'}/><meta property="og:locale" content={locale==='en'?'en_GB':'fr_FR'}/><meta property="og:image" content={production?'https://cadrin.fr/images/og.jpg':'/images/og.jpg'}/>{production&&!notFound&&<meta property="og:url" content={canonical}/>}<link rel="icon" href="/favicon.svg" type="image/svg+xml"/><script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\u003c')}/></head><body><a class="skip" href="#main">{t('Aller au contenu','Skip to content')}</a><CadrinHeader/><main id="main" tabindex="-1"><slot/></main><CadrinFooter/></body></html>

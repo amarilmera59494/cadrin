@@ -41,7 +41,8 @@ export function ficheSummary(p: CatalogueProduct) {
   parts.push(`Montre${cat}${mv ? ' ' + mv : ''}${size !== null ? ` de ${mm(size)}` : ''}`);
   if (p.glass) parts.push(glassLabel[glassKind(p.glass)]);
   if (water !== null) parts.push(`étanche à ${water} bar`); else if (metres !== null) parts.push(`étanche à ${Math.round(metres * 10)} m`);
-  if (p.strap) parts.push(`bracelet ${lower(p.strap)}`);
+  // Some Tempus listings already start with « Bracelet … » : never write « bracelet bracelet ».
+  if (p.strap) parts.push(/^bracelet\b/i.test(p.strap.trim()) ? lower(p.strap.trim()) : `bracelet ${lower(p.strap)}`);
   return parts.join(', ') + '.';
 }
 

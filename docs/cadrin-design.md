@@ -36,3 +36,13 @@ Les cartes et les fiches partagent `WatchPhoto`. Un packshot entier tient dans u
 - Cartes : titres Tempus affichés par `displayTitle` (espaces, marque, « 36 mm », nom du modèle capitalisé, sans ajout ni retrait de mot) ; lien d'analyse au-dessus du prix ; prix et bouton alignés d'une carte à l'autre ; favoris en action discrète.
 - Black Friday : « Remises annoncées, prix relevés » ; un pourcentage calculé sur le prix barré du vendeur porte « annoncé », seul notre relevé peut dire « remise ».
 - Guides : mention d'affiliation au-dessus de chaque groupe de cartes marchandes.
+
+## Troisième passe du 17 novembre 2026 : « Notre choix »
+
+- `Verdict.astro` + `src/data/verdicts.ts` : en tête de chaque sélection (`/selections/<slug>/`) et du guide « Offrir une montre », une montre désignée avec « Pour qui », « Pourquoi », « Sa limite », les tests publiés quand ils existent (`review-syntheses.ts`) et la mention « Nous n'avons pas porté cette montre ». Chaque emplacement liste des candidats par ordre de préférence : le premier commandable (hors précommande), documenté et conforme aux critères de la page est retenu, sinon le suivant. Aucun prix dans le texte. Règles publiques : `/notre-methode/#notre-choix`.
+- Les marques Tissot, Hamilton et Mido restent hors de la sélection « marques suisses » : leurs liens Tempus sont suspendus (redirection).
+- Titres : les accroches en deux temps des pages index cèdent la place à des titres descriptifs (sélections, comparatifs, méthode, baisses de prix) ; le hero « Une montre. Votre allure. » et « Les chiffres aident. Le porté décide. » restent la signature. Guide de la première montre : chapitres en question, l'accroche devient le chapeau.
+- Pied de page en trois colonnes : Choisir, Comprendre, Cadrin.
+- Analyses `/montres/` : titre complet (marque et modèle), fil d'Ariane « Analyses », barre d'achat collante.
+- Données Product/Offer : prix relevé seulement, sans note, avis ni disponibilité ; `check-build.mjs` vérifie que le prix des données est celui affiché.
+- Non retenu : `srcset` des miniatures (sur téléphone, la densité d'écran réclame déjà l'image de 400 px) ; HSTS se règle dans le tableau de bord Cloudflare.

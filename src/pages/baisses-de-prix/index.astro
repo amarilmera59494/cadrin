@@ -19,7 +19,7 @@ const link=(p:CatalogueProduct)=>ficheEligible(p)?ficheHref(p):null;
 <Cadrin title="Les vraies baisses de prix des montres" description="Les baisses de prix relevées chaque jour par Cadrin sur le catalogue : prix d’avant, prix du jour, date. Uniquement nos relevés datés, jamais un prix barré." crumbs={[{name:'Baisses de prix',url:'/baisses-de-prix/'}]}>
  <div class="container drops">
   <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Baisses de prix</span></nav>
-  <header class="page-heading"><span class="eyebrow">Relevé quotidien</span><h1>Les vraies baisses.<br/>Relevées, datées.</h1>
+  <header class="page-heading"><h1>Les baisses de prix, relevées chaque jour.</h1>
    <p>Chaque matin, Cadrin relève le prix des {data.products.length.toLocaleString('fr-FR')} montres du catalogue. Une montre n’apparaît ici que si <strong>notre propre relevé</strong> montre une baisse par rapport au relevé précédent : jamais sur la foi d’un prix barré.</p>
    <p class="small-note">Suivi depuis le {dateLabel(since)} · dernier relevé le {dateLabel(updatedAt)} · prix France hors livraison · liens affiliés : Cadrin peut toucher une commission.</p></header>
   {drops.length>0?<ol class="drops-list">{drops.map(m=><li>

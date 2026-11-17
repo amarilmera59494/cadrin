@@ -31,7 +31,7 @@ for(const file of files.filter(f=>f.endsWith('.html'))){const html=await readFil
   const product=catalogue.products.find(p=>new URL(p.source).pathname===path);
   if(product&&(!merchantLinkAvailable(product)||!body.replace(/<[^>]+>/g,'').includes(purchaseLabel(product,english))))errors.push(`${route}: bouton incohérent avec le statut de ${product.reference}`);
  }
- for(const match of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)){const json=JSON.parse(match[1]);if(/"(?:Offer|Review|AggregateRating|Product)"/.test(JSON.stringify(json)))errors.push(`${route}: schema non autorisé`)}
+ for(const match of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)){const json=JSON.parse(match[1]);if(/"(?:Review|AggregateRating)"/.test(JSON.stringify(json)))errors.push(`${route}: schema non autorisé`);for(const node of json['@graph']||[]){if(node['@type']!=='Product')continue;const price=Number(node.offers?.price),shown=new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(price);if(node.offers?.['@type']!=='Offer'||node.offers.priceCurrency!=='EUR'||!(price>0)||!html.includes(shown)||'availability' in node.offers)errors.push(`${route}: Product/Offer incohérent avec le prix affiché`)}}
  let jsBytes=0;for(const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){if(match[1].includes('application/ld+json'))continue;const src=match[1].match(/src="([^"]+)"/);jsBytes+=gzipSync(src?await readFile(dir+src[1]):Buffer.from(match[2])).length;}if(jsBytes>60000)errors.push(`${route}: budget JS dépassé`);
  results.push({route,jsGzipBytes:jsBytes,noindex,htmlBytes:Buffer.byteLength(html)});
 }
