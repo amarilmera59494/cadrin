@@ -14,7 +14,7 @@ try{
   await page.setViewportSize({width,height:width===390?844:1000});
   for(const [name,route,selector] of [['home','/',''],['social','/vues-sur-nos-reseaux/','.social-pick'],['finder','/trouver-ma-montre/','[data-guided-choice]'],['gift','/guides/offrir-une-montre/','#pour-trancher']]){
    await page.goto(origin+route);await page.evaluate(()=>document.fonts.ready);
-   if(name==='finder'){await page.locator('#guided-form select[name=budget]').selectOption('300');await page.locator('#guided-form select[name=dial]').selectOption('Rose');await page.locator('#guided-form button[type=submit]').click();assert.equal(await page.locator('.recommendation').count(),1);}
+   if(name==='finder'){await page.locator('#guided-form select[name=budget]').selectOption('300');await page.locator('#guided-form select[name=dial]').selectOption('Rose');await page.locator('#guided-form button[type=submit]').click();assert.ok(await page.locator('.recommendation').count()>=1);assert.equal(await page.locator('.recommendation').first().getAttribute('data-reference'),'NJ0200-50Z');}
    if(selector)await page.locator(selector).first().scrollIntoViewIfNeeded();
    await page.evaluate(async()=>{document.querySelectorAll('img').forEach(i=>i.loading='eager');await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));});
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
