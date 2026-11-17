@@ -26,10 +26,10 @@ if(bar&&anchor&&'IntersectionObserver' in window){
  .buy-bar{position:fixed;inset:auto 0 0;z-index:20;display:flex;align-items:center;gap:16px;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -10px 28px rgb(54 19 30 / .1);transform:translateY(110%);visibility:hidden;transition:transform 280ms cubic-bezier(.16,1,.3,1),visibility 0s linear 280ms}
  .buy-bar[hidden]{display:none}
  .buy-bar.is-shown{transform:none;visibility:visible;transition:transform 280ms cubic-bezier(.16,1,.3,1)}
- .buy-bar p{display:grid;margin:0;line-height:1.2;max-width:none;flex-shrink:0}
+ .buy-bar p{display:grid;margin:0;line-height:1.2;max-width:none;flex:1 1 0;min-width:0}
  .buy-bar strong{font:500 28px/1 var(--display);color:var(--wine);font-variant-numeric:tabular-nums}
- .buy-bar small{margin-top:4px;font-size:12px;color:var(--muted)}
- .buy-bar .button.merchant-button{flex:1;width:auto;min-width:0;min-height:48px;padding:10px 14px;font-size:14px}
+ .buy-bar small{margin-top:4px;font-size:12px;line-height:1.35;color:var(--muted)}
+ .buy-bar .button.merchant-button{flex:0 0 auto;width:auto;min-height:48px;padding:10px 16px;font-size:14px}
  :global(.buy-bar-on) :global(.c-footer){padding-bottom:96px}
 }
 @media(prefers-reduced-motion:reduce){.buy-bar,.buy-bar.is-shown{transition:none}}

@@ -6,6 +6,7 @@ import TempusOffer from '../components/TempusOffer.astro';
 import {hasAffiliation} from '../data/destinations';
 import Cadrin from '../layouts/Cadrin.astro';
 import Photo from '../components/Photo.astro';
+import HeroVitrine from '../components/HeroVitrine.astro';
 import HomeShopping from '../components/HomeShopping.astro';
 import HomeHighlights from '../components/HomeHighlights.astro';
 import {catalogue} from '../lib/editorial';
@@ -13,7 +14,7 @@ const {guides}=await catalogue();
 const guide=guides.find(g=>g.id==='choisir-premiere-montre');
 ---
 <Cadrin title="Choisir une montre : comparatifs, guides et idées cadeaux" description="Comparatifs, guides et idées cadeaux pour choisir une montre selon votre budget, votre style et votre poignet. Prix relevés chaque jour.">
- <section class="home-hero"><div class="hero-copy"><h1>Une montre.<br/><span>Votre allure.</span></h1><p>Des références exactes, des prix relevés chaque matin et les points à vérifier avant d’acheter. Pour choisir selon votre budget, votre style et votre poignet.</p><div class="hero-actions"><a class="button" href="/trouver-ma-montre/">Trouver ma montre <span aria-hidden="true">→</span></a>{guide&&<a class="hero-secondary" href={`/guides/${guide.id}/`}>Choisir ma première montre <span aria-hidden="true">→</span></a>}</div></div><Photo name="sleeve" eager sizes="(max-width: 700px) 100vw, 54vw"/></section>
+ <section class="home-hero"><div class="hero-copy"><h1>Une montre.<br/><span>Votre allure.</span></h1><p>Des références exactes, des prix relevés chaque matin et les points à vérifier avant d’acheter. Pour choisir selon votre budget, votre style et votre poignet.</p><div class="hero-actions"><a class="button" href="/trouver-ma-montre/">Trouver ma montre <span aria-hidden="true">→</span></a>{guide&&<a class="hero-secondary" href={`/guides/${guide.id}/`}>Choisir ma première montre <span aria-hidden="true">→</span></a>}</div></div><HeroVitrine/></section>
  <HomeHighlights part="season"/>
  <SocialEntry/>
  <HomeShopping/>

@@ -81,3 +81,7 @@ body:has(#catalogue-compare-jump:not([hidden])) .saved-notice{bottom:90px}
 .catalogue-card h2 a{text-decoration:none}.catalogue-card h2 a:hover{text-decoration:underline;text-underline-offset:4px}
 
 #catalogue-comparison .compare-diff{display:block;margin-top:2px;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.02em}
+/* One card language: price and buy button pinned to the bottom so they line up across a row; favourites as a quiet text action. */
+.catalogue-copy>.catalogue-price{margin-top:auto;padding-top:12px}
+.catalogue-card .save-watch{border:0;background:none;padding:6px 0;justify-content:flex-start;min-height:44px}
+.catalogue-card .catalogue-cta{margin-top:12px}

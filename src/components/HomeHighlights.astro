@@ -10,7 +10,7 @@ import type {CatalogueProduct} from '../lib/tempus-catalogue';
 const {part}=Astro.props as {part:'season'|'discover'};
 const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris'}).format(new Date());
 const season=[
- today<='2026-11-30'&&{href:'/black-friday/',kicker:'Black Friday · jusqu’au 30 novembre',title:'Les vraies remises, vérifiées',text:'Les montres déjà en baisse, avec notre propre relevé de prix daté pour repérer les fausses promos.'},
+ today<='2026-11-30'&&{href:'/black-friday/',kicker:'Black Friday · jusqu’au 30 novembre',title:'Remises annoncées, prix relevés',text:'Les remises affichées par Tempus, avec notre propre relevé daté pour repérer celles qui baissent vraiment.'},
  today<='2026-12-24'&&{href:'/noel/',kicker:'Noël',title:'Idées cadeaux montres',text:'Pour lui, pour elle, par budget : des idées avec leurs points à vérifier avant d’offrir.'},
 ].filter(Boolean) as {href:string;kicker:string;title:string;text:string}[];
 const all=(data.products as CatalogueProduct[]).filter(ficheDocumented);

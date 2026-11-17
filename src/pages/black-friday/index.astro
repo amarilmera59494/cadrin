@@ -6,7 +6,7 @@ import data from '../../data/tempus-catalogue.json';
 import bf from '../../data/black-friday.json';
 import {affiliateUrl} from '../../data/affiliation';
 import {dateLabel} from '../../lib/editorial';
-import {purchaseLabel, merchantLinkAvailable} from '../../lib/tempus-catalogue';
+import {purchaseLabel, merchantLinkAvailable, sizeLabel} from '../../lib/tempus-catalogue';
 
 const money = (n:number) => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
 const day = (d:string) => new Intl.DateTimeFormat('fr-FR',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(d));
@@ -29,7 +29,7 @@ const deals = tracked.filter(d => d.was || d.verifiedDrop).sort((a,b) => Number(
 const ended = tracked.filter(d => !d.was && !d.verifiedDrop);
 const anyVerified = deals.some(d => d.verifiedDrop);
 ---
-<Cadrin title="Black Friday montres 2026 : les vraies remises, vérifiées" description={`Les montres déjà remisées chez Tempus, avec notre propre relevé de prix daté. Le ${day(bf.blackFriday)}, nous comparons pour savoir ce qui baisse vraiment.`}>
+<Cadrin title="Black Friday montres 2026 : remises annoncées, prix relevés" description={`Les montres déjà remisées chez Tempus, avec notre propre relevé de prix daté. Le ${day(bf.blackFriday)}, nous comparons pour savoir ce qui baisse vraiment.`}>
  <section class="bf-hero">
   <div class="container bf-hero-grid">
    <div class="bf-hero-copy">
@@ -41,7 +41,7 @@ const anyVerified = deals.some(d => d.verifiedDrop);
     </div>
    </div>
    <ol class="bf-calendar" aria-label="Le calendrier du Black Friday">
-    <li class="is-now"><time datetime={bf.checkedAt}>{weekday(bf.checkedAt)}</time><strong>Premier relevé</strong><span>{bf.items.length} montres remisées relevées par Cadrin</span></li>
+    <li class="is-now"><time datetime={bf.checkedAt}>{weekday(bf.checkedAt)}</time><strong>Premier relevé</strong><span>{bf.items.length} remises relevées, {deals.length} encore affichées</span></li>
     <li><time datetime={bf.blackFriday}>{weekday(bf.blackFriday)}</time><strong>Black Friday</strong><span>Nouveau relevé et mise à jour de la page</span></li>
     <li><time datetime={bf.cyberMonday}>{weekday(bf.cyberMonday)}</time><strong>Cyber Monday</strong><span>Dernier relevé de la semaine</span></li>
     <li><span class="bf-tbc">Date à confirmer</span><strong>Livraison avant Noël</strong><span>Vérifiez le délai chez Tempus avant de commander</span></li>
@@ -51,7 +51,7 @@ const anyVerified = deals.some(d => d.verifiedDrop);
 
  <section id="deja-en-baisse" class="container bf-section">
   <div class="bf-head">
-   <h2>Déjà en baisse chez Tempus</h2>
+   <h2>Remises annoncées par Tempus</h2>
    <p>Le prix barré est celui qu’affiche le vendeur. Nous ne l’avons pas vérifié : à côté, nous publions le prix que nous avons relevé nous-mêmes, et sa date.{anyVerified ? ' Les baisses confirmées par notre relevé apparaissent en premier.' : ''}</p>
   </div>
   <nav class="bf-filters" aria-label="Aller à un type de montre">
@@ -63,10 +63,10 @@ const anyVerified = deals.some(d => d.verifiedDrop);
     <div class="bf-name">
      <p class="bf-brand">{d.product.brand} · {groups[d.group]}</p>
      <h3>{d.name}</h3>
-     <p class="bf-specs">Réf. {d.ref}{d.product.movement ? ' · ' + d.product.movement : ''}{d.product.caseSize ? ' · ' + d.product.caseSize : ''}</p>
+     <p class="bf-specs">Réf. {d.ref}{d.product.movement ? ' · ' + d.product.movement : ''}{d.product.caseSize ? ' · ' + sizeLabel(d.product.caseSize) : ''}</p>
     </div>
     <div class="bf-price">
-     <p class="bf-now">{money(d.price)}{d.pct > 0 && <span class="bf-pct">−{d.pct}&nbsp;%</span>}</p>
+     <p class="bf-now">{money(d.price)}{d.pct > 0 && <span class="bf-pct">−{d.pct}&nbsp;%<small>{d.verifiedDrop ? ' remise' : ' annoncé'}</small></span>}</p>
      {d.was && <p class="bf-was">Prix barré affiché par Tempus : <s>{money(d.was)}</s></p>}
      <p class={'bf-ledger ' + (d.verifiedDrop ? 'is-drop' : '')}>{d.verifiedDrop ? `Baisse vérifiée : ${money(d.first.price)} le ${day(d.first.date)}` : `Notre relevé : ${money(d.first.price)} le ${day(d.first.date)}`}</p>
     </div>
@@ -137,7 +137,7 @@ const anyVerified = deals.some(d => d.verifiedDrop);
 .bf-name h3{font-family:var(--display);font-weight:600;font-size:clamp(26px,2.4vw,34px);line-height:1.05;color:var(--wine);margin-top:4px;text-transform:uppercase}
 .bf-specs{font-size:13px;color:var(--muted);margin-top:8px}
 .bf-now{font-family:var(--display);font-weight:600;font-size:40px;line-height:1;color:var(--wine);display:flex;align-items:center;gap:12px;font-variant-numeric:tabular-nums}
-.bf-pct{font-family:var(--text);font-size:13px;font-weight:700;padding:4px 9px;background:var(--accent);color:#fff;letter-spacing:.02em}
+.bf-pct{font-family:var(--text);font-size:13px;font-weight:700;padding:4px 9px;background:var(--accent);color:#fff;letter-spacing:.02em}.bf-pct small{font-size:12px;font-weight:500;letter-spacing:0}
 .bf-was{font-size:13px;color:var(--muted);margin-top:8px}
 .bf-was s{text-decoration-thickness:1px;font-variant-numeric:tabular-nums}
 .bf-ledger{font-size:13px;margin-top:4px;color:var(--ink);font-variant-numeric:tabular-nums}

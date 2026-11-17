@@ -93,7 +93,7 @@ export const facebookShares = [
  },
  {
   "slug": "black-friday",
-  "title": "Black Friday montres 2026 : les vraies remises, vérifiées",
+  "title": "Black Friday montres 2026 : remises annoncées, prix relevés",
   "description": "Black Friday montre homme et femme : 16 montres déjà remisées (Lip, Seiko, Citizen, Orient, Casio, Timex), de 27,93 € à 520 €, chacune avec notre relevé de prix daté pour distinguer une vraie baisse d’une fausse promo. Idée cadeau de Noël à petit prix.",
   "image": "/partage/black-friday.jpg",
   "target": "https://cadrin.fr/black-friday/?utm_source=facebook&utm_medium=organic_social&utm_campaign=black-friday"

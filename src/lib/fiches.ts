@@ -1,7 +1,7 @@
 // Fiches modèle générées depuis le catalogue (/montre/<slug>/).
 // Tout le texte est déduit des champs de la fiche marchande : aucune note, aucun avis, aucun essai.
 import type {CatalogueProduct} from './tempus-catalogue.ts';
-import {merchantLinkAvailable,normalise,sizeNumber,waterMark} from './tempus-catalogue.ts';
+import {merchantLinkAvailable,normalise,sizeNumber,waterMark,displayTitle} from './tempus-catalogue.ts';
 
 export const ficheBase = '/montre/';
 const slugify = (s: string) => normalise(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -94,4 +94,4 @@ export function ficheAlternatives(p: CatalogueProduct, all: CatalogueProduct[], 
   return {similar: picked, cheaper};
 }
 
-export function ficheTitle(p: CatalogueProduct) { return p.title.includes(p.reference) ? p.title : `${p.title} ${p.reference}`; }
+export function ficheTitle(p: CatalogueProduct) { const t = displayTitle(p); return t.includes(p.reference) ? t : `${t} ${p.reference}`; }

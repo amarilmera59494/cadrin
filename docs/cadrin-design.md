@@ -27,3 +27,12 @@ Les cartes et les fiches partagent `WatchPhoto`. Un packshot entier tient dans u
 - Fiche mobile : photo réduite, titre à 30–44 px et barre d’achat collante (`StickyBuy.astro`) quand le bloc d’achat sort de l’écran.
 - Accueil en huit temps : promesse, saison, vidéo, quatre montres, WELCOME10, sélections et duels, guide, méthode.
 - Noël : page cadeau vouvoyée sur la même URL, séries et numéros TikTok inchangés (ancres `#c1…`), bloc « Avant d’offrir » (taille, délai, échange) et avantages Tempus ouverts.
+
+## Deuxième passe du 17 novembre 2026
+
+- Sélecteur : question « Pour qui ? », puis choix dans la bande de 60 à 100 % du budget, trois fabricants différents si possible (Casio et G-Shock comptent pour un). Les références commentées passent d'abord ; des fiches documentées et commandables du catalogue (quatre par fabricant) complètent, avec une raison et un point d'attention tirés de leurs propres caractéristiques et la mention « Repérée dans le catalogue ». La page `/trouver-ma-montre/` a son propre titre.
+- Accueil : la photo d'ambiance du hero est remplacée par une vitrine de trois références exactes (`HeroVitrine.astro`), photos Tempus non retouchées, nom et prix relevé.
+- Noël : rangée d'ouverture d'une montre commandable par série, « Avant d'offrir » après la première série, entrée « Noël » dans le menu français du 1er novembre au 24 décembre. L'en-tête passe au bouton Menu jusqu'à 760 px.
+- Cartes : titres Tempus affichés par `displayTitle` (espaces, marque, « 36 mm », nom du modèle capitalisé, sans ajout ni retrait de mot) ; lien d'analyse au-dessus du prix ; prix et bouton alignés d'une carte à l'autre ; favoris en action discrète.
+- Black Friday : « Remises annoncées, prix relevés » ; un pourcentage calculé sur le prix barré du vendeur porte « annoncé », seul notre relevé peut dire « remise ».
+- Guides : mention d'affiliation au-dessus de chaque groupe de cartes marchandes.

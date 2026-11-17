@@ -6,7 +6,10 @@ const locale=localeOf(Astro.url.pathname),t=textFor(locale);
 const path=localPath(Astro.url.pathname,'fr');
 import {catalogue} from '../lib/editorial';
 const {finder}=await catalogue();
-const links=[...(finder.length ? [['/trouver-ma-montre/','Trouver ma montre']] : []),['/catalogue/','Catalogue'],['/selections/','Sélections'],['/mes-favoris/','Mes favoris'],['/guides/','Guides'],['/marques/','Marques']];
+// Noël rejoint la navigation française jusqu'au 24 décembre (le site est reconstruit chaque matin).
+const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris'}).format(new Date());
+const season=locale==='fr'&&today>=`${today.slice(0,4)}-11-01`&&today<=`${today.slice(0,4)}-12-24`;
+const links=[...(season?[['/noel/','Noël']]:[]),...(finder.length ? [['/trouver-ma-montre/','Trouver ma montre']] : []),['/catalogue/','Catalogue'],['/selections/','Sélections'],['/mes-favoris/','Mes favoris'],['/guides/','Guides'],['/marques/','Marques']];
 ---
 <header class="c-header"><div class="container header-inner"><Wordmark/><span class="brand-tagline">{t('Le sens du porté.','Made for your wrist.')}</span><button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button><nav id="primary-navigation" aria-label={t("Navigation principale","Main navigation")}>{links.map(([url,label])=><a href={localPath(url,locale)} aria-current={path.startsWith(url)?'page':undefined}>{t(label,({'Catalogue':'Catalogue','Sélections':'Selections','Trouver ma montre':'Watch finder','Mes favoris':'Saved watches','Guides':'Guides','Marques':'Brands'} as Record<string,string>)[label])}{url==='/mes-favoris/'&&<span class="header-saved-count" data-saved-count>0</span>}</a>)}</nav><LanguageSwitch/></div></header>
 <!-- Initialize before main is parsed: a delayed module would move the page when the menu collapses. -->
@@ -24,4 +27,4 @@ if(toggle&&nav){
 }
 </script>
 
-<style>.header-saved-count{display:inline-grid;place-items:center;min-width:20px;min-height:20px;border:1px solid currentColor;border-radius:50%;margin-left:6px;font-size:12px}.header-saved-count:empty{display:none}@media(min-width:701px) and (max-width:1200px){.brand-tagline{display:none}.header-inner{gap:20px}.header-inner nav{gap:16px}}</style>
+<style>.header-saved-count{display:inline-grid;place-items:center;min-width:20px;min-height:20px;border:1px solid currentColor;border-radius:50%;margin-left:6px;font-size:12px}.header-saved-count:empty{display:none}@media(min-width:761px) and (max-width:1200px){.brand-tagline{display:none}.header-inner{gap:20px}.header-inner nav{gap:16px}}</style>

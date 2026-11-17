@@ -9,8 +9,8 @@ try{
  const sent=[];page.on('request',r=>{if(r.url().endsWith('/api/measure'))sent.push(r.postDataJSON());});
  await page.goto(origin+'/trouver-ma-montre/?utm_source=tiktok&utm_campaign=tsuyosa-rose');await page.locator('#catalogue-filters:not([aria-disabled])').waitFor();
  assert.equal(sent.length,0);
- await page.locator('#guided-form select[name=budget]').selectOption('300');await page.locator('#guided-form select[name=dial]').selectOption('Rose');await page.locator('#guided-form button[type=submit]').click();assert.equal(await page.locator('.recommendation').count(),1);assert.equal(await page.locator('.recommendation').getAttribute('data-reference'),'NJ0200-50Z');
- const href=await page.locator('.recommendation a').getAttribute('href');assert.ok(href.includes('bg_ref=bDlTL8AyKb'));assert.ok(href.includes('nj0200-50z'));
+ await page.locator('#guided-form select[name=budget]').selectOption('300');await page.locator('#guided-form select[name=dial]').selectOption('Rose');await page.locator('#guided-form button[type=submit]').click();assert.ok(await page.locator('.recommendation').count()>=1);assert.equal(await page.locator('.recommendation').first().getAttribute('data-reference'),'NJ0200-50Z');
+ const href=await page.locator('.recommendation').first().locator('a.merchant-button').getAttribute('href');assert.ok(href.includes('bg_ref=bDlTL8AyKb'));assert.ok(href.includes('nj0200-50z'));
  await page.locator('#guided-form select[name=budget]').selectOption('30');await page.locator('#guided-form button[type=submit]').click();assert.equal(await page.locator('.recommendation').count(),0);assert.match(await page.locator('#guided-status').textContent(),/Aucune/);
  await page.locator('#guided-form button[type=reset]').click();assert.equal(await page.locator('#guided-result').isVisible(),false);assert.ok(!page.url().includes('choix_'));
  await page.locator('#mesure summary').click();await page.locator('[data-measure-decline]').click();await page.reload();await page.locator('#guided-form button[type=submit]').click();assert.equal(sent.length,0);

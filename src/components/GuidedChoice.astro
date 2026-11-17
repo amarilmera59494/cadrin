@@ -1,14 +1,24 @@
 ---
 import data from '../data/tempus-catalogue.json';
 import {recommendationNotes} from '../data/recommendations';
+import {ficheDocumented,ficheSummary,ficheChecks} from '../lib/fiches';
+import {readyToOrder,sizeLabel,type CatalogueProduct} from '../lib/tempus-catalogue';
+import {term} from '../lib/i18n';
 import {localeOf,textFor} from '../lib/i18n';
 import '../styles/growth.css';
 const locale=localeOf(Astro.url.pathname),t=textFor(locale);
-const products=recommendationNotes.map(n=>{const p=data.products.find(p=>p.reference===n.reference);if(!p)throw Error('Missing recommendation '+n.reference);return {...p,...n};});
+const slim=(p:CatalogueProduct)=>({id:p.id,title:p.title,brand:p.brand,reference:p.reference,price:p.price,movement:p.movement,category:p.category,order:p.order,orderable:p.orderable,image:p.image,width:p.width,height:p.height,source:p.source,dialColors:p.dialColors,caseSize:p.caseSize});
+const curated=recommendationNotes.map(n=>{const p=data.products.find(p=>p.reference===n.reference);if(!p)throw Error('Missing recommendation '+n.reference);return {...slim(p as CatalogueProduct),...n,origin:'editorial'};});
+// Catalogue pool: documented watches ready to order, four per maker (Tempus bestsellers first), so the
+// finder can answer every budget. Their reason and limit come from their own specifications, never a guess.
+const taken=new Set(curated.map(p=>p.id)),perMaker=new Map<string,number>();
+const pool=(data.products as CatalogueProduct[]).filter(p=>ficheDocumented(p)&&readyToOrder(p)&&!taken.has(p.id)).sort((a,b)=>Number(!!b.bestseller)-Number(!!a.bestseller)||a.price-b.price).filter(p=>{const k=p.brand==='G-Shock'?'Casio':p.brand,n=perMaker.get(k)??0;perMaker.set(k,n+1);return n<4;}).map(p=>{const check=ficheChecks(p)[0];const styles=['everyday',...(p.brand==='G-Shock'?['sport']:[]),...(p.brand==='Casio'&&/vintage/i.test(p.title)?['retro']:[])];return {...slim(p),styles,origin:'catalogue',reason:ficheSummary(p),reasonEn:[term(p.movement,'en'),p.caseSize&&sizeLabel(p.caseSize,true)].filter(Boolean).join(' · ')+'.',limit:check?`${check.title}. ${check.text}`:'Vérifiez la fiche complète avant de commander.',limitEn:'Read the full listing before ordering.'};});
+const products=[...curated,...pool];
 ---
 <section class="guided-choice" id="aide-au-choix" aria-labelledby="guided-title" data-guided-choice data-products={JSON.stringify(products)} data-date={(data.offersCheckedAt||data.checkedAt)}>
- <span class="eyebrow">{t('Quelques envies. Trois pistes.','A few preferences. Three directions.')}</span><h2 id="guided-title">{t('Vous hésitez ? Partons de vous.','Not sure? Let’s start with you.')}</h2><p>{t('Choisissez ce qui compte ; laissez le reste ouvert. Nous cherchons parmi dix références commentées, puis vous pouvez élargir à tout le catalogue.','Choose what matters and leave the rest open. We look through ten editorially selected references; you can then explore the full catalogue.')}</p>
+ <h2 id="guided-title">{t('Vous hésitez ? Partons de vous.','Not sure? Let’s start with you.')}</h2><p>{t('Répondez à ce qui compte, laissez le reste ouvert. Trois pistes au plus près de votre budget : nos références commentées d’abord, puis des montres du catalogue commandables au dernier relevé.','Answer what matters and leave the rest open. Three choices as close to your budget as possible: our commented references first, then catalogue watches available to order at the last check.')}</p>
  <form id="guided-form" hidden><fieldset class="guided-fields"><legend class="sr-only">{t('Vos préférences','Your preferences')}</legend>
+ <label>{t('Pour qui ?','Who is it for?')}<select name="who"><option value="">{t('Pour moi','For me')}</option><option value="him">{t('À offrir à un homme','A gift for a man')}</option><option value="her">{t('À offrir à une femme','A gift for a woman')}</option></select></label>
  <label>{t('Votre budget','Your budget')}<select name="budget"><option value="">{t('Pas de budget fixé','No set budget')}</option>{[30,50,100,150,300,350,500].map(n=><option value={n}>{t('Jusqu’à ','Up to ')}{n} €</option>)}</select></label>
  <label>{t('L’allure que vous aimez','The look you like')}<select name="style"><option value="">{t('Sans préférence','No preference')}</option><option value="everyday">{t('Pour tous les jours','Everyday')}</option><option value="dress">{t('Habillée','Dressy')}</option><option value="sport">{t('Sportive / G-Shock','Sporty / G-Shock')}</option><option value="retro">{t('Numérique rétro','Retro digital')}</option><option value="jewellery">{t('Montre bijou','Jewellery watch')}</option></select></label>
  <label>{t('Votre rapport au mouvement','Your movement preference')}<select name="habit"><option value="">{t('Pas encore décidé','Not decided yet')}</option><option value="simple">{t('Quartz ou solaire, sans remontage','Quartz or solar, no winding')}</option><option value="mechanical">{t('Le plaisir d’une automatique','An automatic movement')}</option></select></label>

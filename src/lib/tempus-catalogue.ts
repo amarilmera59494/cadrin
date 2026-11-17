@@ -11,6 +11,17 @@ export const filterKeys=['q','brand','budget','dial','strap','movement','categor
 export const dialColours=['Noir','Bleu','Vert','Blanc','Argenté','Gris','Beige','Rose','Rouge','Marron','Jaune','Doré','Orange','Violet'];
 export const normalise=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 /** One French typographic form for millimetre values: '45.4 mm' and '40mm' become '45,4 mm' and '40 mm'. */
+/** Tempus titles as read on Cadrin: single spaces, the brand spelled as the catalogue spells it (LiP → Lip),
+ * the model name capitalised (Orient bambino → Orient Bambino), "36mm" → "36 mm". Words are never added or removed. */
+export function displayTitle(p:{title:string;brand:string}){
+ let t=p.title.replace(/\s+/g,' ').trim().replace(/(\d)mm\b/g,'$1 mm');
+ const n=p.brand.length;
+ if(t.slice(0,n).toLowerCase()===p.brand.toLowerCase()&&(t.length===n||t[n]===' ')){
+  const rest=t.slice(n+1);
+  t=p.brand+(rest?' '+rest.charAt(0).toUpperCase()+rest.slice(1):'');
+ }
+ return t;
+}
 export function sizeLabel(s='',en=false){const n=sizeNumber(s);return n===null?s:n.toLocaleString(en?'en-GB':'fr-FR',{maximumFractionDigits:2})+' mm';}
 export function sizeNumber(s=''){const m=s.trim().match(/^(\d+(?:[.,]\d+)?)\s*mm$/i);return m?Number(m[1].replace(',','.')):null;}
 // Read an explicit bar/ATM marking only. Metre-only values and prose stay unknown.

@@ -16,3 +16,6 @@
 .guide-example .example-status,.reading .guide-example .example-status{min-height:0;margin-top:6px;font-size:13px;font-weight:600;color:var(--accent)}
 main .home-shopping .guide-example p.example-price{font:500 28px/1.1 var(--display);font-variant-numeric:tabular-nums}
 main .home-shopping .guide-example p.example-price small{font:400 12px/1.5 var(--text)}
+.guide-examples-note{font-size:12px;line-height:1.6;color:var(--muted);margin:24px 0 -16px;max-width:none}
+.reading .guide-examples-note{font-size:12px}
+.guide-example .save-watch{border:0;background:none;padding:6px 0;justify-content:flex-start}

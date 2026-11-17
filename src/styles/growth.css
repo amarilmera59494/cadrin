@@ -4,3 +4,13 @@
 .social-page{padding-top:2rem}.recommendation-grid:has(>article:only-child){grid-template-columns:minmax(0,620px)}
 @media(max-width:740px){.recommendation{display:block}.recommendation img{height:210px}.recommendation h3{margin-top:1rem}.guided-result{scroll-margin-top:6rem}}
 .guided-actions button[type=reset]{min-height:48px;padding:.8rem 1.2rem;border:1px solid var(--accent);background:transparent;color:var(--wine);font:inherit;font-weight:600;cursor:pointer}.guided-actions button[type=reset]:hover{background:#e9dfd2}.guided-actions button[type=reset]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+
+/* Finder cards share the site's card language: Barlow title and price, quiet origin line, status only when it matters. */
+.recommendation{display:flex;flex-direction:column;background:var(--paper);border-top:1px solid var(--wine)}
+.recommendation h3{font:500 24px/1.1 var(--display);color:var(--wine);margin:6px 0 0}
+.recommendation-origin{font-size:12px!important;color:var(--muted);margin:12px 0 0!important}
+.recommendation .recommendation-price{font:500 28px/1.1 var(--display)!important;color:var(--ink);font-variant-numeric:tabular-nums;margin-top:auto!important;padding-top:12px}
+.recommendation-status{font-size:13px!important;font-weight:600;color:var(--accent)}
+.recommendation .button{margin-top:12px}
+.recommendation .save-watch{border:0;padding-left:0;justify-content:flex-start}
+@media(max-width:740px){.recommendation{display:grid}.recommendation>.recommendation-origin{margin-top:0!important}}

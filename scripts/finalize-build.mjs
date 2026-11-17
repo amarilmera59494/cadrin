@@ -52,10 +52,12 @@ if(csp.length>1900)throw new Error('CSP trop longue pour les en-têtes Cloudflar
 const assetHeaders=files.filter(f=>f.startsWith(`${dir}/_astro/`)).map(f=>`/${f.slice(dir.length+1)}\n  ! Cache-Control\n  Cache-Control: public, max-age=31536000, immutable\n`).join('\n');
 // Photos d'ambiance et visuels de guides (noms non hachés) : un jour de cache, puis rafraîchissement en arrière-plan.
 // Une règle exacte par fichier : une image absente reste une 404 revalidable.
-const imageFiles=files.filter(f=>/^\/images\/(?:guides\/)?[^/]+\.(?:avif|webp|jpg|png)$/.test(f.slice(dir.length)));
+const imageFiles=files.filter(f=>/^\/images\/(?:guides\/|products\/)?[^/]+\.(?:avif|webp|jpg|png)$/.test(f.slice(dir.length)));
 const imageHeaders=imageFiles.map(f=>`/${f.slice(dir.length+1)}\n  ! Cache-Control\n  Cache-Control: public, max-age=86400, stale-while-revalidate=604800\n`).join('\n');
-if(files.filter(f=>f.startsWith(`${dir}/_astro/`)).length+imageFiles.length+3>100)throw new Error('Limite de règles _headers Cloudflare dépassée.');
-await writeFile(`${dir}/_headers`,`/*\n${production?'':'  X-Robots-Tag: noindex, nofollow\n'}${security}  Content-Security-Policy: ${csp}\n  Cache-Control: public, max-age=0, must-revalidate\n\n/404.html\n  X-Robots-Tag: noindex, nofollow\n\n/images/catalogue/*\n  ! Cache-Control\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n\n${assetHeaders}\n${imageHeaders}`);
+// Données du catalogue côté navigateur : relevé quotidien, une heure de cache suffit.
+const dataHeaders=existsSync(`${dir}/catalogue.json`)?`/catalogue.json\n  ! Cache-Control\n  Cache-Control: public, max-age=3600, stale-while-revalidate=86400\n`:'';
+if(files.filter(f=>f.startsWith(`${dir}/_astro/`)).length+imageFiles.length+(dataHeaders?1:0)+3>100)throw new Error('Limite de règles _headers Cloudflare dépassée.');
+await writeFile(`${dir}/_headers`,`/*\n${production?'':'  X-Robots-Tag: noindex, nofollow\n'}${security}  Content-Security-Policy: ${csp}\n  Cache-Control: public, max-age=0, must-revalidate\n\n/404.html\n  X-Robots-Tag: noindex, nofollow\n\n/images/catalogue/*\n  ! Cache-Control\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n\n${assetHeaders}\n${imageHeaders}\n${dataHeaders}`);
 // Adresses renommées (ex. orthographe d'une marque corrigée) : redirections permanentes vers la nouvelle page.
 const moved=JSON.parse(await readFile('src/data/redirects.json','utf8'));
 for(const {from,to} of moved){if(!existsSync(`${dir}${to}index.html`))throw new Error(`Redirection vers une page absente : ${to}`);if(existsSync(`${dir}${from}index.html`))throw new Error(`Redirection depuis une page encore publiée : ${from}`);}
