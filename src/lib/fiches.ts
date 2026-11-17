@@ -1,7 +1,7 @@
 // Fiches modèle générées depuis le catalogue (/montre/<slug>/).
 // Tout le texte est déduit des champs de la fiche marchande : aucune note, aucun avis, aucun essai.
-import type {CatalogueProduct} from './tempus-catalogue';
-import {merchantLinkAvailable,normalise,sizeNumber,waterMark} from './tempus-catalogue';
+import type {CatalogueProduct} from './tempus-catalogue.ts';
+import {merchantLinkAvailable,normalise,sizeNumber,waterMark} from './tempus-catalogue.ts';
 
 export const ficheBase = '/montre/';
 const slugify = (s: string) => normalise(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

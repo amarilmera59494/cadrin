@@ -7,6 +7,7 @@ import history from '../../data/price-history.json';
 import {reviewFor} from '../../data/review-syntheses';
 import {editorialLinks} from '../../data/editorial-links';
 import {affiliateUrl} from '../../data/affiliation';
+import StickyBuy from '../../components/StickyBuy.astro';
 import {dateLabel} from '../../lib/editorial';
 import {detailRows,orderLabel,purchaseLabel,type CatalogueProduct} from '../../lib/tempus-catalogue';
 import {ficheEligible,ficheSlug,ficheHref,ficheSummary,ficheChecks,ficheAlternatives,ficheTitle} from '../../lib/fiches';
@@ -41,7 +42,7 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
     <div class="fiche-buy">
      <p class="fiche-price"><strong>{money(p.price)}</strong><small>Prix France relevé le {dateLabel(checkedAt)}, hors livraison.</small></p>
      <p class="fiche-status">{orderLabel(p,false)}</p>
-     <a class="button merchant-button" data-placement="product" href={affiliateUrl(p.source)} rel="sponsored">{purchaseLabel(p,false)} ↗</a>
+     <a class="button merchant-button" data-buy-anchor data-placement="product" href={affiliateUrl(p.source)} rel="sponsored"><span>{purchaseLabel(p,false)}</span><span aria-hidden="true">↗</span></a>
      <button class="save-watch" type="button" data-save-id={p.id} data-save-label={p.reference} hidden>Garder en favoris</button>
      <small class="affiliate-note">Lien affilié : Cadrin peut toucher une commission, sans surcoût pour vous. Vérifiez le prix et le délai chez le vendeur avant de commander.</small>
     </div>
@@ -82,11 +83,12 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
    </ul></section>
   </div>
  </div>
+ <StickyBuy price={p.price} label={purchaseLabel(p,false)} href={affiliateUrl(p.source)} checkedAt={checkedAt} reference={p.reference}/>
 </Cadrin>
 <style>
 .fiche{padding-bottom:var(--section)}
 .fiche-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:var(--space-5);align-items:start;padding-block:var(--space-2) var(--space-5);border-bottom:1px solid var(--line)}
-.fiche-photo{background:#fff;padding:var(--space-4);text-align:center}.fiche-photo img{width:100%;max-width:420px;height:auto;aspect-ratio:4/5;object-fit:contain}.fiche-photo small{display:block;margin-top:var(--space-1);font-size:11px;color:var(--muted)}
+.fiche-photo{background:#fff;padding:var(--space-4);text-align:center}.fiche-photo img{width:100%;max-width:420px;height:auto;aspect-ratio:4/5;object-fit:contain}.fiche-photo small{display:block;margin-top:var(--space-1);font-size:12px;color:var(--muted)}
 .fiche-intro h1{font:500 clamp(40px,5vw,68px)/1 var(--display);text-transform:uppercase;margin:var(--space-2) 0;text-wrap:balance}
 .fiche-lead{font-size:19px;line-height:1.5;max-width:34em}
 .fiche-buy{margin-top:var(--space-4);padding:var(--space-3);background:var(--sand)}
@@ -124,5 +126,5 @@ const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.gu
 .fiche-alts img{width:100%;height:190px;object-fit:contain;background:#fff;margin-bottom:var(--space-1)}
 .fiche-alts strong{font-size:16px;line-height:1.3}.fiche-alts span:last-child{font-size:14px;line-height:1.45;color:var(--muted)}
 .fiche-more ul{list-style:none;padding:0;margin:0;display:grid;gap:var(--space-1)}.fiche-more a{display:inline-flex;min-height:44px;align-items:center;font-weight:600}
-@media(max-width:800px){.fiche-head{grid-template-columns:1fr;gap:var(--space-3)}.fiche-photo{padding:var(--space-3)}.fiche-photo img{max-width:300px}.fiche-specs div{grid-template-columns:9em 1fr}}
+@media(max-width:800px){.fiche-head{grid-template-columns:1fr;gap:var(--space-2)}.fiche-photo{padding:var(--space-2)}.fiche-photo img{max-width:none;width:auto;height:min(46vw,240px);margin-inline:auto}.fiche-intro h1{font-size:clamp(30px,8.4vw,44px);line-height:1.02;margin-block:var(--space-1)}.fiche-lead{font-size:16px}.fiche-buy{margin-top:var(--space-2);padding:var(--space-2)}.fiche-price strong{font-size:38px}.fiche-specs div{grid-template-columns:9em 1fr}}
 </style>

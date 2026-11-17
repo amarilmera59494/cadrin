@@ -37,7 +37,7 @@ const others=family.filter(h=>h.slug!==hub.slug).slice(0,12);
    <h3><a href={ficheHref(p)!}>{ficheTitle(p)}</a></h3>
    <p class="hub-sum">{ficheSummary(p)}</p>
    <p class="hub-price">{money(p.price)}</p>
-   <a class="button merchant-button" data-placement="recommendation" href={affiliateUrl(p.source)} rel="sponsored">{purchaseLabel(p,false)} ↗</a>
+   <a class="button merchant-button" data-placement="recommendation" href={affiliateUrl(p.source)} rel="sponsored"><span>{purchaseLabel(p,false)}</span><span aria-hidden="true">↗</span></a>
    <a class="hub-more" href={ficheHref(p)!}>Taille, verre et points à vérifier →</a>
   </li>)}</ol>
   {matches.length>shown.length&&<p class="hub-all"><a class="text-link" href="/catalogue/">Voir tout le catalogue et filtrer →</a></p>}

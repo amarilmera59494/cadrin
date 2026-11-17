@@ -10,6 +10,8 @@ export type CatalogueFilters={q:string;brand:string;budget:string;movement:strin
 export const filterKeys=['q','brand','budget','dial','strap','movement','category','size','water','collection','feature','order','sort'] as const;
 export const dialColours=['Noir','Bleu','Vert','Blanc','Argenté','Gris','Beige','Rose','Rouge','Marron','Jaune','Doré','Orange','Violet'];
 export const normalise=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+/** One French typographic form for millimetre values: '45.4 mm' and '40mm' become '45,4 mm' and '40 mm'. */
+export function sizeLabel(s='',en=false){const n=sizeNumber(s);return n===null?s:n.toLocaleString(en?'en-GB':'fr-FR',{maximumFractionDigits:2})+' mm';}
 export function sizeNumber(s=''){const m=s.trim().match(/^(\d+(?:[.,]\d+)?)\s*mm$/i);return m?Number(m[1].replace(',','.')):null;}
 // Read an explicit bar/ATM marking only. Metre-only values and prose stay unknown.
 // This is a catalogue threshold, never a certification of suitability for an activity.
@@ -32,9 +34,21 @@ export function filterCatalogue(products:CatalogueProduct[],f:CatalogueFilters){
    (!f.movement||p.movement===f.movement)&&(!f.category||p.category===f.category)&&
    (!f.order||(merchantLinkAvailable(p)&&(f.order==='unflagged'?p.order==='check'&&p.orderable:f.order==='open'?p.orderable:p.order===f.order)));
  });
- return rows.sort((a,b)=>(f.sort==='price'?a.price-b.price:f.sort==='price-desc'?b.price-a.price:f.sort==='size'?(sizeNumber(a.caseSize)??Infinity)-(sizeNumber(b.caseSize)??Infinity):f.sort==='brand'?0:Number(!!b.bestseller)-Number(!!a.bestseller)||Number(b.orderable)-Number(a.orderable))||a.brand.localeCompare(b.brand,'fr')||a.title.localeCompare(b.title,'fr')||a.id.localeCompare(b.id));
+ if(!f.sort)return defaultOrder(rows);
+ return rows.sort((a,b)=>(f.sort==='price'?a.price-b.price:f.sort==='price-desc'?b.price-a.price:f.sort==='size'?(sizeNumber(a.caseSize)??Infinity)-(sizeNumber(b.caseSize)??Infinity):0)||a.brand.localeCompare(b.brand,'fr')||a.title.localeCompare(b.title,'fr')||a.id.localeCompare(b.id));
 }
-export function detailRows(p:CatalogueProduct,en=false):[string,string][]{return [[en?'Dial':'Cadran',p.dial],[en?'Case size':'Dimension du boîtier',p.caseSize],[en?'Thickness':'Épaisseur',p.thickness],[en?'Case material':'Boîtier',p.caseMaterial],[en?'Strap / bracelet':'Bracelet',p.strap],[en?'Crystal':'Verre',p.glass],[en?'Calibre':'Calibre',p.calibre],[en?'Functions':'Fonctions',p.functions],[en?'Water resistance':'Étanchéité',p.water]].filter((r):r is [string,string]=>!!r[1]);}
+/** Ready to order now (not preorder, link active). Availability, never commission, drives the default order. */
+export const readyToOrder=(p:CatalogueProduct)=>p.orderable&&p.order!=='preorder'&&merchantLinkAvailable(p);
+// Default order: watches that can be ordered now first, then Tempus bestsellers, then brands in turn
+// (the most accessible watch of each brand, then the next one) so a first page never shows one brand only.
+function defaultOrder(rows:CatalogueProduct[]){
+ const tier=(p:CatalogueProduct)=>Number(readyToOrder(p))*2+Number(!!p.bestseller);
+ const byTier=(a:CatalogueProduct,b:CatalogueProduct)=>tier(b)-tier(a)||a.price-b.price||a.id.localeCompare(b.id);
+ const rank=new Map<CatalogueProduct,number>(),seen=new Map<string,number>();
+ for(const p of rows.slice().sort(byTier)){const key=tier(p)+'|'+p.brand,n=seen.get(key)??0;rank.set(p,n);seen.set(key,n+1);}
+ return rows.sort((a,b)=>tier(b)-tier(a)||rank.get(a)!-rank.get(b)!||a.price-b.price||a.brand.localeCompare(b.brand,'fr')||a.id.localeCompare(b.id));
+}
+export function detailRows(p:CatalogueProduct,en=false):[string,string][]{return [[en?'Dial':'Cadran',p.dial],[en?'Case size':'Dimension du boîtier',p.caseSize&&sizeLabel(p.caseSize,en)],[en?'Thickness':'Épaisseur',p.thickness&&sizeLabel(p.thickness,en)],[en?'Case material':'Boîtier',p.caseMaterial],[en?'Strap / bracelet':'Bracelet',p.strap],[en?'Crystal':'Verre',p.glass],[en?'Calibre':'Calibre',p.calibre],[en?'Functions':'Fonctions',p.functions],[en?'Water resistance':'Étanchéité',p.water]].filter((r):r is [string,string]=>!!r[1]);}
 // Nine tested Longines destinations redirect to the shop homepage (14 November 2026).
 // Pause this brand's purchase links pending a verified repair; catalogue data is retained.
 const pausedPaths=new Set(pausedDestinations.map(p=>new URL(p.source).pathname));

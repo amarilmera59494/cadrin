@@ -1,29 +1,106 @@
 ---
+// Page cadeau de Noël. Elle reprend les séries TikTok Noël dans leur ordre exact (numéros identiques aux slides,
+// ancres #c1… inchangées pour les liens déjà publiés), avec le ton du site : vouvoiement, points à vérifier, aucun délai promis.
 import Cadrin from '../../layouts/Cadrin.astro';
+import TempusBenefits from '../../components/TempusBenefits.astro';
 import data from '../../data/tempus-catalogue.json';
 import {tiktokNoel} from '../../data/tiktok-noel';
 import {affiliateUrl} from '../../data/affiliation';
 import {dateLabel} from '../../lib/editorial';
-import {purchaseLabel,orderLabel} from '../../lib/tempus-catalogue';
+import {ficheHref} from '../../lib/fiches';
+import {purchaseLabel,orderLabel,sizeLabel,type CatalogueProduct} from '../../lib/tempus-catalogue';
 import '../../styles/growth.css';
-const sets=tiktokNoel.map(c=>({...c,items:c.items.map(it=>{const product=data.products.find(p=>p.source.endsWith('/products/'+it.handle));if(!product)throw Error('Référence TikTok Noël absente du catalogue : '+it.handle);return {...it,product};})}));
+const sets=tiktokNoel.map(c=>({...c,items:c.items.map(it=>{const product=data.products.find(p=>p.source.endsWith('/products/'+it.handle)) as CatalogueProduct|undefined;if(!product)throw Error('Référence TikTok Noël absente du catalogue : '+it.handle);return {...it,product};})}));
 const money=(p:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(p);
-const titleCase=(s:string)=>s.charAt(0)+s.slice(1).toLowerCase();
+// Libellés du site : les titres TikTok sont tutoyés et en capitales ; ici, vouvoiement et casse normale.
+const labels:Record<string,{nav:string;title:string}>={
+ 'c1-lui-tous-les-jours':{nav:'Pour lui, au quotidien',title:'La montre qu’il va porter tous les jours.'},
+ 'c2-pour-elle':{nav:'Pour elle',title:'Elle ne se l’offrira jamais. Offrez-la.'},
+ 'c3-air-de-luxe':{nav:'Allure habillée',title:'Elles ont l’air bien plus chères.'},
+ 'c4-ton-budget':{nav:'Par budget',title:'Votre budget. Sa montre.'},
+ 'c5-quelle-g-shock':{nav:'Quelle G-Shock ?',title:'Quelle G-Shock offrir à Noël ?'},
+ 'c6-automatique':{nav:'Automatiques',title:'La montre qui ne prend jamais de pile.'},
+};
+const label=(c:{id:string;kicker:string;title:string})=>labels[c.id]??{nav:c.kicker.charAt(0)+c.kicker.slice(1).toLowerCase(),title:c.title.charAt(0)+c.title.slice(1).toLowerCase()};
+const range=(items:{product:CatalogueProduct}[])=>{const prices=items.map(i=>i.product.price);const lo=Math.min(...prices),hi=Math.max(...prices);return lo===hi?money(lo):`de ${money(lo)} à ${money(hi)}`;};
+const specs=(p:CatalogueProduct)=>[p.movement,p.caseSize&&sizeLabel(p.caseSize),p.strapFamily].filter(Boolean).join(' · ');
+const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
+const count=sets.reduce((n,c)=>n+c.items.length,0);
 ---
-<Cadrin title="Les montres de nos carrousels de Noël" description="Les références exactes de nos carrousels TikTok de Noël : photos Tempus, prix datés et liens directs pour offrir la bonne montre.">
- <div class="container social-page noel-page"><header class="page-heading"><span class="eyebrow">CADRIN · TikTok · Noël</span><h1>Vue sur TikTok.<br/>Prête à offrir.</h1><p>Retrouvez chaque montre dans l’ordre du carrousel : même numéro, même référence, lien direct chez Tempus.</p><p class="small-note">Liens affiliés : vos achats peuvent rémunérer CADRIN. Prix France hors livraison, relevés le {dateLabel((data.offersCheckedAt||data.checkedAt),'fr')}. Stock et délai de livraison à vérifier chez Tempus avant de commander.</p></header>
- <p class="noel-bf"><a href="/black-friday/">Black Friday : voir les montres déjà remisées, avec notre relevé de prix daté →</a></p>
- <nav class="social-jumps" aria-label="Choisir un carrousel">{sets.map(c=><a href={'#'+c.id}>{titleCase(c.kicker)}</a>)}</nav>
- {sets.map(c=><section class="noel-set" id={c.id}><span class="eyebrow">{c.kicker}</span><h2>{titleCase(c.title)}</h2><ol class="noel-grid">{c.items.map((it,i)=><li class="noel-card" data-reference={it.product.reference}><span class="noel-num" aria-hidden="true">{i+1}</span><img src={it.product.image} width={it.product.width} height={it.product.height} loading="lazy" alt={it.product.title}/><p class="noel-profile">{it.profile}</p><h3>{it.name}</h3><p class="social-reference">Réf. {it.product.reference}</p><p class="social-price">{money(it.product.price)}</p><p class="small-note">{orderLabel(it.product,false)}</p><a class="button merchant-button" data-placement="tiktok-noel" href={affiliateUrl(it.product.source)} rel="sponsored">{purchaseLabel(it.product,false)} ↗</a><small class="affiliate-note">Lien affilié · Photo Tempus</small></li>)}</ol></section>)}
- <section class="social-banner"><p><strong>Première commande chez Tempus ?</strong> Le code public WELCOME10 donne −10 %, hors nouveautés et articles déjà remisés, non cumulable. Vérifiez la réduction avant de payer.</p><a href="/trouver-ma-montre/">Chercher une autre montre →</a></section></div>
+<Cadrin title="Idées cadeaux montres pour Noël" description={`${count} montres à offrir pour Noël, pour lui, pour elle et par budget : références exactes, prix relevés le ${dateLabel(checkedAt)} et points à vérifier avant d’offrir.`} crumbs={[{name:'Noël',url:'/noel/'}]}>
+ <div class="container noel-page">
+  <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><span>Noël</span></nav>
+  <header class="noel-head">
+   <h1>Une montre à offrir.<br/><span>Sans se tromper.</span></h1>
+   <p class="noel-lead">{count} références exactes, rangées par envie, avec le prix relevé et ce qu’il faut vérifier avant d’offrir. Vous venez de nos carrousels TikTok&nbsp;? Chaque série garde ses numéros.</p>
+   <p class="noel-note">Prix France hors livraison, relevés le {dateLabel(checkedAt)}. Stock et délai se confirment chez Tempus. Liens affiliés : Cadrin peut toucher une commission, sans surcoût pour vous.</p>
+  </header>
+
+  <section class="gift-checks" aria-labelledby="avant-offrir">
+   <h2 id="avant-offrir">Avant d’offrir</h2>
+   <dl>
+    <div><dt>La taille</dt><dd>Comparez le diamètre et l’épaisseur avec une montre qu’il ou elle porte déjà. Un bracelet acier se raccourcit : gardez-le intact tant que le cadeau n’est pas adopté.</dd><dd><a href="/guides/offrir-une-montre/">Le guide pour offrir une montre →</a></dd></div>
+    <div><dt>Le délai</dt><dd>Nous ne garantissons aucune date de livraison. Avant de payer, lisez le délai affiché par Tempus et évitez les précommandes pour un cadeau du 24 décembre.</dd><dd><a href="https://tempusshop.com/pages/faq">Livraison selon Tempus ↗</a></dd></div>
+    <div><dt>L’échange</dt><dd>Tempus indique 14 jours après réception pour se rétracter, frais de retour normalement à votre charge. Faites confirmer les conditions avant toute gravure.</dd><dd><a href="https://tempusshop.com/policies/refund-policy">Politique de retour ↗</a></dd></div>
+   </dl>
+  </section>
+
+  <nav class="noel-jumps" aria-label="Aller à une série">{sets.map(c=><a href={'#'+c.id}>{label(c).nav}</a>)}</nav>
+
+  {sets.map(c=><section class="noel-set" id={c.id} aria-labelledby={c.id+'-title'}>
+   <div class="noel-set-head"><h2 id={c.id+'-title'}>{label(c).title}</h2><p>{c.items.length} idées, {range(c.items)}</p></div>
+   <ol class="noel-grid">{c.items.map((it,i)=>{const p=it.product,fiche=ficheHref(p),status=p.order==='check'&&p.orderable?null:orderLabel(p,false);return <li class="noel-card" data-reference={p.reference}>
+    <span class="noel-num"><span class="sr-only">Numéro </span>{i+1}</span>
+    <a class="noel-img" href={fiche??affiliateUrl(p.source)} rel={fiche?undefined:'sponsored'} tabindex="-1" aria-hidden="true"><img src={p.image} width={p.width} height={p.height} loading="lazy" decoding="async" alt=""/></a>
+    <p class="noel-profile">{it.profile}</p>
+    <h3>{fiche?<a href={fiche}>{it.name}</a>:it.name}</h3>
+    <p class="noel-specs">{specs(p)}</p>
+    <p class="noel-price">{money(p.price)}</p>
+    {status&&<p class="noel-status">{status}</p>}
+    <a class="button merchant-button" data-placement="tiktok-noel" href={affiliateUrl(p.source)} rel="sponsored" aria-label={`${purchaseLabel(p,false)}, ${it.name}, lien affilié`}><span>{purchaseLabel(p,false).replace(/ chez Tempus$/,'')}<span class="noel-merchant"> chez Tempus</span></span><span aria-hidden="true">↗</span></a>
+    <small class="noel-credit">Réf. {p.reference} · lien affilié · photo Tempus</small>
+   </li>;})}</ol>
+  </section>)}
+
+  <section class="noel-end" aria-labelledby="noel-fin">
+   <div><h2 id="noel-fin">Encore une hésitation&nbsp;?</h2><p>Le sélecteur part de son style, de votre budget et de la taille. Le guide cadeau répond aux questions de taille, de mouvement et de bracelet.</p><p class="noel-end-links"><a class="button" href="/trouver-ma-montre/">Trouver sa montre <span aria-hidden="true">→</span></a><a class="text-link" href="/guides/offrir-une-montre/">Lire le guide cadeau →</a></p></div>
+   <TempusBenefits/>
+  </section>
+ </div>
 </Cadrin>
 <style>
-.noel-set{padding:3rem 0;border-bottom:1px solid #cdbfb4;scroll-margin-top:7rem}.noel-set h2{font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;margin:.4rem 0 1.5rem}
-.noel-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem}
-.noel-card{position:relative;background:#f9f6f0;border-top:3px solid var(--accent);padding:1.2rem;display:flex;flex-direction:column;min-width:0}
-.noel-card img{width:100%;height:240px;object-fit:contain;background:#fff}
-.noel-num{position:absolute;top:.8rem;left:.8rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--wine);color:var(--paper);display:grid;place-items:center;font-weight:700;font-size:1.2rem}
-.noel-profile{font-size:.95rem;color:#674d56;margin:.9rem 0 .2rem}.noel-card h3{font-size:1.2rem;line-height:1.3;margin:0 0 .3rem}
-.noel-card .social-price{font-size:1.6rem;margin:.4rem 0}.noel-card .button{margin-top:auto;width:100%;min-height:48px}
-@media(max-width:740px){.noel-grid{grid-template-columns:1fr 1fr;gap:.8rem}.noel-card{padding:.8rem}.noel-card img{height:160px}.noel-card .button{font-size:.9rem;padding:.7rem .4rem}}
-.noel-bf{margin:0 0 1.5rem}.noel-bf a{font-weight:650;color:var(--wine)}</style>
+.noel-page{padding-bottom:var(--section)}
+.noel-head{padding-bottom:var(--space-4)}
+.noel-head h1{font:500 clamp(52px,7vw,104px)/.95 var(--display);text-transform:uppercase;color:var(--wine);margin-block:var(--space-2) var(--space-3);letter-spacing:-.01em}.noel-head h1 span{color:var(--accent)}
+.noel-lead{font-size:clamp(17px,1.5vw,20px);line-height:1.6;max-width:44ch}
+.noel-note{margin-top:var(--space-2);font-size:13px;line-height:1.6;color:var(--muted);max-width:62ch}
+.gift-checks{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,2fr);gap:var(--space-4);padding-block:var(--space-4);border-block:2px solid var(--wine)}
+.gift-checks h2{font-size:clamp(30px,3vw,40px);line-height:1}
+.gift-checks dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);margin:0}
+.gift-checks dt{font:500 24px/1.1 var(--display);text-transform:uppercase;color:var(--wine);margin-bottom:var(--space-1)}
+.gift-checks dd{margin:0;font-size:15px;line-height:1.6}.gift-checks dd+dd{margin-top:var(--space-1)}.gift-checks dd a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;font-size:14px}
+.noel-jumps{display:flex;gap:var(--space-1);padding-block:var(--space-3);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.noel-jumps::-webkit-scrollbar{display:none}
+.noel-jumps a{flex-shrink:0;display:inline-flex;align-items:center;min-height:44px;padding:0 var(--space-2);border:1px solid var(--line);text-decoration:none;font-size:14px;white-space:nowrap}.noel-jumps a:hover{border-color:var(--wine);color:var(--wine)}
+.noel-set{padding-block:var(--space-5) var(--space-2);scroll-margin-top:84px}
+.noel-set-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-3)}
+.noel-set-head h2{font-size:clamp(32px,3.6vw,52px);line-height:1}.noel-set-head p{flex-shrink:0;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.noel-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-3)}
+.noel-card{position:relative;display:flex;flex-direction:column;min-width:0;border-top:1px solid var(--wine);padding-top:var(--space-2)}
+.noel-img{display:block;background:#fff;margin-bottom:var(--space-2)}.noel-img img{width:100%;height:240px;object-fit:contain;transition:transform 400ms cubic-bezier(.16,1,.3,1)}
+.noel-card:hover .noel-img img{transform:scale(1.03)}
+.noel-num{position:absolute;top:calc(var(--space-2) + 10px);left:10px;z-index:1;min-width:32px;height:32px;display:grid;place-items:center;background:var(--wine);color:var(--paper);font:500 18px/1 var(--display);font-variant-numeric:tabular-nums}
+.noel-profile{font-size:14px;line-height:1.45;color:var(--muted);margin:0 0 6px;font-style:italic}
+.noel-card h3{font:500 24px/1.05 var(--display);text-transform:uppercase;color:var(--wine);margin:0}.noel-card h3 a{text-decoration:none}.noel-card h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.noel-specs{font-size:13px;line-height:1.5;margin:8px 0 0}
+.noel-price{font:500 30px/1 var(--display);color:var(--ink);margin:auto 0 0;padding-top:var(--space-2);font-variant-numeric:tabular-nums}
+.noel-status{font-size:13px;line-height:1.4;margin:6px 0 0;color:var(--accent);font-weight:600}
+.noel-card .merchant-button{margin-top:var(--space-2);min-height:48px}
+.noel-credit{display:block;margin-top:8px;font-size:12px;line-height:1.5;color:var(--muted)}
+.noel-end{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--space-5);align-items:start;margin-top:var(--space-5);padding-top:var(--space-4);border-top:2px solid var(--wine)}
+.noel-end h2{font-size:clamp(32px,3.4vw,48px);margin-bottom:var(--space-2)}.noel-end-links{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);align-items:center;margin-top:var(--space-3)!important}
+.noel-end :global(.tempus-benefits){margin:0}
+@media(max-width:900px){.gift-checks{grid-template-columns:1fr;gap:var(--space-2)}.gift-checks dl{grid-template-columns:1fr;gap:var(--space-3)}.noel-end{grid-template-columns:1fr;gap:var(--space-3)}}
+@media(max-width:700px){.noel-merchant{display:none}.gift-checks{padding-block:var(--space-3)}.gift-checks dl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(var(--gutter)*-1);padding-inline:var(--gutter);scrollbar-width:none}.gift-checks dl>div{flex:0 0 80%;scroll-snap-align:start;padding:16px;background:var(--sand)}.gift-checks dd{font-size:14px}.noel-head{padding-bottom:var(--space-3)}.noel-head h1{font-size:clamp(44px,13vw,64px)}.noel-lead{font-size:16px}.noel-jumps{margin-inline:calc(var(--gutter)*-1);padding-inline:var(--gutter);padding-block:12px}.noel-set{padding-top:var(--space-4)}.noel-set-head{display:block}.noel-set-head p{margin-top:8px}.noel-grid{grid-template-columns:1fr 1fr;gap:var(--space-3) 12px}.noel-img img{height:150px}.noel-card h3{font-size:20px}.noel-price{font-size:26px}.noel-card .merchant-button{font-size:13px;padding:10px 8px;gap:8px}}
+@media(prefers-reduced-motion:reduce){.noel-img img{transition:none}}
+</style>

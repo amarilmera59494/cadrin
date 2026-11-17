@@ -17,3 +17,13 @@ Mouvement : couleur/soulignement, très léger recadrage au survol sur le module
 Archives : `archives/concepts/` conserve les anciennes sources, assets, documentation et scripts. Les routes historiques sont hors de `src/pages/`. `npm run dev:archives` permet de revoir les trois concepts, sans les ajouter au build Cadrin.
 
 Les cartes et les fiches partagent `WatchPhoto`. Un packshot entier tient dans un cadre 3:2 avec `object-fit: contain`. Une photo portée autorisée utilise son propre point de cadrage. En preview, une ligne courte identifie la photo manquante. Elle disparaît en production. Le dossier d’itération présente les mesures de composition et les captures comparatives.
+
+## Révision du 17 novembre 2026 (critique et audit)
+
+- Flèches : `↗` signale un lien qui quitte Cadrin (Tempus, sources) ; `→` un lien interne. Sur les boutons marchands, le caractère reste dans le HTML mais il est dessiné en SVG (`--i-out` dans `cadrin.css`). Le cœur des favoris est dessiné de la même façon (`--i-heart`, plein quand la montre est enregistrée).
+- Plancher typographique : aucune note sous 12 px (`--fs-note`). Prix datés, statuts, crédits photo et fil d’Ariane compris.
+- Surtitres : retirés de l’accueil, du catalogue et de la page Noël. Le titre porte la section ; une information utile (nombre d’idées, fourchette de prix) va sous le titre.
+- Cartes : le titre mène à la fiche, le bouton marchand est la seule action principale, le statut « Stock et délai à confirmer » n’est plus répété sur chaque carte (il figure dans la note de section) ; seuls précommande, sur commande ou indisponibilité restent affichés.
+- Fiche mobile : photo réduite, titre à 30–44 px et barre d’achat collante (`StickyBuy.astro`) quand le bloc d’achat sort de l’écran.
+- Accueil en huit temps : promesse, saison, vidéo, quatre montres, WELCOME10, sélections et duels, guide, méthode.
+- Noël : page cadeau vouvoyée sur la même URL, séries et numéros TikTok inchangés (ancres `#c1…`), bloc « Avant d’offrir » (taille, délai, échange) et avantages Tempus ouverts.
