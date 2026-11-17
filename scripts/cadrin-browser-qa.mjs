@@ -1,6 +1,8 @@
 import {destinations} from '../src/data/destinations.ts';
 const production=process.env.SITE_STAGE==='production';
 const expectedRobots=production?'index, follow':'noindex, nofollow';
+// Favoris et pages 2+ du catalogue : « noindex, follow » volontaire en production (voir check-build.mjs).
+const robotsFor=route=>production&&/^\/(?:en\/)?(?:mes-favoris|saved-watches|catalogue\/\d+)\//.test(route)?'noindex, follow':expectedRobots;
 import {chromium} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
@@ -30,7 +32,7 @@ try{
     result.axeViolations=audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}));
     if(core.includes(route)){const slug=route==='/'?'accueil':route.split('/').filter(Boolean).join('-');await page.screenshot({path:`${dir}/${slug}-${width}.png`,fullPage:true});await page.screenshot({path:`${dir}/${slug}-${width}-top.png`});}
    }
-   report.viewports.push(result);if(result.status!==200||state.overflow||state.brokenImages.length||state.h1!==1||state.noindex!==expectedRobots||result.axeViolations?.length)report.failures.push(`viewport:${width}:${route}`);
+   report.viewports.push(result);if(result.status!==200||state.overflow||state.brokenImages.length||state.h1!==1||state.noindex!==robotsFor(route)||result.axeViolations?.length)report.failures.push(`viewport:${width}:${route}`);
    console.log(`${width} ${route}: ${result.status}, overflow=${state.overflow}, axe=${result.axeViolations?.length??'—'}`);
   }
  }
