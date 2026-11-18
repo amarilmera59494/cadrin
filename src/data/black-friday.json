@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-17",
+ "checkedAt": "2026-11-18",
  "blackFriday": "2026-11-27",
  "cyberMonday": "2026-11-30",
  "items": [
@@ -45,26 +45,34 @@
   {
    "handle": "seiko-arabic-dial",
    "group": "auto",
-   "price": 219,
+   "price": 223.2,
    "was": 279,
-   "available": false,
+   "available": true,
    "history": [
     {
      "date": "2026-11-14",
      "price": 219
+    },
+    {
+     "date": "2026-11-18",
+     "price": 223.2
     }
    ]
   },
   {
    "handle": "seiko-arabic-dial-34mm",
    "group": "auto",
-   "price": 180,
+   "price": 192,
    "was": 240,
-   "available": false,
+   "available": true,
    "history": [
     {
      "date": "2026-11-14",
      "price": 180
+    },
+    {
+     "date": "2026-11-18",
+     "price": 192
     }
    ]
   },
@@ -166,8 +174,8 @@
   {
    "handle": "seiko-arabic-dial-green",
    "group": "auto",
-   "price": 720,
-   "was": null,
+   "price": 576,
+   "was": 720,
    "available": true,
    "history": [
     {
@@ -177,6 +185,10 @@
     {
      "date": "2026-11-17",
      "price": 720
+    },
+    {
+     "date": "2026-11-18",
+     "price": 576
     }
    ]
   },
