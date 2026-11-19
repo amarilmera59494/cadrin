@@ -7,19 +7,21 @@ import history from '../../data/price-history.json';
 import {reviewFor} from '../../data/review-syntheses';
 import {editorialLinks} from '../../data/editorial-links';
 import {hubs,brandHubs} from '../../data/selection-hubs';
+import {autoComparisons} from '../../data/auto-comparisons';
 import {affiliateUrl} from '../../data/affiliation';
 import StickyBuy from '../../components/StickyBuy.astro';
 import {dateLabel} from '../../lib/editorial';
 import {detailRows,orderLabel,purchaseLabel,type CatalogueProduct} from '../../lib/tempus-catalogue';
-import {ficheEligible,ficheSlug,ficheHref,ficheSummary,ficheChecks,ficheAlternatives,ficheTitle} from '../../lib/fiches';
+import {ficheEligible,ficheSlug,ficheHref,ficheSummary,ficheChecks,ficheAlternatives,ficheTitle,ficheIsVariant,ficheColourways} from '../../lib/fiches';
 export function getStaticPaths(){
  const all=data.products as CatalogueProduct[],seen=new Set<string>();
- return all.filter(ficheEligible).sort((a,b)=>a.price-b.price).filter(p=>{const s=ficheSlug(p);if(seen.has(s))return false;seen.add(s);return true;}).map(p=>({params:{slug:ficheSlug(p)},props:{p}}));
+ return all.filter(p=>ficheEligible(p)&&!ficheIsVariant(p)).sort((a,b)=>a.price-b.price).filter(p=>{const s=ficheSlug(p);if(seen.has(s))return false;seen.add(s);return true;}).map(p=>({params:{slug:ficheSlug(p)},props:{p}}));
 }
 const {p}=Astro.props as {p:CatalogueProduct};
 const all=data.products as CatalogueProduct[];
 const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
 const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
+const colours=ficheColourways(p,all);
 const name=ficheTitle(p),checks=ficheChecks(p),{similar,cheaper}=ficheAlternatives(p,all);
 const analysis=editorialLinks[p.reference];
 const record=bf.items.find(i=>p.source.endsWith('/products/'+i.handle));
@@ -28,10 +30,13 @@ const review=reviewFor(p.reference);
 const brandPage=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];const brandHub=brandHubs.find(h=>h.match(p));const brandHref=brandPage?`/marques/${brandPage}/`:brandHub?`/marques/${brandHub.slug}/`:null;
 // Sélections où figure ce modèle : un lien interne par critère vérifiable sur la fiche.
 const inHubs=hubs.filter(h=>h.match(p));
+// Comparatifs « A ou B ? » où figure ce modèle (tous coloris confondus).
+const inComparisons=autoComparisons.filter(c=>colours.some(x=>x.reference===c.a||x.reference===c.b));
 // Searches for a reference are mostly price searches (« 862129 euros ») : the dated price goes in the title.
 const short=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',minimumFractionDigits:n%1?2:0}).format(n),tName=name.replace(/\s+-\s+/g,' '),tPrice=short(p.price);
 const title=[`${tName} : prix ${tPrice}, taille, étanchéité`,`${tName} : prix ${tPrice} et fiche`,`${tName} : ${tPrice}`,`${p.brand} ${p.reference} : prix ${tPrice} et fiche`,`${p.brand} ${p.reference} : ${tPrice}`].find(x=>x.length<=61)??`${p.brand} ${p.reference}`;
-const descBase=`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. ${ficheSummary(p)}`;const description=[descBase+' Points à vérifier et alternatives.',descBase,`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. Caractéristiques, points à vérifier et alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
+const descBase=`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. ${ficheSummary(p)}`;const colourNote=colours.length>1?` ${colours.length} coloris.`:'';
+const description=[descBase+colourNote+' Points à vérifier et alternatives.',descBase+colourNote,descBase,`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. Caractéristiques, points à vérifier et alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
 const missingSpecs=[!p.caseSize&&'Dimension du boîtier',!p.glass&&'Verre',!p.water&&'Étanchéité'].filter(Boolean) as string[];
 const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.guide!])).values()];
 // Données Product/Offer : le prix relevé affiché sur la page, sans note, sans avis, sans disponibilité affirmée.
@@ -55,6 +60,9 @@ const productSchema=[{'@type':'Product',name:name,brand:{'@type':'Brand',name:p.
     </div>
    </div>
   </header>
+
+  {colours.length>1&&<section class="fiche-colours" id="coloris" aria-labelledby="coloris-t"><h2 id="coloris-t">{colours.length} coloris pour ce modèle</h2><p class="fiche-sub">Même diamètre, même mouvement : le cadran ou le bracelet change, avec sa propre référence et son prix relevé le {dateLabel(checkedAt)}.</p>
+   <ul>{colours.map(c=><li class={c.id===p.id?'is-current':undefined}><img src={c.image} width={c.width} height={c.height} alt={`${c.title}, photo du vendeur`} loading="lazy"/><div><strong>{c.dial||'Cadran non précisé'}</strong>{c.strap&&<span>{c.strap}</span>}<span class="small-note">Réf. {c.reference}</span><span class="colour-price">{money(c.price)}</span>{c.id===p.id?<span class="small-note">Le coloris présenté ici</span>:<a class="button merchant-button" data-placement="colourway" href={affiliateUrl(c.source)} rel="sponsored"><span>{purchaseLabel(c,false)}</span><span aria-hidden="true">↗</span></a>}</div></li>)}</ul></section>}
 
   <div class="fiche-body">
    {checks.length>0&&<section class="fiche-checks" aria-labelledby="verifier">
@@ -85,6 +93,7 @@ const productSchema=[{'@type':'Product',name:name,brand:{'@type':'Brand',name:p.
    <section class="fiche-more" aria-labelledby="comparer"><h2 id="comparer">Comparer avant de choisir</h2><ul>
     <li><a href={'/catalogue/?brand='+encodeURIComponent(p.brand)+'&compare='+p.id+'#catalogue-count'}>Comparer avec d’autres {p.brand} du catalogue →</a></li>
     {brandHref&&<li><a href={brandHref}>Notre dossier sur la marque {p.brand} →</a></li>}
+    {inComparisons.map(c=><li><a href={`/comparatifs/${c.slug}/`}>Comparatif : {c.title} →</a></li>)}
     {inHubs.map(h=><li><a href={`/selections/${h.slug}/`}>Sélection : {h.title.toLowerCase().replace(/^montres?/,'les montres').replace(/^chronographes/,'les chronographes').replace(/^idées/,'idées')} →</a></li>)}
     <li><a href="/trouver-ma-montre/">Trouver une montre selon vos critères →</a></li>
     <li><a href="/notre-methode/">Comment nous sélectionnons et vérifions →</a></li>
@@ -94,6 +103,7 @@ const productSchema=[{'@type':'Product',name:name,brand:{'@type':'Brand',name:p.
  <StickyBuy price={p.price} label={purchaseLabel(p,false)} href={affiliateUrl(p.source)} checkedAt={checkedAt} reference={p.reference}/>
 </Cadrin>
 <style>
+.fiche-colours{margin:var(--space-5,2.5rem) 0}.fiche-colours h2{margin-bottom:.6rem}.fiche-colours ul{list-style:none;padding:0;margin:var(--space-3,1rem) 0 0;display:grid;gap:var(--space-3,1rem);grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}.fiche-colours li{display:grid;grid-template-columns:72px 1fr;gap:.75rem;align-items:start;padding:.75rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px}.fiche-colours li.is-current{border-color:currentColor}.fiche-colours img{width:72px;height:auto;object-fit:contain}.fiche-colours div{display:grid;gap:.15rem}.fiche-colours div>*{margin:0;line-height:1.35}.fiche-colours li div>.small-note{font-size:.85rem;margin:0}.fiche-colours .colour-price{font-weight:700}.fiche-colours .button{margin-top:.4rem;min-height:44px}
 .fiche{padding-bottom:var(--section)}
 .fiche-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:var(--space-5);align-items:start;padding-block:var(--space-2) var(--space-5);border-bottom:1px solid var(--line)}
 .fiche-photo{background:#fff;padding:var(--space-4);text-align:center}.fiche-photo img{width:100%;max-width:420px;height:auto;aspect-ratio:4/5;object-fit:contain}.fiche-photo small{display:block;margin-top:var(--space-1);font-size:12px;color:var(--muted)}

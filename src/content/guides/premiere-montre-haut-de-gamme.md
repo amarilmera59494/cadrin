@@ -19,7 +19,7 @@ Il n’existe pas de montant universel qui transforme une montre en montre de lu
 
 ## Trois références pour préciser vos envies
 
-La Seiko SRPH49 part du cadran : un vert profond, des chiffres arabes et un jour affiché en anglais ou en arabe, sur une automatique de 40 mm. L’Orient Bambino Sun & Moon met une mécanique au premier plan, avec son indicateur jour et nuit, sur cuir. La Tsuyosa sert de contrepoint : avant d’augmenter le budget, regardez ce que vous appréciez déjà dans sa silhouette sur acier.
+La [Seiko](/marques/seiko/) SRPH49 part du cadran : un vert profond, des chiffres arabes et un jour affiché en anglais ou en arabe, sur une automatique de 40 mm. L’[Orient](/marques/orient/) Bambino Sun & Moon met une mécanique au premier plan, avec son indicateur jour et nuit, sur cuir. La Tsuyosa sert de contrepoint : avant d’augmenter le budget, regardez ce que vous appréciez déjà dans sa silhouette sur acier.
 
 Ces modèles ne représentent pas toute la haute horlogerie. Ils donnent trois points de départ concrets chez Tempus pour savoir si votre envie porte sur une forme, une mécanique ou une matière. Les prix affichés dans les cartes sont datés, pas un engagement de disponibilité.
 
@@ -29,7 +29,7 @@ Ces modèles ne représentent pas toute la haute horlogerie. Ils donnent trois p
 
 La boucle, la couronne et les premiers maillons méritent autant d’attention que le cadran. Essayez la fermeture, le réglage et le passage sous une manche. Le poids total ne raconte pas à lui seul l’équilibre sur le poignet.
 
-Un verre saphir, un fond transparent ou une grande réserve de marche peuvent vous intéresser pour des raisons différentes. Aucun de ces mots ne suffit à démontrer une meilleure finition générale. Comparez les références exactes et évitez de transposer les caractéristiques d’une autre taille ou d’un autre mouvement de la même collection.
+Un [verre saphir](/selections/montres-verre-saphir-moins-de-300-euros/), un fond transparent ou une grande réserve de marche peuvent vous intéresser pour des raisons différentes. Aucun de ces mots ne suffit à démontrer une meilleure finition générale. Comparez les références exactes et évitez de transposer les caractéristiques d’une autre taille ou d’un autre mouvement de la même collection.
 
 ## Achetez pour la porter
 

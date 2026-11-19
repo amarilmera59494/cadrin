@@ -10,17 +10,19 @@ import {affiliateUrl} from '../../../data/affiliation';
 import {dateLabel} from '../../../lib/editorial';
 import {localPath} from '../../../lib/i18n';
 import {orderLabel,purchaseLabel,type CatalogueProduct} from '../../../lib/tempus-catalogue';
-import {ficheEligible,ficheSlug,ficheHref,ficheAlternatives,ficheTitle} from '../../../lib/fiches';
+import {ficheEligible,ficheSlug,ficheHref,ficheAlternatives,ficheTitle,ficheIsVariant,ficheColourways} from '../../../lib/fiches';
+import {term} from '../../../lib/i18n';
 import {ficheSummaryEn,ficheChecksEn,detailRowsEn,categoryEn,movementEn} from '../../../lib/fiches-en';
 export function getStaticPaths(){
  const all=data.products as CatalogueProduct[],seen=new Set<string>();
- return all.filter(ficheEligible).sort((a,b)=>a.price-b.price).filter(p=>{const s=ficheSlug(p);if(seen.has(s))return false;seen.add(s);return true;}).map(p=>({params:{slug:ficheSlug(p)},props:{p}}));
+ return all.filter(p=>ficheEligible(p)&&!ficheIsVariant(p)).sort((a,b)=>a.price-b.price).filter(p=>{const s=ficheSlug(p);if(seen.has(s))return false;seen.add(s);return true;}).map(p=>({params:{slug:ficheSlug(p)},props:{p}}));
 }
 const {p}=Astro.props as {p:CatalogueProduct};
 const all=data.products as CatalogueProduct[];
 const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
 const money=(n:number)=>new Intl.NumberFormat('en-GB',{style:'currency',currency:'EUR'}).format(n);
 const day=(d:string)=>dateLabel(d,'en');
+const colours=ficheColourways(p,all);
 const name=ficheTitle(p),summary=ficheSummaryEn(p),checks=ficheChecksEn(p),{similar,cheaper}=ficheAlternatives(p,all);
 const analysisPath=editorialLinks[p.reference]?localPath(`/montres/${editorialLinks[p.reference]}/`,'en'):null;
 const analysis=analysisPath&&analysisPath!=='/en/'?analysisPath:null;
@@ -32,7 +34,8 @@ const brandHref=brandSlug?localPath(`/marques/${brandSlug}/`,'en'):null;
 const short=(n:number)=>new Intl.NumberFormat('en-GB',{style:'currency',currency:'EUR',minimumFractionDigits:n%1?2:0}).format(n),tName=name.replace(/\s+-\s+/g,' '),tPrice=short(p.price);
 const title=[`${tName}: price ${tPrice}, size, water resistance`,`${tName}: price ${tPrice} and specs`,`${p.brand} ${p.reference}: price ${tPrice} and specs`,`${p.brand} ${p.reference}: ${tPrice} watch`].find(x=>x.length<=61)??`${p.brand} ${p.reference} watch`;
 const descBase=`${p.brand} ${p.reference}: ${money(p.price)} in France on ${day(checkedAt)}. ${summary}`;
-const description=[descBase+' Checks before buying and alternatives.',descBase,`${p.brand} ${p.reference}: ${money(p.price)} in France on ${day(checkedAt)}. Specifications, checks and alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
+const colourNote=colours.length>1?` ${colours.length} colourways.`:'';
+const description=[descBase+colourNote+' Checks before buying and alternatives.',descBase+colourNote,descBase,`${p.brand} ${p.reference}: ${money(p.price)} in France on ${day(checkedAt)}. Specifications, checks and alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
 const missingSpecs=[!p.caseSize&&'Case size',!p.glass&&'Crystal',!p.water&&'Water resistance'].filter(Boolean) as string[];
 const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.guide!])).values()];
 const href=ficheHref(p,true)!;
@@ -55,6 +58,9 @@ const href=ficheHref(p,true)!;
     </div>
    </div>
   </header>
+
+  {colours.length>1&&<section class="fiche-colours" id="colourways" aria-labelledby="colourways-t"><h2 id="colourways-t">{colours.length} colourways of this model</h2><p class="fiche-sub">Same diameter, same movement: the dial or strap changes, each with its own reference and a price recorded on {day(checkedAt)}.</p>
+   <ul>{colours.map(c=><li class={c.id===p.id?'is-current':undefined}><img src={c.image} width={c.width} height={c.height} alt={`${c.title}, retailer photo`} loading="lazy"/><div><strong>{c.dial?term(c.dial,'en'):'Dial not specified'}</strong>{c.strap&&<span>{term(c.strap,'en')}</span>}<span class="small-note">Ref. {c.reference}</span><span class="colour-price">{money(c.price)}</span>{c.id===p.id?<span class="small-note">The colourway shown on this page</span>:<a class="button merchant-button" data-placement="colourway" href={affiliateUrl(c.source)} rel="sponsored"><span>{purchaseLabel(c,true)}</span><span aria-hidden="true">↗</span></a>}</div></li>)}</ul></section>}
 
   <div class="fiche-body">
    {checks.length>0&&<section class="fiche-checks" aria-labelledby="checks">
@@ -92,6 +98,7 @@ const href=ficheHref(p,true)!;
  </div>
 </Cadrin>
 <style>
+.fiche-colours{margin:var(--space-5,2.5rem) 0}.fiche-colours h2{margin-bottom:.6rem}.fiche-colours ul{list-style:none;padding:0;margin:var(--space-3,1rem) 0 0;display:grid;gap:var(--space-3,1rem);grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}.fiche-colours li{display:grid;grid-template-columns:72px 1fr;gap:.75rem;align-items:start;padding:.75rem;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:12px}.fiche-colours li.is-current{border-color:currentColor}.fiche-colours img{width:72px;height:auto;object-fit:contain}.fiche-colours div{display:grid;gap:.15rem}.fiche-colours div>*{margin:0;line-height:1.35}.fiche-colours li div>.small-note{font-size:.85rem;margin:0}.fiche-colours .colour-price{font-weight:700}.fiche-colours .button{margin-top:.4rem;min-height:44px}
 .fiche{padding-bottom:var(--section)}
 .fiche-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:var(--space-5);align-items:start;padding-block:var(--space-2) var(--space-5);border-bottom:1px solid var(--line)}
 .fiche-photo{background:#fff;padding:var(--space-4);text-align:center}.fiche-photo img{width:100%;max-width:420px;height:auto;aspect-ratio:4/5;object-fit:contain}.fiche-photo small{display:block;margin-top:var(--space-1);font-size:12px;color:var(--muted)}

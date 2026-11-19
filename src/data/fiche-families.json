@@ -1,0 +1,910 @@
+{
+ "variants": {
+  "16071075496270": {
+   "primary": "16071077036366",
+   "slug": "alpina-alpiner-extreme-quartz-al-220k2ae6"
+  },
+  "16071080018254": {
+   "primary": "16071077036366",
+   "slug": "alpina-alpiner-extreme-quartz-al-220k2ae6"
+  },
+  "16071083131214": {
+   "primary": "16071077036366",
+   "slug": "alpina-alpiner-extreme-quartz-al-220k2ae6"
+  },
+  "16071066353998": {
+   "primary": "16071065076046",
+   "slug": "alpina-alpiner-extreme-solarmetre-al-140n3ae6"
+  },
+  "16071061438798": {
+   "primary": "16071065076046",
+   "slug": "alpina-alpiner-extreme-solarmetre-al-140n3ae6"
+  },
+  "16071062552910": {
+   "primary": "16071065076046",
+   "slug": "alpina-alpiner-extreme-solarmetre-al-140n3ae6"
+  },
+  "16026800521550": {
+   "primary": "16149629534542",
+   "slug": "casio-a140we-2aef"
+  },
+  "15916093571406": {
+   "primary": "15922126913870",
+   "slug": "casio-edifice-automatique-efk-110d-1a"
+  },
+  "15962489389390": {
+   "primary": "15989793161550",
+   "slug": "casio-edifice-automatique-efk-200d-2a"
+  },
+  "10903842488654": {
+   "primary": "10462905401678",
+   "slug": "casio-edifice-efb-109d-2avef"
+  },
+  "15824796123470": {
+   "primary": "10126543323470",
+   "slug": "casio-femme-ltp-b150l-7b1ef"
+  },
+  "15918333296974": {
+   "primary": "15922117837134",
+   "slug": "casio-mq-24da-1a"
+  },
+  "8512373457230": {
+   "primary": "8512372965710",
+   "slug": "casio-mtp-1302pd-3avef"
+  },
+  "8895945539918": {
+   "primary": "8756926775630",
+   "slug": "casio-mtp-b145d-2a2vef"
+  },
+  "15922079138126": {
+   "primary": "15922040635726",
+   "slug": "casio-utp-1302pd-2a1v"
+  },
+  "16149629436238": {
+   "primary": "16149629337934",
+   "slug": "casio-vintage-abl-100we-1aef"
+  },
+  "15848753037646": {
+   "primary": "15989678604622",
+   "slug": "citizen-em1070-83a"
+  },
+  "15848553251150": {
+   "primary": "15848567013710",
+   "slug": "citizen-fe6121-67a"
+  },
+  "15848587854158": {
+   "primary": "15848567013710",
+   "slug": "citizen-fe6121-67a"
+  },
+  "8936925528398": {
+   "primary": "8936906424654",
+   "slug": "citizen-super-titane-nj0180-80a"
+  },
+  "10783440896334": {
+   "primary": "10783426937166",
+   "slug": "citizen-surrato-eco-drive-ar3120-16a"
+  },
+  "10783443222862": {
+   "primary": "10783426937166",
+   "slug": "citizen-surrato-eco-drive-ar3120-16a"
+  },
+  "10798743388494": {
+   "primary": "10504236204366",
+   "slug": "citizen-zenshin-60-super-titane-nk5020-58l"
+  },
+  "10798748729678": {
+   "primary": "10504236204366",
+   "slug": "citizen-zenshin-60-super-titane-nk5020-58l"
+  },
+  "16184451858766": {
+   "primary": "16184451760462",
+   "slug": "casio-g-shock-gac-2500-1a"
+  },
+  "16184451891534": {
+   "primary": "16184451760462",
+   "slug": "casio-g-shock-gac-2500-1a"
+  },
+  "7382352101547": {
+   "primary": "7408853844139",
+   "slug": "lip-churchill-t24-671270"
+  },
+  "7408854991019": {
+   "primary": "7408853844139",
+   "slug": "lip-churchill-t24-671270"
+  },
+  "7382352494763": {
+   "primary": "7408853844139",
+   "slug": "lip-churchill-t24-671270"
+  },
+  "15931307458894": {
+   "primary": "15931319943502",
+   "slug": "lip-churchill-c18-671622"
+  },
+  "9765635490126": {
+   "primary": "15931319943502",
+   "slug": "lip-churchill-c18-671622"
+  },
+  "10387444007246": {
+   "primary": "15931319943502",
+   "slug": "lip-churchill-c18-671622"
+  },
+  "10871397810510": {
+   "primary": "10773265940814",
+   "slug": "lip-churchill-c18-671946"
+  },
+  "10773302903118": {
+   "primary": "10773265940814",
+   "slug": "lip-churchill-c18-671946"
+  },
+  "16077024559438": {
+   "primary": "9768465334606",
+   "slug": "lip-churchill-t18-671929"
+  },
+  "9768471036238": {
+   "primary": "9768517632334",
+   "slug": "lip-churchill-t18-671930"
+  },
+  "10156264390990": {
+   "primary": "9768517632334",
+   "slug": "lip-churchill-t18-671930"
+  },
+  "9768510357838": {
+   "primary": "9768490893646",
+   "slug": "lip-churchill-t24-671927"
+  },
+  "10156292735310": {
+   "primary": "9768490893646",
+   "slug": "lip-churchill-t24-671927"
+  },
+  "10894425489742": {
+   "primary": "10894612201806",
+   "slug": "lip-general-de-gaulle-31mm-671883"
+  },
+  "10242345271630": {
+   "primary": "8456029536590",
+   "slug": "lip-general-de-gaulle-35mm-671022"
+  },
+  "10795077992782": {
+   "primary": "10795084480846",
+   "slug": "lip-general-de-gaulle-automatique-35mm-671880"
+  },
+  "16077024002382": {
+   "primary": "10880764379470",
+   "slug": "lip-henriette-18mm-671267"
+  },
+  "10882131427662": {
+   "primary": "10880764379470",
+   "slug": "lip-henriette-18mm-671267"
+  },
+  "10882126577998": {
+   "primary": "10126350778702",
+   "slug": "lip-himalaya-29mm-671602"
+  },
+  "10797979959630": {
+   "primary": "10126350778702",
+   "slug": "lip-himalaya-29mm-671602"
+  },
+  "10880766935374": {
+   "primary": "10126350778702",
+   "slug": "lip-himalaya-29mm-671602"
+  },
+  "10474074603854": {
+   "primary": "10474203087182",
+   "slug": "lip-himalaya-40mm-671541"
+  },
+  "9867202625870": {
+   "primary": "10474203087182",
+   "slug": "lip-himalaya-40mm-671541"
+  },
+  "16077025476942": {
+   "primary": "10474203087182",
+   "slug": "lip-himalaya-40mm-671541"
+  },
+  "9867198038350": {
+   "primary": "10474203087182",
+   "slug": "lip-himalaya-40mm-671541"
+  },
+  "10869474853198": {
+   "primary": "10474203087182",
+   "slug": "lip-himalaya-40mm-671541"
+  },
+  "10773253292366": {
+   "primary": "10474203087182",
+   "slug": "lip-himalaya-40mm-671541"
+  },
+  "10474092855630": {
+   "primary": "10474089152846",
+   "slug": "lip-himalaya-40mm-sablier-671572"
+  },
+  "10474254303566": {
+   "primary": "10474089152846",
+   "slug": "lip-himalaya-40mm-sablier-671572"
+  },
+  "7408848863403": {
+   "primary": "10462649057614",
+   "slug": "lip-himalaya-40mm-squelette-671248"
+  },
+  "10474084794702": {
+   "primary": "10462649057614",
+   "slug": "lip-himalaya-40mm-squelette-671248"
+  },
+  "10242439348558": {
+   "primary": "10462649057614",
+   "slug": "lip-himalaya-40mm-squelette-671248"
+  },
+  "10474333339982": {
+   "primary": "10462649057614",
+   "slug": "lip-himalaya-40mm-squelette-671248"
+  },
+  "10474178183502": {
+   "primary": "10474102849870",
+   "slug": "lip-himalaya-chronographe-40-mm-671592"
+  },
+  "10130398314830": {
+   "primary": "10474102849870",
+   "slug": "lip-himalaya-chronographe-40-mm-671592"
+  },
+  "16077027934542": {
+   "primary": "9820492235086",
+   "slug": "lip-minilip-29-mm-671971"
+  },
+  "10474355097934": {
+   "primary": "10474350575950",
+   "slug": "lip-rallye-meca-quartz-chronographe-39-mm-671806"
+  },
+  "8583371718990": {
+   "primary": "8583369261390",
+   "slug": "lip-t18-671015"
+  },
+  "15809064763726": {
+   "primary": "15830997401934",
+   "slug": "orient-bambino-38mm-ra-bb0002s"
+  },
+  "16052342423886": {
+   "primary": "15830997401934",
+   "slug": "orient-bambino-38mm-ra-bb0002s"
+  },
+  "10488964055374": {
+   "primary": "10488952389966",
+   "slug": "orient-bambino-petite-seconde-ra-ap0101b"
+  },
+  "9743489728846": {
+   "primary": "9743525675342",
+   "slug": "orient-bambino-v9-sun-moon-ra-ak0802s"
+  },
+  "8780004655438": {
+   "primary": "8479888867662",
+   "slug": "orient-classic-bambino-v8-ra-ak0701s"
+  },
+  "8886702637390": {
+   "primary": "8886629531982",
+   "slug": "orient-contemporary-open-heart-ra-ar0008e10b"
+  },
+  "8779940888910": {
+   "primary": "8779861393742",
+   "slug": "orient-mako-iii-kamasu-ra-aa0001b"
+  },
+  "10110997332302": {
+   "primary": "10110934942030",
+   "slug": "swiss-military-chronographe-sm34012-01"
+  },
+  "10110821630286": {
+   "primary": "10110934942030",
+   "slug": "swiss-military-chronographe-sm34012-01"
+  },
+  "10110980424014": {
+   "primary": "10111071158606",
+   "slug": "swiss-military-chronographe-sm34084-03"
+  },
+  "10111039308110": {
+   "primary": "10111099109710",
+   "slug": "swiss-military-classic-sm30200-01"
+  },
+  "10112240681294": {
+   "primary": "10112233275726",
+   "slug": "swiss-military-montre-sport-sm34082-01"
+  },
+  "10112986513742": {
+   "primary": "10112978813262",
+   "slug": "zeppelin-100-jahre-zeppelin-chronographe-7680-1"
+  },
+  "10112991396174": {
+   "primary": "10112978813262",
+   "slug": "zeppelin-100-jahre-zeppelin-chronographe-7680-1"
+  },
+  "10113966702926": {
+   "primary": "10113949630798",
+   "slug": "zeppelin-atlantic-8460-3"
+  },
+  "16163084370254": {
+   "primary": "16163084206414",
+   "slug": "zeppelin-atlantic-8466-3"
+  },
+  "16163112878414": {
+   "primary": "16163112747342",
+   "slug": "zeppelin-captain-s-line-8658-3"
+  },
+  "10114120712526": {
+   "primary": "10114001600846",
+   "slug": "zeppelin-friedrichshafen-8536-1"
+  },
+  "10114166063438": {
+   "primary": "10114156364110",
+   "slug": "zeppelin-friedrichshafen-8537-1"
+  },
+  "10114180972878": {
+   "primary": "10114168848718",
+   "slug": "zeppelin-friedrichshafen-8562-3"
+  },
+  "10114229502286": {
+   "primary": "10114214592846",
+   "slug": "zeppelin-friedrichshafen-8568-1"
+  },
+  "10114252439886": {
+   "primary": "10114245919054",
+   "slug": "zeppelin-friedrichshafen-chronographe-8584-3"
+  },
+  "10114198798670": {
+   "primary": "10114197160270",
+   "slug": "zeppelin-friedrichshafen-openheart-8566-4"
+  },
+  "16163104358734": {
+   "primary": "16163104129358",
+   "slug": "zeppelin-friedrichshafen-openheart-8567-1"
+  },
+  "10114302345550": {
+   "primary": "10114290516302",
+   "slug": "zeppelin-lz-14-marine-lady-8635-3"
+  },
+  "10114310537550": {
+   "primary": "10114309357902",
+   "slug": "zeppelin-lz-14-marine-lady-8637m-3"
+  },
+  "10112909803854": {
+   "primary": "10112891224398",
+   "slug": "zeppelin-lz126-los-angeles-7614-3"
+  },
+  "10112914784590": {
+   "primary": "10112891224398",
+   "slug": "zeppelin-lz126-los-angeles-7614-3"
+  },
+  "10112953581902": {
+   "primary": "10112951189838",
+   "slug": "zeppelin-lz127-graf-zeppelin-7656-1"
+  },
+  "10112956924238": {
+   "primary": "10112951189838",
+   "slug": "zeppelin-lz127-graf-zeppelin-7656-1"
+  },
+  "10112971440462": {
+   "primary": "10112969605454",
+   "slug": "zeppelin-lz127-graf-zeppelin-openheart-7666-4"
+  },
+  "10112401244494": {
+   "primary": "10112384368974",
+   "slug": "zeppelin-lz129-hindenburg-7036-1"
+  },
+  "10112447643982": {
+   "primary": "10112417333582",
+   "slug": "zeppelin-lz129-hindenburg-7037-1"
+  },
+  "10112487522638": {
+   "primary": "10112417333582",
+   "slug": "zeppelin-lz129-hindenburg-7037-1"
+  },
+  "16163083813198": {
+   "primary": "16163078472014",
+   "slug": "zeppelin-lz129-hindenburg-8056-3"
+  },
+  "16163083944270": {
+   "primary": "16163078472014",
+   "slug": "zeppelin-lz129-hindenburg-8056-3"
+  },
+  "16163062219086": {
+   "primary": "16163062153550",
+   "slug": "zeppelin-lz129-hindenburg-8068-1"
+  },
+  "16163072803150": {
+   "primary": "16163067101518",
+   "slug": "zeppelin-mediterranee-9664-1"
+  },
+  "16163067363662": {
+   "primary": "16163067101518",
+   "slug": "zeppelin-mediterranee-9664-1"
+  },
+  "16163077554510": {
+   "primary": "16163067101518",
+   "slug": "zeppelin-mediterranee-9664-1"
+  },
+  "16163078308174": {
+   "primary": "16163072541006",
+   "slug": "zeppelin-mediterranee-9690-1"
+  },
+  "16163078111566": {
+   "primary": "16163072508238",
+   "slug": "zeppelin-mediterranee-chronographe-9670-4"
+  },
+  "16163066806606": {
+   "primary": "16163072606542",
+   "slug": "zeppelin-mediterranee-moonphase-9636-3"
+  },
+  "10114430501198": {
+   "primary": "16163072704846",
+   "slug": "zeppelin-mediterranee-moonphase-9637-3"
+  },
+  "10114435875150": {
+   "primary": "16163077882190",
+   "slug": "zeppelin-mediterranee-openheart-9666-3"
+  },
+  "16163067560270": {
+   "primary": "16163077882190",
+   "slug": "zeppelin-mediterranee-openheart-9666-3"
+  },
+  "16163058221390": {
+   "primary": "16163057992014",
+   "slug": "zeppelin-metropolis-8360-1"
+  },
+  "10113878327630": {
+   "primary": "10113875575118",
+   "slug": "zeppelin-sustainable-planet-edition-chronographe-solaire-8086-2n"
+  },
+  "10113886617934": {
+   "primary": "10113875575118",
+   "slug": "zeppelin-sustainable-planet-edition-chronographe-solaire-8086-2n"
+  }
+ },
+ "redirects": [
+  [
+   "alpina-alpiner-extreme-quartz-al-220bg2ae6b",
+   "alpina-alpiner-extreme-quartz-al-220k2ae6"
+  ],
+  [
+   "alpina-alpiner-extreme-quartz-al-220pi2ae6b",
+   "alpina-alpiner-extreme-quartz-al-220k2ae6"
+  ],
+  [
+   "alpina-alpiner-extreme-quartz-al-220tb2ae6b",
+   "alpina-alpiner-extreme-quartz-al-220k2ae6"
+  ],
+  [
+   "alpina-alpiner-extreme-solarmetre-al-140brg3ae6b",
+   "alpina-alpiner-extreme-solarmetre-al-140n3ae6"
+  ],
+  [
+   "alpina-alpiner-extreme-solarmetre-al-140lgr3ae6b",
+   "alpina-alpiner-extreme-solarmetre-al-140n3ae6"
+  ],
+  [
+   "alpina-alpiner-extreme-solarmetre-al-140w3ae6",
+   "alpina-alpiner-extreme-solarmetre-al-140n3ae6"
+  ],
+  [
+   "casio-a140we-8aef",
+   "casio-a140we-2aef"
+  ],
+  [
+   "casio-edifice-automatique-efk-110d-2a",
+   "casio-edifice-automatique-efk-110d-1a"
+  ],
+  [
+   "casio-edifice-automatique-efk-200d-4a",
+   "casio-edifice-automatique-efk-200d-2a"
+  ],
+  [
+   "casio-edifice-efb-109d-3av",
+   "casio-edifice-efb-109d-2avef"
+  ],
+  [
+   "casio-femme-ltp-b150l-7b2",
+   "casio-femme-ltp-b150l-7b1ef"
+  ],
+  [
+   "casio-g-shock-gac-2500-3a",
+   "casio-g-shock-gac-2500-1a"
+  ],
+  [
+   "casio-g-shock-gac-2500-7a",
+   "casio-g-shock-gac-2500-1a"
+  ],
+  [
+   "casio-mq-24da-2a",
+   "casio-mq-24da-1a"
+  ],
+  [
+   "casio-mtp-1302pd-2avef",
+   "casio-mtp-1302pd-3avef"
+  ],
+  [
+   "casio-mtp-b145d-3avef",
+   "casio-mtp-b145d-2a2vef"
+  ],
+  [
+   "casio-utp-1302pd-3a1v",
+   "casio-utp-1302pd-2a1v"
+  ],
+  [
+   "casio-vintage-abl-100we-2aef",
+   "casio-vintage-abl-100we-1aef"
+  ],
+  [
+   "citizen-em1070-83l",
+   "citizen-em1070-83a"
+  ],
+  [
+   "citizen-fe6121-67l",
+   "citizen-fe6121-67a"
+  ],
+  [
+   "citizen-fe6121-67x",
+   "citizen-fe6121-67a"
+  ],
+  [
+   "citizen-super-titane-nj0180-80x",
+   "citizen-super-titane-nj0180-80a"
+  ],
+  [
+   "citizen-surrato-eco-drive-ar3120-24l",
+   "citizen-surrato-eco-drive-ar3120-16a"
+  ],
+  [
+   "citizen-surrato-eco-drive-ar3120-32x",
+   "citizen-surrato-eco-drive-ar3120-16a"
+  ],
+  [
+   "citizen-zenshin-60-super-titane-nk5020-58m",
+   "citizen-zenshin-60-super-titane-nk5020-58l"
+  ],
+  [
+   "citizen-zenshin-60-super-titane-nk5020-58p",
+   "citizen-zenshin-60-super-titane-nk5020-58l"
+  ],
+  [
+   "lip-churchill-c18-671620",
+   "lip-churchill-c18-671622"
+  ],
+  [
+   "lip-churchill-c18-671624",
+   "lip-churchill-c18-671622"
+  ],
+  [
+   "lip-churchill-c18-671625",
+   "lip-churchill-c18-671622"
+  ],
+  [
+   "lip-churchill-c18-671947",
+   "lip-churchill-c18-671946"
+  ],
+  [
+   "lip-churchill-c18-671949",
+   "lip-churchill-c18-671946"
+  ],
+  [
+   "lip-churchill-t18-671933",
+   "lip-churchill-t18-671930"
+  ],
+  [
+   "lip-churchill-t18-671937",
+   "lip-churchill-t18-671930"
+  ],
+  [
+   "lip-churchill-t18-671943",
+   "lip-churchill-t18-671929"
+  ],
+  [
+   "lip-churchill-t24-671276",
+   "lip-churchill-t24-671270"
+  ],
+  [
+   "lip-churchill-t24-671277",
+   "lip-churchill-t24-671270"
+  ],
+  [
+   "lip-churchill-t24-671279",
+   "lip-churchill-t24-671270"
+  ],
+  [
+   "lip-churchill-t24-671928",
+   "lip-churchill-t24-671927"
+  ],
+  [
+   "lip-churchill-t24-671938",
+   "lip-churchill-t24-671927"
+  ],
+  [
+   "lip-general-de-gaulle-31mm-671882",
+   "lip-general-de-gaulle-31mm-671883"
+  ],
+  [
+   "lip-general-de-gaulle-35mm-671878",
+   "lip-general-de-gaulle-35mm-671022"
+  ],
+  [
+   "lip-general-de-gaulle-automatique-35mm-671881",
+   "lip-general-de-gaulle-automatique-35mm-671880"
+  ],
+  [
+   "lip-henriette-18mm-671196",
+   "lip-henriette-18mm-671267"
+  ],
+  [
+   "lip-henriette-18mm-671627",
+   "lip-henriette-18mm-671267"
+  ],
+  [
+   "lip-himalaya-29mm-671611",
+   "lip-himalaya-29mm-671602"
+  ],
+  [
+   "lip-himalaya-29mm-671730",
+   "lip-himalaya-29mm-671602"
+  ],
+  [
+   "lip-himalaya-29mm-671733",
+   "lip-himalaya-29mm-671602"
+  ],
+  [
+   "lip-himalaya-40mm-671543",
+   "lip-himalaya-40mm-671541"
+  ],
+  [
+   "lip-himalaya-40mm-671548",
+   "lip-himalaya-40mm-671541"
+  ],
+  [
+   "lip-himalaya-40mm-671705",
+   "lip-himalaya-40mm-671541"
+  ],
+  [
+   "lip-himalaya-40mm-671715",
+   "lip-himalaya-40mm-671541"
+  ],
+  [
+   "lip-himalaya-40mm-671727",
+   "lip-himalaya-40mm-671541"
+  ],
+  [
+   "lip-himalaya-40mm-671728",
+   "lip-himalaya-40mm-671541"
+  ],
+  [
+   "lip-himalaya-40mm-sablier-671573",
+   "lip-himalaya-40mm-sablier-671572"
+  ],
+  [
+   "lip-himalaya-40mm-sablier-671713",
+   "lip-himalaya-40mm-sablier-671572"
+  ],
+  [
+   "lip-himalaya-40mm-squelette-671554",
+   "lip-himalaya-40mm-squelette-671248"
+  ],
+  [
+   "lip-himalaya-40mm-squelette-671557",
+   "lip-himalaya-40mm-squelette-671248"
+  ],
+  [
+   "lip-himalaya-40mm-squelette-671725",
+   "lip-himalaya-40mm-squelette-671248"
+  ],
+  [
+   "lip-himalaya-40mm-squelette-671726",
+   "lip-himalaya-40mm-squelette-671248"
+  ],
+  [
+   "lip-himalaya-chronographe-40-mm-671593",
+   "lip-himalaya-chronographe-40-mm-671592"
+  ],
+  [
+   "lip-himalaya-chronographe-40-mm-671718",
+   "lip-himalaya-chronographe-40-mm-671592"
+  ],
+  [
+   "lip-minilip-29-mm-671970",
+   "lip-minilip-29-mm-671971"
+  ],
+  [
+   "lip-rallye-meca-quartz-chronographe-39-mm-671807",
+   "lip-rallye-meca-quartz-chronographe-39-mm-671806"
+  ],
+  [
+   "lip-t18-671014",
+   "lip-t18-671015"
+  ],
+  [
+   "orient-bambino-38mm-ra-bb0004y",
+   "orient-bambino-38mm-ra-bb0002s"
+  ],
+  [
+   "orient-bambino-38mm-ra-bb0006n",
+   "orient-bambino-38mm-ra-bb0002s"
+  ],
+  [
+   "orient-bambino-petite-seconde-ra-ap0104s",
+   "orient-bambino-petite-seconde-ra-ap0101b"
+  ],
+  [
+   "orient-bambino-v9-sun-moon-ra-ak0803y",
+   "orient-bambino-v9-sun-moon-ra-ak0802s"
+  ],
+  [
+   "orient-classic-bambino-v8-ra-ak0704n",
+   "orient-classic-bambino-v8-ra-ak0701s"
+  ],
+  [
+   "orient-contemporary-open-heart-ra-ar0010r10b",
+   "orient-contemporary-open-heart-ra-ar0008e10b"
+  ],
+  [
+   "orient-mako-iii-kamasu-ra-aa0004e",
+   "orient-mako-iii-kamasu-ra-aa0001b"
+  ],
+  [
+   "swiss-military-chronographe-sm34012-04",
+   "swiss-military-chronographe-sm34012-01"
+  ],
+  [
+   "swiss-military-chronographe-sm34012-09",
+   "swiss-military-chronographe-sm34012-01"
+  ],
+  [
+   "swiss-military-chronographe-sm34084-04",
+   "swiss-military-chronographe-sm34084-03"
+  ],
+  [
+   "swiss-military-classic-sm30200-03",
+   "swiss-military-classic-sm30200-01"
+  ],
+  [
+   "swiss-military-montre-sport-sm34082-02",
+   "swiss-military-montre-sport-sm34082-01"
+  ],
+  [
+   "zeppelin-100-jahre-zeppelin-chronographe-7680-2",
+   "zeppelin-100-jahre-zeppelin-chronographe-7680-1"
+  ],
+  [
+   "zeppelin-100-jahre-zeppelin-chronographe-7680-m1",
+   "zeppelin-100-jahre-zeppelin-chronographe-7680-1"
+  ],
+  [
+   "zeppelin-atlantic-8460-5",
+   "zeppelin-atlantic-8460-3"
+  ],
+  [
+   "zeppelin-atlantic-8466-5",
+   "zeppelin-atlantic-8466-3"
+  ],
+  [
+   "zeppelin-captain-s-line-8658-5",
+   "zeppelin-captain-s-line-8658-3"
+  ],
+  [
+   "zeppelin-friedrichshafen-8536-3",
+   "zeppelin-friedrichshafen-8536-1"
+  ],
+  [
+   "zeppelin-friedrichshafen-8537-5",
+   "zeppelin-friedrichshafen-8537-1"
+  ],
+  [
+   "zeppelin-friedrichshafen-8562-5",
+   "zeppelin-friedrichshafen-8562-3"
+  ],
+  [
+   "zeppelin-friedrichshafen-8568-3",
+   "zeppelin-friedrichshafen-8568-1"
+  ],
+  [
+   "zeppelin-friedrichshafen-chronographe-8584-4",
+   "zeppelin-friedrichshafen-chronographe-8584-3"
+  ],
+  [
+   "zeppelin-friedrichshafen-openheart-8566-5",
+   "zeppelin-friedrichshafen-openheart-8566-4"
+  ],
+  [
+   "zeppelin-friedrichshafen-openheart-8567-5",
+   "zeppelin-friedrichshafen-openheart-8567-1"
+  ],
+  [
+   "zeppelin-lz-14-marine-lady-8635-4",
+   "zeppelin-lz-14-marine-lady-8635-3"
+  ],
+  [
+   "zeppelin-lz-14-marine-lady-8637m-4",
+   "zeppelin-lz-14-marine-lady-8637m-3"
+  ],
+  [
+   "zeppelin-lz126-los-angeles-7614-4",
+   "zeppelin-lz126-los-angeles-7614-3"
+  ],
+  [
+   "zeppelin-lz126-los-angeles-7614-5",
+   "zeppelin-lz126-los-angeles-7614-3"
+  ],
+  [
+   "zeppelin-lz127-graf-zeppelin-7656-2",
+   "zeppelin-lz127-graf-zeppelin-7656-1"
+  ],
+  [
+   "zeppelin-lz127-graf-zeppelin-7656-5",
+   "zeppelin-lz127-graf-zeppelin-7656-1"
+  ],
+  [
+   "zeppelin-lz127-graf-zeppelin-openheart-7666-5",
+   "zeppelin-lz127-graf-zeppelin-openheart-7666-4"
+  ],
+  [
+   "zeppelin-lz129-hindenburg-7036-3",
+   "zeppelin-lz129-hindenburg-7036-1"
+  ],
+  [
+   "zeppelin-lz129-hindenburg-7037-3",
+   "zeppelin-lz129-hindenburg-7037-1"
+  ],
+  [
+   "zeppelin-lz129-hindenburg-7037-m1",
+   "zeppelin-lz129-hindenburg-7037-1"
+  ],
+  [
+   "zeppelin-lz129-hindenburg-8056-4",
+   "zeppelin-lz129-hindenburg-8056-3"
+  ],
+  [
+   "zeppelin-lz129-hindenburg-8056-5",
+   "zeppelin-lz129-hindenburg-8056-3"
+  ],
+  [
+   "zeppelin-lz129-hindenburg-8068-5",
+   "zeppelin-lz129-hindenburg-8068-1"
+  ],
+  [
+   "zeppelin-mediterranee-9664-3",
+   "zeppelin-mediterranee-9664-1"
+  ],
+  [
+   "zeppelin-mediterranee-9664-4",
+   "zeppelin-mediterranee-9664-1"
+  ],
+  [
+   "zeppelin-mediterranee-9664-5",
+   "zeppelin-mediterranee-9664-1"
+  ],
+  [
+   "zeppelin-mediterranee-9690-3",
+   "zeppelin-mediterranee-9690-1"
+  ],
+  [
+   "zeppelin-mediterranee-chronographe-9670-5",
+   "zeppelin-mediterranee-chronographe-9670-4"
+  ],
+  [
+   "zeppelin-mediterranee-moonphase-9636-1",
+   "zeppelin-mediterranee-moonphase-9636-3"
+  ],
+  [
+   "zeppelin-mediterranee-moonphase-9637-5",
+   "zeppelin-mediterranee-moonphase-9637-3"
+  ],
+  [
+   "zeppelin-mediterranee-openheart-9666-1",
+   "zeppelin-mediterranee-openheart-9666-3"
+  ],
+  [
+   "zeppelin-mediterranee-openheart-9666-5",
+   "zeppelin-mediterranee-openheart-9666-3"
+  ],
+  [
+   "zeppelin-metropolis-8360-3",
+   "zeppelin-metropolis-8360-1"
+  ],
+  [
+   "zeppelin-sustainable-planet-edition-chronographe-solaire-8086-3n",
+   "zeppelin-sustainable-planet-edition-chronographe-solaire-8086-2n"
+  ],
+  [
+   "zeppelin-sustainable-planet-edition-chronographe-solaire-8086-4n",
+   "zeppelin-sustainable-planet-edition-chronographe-solaire-8086-2n"
+  ]
+ ]
+}

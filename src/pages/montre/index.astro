@@ -2,11 +2,11 @@
 // Index A–Z des fiches montres, par marque : un chemin direct vers chaque fiche.
 import Cadrin from '../../layouts/Cadrin.astro';
 import data from '../../data/tempus-catalogue.json';
-import {ficheEligible,ficheHref,ficheTitle} from '../../lib/fiches';
+import {ficheEligible,ficheHref,ficheTitle,ficheIsVariant} from '../../lib/fiches';
 import {dateLabel} from '../../lib/editorial';
 import type {CatalogueProduct} from '../../lib/tempus-catalogue';
 const seen=new Set<string>();
-const all=(data.products as CatalogueProduct[]).filter(ficheEligible).sort((a,b)=>a.price-b.price).filter(p=>{const h=ficheHref(p)!;if(seen.has(h))return false;seen.add(h);return true;});
+const all=(data.products as CatalogueProduct[]).filter(p=>ficheEligible(p)&&!ficheIsVariant(p)).sort((a,b)=>a.price-b.price).filter(p=>{const h=ficheHref(p)!;if(seen.has(h))return false;seen.add(h);return true;});
 const brands=[...new Set(all.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b,'fr'));
 const byBrand=brands.map(b=>({brand:b,id:'marque-'+b.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-'),items:all.filter(p=>p.brand===b).sort((x,y)=>ficheTitle(x).localeCompare(ficheTitle(y),'fr'))}));
 const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);

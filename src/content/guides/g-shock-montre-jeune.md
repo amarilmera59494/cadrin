@@ -19,7 +19,7 @@ Le bon achat tient aussi au budget total. Une montre que l’on ose porter tous 
 
 ## Trois envies, trois silhouettes
 
-La GA-2100-1A1ER attire par sa boîte octogonale et son noir intégral. Elle mélange aiguilles et petit affichage numérique. C’est une piste pour quelqu’un qui veut une G-Shock avec un dessin reconnaissable, sans écran de smartwatch.
+La GA-2100-1A1ER attire par sa boîte octogonale et son noir intégral. Elle mélange aiguilles et petit affichage numérique. C’est une piste pour quelqu’un qui veut une [G-Shock](/marques/casio-g-shock/) avec un dessin reconnaissable, sans écran de smartwatch.
 
 La GBD-200-2ER privilégie la lecture numérique et une approche liée à l’activité. Avant de la choisir pour ses fonctions connectées, vérifiez les services de l’application et la compatibilité du téléphone. La F-91W-1YEG, elle, ramène le choix à une silhouette rétro en résine : Casio fait remonter le lancement de la famille F-91W à 1989.
 

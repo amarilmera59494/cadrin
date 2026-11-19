@@ -15,7 +15,7 @@ sources: [{"label":"Seiko — notice 4R35/4R36 : régler l’heure, la date et l
 
 Il est 23 h, vous sortez une montre du tiroir et vous corrigez la date. Le lendemain matin, elle n’a pas changé. Ou elle a changé à midi.
 
-La raison est mécanique. Le soir, la date ne bascule pas d’un coup à minuit : le mécanisme commence à la pousser quelques heures avant. Si vous forcez la date à ce moment-là, vous travaillez contre lui. Seiko prévient qu’on risque alors une date qui ne change plus correctement, voire un mécanisme abîmé.
+La raison est mécanique. Le soir, la date ne bascule pas d’un coup à minuit : le mécanisme commence à la pousser quelques heures avant. Si vous forcez la date à ce moment-là, vous travaillez contre lui. [Seiko](/marques/seiko/) prévient qu’on risque alors une date qui ne change plus correctement, voire un mécanisme abîmé.
 
 Bonne nouvelle : il suffit de connaître une plage horaire et une astuce.
 
@@ -37,7 +37,7 @@ D’où viennent ces chiffres ? Des notices :
 
 - pour le calibre Seiko **4R35** (date seule), Seiko déconseille de régler la date entre **21 h et 1 h** ;
 - pour le **4R36** (jour et date, celui de la Seiko 5 Sports), la plage s’étend de **21 h à 4 h**, car le jour change plus tard que la date, vers 4 h du matin ;
-- chez Citizen et Orient, les plages varient selon le calibre. La notice fait foi : Citizen permet de la retrouver avec le numéro de calibre gravé au dos de la montre.
+- chez [Citizen](/marques/citizen/) et [Orient](/marques/orient/), les plages varient selon le calibre. La notice fait foi : Citizen permet de la retrouver avec le numéro de calibre gravé au dos de la montre.
 
 Retenir « 21 h – 4 h » vous protège dans presque tous les cas.
 
@@ -64,7 +64,7 @@ Le mécanisme de date compte jusqu’à 31 tous les mois. Après un mois de 30 j
 ## Selon le mouvement
 
 - **Automatique arrêtée** : relancez-la avant de régler, par quelques tours de couronne si le calibre accepte le remontage manuel. Sinon elle s’arrêtera de nouveau pendant que vous la réglez.
-- **Quartz et solaire** : même logique de couronne et même prudence pour la date. Une montre solaire qui a dormi dans le noir peut avoir besoin de lumière avant de repartir.
+- **Quartz et solaire** : même logique de couronne et même prudence pour la date. Une [montre solaire](/selections/montres-solaires/) qui a dormi dans le noir peut avoir besoin de lumière avant de repartir.
 - **Montres numériques et connectées** : on règle par les boutons, pas par la couronne. La procédure dépend du module : chez Casio, son numéro est gravé au dos, et la notice correspondante se trouve sur le site de la marque.
 
 [Réserve de marche et remontage d’une automatique](/guides/montre-automatique-reserve-de-marche/)

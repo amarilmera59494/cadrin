@@ -19,11 +19,11 @@ Aucune n’est « la bonne » dans l’absolu. Chacune répond à un usage, un
 
 ## Les trois familles
 
-**L’acrylique : le verre des montres vintage.** Seiko le définit comme un verre en résine acrylique, aussi appelé verre organique. Il se raye plus facilement que les autres, mais une rayure légère peut souvent s’atténuer avec une pâte à polir. On le trouve sur les rééditions rétro et sur certaines montres de terrain, pour son allure et son comportement : il se marque plutôt qu’il ne se brise.
+**L’acrylique : le verre des montres vintage.** [Seiko](/marques/seiko/) le définit comme un verre en résine acrylique, aussi appelé verre organique. Il se raye plus facilement que les autres, mais une rayure légère peut souvent s’atténuer avec une pâte à polir. On le trouve sur les rééditions rétro et sur certaines montres de terrain, pour son allure et son comportement : il se marque plutôt qu’il ne se brise.
 
 **Le minéral : le compromis le plus courant.** C’est un verre inorganique, souvent durci. Seiko appelle **Hardlex** son propre verre minéral, qu’il décrit comme un verre inorganique ayant reçu un traitement de renforcement spécial. Il résiste mieux aux rayures que l’acrylique ; en revanche, une rayure profonde ne part plus au polissage.
 
-**Le saphir : la référence contre les rayures.** Il s’agit d’un saphir de synthèse, fabriqué artificiellement, comme le précise Seiko. Citizen met en avant sa résistance aux rayures et sa dureté. Très dur, il peut toutefois se fendre sur un choc sec, comme tout verre. Longtemps réservé au haut de gamme, on le trouve désormais sous 300 €.
+**Le saphir : la référence contre les rayures.** Il s’agit d’un saphir de synthèse, fabriqué artificiellement, comme le précise Seiko. [Citizen](/marques/citizen/) met en avant sa résistance aux rayures et sa dureté. Très dur, il peut toutefois se fendre sur un choc sec, comme tout verre. Longtemps réservé au haut de gamme, on le trouve désormais sous 300 €.
 
 ## Trois montres pour comparer
 

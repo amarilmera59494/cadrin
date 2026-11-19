@@ -2,6 +2,17 @@
 // Tout le texte est déduit des champs de la fiche marchande : aucune note, aucun avis, aucun essai.
 import type {CatalogueProduct} from './tempus-catalogue.ts';
 import {merchantLinkAvailable,normalise,sizeNumber,waterMark,displayTitle} from './tempus-catalogue.ts';
+import families from '../data/fiche-families.json' with {type:'json'};
+
+// Coloris d'un même modèle : une seule fiche (la principale), générée par scripts/fiche-families.mjs.
+const variantOf = (families as {variants: Record<string, {primary: string; slug: string}>}).variants;
+export const ficheIsVariant = (p: {id?: string}) => !!(p.id && variantOf[p.id]);
+export const fichePrimaryId = (p: {id: string}) => variantOf[p.id]?.primary ?? p.id;
+// Tous les coloris publiés d'un modèle, la fiche principale en premier.
+export function ficheColourways(p: CatalogueProduct, all: CatalogueProduct[]) {
+  const main = fichePrimaryId(p);
+  return all.filter(x => ficheEligible(x) && fichePrimaryId(x) === main).sort((a, b) => Number(b.id === main) - Number(a.id === main) || a.price - b.price);
+}
 
 export const ficheBase = '/montre/';
 const slugify = (s: string) => normalise(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -15,10 +26,15 @@ export function ficheDocumented(p: CatalogueProduct) {
   return ficheEligible(p) && p.price >= 50 && !!p.movement && sizeNumber(p.caseSize) !== null && waterMark(p.water) !== null && !!p.glass;
 }
 
-export function ficheSlug(p: Pick<CatalogueProduct, 'brand' | 'title' | 'reference'>) {
+export function ficheSlugRaw(p: Pick<CatalogueProduct, 'brand' | 'title' | 'reference'>) {
   const title = slugify(p.title), brand = slugify(p.brand), ref = slugify(p.reference);
   const base = title.includes(brand) ? title : `${brand}-${title}`;
   return base.includes(ref) || base.includes(ref.replace(/[0-9]{2}[a-z]$/, '')) ? base : `${base}-${ref}`;
+}
+
+// Adresse de la fiche : celle du coloris principal pour les autres coloris.
+export function ficheSlug(p: Pick<CatalogueProduct, 'brand' | 'title' | 'reference'> & {id?: string}) {
+  return (p.id && variantOf[p.id]?.slug) || ficheSlugRaw(p);
 }
 
 export const ficheBaseEn = '/en/watch/';
@@ -85,12 +101,12 @@ export function ficheChecks(p: CatalogueProduct): Check[] {
 
 // Trois alternatives documentées : même mouvement, prix proche, d'autres marques en priorité.
 export function ficheAlternatives(p: CatalogueProduct, all: CatalogueProduct[], n = 3) {
-  const pool = all.filter(x => x.id !== p.id && x.reference !== p.reference && ficheDocumented(x) && x.movement === p.movement && Math.abs(x.price - p.price) <= p.price * 0.35);
+  const pool = all.filter(x => x.id !== p.id && x.reference !== p.reference && fichePrimaryId(x) !== fichePrimaryId(p) && !ficheIsVariant(x) && ficheDocumented(x) && x.movement === p.movement && Math.abs(x.price - p.price) <= p.price * 0.35);
   pool.sort((a, b) => Number(b.brand !== p.brand) - Number(a.brand !== p.brand) || Number(!!b.bestseller) - Number(!!a.bestseller) || Math.abs(a.price - p.price) - Math.abs(b.price - p.price));
   const picked: CatalogueProduct[] = [], brands = new Set<string>();
   for (const x of pool) { if (picked.length >= n) break; if (!brands.has(x.brand)) { picked.push(x); brands.add(x.brand); } }
   for (const x of pool) { if (picked.length >= n) break; if (!picked.includes(x)) picked.push(x); }
-  const cheaper = all.filter(x => ficheDocumented(x) && x.movement === p.movement && x.price < p.price * 0.75 && !picked.includes(x) && x.id !== p.id)
+  const cheaper = all.filter(x => ficheDocumented(x) && !ficheIsVariant(x) && fichePrimaryId(x) !== fichePrimaryId(p) && x.movement === p.movement && x.price < p.price * 0.75 && !picked.includes(x) && x.id !== p.id)
     .sort((a, b) => Number(!!b.bestseller) - Number(!!a.bestseller) || b.price - a.price)[0];
   return {similar: picked, cheaper};
 }

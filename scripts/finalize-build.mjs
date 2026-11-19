@@ -59,7 +59,11 @@ const dataHeaders=existsSync(`${dir}/catalogue.json`)?`/catalogue.json\n  ! Cach
 if(files.filter(f=>f.startsWith(`${dir}/_astro/`)).length+imageFiles.length+(dataHeaders?1:0)+3>100)throw new Error('Limite de règles _headers Cloudflare dépassée.');
 await writeFile(`${dir}/_headers`,`/*\n${production?'':'  X-Robots-Tag: noindex, nofollow\n'}${security}  Content-Security-Policy: ${csp}\n  Cache-Control: public, max-age=0, must-revalidate\n\n/404.html\n  X-Robots-Tag: noindex, nofollow\n\n/images/catalogue/*\n  ! Cache-Control\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n\n${assetHeaders}\n${imageHeaders}\n${dataHeaders}`);
 // Adresses renommées (ex. orthographe d'une marque corrigée) : redirections permanentes vers la nouvelle page.
-const moved=JSON.parse(await readFile('src/data/redirects.json','utf8'));
+// Coloris regroupés sur une seule fiche (scripts/fiche-families.mjs) : l'ancienne adresse de chaque coloris mène à la fiche du modèle.
+const families=JSON.parse(await readFile('src/data/fiche-families.json','utf8'));
+const colourMoves=families.redirects.flatMap(([from,to])=>[{from:`/montre/${from}/`,to:`/montre/${to}/`},{from:`/en/watch/${from}/`,to:`/en/watch/${to}/`}]);
+const follow=new Map(colourMoves.map(m=>[m.from,m.to]));
+const moved=[...JSON.parse(await readFile('src/data/redirects.json','utf8')).map(({from,to})=>({from,to:follow.get(to)??to})),...colourMoves];
 for(const {from,to} of moved){if(!existsSync(`${dir}${to}index.html`))throw new Error(`Redirection vers une page absente : ${to}`);if(existsSync(`${dir}${from}index.html`))throw new Error(`Redirection depuis une page encore publiée : ${from}`);}
 await writeFile(`${dir}/_redirects`,moved.map(({from,to})=>`${from} ${to} 301`).join('\n')+'\n');
 await writeFile(`${dir}/robots.txt`,`User-agent: *\nAllow: /\n${production?'Sitemap: https://cadrin.fr/sitemap.xml\n':'# Preview : noindex dans le HTML et les en-têtes. Aucun sitemap.\n'}`);

@@ -31,7 +31,7 @@ Une fiche montre peut ressembler à une notice de moteur. Pourtant, une vingtain
 ## Le verre
 
 - **Saphir** : presque inrayable, mais il peut se fendre sur un choc sec.
-- **Minéral** : le compromis courant. **Hardlex** est le nom que Seiko donne à son verre minéral durci.
+- **Minéral** : le compromis courant. **Hardlex** est le nom que [Seiko](/marques/seiko/) donne à son verre minéral durci.
 - **Acrylique** (ou **hésalite**) : il se raye, mais une rayure légère se polit.
 - **Traitement antireflet** : limite les reflets pour mieux lire le cadran en plein soleil.
 
@@ -51,13 +51,13 @@ Une fiche montre peut ressembler à une notice de moteur. Pourtant, une vingtain
 
 - **Mouvement** ou **calibre** : le moteur de la montre. Son nom (4R36, 8210, NH35…) permet de retrouver la notice et les caractéristiques exactes.
 - **Quartz** : alimenté par une pile, très précis, sans entretien au quotidien.
-- **Solaire** : un quartz qui se recharge à la lumière. **Eco-Drive** est le nom de la technologie de Citizen.
+- **Solaire** : un quartz qui se recharge à la lumière. **Eco-Drive** est le nom de la technologie de [Citizen](/marques/citizen/).
 - **Automatique** : mécanique, remonté par les mouvements du poignet.
 - **Remontage manuel** : on remonte le ressort en tournant la couronne. Certaines automatiques le permettent aussi.
 - **Réserve de marche** : combien de temps une mécanique tourne une fois retirée du poignet. Environ 41 heures pour le Seiko 4R36.
 - **Stop-seconde** (« hacking ») : la trotteuse s’arrête quand on tire la couronne, pour régler à la seconde près.
 - **Rubis** : de petits rubis synthétiques qui servent de paliers et réduisent les frottements. Leur nombre ne mesure pas la qualité.
-- **Chronomètre** : une montre certifiée pour sa précision, en Suisse par le COSC. Ne pas confondre avec le chronographe.
+- **Chronomètre** : une montre certifiée pour sa précision, en Suisse par le COSC. Ne pas confondre avec le [chronographe](/selections/chronographes/).
 
 [Automatique, quartz ou solaire](/guides/automatique-quartz-solaire/)
 

@@ -13,7 +13,7 @@ sources: [{"label":"Tempus — conditions de vente, article 8 livraison","url":"
 
 ## Copiez la référence complète
 
-« Bambino », « Tsuyosa » ou « Seiko 5 » désignent des familles, pas une montre unique. Gardez le code complet de la fiche : il permet de comparer le cadran, le bracelet et les caractéristiques de la bonne variante. Une photographie ressemblante ou un nom de gamme identique ne suffit pas.
+« Bambino », « Tsuyosa » ou « [Seiko](/marques/seiko/) 5 » désignent des familles, pas une montre unique. Gardez le code complet de la fiche : il permet de comparer le cadran, le bracelet et les caractéristiques de la bonne variante. Une photographie ressemblante ou un nom de gamme identique ne suffit pas.
 
 Comparez le titre, le tableau technique et le descriptif du marchand. S’ils ne concordent pas, demandez une confirmation écrite. Pour la SRPE55K1, par exemple, le texte Tempus et son tableau donnent des diamètres différents ; la langue du disque des jours est aussi à préciser. Cette question mérite une réponse avant la commande.
 

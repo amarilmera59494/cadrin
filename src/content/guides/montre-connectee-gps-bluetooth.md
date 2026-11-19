@@ -21,7 +21,7 @@ Pour une montre connectée, vérifiez le téléphone compatible, l’application
 
 Tempus présente l’ICE Smart 3.0 ronde 1.20 Or-Beige, référence 025115, avec un écran AMOLED et un GPS intégré. C’est une piste à examiner si vous cherchez un écran de smartwatch et des notifications. L’usage précis du GPS, l’export des parcours et l’autonomie avec cette fonction doivent correspondre à ce que vous attendez ; nous ne publions pas de durée mesurée.
 
-La G-Shock GBD-200-2ER suit une logique différente : affichage numérique et fonctions d’activité liées au téléphone. Casio explique que le GPS du smartphone peut calibrer la distance calculée à partir de l’accéléromètre. Il ne faut pas la choisir en pensant qu’il s’agit du même équipement GPS intégré que sur l’ICE Smart.
+La [G-Shock](/marques/casio-g-shock/) GBD-200-2ER suit une logique différente : affichage numérique et fonctions d’activité liées au téléphone. Casio explique que le GPS du smartphone peut calibrer la distance calculée à partir de l’accéléromètre. Il ne faut pas la choisir en pensant qu’il s’agit du même équipement GPS intégré que sur l’ICE Smart.
 
 ::montres[connected]
 

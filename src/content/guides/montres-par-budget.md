@@ -19,21 +19,27 @@ La Casio F-91W-1YEG couvre ces trois usages. Elle affiche des chiffres et se rè
 
 ::montres[budget-50]
 
+Pour voir tous les modèles de cette tranche, avec leurs dimensions : les [montres à moins de 100 €](/selections/montres-moins-de-100-euros/).
+
 ## Jusqu’à 150 € : passer aux aiguilles et au solaire
 
-La Citizen AW0102-13AE entre dans cette enveloppe au moment du relevé. Cadran clair, boîte dorée et bracelet cuir changent autant le choix que le mouvement. Si vous aimez votre montre numérique, l’écart de prix se justifie surtout si ces différences vous plaisent.
+La [Citizen](/marques/citizen/) AW0102-13AE entre dans cette enveloppe au moment du relevé. Cadran clair, boîte dorée et bracelet cuir changent autant le choix que le mouvement. Si vous aimez votre montre numérique, l’écart de prix se justifie surtout si ces différences vous plaisent.
 
 [Afficher les montres jusqu’à 150 €](/catalogue/?budget=150#catalogue-count)
 
 ::montres[budget-150]
 
+Entre ces deux paliers, notre sélection des [montres de 100 à 200 €](/selections/montres-de-100-a-200-euros/) compare les modèles un par un.
+
 ## Jusqu’à 350 € : trois façons de choisir une automatique
 
-La Tsuyosa noire et la Seiko 5 Sports K1 entrent dans cette fourchette au dernier relevé. La Bambino 38 aussi, avec son cadran beige et son bracelet cuir. Pour départager les deux modèles sur acier, regardez la date sous loupe de la Citizen et le jour-date de la Seiko. Essayez les premiers maillons et vérifiez les frais de livraison si 350 € est votre plafond total.
+La Tsuyosa noire et la [Seiko](/marques/seiko/) 5 Sports K1 entrent dans cette fourchette au dernier relevé. La Bambino 38 aussi, avec son cadran beige et son bracelet cuir. Pour départager les deux modèles sur acier, regardez la date sous loupe de la Citizen et le jour-date de la Seiko. Essayez les premiers maillons et vérifiez les frais de livraison si 350 € est votre plafond total.
 
 [Comparer les automatiques jusqu’à 350 €](/catalogue/?budget=350&movement=Automatique#catalogue-count)
 
 ::montres[budget-350]
+
+Toutes les automatiques de cette tranche sont réunies dans la sélection des [montres automatiques à moins de 300 €](/selections/montres-automatiques-moins-de-300-euros/).
 
 ## Jusqu’à 400 € : une silhouette de montre bijou
 

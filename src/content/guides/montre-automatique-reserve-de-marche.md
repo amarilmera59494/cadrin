@@ -13,7 +13,7 @@ sources: [{"label":"Seiko — glossaire : remontage automatique (自動巻)","u
 
 ## Une montre qui vit avec vous
 
-Une montre automatique n’a pas de pile. Seiko la définit simplement : les mouvements de votre bras remontent automatiquement le ressort de la montre, qui libère ensuite son énergie pour faire tourner les aiguilles. Tant que vous la portez, elle fonctionne.
+Une montre automatique n’a pas de pile. [Seiko](/marques/seiko/) la définit simplement : les mouvements de votre bras remontent automatiquement le ressort de la montre, qui libère ensuite son énergie pour faire tourner les aiguilles. Tant que vous la portez, elle fonctionne.
 
 C’est aussi ce qui surprend le plus au début : **posée sur une table, elle finit par s’arrêter.** Ce n’est pas une panne, c’est son fonctionnement normal.
 
@@ -22,7 +22,7 @@ C’est aussi ce qui surprend le plus au début : **posée sur une table, elle 
 La **réserve de marche** est la durée pendant laquelle la montre continue de tourner une fois retirée du poignet, ressort bien remonté. Elle dépend du calibre et figure sur la fiche du fabricant :
 
 - le calibre Seiko **4R36** annonce environ **41 heures** ;
-- le calibre Citizen **8210**, celui de la Tsuyosa, annonce **42 heures**.
+- le calibre [Citizen](/marques/citizen/) **8210**, celui de la Tsuyosa, annonce **42 heures**.
 
 Concrètement, une automatique retirée le vendredi soir sera souvent arrêtée le lundi matin. Si vous alternez plusieurs montres, prévoyez de la remettre à l’heure. Certaines automatiques plus récentes tiennent bien plus longtemps : lisez la fiche si ce point compte pour vous.
 

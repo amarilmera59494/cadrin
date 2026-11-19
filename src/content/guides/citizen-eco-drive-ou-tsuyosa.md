@@ -13,7 +13,7 @@ related: ["citizen-aw0102-13ae","citizen-tsuyosa-nj0150-81e"]
 
 ## Que se passe-t-il entre deux portés ?
 
-Sur l’Eco-Drive AW0102-13AE, le cadran reçoit la lumière et le mouvement conserve l’énergie dans un accumulateur. Citizen annonce 240 jours de réserve à pleine charge pour ce calibre J800. Si vous la portez par intermittence, regardez surtout où vous la rangez. Une boîte fermée ne lui fournit aucune lumière.
+Sur l’Eco-Drive AW0102-13AE, le cadran reçoit la lumière et le mouvement conserve l’énergie dans un accumulateur. [Citizen](/marques/citizen/) annonce 240 jours de réserve à pleine charge pour ce calibre J800. Si vous la portez par intermittence, regardez surtout où vous la rangez. Une boîte fermée ne lui fournit aucune lumière.
 
 La Tsuyosa NJ0150-81E utilise le calibre mécanique 8210. Les mouvements du poignet remontent son ressort. Après plusieurs jours sans la porter, vous pouvez la retrouver arrêtée et devoir régler la date. Si cette petite manipulation vous plaît, l’automatique garde tout son sens. Si vous voulez simplement la reprendre à l’heure, le solaire mérite votre attention.
 

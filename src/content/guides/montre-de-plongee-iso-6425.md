@@ -19,7 +19,7 @@ La différence tient à une norme internationale : **ISO 6425**, « Horlogerie
 
 ## Ce que dit Citizen, usage par usage
 
-Citizen publie un tableau très clair. Il range les usages en cinq situations : 1. pluie, transpiration, lavage du visage ; 2. travaux au contact de l’eau et natation ordinaire ; 3. plongée libre et sports nautiques ; 4. plongée avec bouteilles ; 5. plongée à saturation.
+[Citizen](/marques/citizen/) publie un tableau très clair. Il range les usages en cinq situations : 1. pluie, transpiration, lavage du visage ; 2. travaux au contact de l’eau et natation ordinaire ; 3. plongée libre et sports nautiques ; 4. plongée avec bouteilles ; 5. plongée à saturation.
 
 - **3 bar** : situation 1 seulement.
 - **5 bar** : situations 1 et 2.
@@ -46,7 +46,7 @@ Aucune de ces montres n’est présentée ici comme une montre de plongée certi
 ## Avant d’aller dans l’eau
 
 - **Revissez la couronne** si elle est vissée, et ne l’actionnez jamais sous l’eau.
-- **Pas de chaleur** : Citizen et Seiko déconseillent l’eau chaude, le bain et le sauna.
+- **Pas de chaleur** : Citizen et [Seiko](/marques/seiko/) déconseillent l’eau chaude, le bain et le sauna.
 - **Rincez à l’eau douce** après la mer, sans jet direct du robinet, puis séchez.
 - **Faites contrôler l’étanchéité** régulièrement : les joints vieillissent et les chocs l’affaiblissent.
 

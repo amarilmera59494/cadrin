@@ -13,7 +13,7 @@ sources: [{"label":"Citizen — NJ0150-56A, calibre 8210","url":"https://www.cit
 
 ## Une fiche, dix lignes, trois décisions
 
-Une fiche technique a l’air aride. Elle répond pourtant aux trois questions qui décident si une montre sera portée : **va-t-elle à mon poignet**, **que supporte-t-elle**, **que me demandera-t-elle au quotidien**. Prenons une fiche réelle, celle de la Citizen Tsuyosa NJ0150-81E, et lisons-la ligne par ligne.
+Une fiche technique a l’air aride. Elle répond pourtant aux trois questions qui décident si une montre sera portée : **va-t-elle à mon poignet**, **que supporte-t-elle**, **que me demandera-t-elle au quotidien**. Prenons une fiche réelle, celle de la [Citizen](/marques/citizen/) Tsuyosa NJ0150-81E, et lisons-la ligne par ligne.
 
 ::montres[spec-example]
 
@@ -29,7 +29,7 @@ Une fiche technique a l’air aride. Elle répond pourtant aux trois questions q
 
 ## Que supporte-t-elle ?
 
-**Le verre (saphir).** Saphir, minéral (Hardlex chez Seiko) ou acrylique : il décide de la résistance aux rayures. [Le guide des verres](/guides/verre-saphir-mineral-acrylique/)
+**Le verre (saphir).** Saphir, minéral (Hardlex chez [Seiko](/marques/seiko/)) ou acrylique : il décide de la résistance aux rayures. [Le guide des verres](/guides/verre-saphir-mineral-acrylique/)
 
 **L’étanchéité (5 ATM).** 5 bar, 5 ATM ou 50 m désignent le même niveau. Selon le tableau Citizen, il permet la natation ordinaire, mais pas la plongée libre. Les mètres sont une pression d’essai, pas une profondeur où emmener la montre. [Le guide de l’étanchéité](/guides/etancheite-montre-3-5-10-20-atm/)
 
@@ -41,7 +41,7 @@ Une fiche technique a l’air aride. Elle répond pourtant aux trois questions q
 
 **Le calibre (8210).** Le nom du moteur. Il permet de retrouver la notice et les vraies caractéristiques : Citizen annonce pour le 8210 une réserve de marche de 42 heures et le stop-seconde. [Réserve de marche et remontage](/guides/montre-automatique-reserve-de-marche/)
 
-**Les fonctions (date).** Date, jour, chronographe, alarme… Chaque fonction ajoute un usage, et parfois de l’épaisseur.
+**Les fonctions (date).** Date, jour, [chronographe](/selections/chronographes/), alarme… Chaque fonction ajoute un usage, et parfois de l’épaisseur.
 
 ## Ce que la fiche ne dit pas
 

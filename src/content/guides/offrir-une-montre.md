@@ -27,7 +27,7 @@ L’A158 mérite un regard si la personne porte déjà des accessoires argentés
 
 ## Une montre habillée, sans remontage
 
-Pour quelqu’un qui aime les aiguilles mais ne cherche pas le rituel d’une mécanique, regardez ces deux Citizen solaires. L’AW0102-13AE associe un boîtier de 40 mm à un bracelet cuir. La Rainell EM1201-52L est une proposition très différente : une boîte en goutte de 26,2 mm et un bracelet acier, dans l’esprit d’un bijou.
+Pour quelqu’un qui aime les aiguilles mais ne cherche pas le rituel d’une mécanique, regardez ces deux [Citizen](/marques/citizen/) solaires. L’AW0102-13AE associe un boîtier de 40 mm à un bracelet cuir. La Rainell EM1201-52L est une proposition très différente : une boîte en goutte de 26,2 mm et un bracelet acier, dans l’esprit d’un bijou.
 
 Ne choisissez pas entre elles sur la seule étiquette femme ou homme. Regardez plutôt les proportions de ses accessoires, la lisibilité du cadran et le bracelet qu’elle ou il porte volontiers. Le solaire demande aussi de laisser la montre recevoir assez de lumière : ce n’est pas une montre à oublier durablement dans sa boîte. Consultez le statut de commande de chaque carte, surtout si la date du cadeau approche.
 
@@ -40,6 +40,8 @@ La Tsuyosa rose NJ0200-50Z et la bleue NJ0200-50L partagent un format de 37 mm. 
 Ces trois modèles sont automatiques. Le cadeau convient à quelqu’un qui apprécie aussi le fonctionnement d’une montre mécanique et accepte de la remettre à l’heure après un arrêt. Si ce geste l’agace, revenez aux pistes solaires ou numériques. Les photos ne sont pas à l’échelle : ouvrez le comparateur pour regarder les dimensions côte à côte.
 
 ::montres[gift-tsuyosa]
+
+Pour comparer d’autres idées : les [idées cadeaux montre homme à moins de 200 €](/selections/idees-cadeaux-homme-moins-de-200-euros/) et notre sélection de [montres femme](/selections/montres-femme/).
 
 ## Garder la surprise et la possibilité d’un échange
 

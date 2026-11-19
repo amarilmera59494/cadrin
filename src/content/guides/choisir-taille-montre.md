@@ -17,11 +17,13 @@ Vous avez une montre dont le format vous plaît ? Posez-la à plat et relevez s
 
 Sans montre de référence, un essayage reste le point de départ le plus utile. Une circonférence de poignet ne suffit pas à imposer un diamètre : sa forme, votre manière de serrer le bracelet et vos préférences changent le résultat. Nous ne calculons donc pas de « taille parfaite » à partir d’un seul chiffre.
 
+Pour un poignet fin, notre sélection de [montres pour petit poignet](/selections/montres-petit-poignet/) rassemble les modèles de 38 mm et moins du catalogue, avec leur diamètre, leur épaisseur et un prix daté.
+
 ## Trois mesures à garder ensemble
 
 Le diamètre décrit la largeur d’un boîtier rond. La longueur de corne à corne indique la place occupée dans l’autre sens. L’épaisseur compte lorsque la montre passe sous une manche. Pour une boîte non ronde, demandez une largeur et une longueur en précisant les points de mesure.
 
-Un exemple montre pourquoi il faut regarder les deux axes : Seiko annonce 40 mm de diamètre et 44,6 mm de corne à corne pour la SRPE55. La SRPG35 est plus étroite, à 39,4 mm, mais plus longue, à 48,1 mm. La plus petite valeur de diamètre ne désigne donc pas automatiquement la montre la moins présente sur le poignet. Ces cotes sont celles du fabricant ; nous ne les avons pas mesurées.
+Un exemple montre pourquoi il faut regarder les deux axes : [Seiko](/marques/seiko/) annonce 40 mm de diamètre et 44,6 mm de corne à corne pour la SRPE55. La SRPG35 est plus étroite, à 39,4 mm, mais plus longue, à 48,1 mm. La plus petite valeur de diamètre ne désigne donc pas automatiquement la montre la moins présente sur le poignet. Ces cotes sont celles du fabricant ; nous ne les avons pas mesurées.
 
 ::montres[budget-400]
 
