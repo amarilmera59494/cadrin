@@ -29,7 +29,8 @@ const rows=((history as any).items[p.id]||[]) as [string,number,number][];const 
 const brandSlug=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];
 const brandHref=brandSlug?localPath(`/marques/${brandSlug}/`,'en'):null;
 // Never the bare product name: the French page may already use it, and the two languages need distinct titles.
-const title=[`${name}: price, size, water resistance`,`${name}: price and specs`,`${p.brand} ${p.reference}: price and specs`].find(x=>x.length<=61)??`${p.brand} ${p.reference} watch`;
+const short=(n:number)=>new Intl.NumberFormat('en-GB',{style:'currency',currency:'EUR',minimumFractionDigits:n%1?2:0}).format(n),tName=name.replace(/\s+-\s+/g,' '),tPrice=short(p.price);
+const title=[`${tName}: price ${tPrice}, size, water resistance`,`${tName}: price ${tPrice} and specs`,`${p.brand} ${p.reference}: price ${tPrice} and specs`,`${p.brand} ${p.reference}: ${tPrice} watch`].find(x=>x.length<=61)??`${p.brand} ${p.reference} watch`;
 const descBase=`${p.brand} ${p.reference}: ${money(p.price)} in France on ${day(checkedAt)}. ${summary}`;
 const description=[descBase+' Checks before buying and alternatives.',descBase,`${p.brand} ${p.reference}: ${money(p.price)} in France on ${day(checkedAt)}. Specifications, checks and alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
 const missingSpecs=[!p.caseSize&&'Case size',!p.glass&&'Crystal',!p.water&&'Water resistance'].filter(Boolean) as string[];

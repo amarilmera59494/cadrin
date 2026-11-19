@@ -6,6 +6,7 @@ import bf from '../../data/black-friday.json';
 import history from '../../data/price-history.json';
 import {reviewFor} from '../../data/review-syntheses';
 import {editorialLinks} from '../../data/editorial-links';
+import {hubs,brandHubs} from '../../data/selection-hubs';
 import {affiliateUrl} from '../../data/affiliation';
 import StickyBuy from '../../components/StickyBuy.astro';
 import {dateLabel} from '../../lib/editorial';
@@ -24,8 +25,12 @@ const analysis=editorialLinks[p.reference];
 const record=bf.items.find(i=>p.source.endsWith('/products/'+i.handle));
 const rows=((history as any).items[p.id]||[]) as [string,number,number][];const lowest=rows.length?rows.reduce((m,r)=>r[1]<m[1]?r:m):null;const since=(history as any).since as string;
 const review=reviewFor(p.reference);
-const brandPage=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];const brandHref=brandPage?`/marques/${brandPage}/`:null;
-const title=[`${name} : prix, taille, étanchéité`,`${name} : prix et fiche`,name,`${p.brand} ${p.reference} : prix et fiche`].find(x=>x.length<=61)??`${p.brand} ${p.reference}`;
+const brandPage=({Citizen:'citizen',Orient:'orient',Seiko:'seiko',Longines:'longines','G-Shock':'casio-g-shock'} as Record<string,string>)[p.brand];const brandHub=brandHubs.find(h=>h.match(p));const brandHref=brandPage?`/marques/${brandPage}/`:brandHub?`/marques/${brandHub.slug}/`:null;
+// Sélections où figure ce modèle : un lien interne par critère vérifiable sur la fiche.
+const inHubs=hubs.filter(h=>h.match(p));
+// Searches for a reference are mostly price searches (« 862129 euros ») : the dated price goes in the title.
+const short=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',minimumFractionDigits:n%1?2:0}).format(n),tName=name.replace(/\s+-\s+/g,' '),tPrice=short(p.price);
+const title=[`${tName} : prix ${tPrice}, taille, étanchéité`,`${tName} : prix ${tPrice} et fiche`,`${tName} : ${tPrice}`,`${p.brand} ${p.reference} : prix ${tPrice} et fiche`,`${p.brand} ${p.reference} : ${tPrice}`].find(x=>x.length<=61)??`${p.brand} ${p.reference}`;
 const descBase=`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. ${ficheSummary(p)}`;const description=[descBase+' Points à vérifier et alternatives.',descBase,`${p.brand} ${p.reference} : ${money(p.price)} au ${dateLabel(checkedAt)}. Caractéristiques, points à vérifier et alternatives.`].find(x=>x.length<=160)??descBase.slice(0,157)+'…';
 const missingSpecs=[!p.caseSize&&'Dimension du boîtier',!p.glass&&'Verre',!p.water&&'Étanchéité'].filter(Boolean) as string[];
 const guideLinks=[...new Map(checks.filter(c=>c.guide).map(c=>[c.guide!.url,c.guide!])).values()];
@@ -80,6 +85,7 @@ const productSchema=[{'@type':'Product',name:name,brand:{'@type':'Brand',name:p.
    <section class="fiche-more" aria-labelledby="comparer"><h2 id="comparer">Comparer avant de choisir</h2><ul>
     <li><a href={'/catalogue/?brand='+encodeURIComponent(p.brand)+'&compare='+p.id+'#catalogue-count'}>Comparer avec d’autres {p.brand} du catalogue →</a></li>
     {brandHref&&<li><a href={brandHref}>Notre dossier sur la marque {p.brand} →</a></li>}
+    {inHubs.map(h=><li><a href={`/selections/${h.slug}/`}>Sélection : {h.title.toLowerCase().replace(/^montres?/,'les montres').replace(/^chronographes/,'les chronographes').replace(/^idées/,'idées')} →</a></li>)}
     <li><a href="/trouver-ma-montre/">Trouver une montre selon vos critères →</a></li>
     <li><a href="/notre-methode/">Comment nous sélectionnons et vérifions →</a></li>
    </ul></section>

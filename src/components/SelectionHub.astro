@@ -17,9 +17,12 @@ const matches=all.filter(hub.match).filter(p=>{const h=ficheHref(p)!;if(seen.has
 const shown=matches.slice(0,hub.limit??24);
 const checkedAt=(data as any).offersCheckedAt||data.checkedAt;
 const money=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
+const short=(n:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',minimumFractionDigits:n%1?2:0}).format(n);
+// Titre de recherche : la requête visée, le nombre de modèles et la fourchette de prix du jour.
+const pageTitle=hub.seo&&matches.length?hub.seo.replace('{n}',String(matches.length)).replace('{min}',short(Math.min(...matches.map(x=>x.price)))).replace('{max}',short(Math.max(...matches.map(x=>x.price)))):hub.title;
 const others=family.filter(h=>h.slug!==hub.slug).slice(0,12);
 ---
-<Cadrin title={hub.title} description={hub.description} crumbs={[{name:section,url:base},{name:hub.title,url:`${base}${hub.slug}/`}]}>
+<Cadrin title={pageTitle} description={hub.description} crumbs={[{name:section,url:base},{name:hub.title,url:`${base}${hub.slug}/`}]}>
  <div class="container hub">
   <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span>/</span><a href={base}>{section}</a><span>/</span><span>{hub.kicker}</span></nav>
   <header class="hub-head">
